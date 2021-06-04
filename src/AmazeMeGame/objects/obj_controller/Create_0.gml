@@ -1,0 +1,1 @@
+camera = new Camera(640,480, display_get_width(), display_get_height())
