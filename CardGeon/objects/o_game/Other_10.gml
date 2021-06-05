@@ -1,0 +1,280 @@
+if live_call() return live_result;
+
+
+if turn_phase  =  e_turn_phase.standby_phase {  //idk do standby phase stuff here
+	turn_phase  =  e_turn_phase.main_phase;	
+	switch game.combat.turns {
+		case 0: repeat ( check_stuff(e_stuff.mana_restoring_pie)) { 
+				add_card_to(hand, e_card.coco_emergency_cake, false);	
+		}
+ 		break;	
+	}
+}
+
+
+right_click_timer--;
+if allow_player_input() and current_turn = e_current_turn.player_ { 
+	if m2_pressed { 
+		if right_click_timer < 0 { 
+			right_click_timer = SEC*.3;
+		}else{
+			force_end_turn = true;
+		}
+	}
+
+}
+//arm_apply_force(4,270);
+
+ wire_array[@ 0].starty = -camera.height*.5;
+ wire_array[@ 0].arm_length = 10;
+//draw_curve_line()
+/*
+for (var j=0; j< array_length(wire_array); j++){ 
+	for (var i = 0; i < wire_array[@ j].seg_amount; i++) {
+		draw_line(wire_array[@ j].seg_x[i], wire_array[@ j].seg_y[i], wire_array[@ j].seg_x[i+1], wire_array[@ j].seg_y[i+1]);
+		
+		if i = wire_array[@ j].seg_amount-1{ 
+
+		var dir = point_direction(wire_array[@ j].seg_x[i-1], wire_array[@ j].seg_y[i-1], wire_array[@ j].seg_x[i], wire_array[@ j].seg_y[i]);
+		draw_sprite_ext(s_light,0,wire_array[@ j].seg_x[i], wire_array[@ j].seg_y[i],1,1,dir+90,c_white,1);
+		
+		
+		}
+	}
+}
+*/
+
+//draw_curve_line()
+
+camera.zoom = 1;
+
+camera.x = 0;
+camera.y = 0;
+set_battle_camera();
+
+
+move_camera_to_coco = true;
+//draw_sprite_ext(s_pixel,0,-camera.width*2,-camera.height*2,camera.width*4,camera.height*4,0,C_DARK,1);
+
+if draw_card_queue > 0 { 
+	draw_card_timer--;	
+if draw_card_timer <= 0 {
+	draw_card_queue--;
+	queue_card(1)
+	draw_card_timer = draw_card_time;
+	if draw_card_queue = 0 { 
+	
+			if turn_phase  =  e_turn_phase.draw_phase { 
+				turn_phase  =  e_turn_phase.standby_phase;	
+			}
+	
+	}
+}
+
+var len = draw_card_queue;
+len = clamp(len,0,hand_size_max_limit);
+
+	for (var i= 0; i < len; i++){ 
+		active_cards_list[| i].disable_sectable_timer = SEC*.5;
+		active_cards_list[| i].x_ = -camera.width/1.2;
+		active_cards_list[| i].y_ = -camera.height/2;
+	}
+}
+
+if !m1_check || !allow_player_input(){ 
+	selected_card_x = noone;
+	selected_card_y = noone;
+}
+
+
+
+
+xoffgame = -camera.width/2;
+yoffgame = -camera.height/2;
+
+
+
+
+number_of_enemies = array_length(active_enemies);
+
+init_card_script_queue();
+
+var grid = map_grid;
+var width = ds_grid_width(grid);
+var height = ds_grid_height(grid);
+
+#region
+if current_turn = e_current_turn.player_ { 
+
+	target_height = lerp(target_height , 0 , .15);
+	current_light_target_struct = player;
+}else { 
+	var sprite =s_battle_bg;
+	var sprite_height_ = sprite_get_height(sprite);
+	target_height = lerp(target_height , sprite_height_ , .1);
+}
+#endregion
+//player.buff.attack.amount = 0;
+
+
+draw_status_information = false;
+mana_text_color = "[c_white]";
+deck_size = ds_list_size(deck);
+discard_size = ds_list_size(discard);
+
+//draw deck 
+//deck_flash_timer = SEC;
+draw_discard_and_deck();
+	if pause_combat_to_show_deck and !pause_combat_to_show_discard and !pause_combat_to_show_exhaust{ 
+		draw_cards_in_deck();
+		exit;
+	}
+
+	if pause_combat_to_show_discard  and !pause_combat_to_show_deck and !pause_combat_to_show_exhaust{ 
+		draw_cards_in_discard();
+		exit;
+	}
+	
+	if pause_combat_to_show_exhaust and !pause_combat_to_show_discard and !pause_combat_to_show_deck { 
+		draw_cards_in_exhaust();
+		exit;	
+	}
+
+
+
+deck_color = c_white;
+draw_deck();
+
+draw_set_color(deck_color)
+
+
+
+draw_text(10+xoffgame,65+yoffgame,"DECK_"+string(deck_size));
+draw_set_color(c_white)
+
+draw_set_halign(fa_right)
+draw_text(47+xoffgame,80+yoffgame,string((player.gold )));
+var wgoldwide = 35;
+var hgoldwide = 30;
+
+//draw_rectangle(xoffgame,80+yoffgame,10+xoffgame+wgoldwide,80+yoffgame+hgoldwide,1);
+
+if boon_collision(xoffgame,80+yoffgame,10+xoffgame+wgoldwide,80+yoffgame+hgoldwide,MX,MY){
+
+		draw_outline_thick(s_icon_gold,1,17+xoffgame,87+yoffgame,1,1,0,c_white,1)
+		draw_status_information = "GOLD [s_icon_gold, 1,0]\nMAKES A GREAT BIRTHDAY GIFT IN A JIFFY"
+}
+		draw_outline(s_icon_gold,1,17+xoffgame,87+yoffgame,1,1,0,c_black,1)
+
+draw_sprite(s_icon_gold,1,17+xoffgame,87+yoffgame)
+
+//scr_gold.draw(10+xoffgame,80+yoffgame);
+draw_set_halign(fa_left)
+var scribble_discard = scribble("[fa_right]DISCARD "+string(discard_size));
+scribble_discard.draw(camera.width-10+xoffgame,65+yoffgame);
+
+var scribble_exahust = scribble("[fa_right]EXILE "+string(ds_list_size(exhaust)));
+scribble_exahust.draw(camera.width-10+xoffgame,110+yoffgame);
+
+
+hand_size = ds_list_size(hand);
+
+var color = "[c_white]";
+
+player_defaultx_position = 110;
+player_defaulty_position = 100;
+draw_stuff();
+draw_struct(player,player_defaultx_position +xoffgame,111 +yoffgame);
+
+/////////////////////
+draw_tokens();
+draw_health_bar(50,100+15,player,0);
+draw_discover();
+if number_of_enemies != 0 { 
+	draw_mana();
+	can_end_the_turn();
+	draw_status(-camera.width*.45,camera.height*0.165,player);
+	draw_enemies();
+	////DRAW HAND
+	draw_hand();
+}else{
+	remove_generated_cards();
+	reset_combat();
+	draw_spoils();
+}
+
+var x_ =  -camera.width*.3;
+var y_ = -camera.height*.3;
+
+
+draw_set_font(font_health_number);
+sprite_set_live(s_sign_damage,1)
+
+
+
+var wsize = camera.width*.05;
+var hsize = camera.height*.12;
+var xoff = camera.width*.02 ;
+var yoff = camera.height*.04;
+//draw_rectangle( x_+20-wsize+xoff,y_-hsize+yoff,x_+20+wsize+xoff,y_+hsize+yoff,1);
+if boon_collision(x_+20-wsize+xoff,y_-hsize+yoff,x_+20+wsize+xoff,y_+hsize+yoff,MX,MY ){ 
+	
+	draw_outline(s_sign_damage,0,x_+20,y_,1,1,0,c_white,1)
+}
+
+draw_sprite_ext(s_sign_damage,0,x_+20,y_,1,1,0,merge_color(C_DARK,c_white,.3),1);
+var str = "-"+string(total_intent_enemy_damage);
+draw_text_outline(x_,y_,str,C_DARK)
+var col = C_YELLOW;
+if total_intent_enemy_damage >= 100 { 
+	col = C_GUM;
+}
+if total_intent_enemy_damage <= 0 { 
+	col = C_LIME;	
+}
+draw_set_color(col);
+
+
+draw_text(x_,y_,str);
+
+draw_set_color(c_white);
+draw_set_font(font_boon);
+
+if draw_status_information != false  { 
+	
+	var y_ = -camera.height*0.1;
+	var x_ = 0;//camera.width*0.34+xoffgame;
+	
+	if status_info.desc != draw_status_information { 
+		
+		status_info.scribble_desc =  scribble((( "[fa_center]"+ draw_status_information  ))).wrap(status_info.wrap_amount);
+		var bbox_ = status_info.scribble_desc.get_bbox(0,y_);
+		status_info.x0 =  bbox_.x0;
+		status_info.y0 =  bbox_.y0;
+		status_info.x3 =  bbox_.x3;
+		status_info.y3 =  bbox_.y3;
+	}
+	
+
+	status_info.desc_lerpx0  = lerp(status_info.desc_lerpx0, status_info.x0,status_info.desc_lerp_amount);
+	status_info.desc_lerpy0  = lerp(status_info.desc_lerpy0, status_info.y0,status_info.desc_lerp_amount);
+	status_info.desc_lerpx3  = lerp(status_info.desc_lerpx3, status_info.x3,status_info.desc_lerp_amount);
+	status_info.desc_lerpy3  = lerp(status_info.desc_lerpy3, status_info.y3,status_info.desc_lerp_amount);
+	
+	
+	status_info.nine_slice_w_margin = 10
+	status_info.nine_slice_h_margin = 5
+	
+//	nine_slice(s_nine_slice_hp,x_+status_info.desc_lerpx0-status_info.nine_slice_w_margin,status_info.desc_lerpy0-status_info.nine_slice_h_margin,status_info.desc_lerpx3+status_info.nine_slice_w_margin+x_,status_info.desc_lerpy3+status_info.nine_slice_h_margin,1,C_DARK);
+//	nine_slice(s_nine_slice_hp_border,x_+status_info.desc_lerpx0-status_info.nine_slice_w_margin,status_info.desc_lerpy0-status_info.nine_slice_h_margin,status_info.desc_lerpx3+status_info.nine_slice_w_margin+x_,status_info.desc_lerpy3+status_info.nine_slice_h_margin,1,c_white);
+
+	status_info.scribble_desc.draw(x_,y_);
+		
+		
+}
+
+
+if m1_release { 
+		hovered_over_card = false;	
+}
+

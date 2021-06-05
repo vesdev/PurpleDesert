@@ -1,0 +1,133 @@
+BUg fix. 
+Having a library containing your deck, exhaust, and discard.
+
+Make Salmon Sally Say it will grant you tempoary attack when you choose it.
+
+Reset purple card
+
+Bats and bees, make theif effect show up as a crit. have a higher crit buff
+
+Remove Bat buff when ending a combat.
+
+Allow map scrolling by holding down right click.
+
+Make sure it only takes a set amount of time for discard to shuffle itself back.
+
+When you hide your discover, show your hand.
+
+
+
+BUG Coupe De Grace make the crit damage permanent 
+
+BUG Eat restore +30% max of your health, returns a percentage
+
+Quality of Life
+In the map area Change the button that says BACK to MAP
+BACK CHANGE IT TO -> MAP
+
+
+
+
+
+
+
+
+/////////////////////////
+
+
+
+
+
+
+FIXED STUFF:
+If a card has lucky, factor that into the damage preview (Do less math is critical)
+
+
+Mouse wheel is persisteng for the token shop
+
+Axe is glitched as fuck
+Attack Only used to give out twice as much attack, that is now fixed
+
+There are very few armor cards in the card pool so more are added to compensate.
+New Card
+Bubble Shield: Cost 10 +30 armor. Draw 1 Card.
+Starter Kit: Cost 15: +40 armor. Add 2 Wimpy Punches to your hand.
+Pink Bow changed to, get +50% more mana from card effects.
+
+
+New treasure for default chest: 
+Mana Infused Pie!
+At the start of your turn add a 0 cost card with retain that restores 10 mana.
+
+
+FLOW:
+Make curtains rise faster...
+Make the deck shuffling always have it take 1 second in regular mode
+
+
+
+/////////////////////////////////////////////////////////////
+
+Max Token Starting amount reduced to 3.
+
+Make last discovered room before boss a rest area
+
+blue shield is broken +1 gives you +2 attack
+
+Card removal shop doesn't remove the gold
+
+Sometimes players can target the wrong enemy
+
+intends to add **multiple crappy cards** into your deck
+
+Players can target multiple enemies 
+
+
+WHEN YOU DISCOVER A ROOM 
+
+
+axe messes up your crit damage number.
+
+check stats in the overworld and deck and discard adn exhaust
+
+1 damage ten times.
+
+Make Skulls hella a
+
+if the player
+
+Make more armor cards.
+
+
+Make passive cards a different color and remove the EXILE
+
+
+attack
+Green 
+
+Exhaust
+
+Single use
+
+
+
+Exahst it.
+
+Mana must be clamped at the end
+
+Bear / Antlion. Blue armor giving twice the amount of attack
+
+Treasure that adds +1 card to your hand.
+
+allow right clicking to drag on your s
+
+When you don't crit
+
+intends to add CRAPPY CARDS (specify that there where more 
+tokens life doesn't go down
+
+check your deck while you hover over your cards
+
+
+
+upgraded +150 armor dealt damage instead of gaining 150 armor

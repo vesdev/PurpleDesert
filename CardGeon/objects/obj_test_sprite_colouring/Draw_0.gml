@@ -1,0 +1,1 @@
+scribble("[c_red][spr_white_coin][/]\n[rainbow][spr_white_coin][/]\n[cycle, 60, 100, 0, 200][spr_white_coin]").draw(x, y);
