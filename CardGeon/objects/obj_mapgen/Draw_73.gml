@@ -4,7 +4,7 @@ var scr = noone;
 
 switch standing_on.type{ 
 	case e_room_type.chest_small_room:
-				//open the chest
+		//open the chest
 		var scr = scribble("[fa_center]OPEN CHEST");
 	break;
 	case e_room_type.key_room:
@@ -18,7 +18,6 @@ switch standing_on.type{
 		}else{
 				str = "OPEN WITH [s_map_key,0,0]";
 		}
-		
 		var scr = scribble("[fa_center][fa_top]"+str);
 	break;	
 	case e_room_type.rest_site:
@@ -43,15 +42,12 @@ switch standing_on.type{
 	break;			
 	case e_room_type.shop_room_removal:
 		//open the chest
-		
 	if not_enough_money_for_card_remove_timer <= 0 { 
 		var scr = scribble("[fa_center]REMOVE A CARD [s_icon_gold, 1, 0] [c_yellow]-"+string(player.card_removal_price));
 	}else{
 		scr = scribble("[fa_center][shake][c_gum]NOT ENOUGH[] [s_icon_gold, 1, 0]");
-	
 	}
 	break;		
-	
 	default:
 	break;
 }
@@ -94,20 +90,12 @@ switch standing_on.type{
 						o_game.m1_pressed = false;
 						//execute the code	
 							switch standing_on.type{ 
-								
-								
-								
-								
 							case e_room_type.key_room:
-									
 								player.golden_keys += 1;
 								standing_on.type = e_room_type.empty_room;
 								var this_room = ds_list_find_value(room_list, standing_on.i)				
 								this_room.type = e_room_type.empty_room;
 							break;
-							
-						
-							
 							case e_room_type.chest_golden_room:
 									//open the chest
 									if player.golden_keys > 0 { 

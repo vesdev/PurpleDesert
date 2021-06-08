@@ -1,7 +1,11 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_enemies(){
-
+	if live_call() return live_result;
+	
+	
+	
+	
 //var lenx = lengthdir_x(1000,held.dir);
 //var leny = lengthdir_y(1000,held.dir);
 
@@ -20,7 +24,7 @@ var len = number_of_enemies;
 		var enemy_string = scribble("[fa_center]"+enemy_.title);
 		var enemy_bbox = enemy_string.get_bbox(0,0);
 		var enemy_width = 70;//;enemy_string.get_width();
-		
+		 get_enemy_damage(enemy_);
 		//run step event for enemies if we specify it
 		if enemy_.step_event != noone {
 			enemy_.step_event();
@@ -35,7 +39,7 @@ var len = number_of_enemies;
 	//	draw_sprite(s_char_hit_coco,0,targetx_ , 300);
 		
 		active_enemies[@ i].x = lerp(active_enemies[@ i].x, targetx_,.08);
-		active_enemies[@ i].y = 100;
+		active_enemies[@ i].y = o_game.camera.height*.23;
 		
 		var enemyx = enemy_.x ;
 		var enemyy = enemy_.y + yoffgame;
@@ -249,8 +253,10 @@ var len = number_of_enemies;
 			
 		draw_health_bar(enemyx-40-xoffgame,enemyy+15-yoffgame,active_enemies[@ i], potential_damage);
 }
-	if draw_status_information = false and hovering_over_enemy_intent <= 0  and current_turn = e_current_turn.player_ and no_discover_effects() and save_hovered_i = noone and 
-		number_of_enemies > 0 and allow_player_input() and selected_card_x = noone
+
+
+	if  current_turn = e_current_turn.player_ and no_discover_effects()  and 
+		number_of_enemies > 0 and allow_player_input() 
 	{
 		
 		if player.buff.weak_poison.amount > 0 { 
@@ -264,15 +270,8 @@ var len = number_of_enemies;
 			total_intent_enemy_damage += player.buff.poison.amount;
 		}
 		
-		if total_intent_enemy_damage <= 0 { 
-			color = "c_lime"
-		}else{
-		var color = "c_yellow"	
-		}
-		
-		draw_status_information = "[c_yellow]WHEN YOU END TURN[]\nYOU'LL TAKE ["+color+"]"+string(total_intent_enemy_damage)+"[] DAMAGE";
-		
 	}
+
 	if 	hovering_over_enemy_intent > 0 	hovering_over_enemy_intent--;
 	
 	held_card();

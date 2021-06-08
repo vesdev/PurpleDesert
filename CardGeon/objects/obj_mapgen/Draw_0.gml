@@ -378,7 +378,6 @@ if boon_collision(_l+xoff,_t+yoff+y_offset,_r-xoff,_b-yoff+y_offset,MX,MY ){
 			
 			var s = false;
 				//reroll
-		
 			if event_struct.type = e_event_type.golden_treasure { 
 					var stuff_enum = get_next_stuff_gold_enum();
 			}else{
@@ -393,16 +392,15 @@ if boon_collision(_l+xoff,_t+yoff+y_offset,_r-xoff,_b-yoff+y_offset,MX,MY ){
 				//enable_event = false;
 		}
 	}
-
 	scribble("[fa_center]REROLL\n[s_stuff_re_roll]").wrap(_r-_l).draw(_l+(_r-_l)*.5,_t+(_b-_t)*.5-10+y_offset);
-
 }
-break;
+	break;
 }
 //debug(event_struct);
 exit;
+
 }else{
-o_game.view_deck_or_discard_card_yoffset = false;	
+	o_game.view_deck_or_discard_card_yoffset = false;	
 }
 
 

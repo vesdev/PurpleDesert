@@ -1,11 +1,10 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+
+
+
 function draw_cards_in_deck(){
-
-
-
-
-
+	
 	if deck_is_not_drawn_in_order_warning { 
 			scribble("[fa_center][c_yellow]DECK IS NOT SHOWN IN ORDER").draw(0,-camera.height*.4);	
 	}
@@ -100,7 +99,6 @@ function draw_cards_in_shop(){
 				obj_mapgen.enable_event = false;
 				obj_mapgen.browsing_card_shop = false;
 				o_game.camera.zoom = .15;
-
 			}
 		}
 	}
@@ -308,9 +306,7 @@ if !shop_card_select.enable{
 }
 
 function draw_tokens_in_shop(){
-	
 	//player.gold = 250;
-	
 	var can_upgrade_card = false;
 	
 	if o_game.game_state = e_gamestate.choose_path { 
@@ -631,12 +627,9 @@ if instance_exists(o_game) and shop_card_select.struct.amount1_per_level_up > 0{
 
 
 function draw_cards_in_library_to_remove(){
-
 	draw_sprite_ext(s_pixel,0,-camera.width*10,-camera.height*10,room_width*10,room_height*10,0,C_DARK,1);
 	
-	if o_game.game_state = e_gamestate.choose_path{ 
-
-	
+	if o_game.game_state = e_gamestate.choose_path{
 		
 		var scr = scribble("[scale, 2][c_yellow]BACK");
 		var x_ = -camera.width*.45;
@@ -647,18 +640,15 @@ function draw_cards_in_library_to_remove(){
 		var yadd = 20;
 		nine_slice(s_nine_slice_hp_border,bbox.x0-xadd,bbox.y0-yadd,bbox.x3+xadd,bbox.y3+yadd,1,c_white);
 		scr.draw(x_,y_);
-
-
 	
 		if boon_collision(bbox.x0-xadd,bbox.y0-yadd,bbox.x3+xadd,bbox.y3+yadd,MX,MY) {
 			nine_slice(s_nine_slice_hp_border,bbox.x0-xadd,bbox.y0-yadd,bbox.x3+xadd,bbox.y3+yadd,1,C_YELLOW);
 			if m1_pressed { 
 			obj_mapgen.selecting_card_upgrade = false;	
-			
 					
 			obj_mapgen.enable_event = false;
 			obj_mapgen.browsing_card_shop = false;
-			o_game.camera.zoom = .1;
+			o_game.camera.zoom = 0.1;
 			obj_mapgen.event_struct = noone;
 			}
 		}
@@ -703,7 +693,7 @@ if !remove_card_select.enable{
 			if i / div_amount = floor(i/div_amount) and i > 1{
 				y_ += card_height_;
 			}
-			
+		
 			draw_card_matrix_selectable(card_,x_,y_,1,1,0,0,0,i,false,0,false,true,false);
 			
 			if hovering_card = false  and is_hovering_over_card != noone{
@@ -873,7 +863,6 @@ if !remove_card_select.enable{
 
 
 function draw_cards_in_library(){
-
 	var can_upgrade_card = false;
 	if o_game.game_state = e_gamestate.choose_path and obj_mapgen.selecting_card_upgrade{ 
 
@@ -943,7 +932,6 @@ if !upgrade_card_select.enable{
 			if i / div_amount = floor(i/div_amount) and i > 1{
 				y_ += card_height_;
 			}
-			
 			draw_card_matrix_selectable(card_,x_,y_,1,1,0,0,0,i,false,0,false,true,false);
 			
 			if hovering_card = false  and is_hovering_over_card != noone{
@@ -955,8 +943,8 @@ if !upgrade_card_select.enable{
 }else{
 	
 	
-	
-	draw_card_matrix(upgrade_card_select.struct, -camera.width*.2,0, 1.5,1.5,0, 0, 0 ,  0,true,0,0,true,false);
+			
+	draw_card_matrix(upgrade_card_select.struct, -camera.width*.2  ,0, 1.5,1.5,0, 0, 0 , 0);
 	var new_struct =  card_struct(upgrade_card_select.struct.upgrades_to_enum);
 	draw_card_matrix(new_struct, camera.width*.2,0, 1.5,1.5,0, 0, 0 ,  0,true,0,0,true,false);
 	draw_sprite_ext(s_arrow,current_time*0.01,0,0,2,2,90,C_GUM,1);
@@ -1115,9 +1103,9 @@ if !upgrade_card_select.enable{
 
 
 function draw_deck() { 
+
 	//time looks amazing at SEC*.3 or .4
 	if deck_flash_timer <= deck_flash_time{ 
-
 	var _interval = 14;
 	var size = 0;
 	
@@ -1220,14 +1208,10 @@ function draw_cards_in_discard(){
 			var card_ = active_cards_list[| i];
 				card_.x_ = 0;
 				card_.y_ = 0;
-		
 		}
-			
-		//	pause_combat_to_show_discard = false;
-			
+		//	pause_combat_to_show_discard = false;		
 		}	
 	}
-		
 		draw_discard();	
 }
 
@@ -1260,7 +1244,7 @@ function draw_discard(){
 	}
 }
 function draw_cards_in_exhaust(){
-
+	
 	var offset = 22;
 	init_card_border_step(0);
 	var card_height_ = 210;
@@ -1347,7 +1331,7 @@ function draw_cards_in_exhaust(){
 }
 
 function draw_exhast(){ 
-
+	if live_call() return live_result;
 
 	if exhaust_flash_timer <= exhaust_flash_timer{ 
 	

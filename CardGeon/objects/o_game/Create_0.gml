@@ -71,8 +71,8 @@ enum e_turn_phase {
 }
 
 turn_phase  =  e_turn_phase.draw_phase;
-	var aspect = 16/9; //widescreen 1.777778 1920 / 1080 
-	var w = 960;
+var aspect = 16/9; //widescreen 1.777778 1920 / 1080 
+var w = 960;
 
 
 var h = w/aspect;
@@ -444,12 +444,8 @@ reset_stuff_list();
 ds_list_add(enemy_dungeon_list,
 
 [e_enemies.pear,e_enemies.pear,e_enemies.pear],
-
-
 [e_enemies.snake, e_enemies.snake ],
 [e_enemies.bee, e_enemies.bee, e_enemies.bee],
-
-
 [e_enemies.bear],
 [e_enemies.babydragon,e_enemies.babydragon,e_enemies.babydragon],
 [e_enemies.fat_tony],
@@ -462,7 +458,8 @@ ds_list_insert(enemy_dungeon_list, 0 , [e_enemies.firefox]);
 
 
 ds_list_insert(enemy_dungeon_list, 0 , [e_enemies.bee, e_enemies.bee]);
-ds_list_insert(enemy_dungeon_list, 0 , [e_enemies.snake]);
+ds_list_insert(enemy_dungeon_list, 0 ,[e_enemies.snake]
+);
 
 wait_for_the_attack_to_play_out_time = SEC*.35;
 wait_for_the_attack_to_play_out_timer = 0;

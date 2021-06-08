@@ -1,10 +1,8 @@
 // Script assets have changed for v2.3.0 
 
 function draw_enemy_intention(xx,yy, construct, sprite_only){
-
 		//don't show the attacking sprite
 		if current_turn = e_current_turn.enemy_ and construct.finished_attacking exit;
-		
 		var override = false;
 		var override_text = "";
 		var override_sprite = noone;
@@ -13,9 +11,6 @@ function draw_enemy_intention(xx,yy, construct, sprite_only){
 			override_sprite = s_status_sleep;
 			override = true;
 		}
-		
-		
-		
 		
 		xx += construct.intention_x_offset;
 		
@@ -56,7 +51,6 @@ function draw_enemy_intention(xx,yy, construct, sprite_only){
 				var spr_width = sprite_get_width(sprite);
 				var spr_height = sprite_get_height(sprite);
 				
-				total_intent_enemy_damage += get_damage_intent(construct,queue_pos);
 				scribble("[fa_left][fa_middle][c_gum][outline_boon]"+get_damage_string(construct,queue_pos)).draw(xx+spr_width*.5,yy+spr_height*.5);
 			}
 		}else{
@@ -77,7 +71,6 @@ function draw_enemy_intention(xx,yy, construct, sprite_only){
 				var damage =  construct.attack_array[@ queue_pos].amount; //don't touch this
 				
 				var desc = intention_struct_.desc(get_damage_string(construct,queue_pos));
-				total_intent_enemy_damage += get_damage_intent(construct,queue_pos);
 			//	var desc = attack_array_[@ queue_pos][@ 0][@ 2](get_damage_string(construct,queue_pos));			
 		}
 		
@@ -117,7 +110,23 @@ function draw_enemy_intention(xx,yy, construct, sprite_only){
 }
 
 
-
+function get_enemy_damage( construct){
+		//don't show the attacking sprite
+		
+		var attack_array_ = construct.attack_array;	
+		var queue_pos = construct.current_attack_queue;
+		var intention_struct_     = construct.attack_array[@ queue_pos];
+		var desc = intention_struct_.desc();
+		var type = intention_struct_.type;
+		
+		
+		if current_turn = e_current_turn.enemy_ and construct.finished_attacking exit;
+			if type = e_intentions.attack || type = e_intentions.attack_armor
+			|| type = e_intentions.attack_debuff
+			{  
+				total_intent_enemy_damage += get_damage_intent(construct,queue_pos);
+			}
+}
 
 function get_damage_intent(struct, queue_pos){
 		var damage =  struct.attack_array[@ queue_pos].amount; //don't touch this

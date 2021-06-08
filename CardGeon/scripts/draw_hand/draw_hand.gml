@@ -231,10 +231,12 @@ if hovered_over_card and allow_player_input() and hand_size > 0 {
 
 
 function draw_discard_and_deck() {
+	if live_call() return live_result;
 	
 	
-deckx = 20+xoffgame;
-decky = 50+yoffgame;
+	
+deckx = o_game.camera.width*.9+xoffgame;
+decky = o_game.camera.height*.1+yoffgame;
 
 //draw_deck 
 var offset = 22;
@@ -243,6 +245,9 @@ var offset = 22;
 
 
 if !pause_combat_to_show_discard and boon_collision( deckx-offset,decky-offset,deckx+offset,decky+offset,MX,MY){
+
+
+
 	draw_outline_thick(s_ui_deck,0,deckx,decky,1,1,0,c_white,1)
 	draw_status_information = "[c_yellow]DECK[]\nIT'S SEEN BETTER DAYS YET IT'S ALWAYS RELIABLE ... LIKE ME!\n[c_lime]CLICK[] TO VIEW[]";
 
@@ -334,11 +339,11 @@ if discard_icon_size_timer <= discard_icon_size_time {
 	discard_icon_size_timer++;
 }
 
-discardx = camera.width-40+xoffgame;
-discardy = 50+yoffgame;
+discardx = o_game.camera.width*.95+xoffgame;
+discardy = o_game.camera.height*.1+yoffgame;
 
-exhaustx = camera.width-40+xoffgame;
-exhausty = 100+yoffgame;
+exhaustx = o_game.camera.width*.95+xoffgame;
+exhausty = o_game.camera.height*.18+yoffgame;
 
 
 

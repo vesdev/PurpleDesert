@@ -153,7 +153,7 @@ var col = c_grey;
 					if other_room_index =  player_room_index{
 							
 					//				(other_room_index)
-						//		(other_room_index)
+					//				(other_room_index)
 									if other_room_index =  player_room_index{
 					if other_room.room_visibility_state = e_room_visibility_state.hidden { 
 						other_room.room_visibility_state = e_room_visibility_state.fogofwar_adjacent_to_player;
@@ -172,13 +172,12 @@ var col = c_grey;
 					//	draw_line(CELL_SIZE*(this_room.x1+this_room.x2)/2, CELL_SIZE*(this_room.y1+this_room.y2)/2, CELL_SIZE*(other_room.x1+other_room.x2)/2, CELL_SIZE*(other_room.y1+other_room.y2)/2);
 						draw_set_alpha(1);
 				}
-					
-					
-				var other_struct = ds_list_find_value(room_list, player_room_index);
-						
-				if this_room.room_visibility_state != e_room_visibility_state.hidden {
 				
-
+				
+				
+				
+				var other_struct = ds_list_find_value(room_list, player_room_index);
+				if this_room.room_visibility_state != e_room_visibility_state.hidden {
 				
 			if	boon_collision(draw_on_grid(x1), draw_on_grid(y1), draw_on_grid(x1+w), draw_on_grid(y1+h),MX,MY) { //other_room_index =  player_room_index and  
 				

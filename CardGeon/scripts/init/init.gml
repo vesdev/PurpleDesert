@@ -34,7 +34,6 @@ function struct_buff(amount, lose_per_turn, sprite,  title, desc_func ) construc
 //	self.get_desc_argument = get_desc_argument;
 	sprite_x = 100;
 	sprite_y = -100;
-	
 	offset_y = 0;
 	offset_x = 0;
 	created_timer = -1;
@@ -1618,6 +1617,7 @@ function returned_draw_matrix_struct(struct, xx, yy,w,h,x3,y3) constructor {
 	self.y3 = y3;
 }
 
+
 function draw_card_matrix_selectable(struct, xx, yy, xscale, yscale, angle, xrot, yrot, i, draw_selected_card, hovered_card_angle,is_discover,selectable,playable) { 
 		var return_value = noone;
 		
@@ -1672,8 +1672,6 @@ function draw_card_matrix_selectable(struct, xx, yy, xscale, yscale, angle, xrot
 		//draw_line(x0,y0,x2,y2)
 	
 	if is_undefined(active_cards_list[| i]){ 
-		
-		
 	active_cards_list[| i] =  new card_border( noone);
 	}
 	
@@ -1836,15 +1834,10 @@ function draw_card_matrix_selectable(struct, xx, yy, xscale, yscale, angle, xrot
 			yy_ = 0;	
 			xx_ = xx;
 		}	
-		
 		var _vm = matrix_get(matrix_world);
-		
 		var _new_matrix = matrix_build(0,0,0, 0,0,0, xscale,yscale,0);
 		_new_matrix = matrix_multiply(_new_matrix, matrix_build(xx_,yy_, 0, card_border_sturct.xangle , card_border_sturct.yangle, angle, 1,1,0));//xrot and yrot should be this way
-
 		matrix_set(matrix_world, matrix_multiply(_new_matrix, _vm));
-				
-		
 		draw_card_matrix_contents(struct, card_border_sturct);
 		draw_set_font(font_boon);
 		draw_set_color(c_white); 
@@ -1857,25 +1850,21 @@ function draw_card_matrix_selectable(struct, xx, yy, xscale, yscale, angle, xrot
 
 function draw_card_matrix(struct, xx, yy, xscale, yscale, angle, xrot, yrot, card_border_struct){ 
 	
+		card_border_struct = o_game.active_cards_list[| 0];
 		var _vm = matrix_get(matrix_world);
-				
 		var _new_matrix = matrix_build(0,0,0, 0,0,0, xscale,yscale,0);
 		_new_matrix = matrix_multiply(_new_matrix, matrix_build(xx,yy, 0, xrot , yrot, angle, xscale,yscale,0));//xrot and yrot should be this way
-
 		matrix_set(matrix_world, matrix_multiply(_new_matrix, _vm));
 		draw_card_matrix_contents(struct , card_border_struct);
-	
 		draw_set_font(font_boon);
 		draw_set_color(c_white); 
 		//xscale yscale and angle
 		matrix_set(matrix_world, _vm);
 		draw_set_halign(fa_left);
-		
 }
 
 
 function draw_card_matrix_contents(struct, card_border_struct ) {
-
 
 		if card_border_struct == noone || !card_border_struct  {
 			exit;
@@ -1938,10 +1927,7 @@ function draw_card_matrix_contents(struct, card_border_struct ) {
 		var scale = (1/border_scale)*border_scale;
 		var scaletitle = scale;
 
-		
-	
-		var keywords_ = "";
-		
+		var keywords_ = "";		
 		if struct.keywords != noone {
 			if !is_array(struct.keywords) and struct.keywords.print_keyword {
 				keywords_ = "["+sprite_get_name(struct.keywords.sprite)+"] [c_yellow]"+struct.keywords.title+"[]\n";
@@ -1961,65 +1947,58 @@ function draw_card_matrix_contents(struct, card_border_struct ) {
 			card_border_struct.title = scribble("[fa_center]"+struct.title);
 			card_border_struct.desc = scribble("[fa_center][fa_top]"+keywords_+struct.desc() ).wrap(	300*border_scale).blend(c_white, 1);	
 			card_border_struct.force_update = false;
-
 	}
 	
 	var title = card_border_struct.title; 
 	var desc = card_border_struct.desc;
 	
-	
-		//	card_border_struct.title = scribble("[fa_center]"+struct.title);
-		//	card_border_struct.desc = scribble("[fa_center][fa_top]"+keywords_+struct.desc() ).wrap(	300*border_scale).blend(c_black, 1);
+	//	card_border_struct.title = scribble("[fa_center]"+struct.title);
+	//	card_border_struct.desc = scribble("[fa_center][fa_top]"+keywords_+struct.desc() ).wrap(	300*border_scale).blend(c_black, 1);
 					
-		var titlex = border_scale;
-		var titley = -12*border_scale;
-		var text_box_width  = 120;
-		var card_xorigin = sprite_get_xoffset(s_card_border);
-		var card_yorigin = sprite_get_yoffset(s_card_border);
+	var titlex = border_scale;
+	var titley = -12*border_scale;
+	var text_box_width  = 120;
+	var card_xorigin = sprite_get_xoffset(s_card_border);
+	var card_yorigin = sprite_get_yoffset(s_card_border);
 
-		var text_box_xoffset = (120-card_xorigin)*border_scale;
-		var text_box_yoffset = (430-card_yorigin)*border_scale;
+	var text_box_xoffset = (120-card_xorigin)*border_scale;
+	var text_box_yoffset = (430-card_yorigin)*border_scale;
 
-		var text_box_height = 140;
+	var text_box_height = 140;
 
-		var desc_left = (-text_box_width)  *border_scale;
-		var desc_top = (text_box_yoffset) *border_scale;
-		var desc_right = (text_box_width)  *border_scale;
-		var desc_bot = (text_box_yoffset-20+text_box_height)*border_scale;
-		var desc_box_width = desc_right - desc_left;
-		var desc_box_height =  desc_bot - desc_top;
+	var desc_left = (-text_box_width)  *border_scale;
+	var desc_top = (text_box_yoffset) *border_scale;
+	var desc_right = (text_box_width)  *border_scale;
+	var desc_bot = (text_box_yoffset-20+text_box_height)*border_scale;
+	var desc_box_width = desc_right - desc_left;
+	var desc_box_height =  desc_bot - desc_top;
 		
 	//	draw_rectangle(desc_left,desc_top,desc_right,desc_bot	,false);
-	
 	
 		var descx = 0;
 		var descy = desc_box_height-20;
 		draw_set_color(c_white);
 
-
-
-desc.blend(c_black,1).draw(descx-1*scale,descy);
-desc.draw(descx-1*scale,descy);
-desc.draw(descx+1*scale,descy);
-desc.draw(descx,descy-1*scale);
-desc.draw(descx,descy+1*scale);
-desc.draw(descx+2*scale,descy+2*scale);
-desc.draw(descx+2*scale,descy+1*scale);
+	desc.blend(c_black,1).draw(descx-1*scale,descy);
+	desc.draw(descx-1*scale,descy);
+	desc.draw(descx+1*scale,descy);
+	desc.draw(descx,descy-1*scale);
+	desc.draw(descx,descy+1*scale);
+	desc.draw(descx+2*scale,descy+2*scale);
+	desc.draw(descx+2*scale,descy+1*scale);
 		
 		
-		title.blend(c_black, 1).draw(titlex-1*scaletitle,titley);
+	title.blend(c_black, 1).draw(titlex-1*scaletitle,titley);
 	title.draw(titlex+1*scaletitle,titley);
 	title.draw(titlex,titley-1*scaletitle);
 	title.draw(titlex,titley+1*scaletitle);
 	title.draw(titlex+2*scaletitle,titley+2*scaletitle);
 	title.draw(titlex+2*scaletitle,titley+1*scaletitle);
 
-
-
-		title.blend(c_black, 1).blend(title_color, 1).draw(titlex,titley);
-		desc.wrap(300*border_scale).blend(c_white, 1).draw(descx,descy);
-		title.draw(titlex,titley);
-		desc.draw(descx,descy);
+	title.blend(c_black, 1).blend(title_color, 1).draw(titlex,titley);
+	desc.wrap(300*border_scale).blend(c_white, 1).draw(descx,descy);
+	title.draw(titlex,titley);
+	desc.draw(descx,descy);
 		
 		
 		if obj_mapgen.browsing_card_shop and !shop_card_select.enable and struct.struct_type = e_struct_type.card{
@@ -2067,7 +2046,6 @@ desc.draw(descx+2*scale,descy+1*scale);
 			
 			var turns_to_live_x = 165;
 			draw_outline(s_card_heart_large,0,titlex+92*border_scale,titley-250*border_scale ,1,1,0,C_DARK,1);
-			
 			draw_sprite(s_card_heart_large,0,titlex+92*border_scale,titley-250*border_scale );
 			draw_text_outline(titlex+turns_to_live_x*border_scale,titley-220*border_scale,turns_to_live,make_color_rgb(40,40,40));
 			draw_text(titlex+turns_to_live_x*border_scale,titley-220*border_scale,turns_to_live);

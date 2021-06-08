@@ -1,27 +1,16 @@
 /// @description Insert description here
 
-
-
-
-
 if keyboard_check_pressed(ord("F")){	
-
     if window_get_fullscreen()
         {
-			
 		var w = display_get_width();
 		var h = display_get_height();
-		
 		camera.setFullscreen(0,w,h);
-        }
-    else
-        {
+ }else{
 		var w = display_get_width();
 		var h = display_get_height();
-		
 		camera.setFullscreen(1,w,h);
-        }
-    
+        }    
 }
 
 #region glance
@@ -31,15 +20,8 @@ if keyboard_check_pressed(ord("F")){
 
 input_step();
 wait_for_the_attack_to_play_out_timer--;
-
-
-
 	if allow_player_input()  {  
-		
-
-			//scribble((("[fa_center]"+not_enough_mana+string( hand[| hand_hover_array].cost )+"[]/"+string(player.mana )+"\n\n"+ hand[| hand_hover_array].keywords_add_text() +   hand[| hand_hover_array].desc()	))).wrap(150).draw(gui_width*.5 +xoffgame,180 +yoffgame);	
-	
-	
+			//scribble((("[fa_center]"+not_enough_mana+string( hand[| hand_hover_array].cost )+"[]/"+string(player.mana )+"\n\n"+ hand[| hand_hover_array].keywords_add_text() +   hand[| hand_hover_array].desc()	))).wrap(150).draw(gui_width*.5 +xoffgame,180 +yoffgame);
 	}
 	show_keyword_timer--;
 	if !drawing_keywords { 
@@ -60,7 +42,7 @@ wait_for_the_attack_to_play_out_timer--;
 	}
 	drawing_keywords = false;
 
-
+/*
 //ik
 
 for (var j =0; j< array_length(wire_array); j++){ 
@@ -100,3 +82,4 @@ for (var i = wire_array[@ j].seg_amount-1; i >= 0; i--) {
 		}
 	}
 }
+*/

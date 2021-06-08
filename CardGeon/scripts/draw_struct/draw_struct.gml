@@ -1,7 +1,6 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_struct(struct, x , y ){
-		
 	if struct.selected_by_card.enable = true{
 
 		var y_light_off = 0;
@@ -9,11 +8,8 @@ function draw_struct(struct, x , y ){
 				
 			y_light_off = -o_game.camera.height*.48;	
 			}
-		
 			draw_sprite_ext(s_light,0,struct.x,struct.y-220+y_light_off,1,1,0,struct.selected_by_card.color,1);
 			draw_sprite_ext(s_light_ground,0,struct.x,struct.y+y_light_off,1,1,0,struct.selected_by_card.color,.5);
-		
-
 	}
 
 	var xoffset = struct.xoffset;
@@ -93,7 +89,7 @@ function draw_struct(struct, x , y ){
 #region targeting reticle
 
 
-if		struct.selected_by_card.enable = true{
+if struct.selected_by_card.enable = true{
 		
 		var dis_ = 0;
 		var caretscale = 1;

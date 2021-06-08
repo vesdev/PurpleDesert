@@ -117,7 +117,6 @@ key_room_index = -1; //closest to the boss room with 1 link
 farthest_distance_from_key_room_to_chest_room = -1;
 locked_room_index = -1; // farthest from the key index 
 
-
 grid = ds_grid_create(1,1);
 grid_burn = ds_grid_create(1,1);
 
@@ -133,13 +132,9 @@ rest_area_index = -1; //closest to the boss room with 1 link
 closest_distance_from_boss_shop = -1;
 shop_area_index = -1; //closest to the boss room with 1 link
 
-
 card_shop_struct = new overworld_shop_cards();
 on_sale_card_index = irandom(player.card_shop_options)
 
-
-
-				
 player_room_index = 0;
 
 subtract_amount_for_while_loop = 0;

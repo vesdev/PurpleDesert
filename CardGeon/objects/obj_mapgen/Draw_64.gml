@@ -1,8 +1,5 @@
 /// @description Insert description here
 
-
-
-
 if o_game.game_state = 1 and !enable_event{ 
 	scribble(
 	"[fa_middle]KEY :\n[s_map_default_fight]ENEMY\n[s_map_fight_area_hard] BOSS\n[s_map_fight_area] SUPER ENEMY\n[s_map_rest_area]REST AREA"
@@ -10,11 +7,11 @@ if o_game.game_state = 1 and !enable_event{
 	 var str = "[s_card_heart_small] "+string(player.hp)+"/"+string(player.hp_max);
 	 str += "\n[s_icon_gold, 0, 0] "+string(player.gold)
 	 str += "\n[s_map_key, 0, 0] "+string(player.golden_keys);
+	 
+	 
 	 scribble("[fa_left]"+str).draw(o_game.camera.width*.02,o_game.camera.height*.04);
 }
 
-
- 
 var w = gui_width;
 var spr_w = sprite_get_width(s_red_curtain);
 
@@ -22,13 +19,13 @@ if battle_transition_timer > 0 exit;
 
 if curtain_timer > curtain_time and curtain_timer_up > curtain_time_up exit;
 
-
 	 if curtain_timer <= curtain_time { 
 		curtain_xoffset = easings(e_ease.easeoutback,-gui_width,gui_width*1.5,curtain_time,curtain_timer);
 		curtain_timer++;
 	 }
- 
- 
+	 
+	 
+	 
 	if curtain_timer_up <= curtain_time_up and curtain_timer > curtain_time*.75 { 
 	
 	
@@ -53,9 +50,8 @@ if curtain_timer > curtain_time and curtain_timer_up > curtain_time_up exit;
  
 	var dis = 150;
 	for (var i=0; i < 5 ; ++i){ 
- 
-	draw_sprite(s_red_curtain,0,curtain_xoffset-i*dis,curtain_yoffset);
-	draw_sprite_ext(s_red_curtain,0,spr_w+w*.8-curtain_xoffset+i*dis,curtain_yoffset,-1,1,0,c_white,1);
+		draw_sprite(s_red_curtain,0,curtain_xoffset-i*dis,curtain_yoffset);
+		draw_sprite_ext(s_red_curtain,0,spr_w+w*.8-curtain_xoffset+i*dis,curtain_yoffset,-1,1,0,c_white,1);
 	}
 	
 function go_to_next_state(game_state_enum){ 

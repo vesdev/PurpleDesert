@@ -9,6 +9,7 @@ ds_list_destroy(all_added_cards);
 ds_list_destroy(card_shop);
 
 
+
 ds_list_destroy(end_turn_queue);
 ds_list_destroy(active_cards_list);
 ds_list_destroy(card_spoils);

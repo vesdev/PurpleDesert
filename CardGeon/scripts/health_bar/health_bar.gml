@@ -1,11 +1,11 @@
 // Script assets have changed for v2.3.0 see
 function draw_health_bar(xx,yy,struct, potential_damage){
+	if live_call(xx,yy,struct, potential_damage) return live_result;
+	
 
-
-if live_call(xx,yy,struct, potential_damage) return live_result;
-
-
-draw_set_font(font_health_number)
+sprite_set_live(images,1);
+var heart_name = images;
+draw_set_font(font_health_number);
 xx += xoffgame;
 yy += yoffgame;
 
@@ -150,13 +150,12 @@ if current_turn != e_current_turn.player_ {
 		var _b = armor_y+height_+offset;
 		//view hitbox draw_rectangle(_l,_t,_r,_b,true);
 		
-		if boon_collision(_l,_t,_r,_b,MX,MY){
+		if struct = player and boon_collision(_l,_t,_r,_b,MX,MY){
 			
 			draw_status_information = "[s_status_armor][c_yellow]ARMOR[]\n"+struct.title+" IS BLOCKING [c_yellow]"+string(struct.armor)+"[] DAMAGE.\nARMOR LASTS [c_yellow]1[] TURN.";
 			draw_outline_thick(sprite_,0,armor_x,armor_y,size,size,angle*360,c_white,1);
-	
 			draw_outline(sprite_,0,armor_x,armor_y,size,size,angle*360,C_DARK,1);
-	
+			
 		}
 	
 	
@@ -179,7 +178,7 @@ if current_turn != e_current_turn.player_ {
 	}	
 	
 	
-			front_bar_lerp = struct.armor_bar_front_lerp;
+		front_bar_lerp = struct.armor_bar_front_lerp;
 		
 		var back_bar_lerp = struct.armor_bar_back_lerp;
 		var front_bar_lerp = percent*struct.armor_bar_front_lerp;
@@ -192,19 +191,16 @@ if current_turn != e_current_turn.player_ {
 		
 	if original_potential_damage != 0 { 
 		
-				draw_set_halign(fa_right);
-				draw_outline_thick(sprite_,0,armor_x,armor_y,size,size,angle*360,c_yellow,1);
-				draw_outline(sprite_,0,armor_x,armor_y,size,size,angle*360,C_DARK,1);
+		draw_set_halign(fa_right);
+		draw_outline_thick(sprite_,0,armor_x,armor_y,size,size,angle*360,c_yellow,1);
+		draw_outline(sprite_,0,armor_x,armor_y,size,size,angle*360,C_DARK,1);
 			back_text_color = C_YELLOW;
 			text_color = C_DARK;
 			text_outline_thick(xx-1-6,yy-2+shield_y_offset,armor_string_,C_DARK	);
 
 	}
-				
-		
 		draw_sprite_ext(sprite_,0,armor_x,armor_y,size,size,angle*360,color,1);
 	
-		
 	if struct.armor_ui_timer <= time*.1 {
 	draw_outline(s_status_armor,0,xx-1-17-8,yy-2+shield_y_offset-3,size,size,angle*360,color,1);
 	}
@@ -218,7 +214,10 @@ if current_turn != e_current_turn.player_ {
 	draw_text_outline(xx-1-6,yy-2+shield_y_offset,armor_string_,back_text_color)
 	draw_set_color(text_color);
 	draw_text(xx-1-6,yy-2+shield_y_offset,armor_string_);
+	
 	}
+	
+	
 	draw_set_color(c_white);
 	draw_set_halign(fa_left)
 	yy += 5;
@@ -247,14 +246,14 @@ if current_turn != e_current_turn.player_ {
 
 	if front_bar_lerp < .02 { 
 
-		draw_sprite_ext(s_pixel,0,xx-1+4,yy-2+4,1*size*back_bar_lerp,bar_height,0,c_black,1);
-		draw_outline(s_pixel,0,xx-1,yy-2,1*size*back_bar_lerp,bar_height,0,C_YELLOW,1);
+	draw_sprite_ext(s_pixel,0,xx-1+4,yy-2+4,1*size*back_bar_lerp,bar_height,0,c_black,1);
+	draw_outline(s_pixel,0,xx-1,yy-2,1*size*back_bar_lerp,bar_height,0,C_YELLOW,1);
 
 		
 		
 	}else{
-		nine_slice(s_nine_slice_hp,xx-1,yy-2,xx-1+1*size*back_bar_lerp,yy-2+bar_height,1,c_black)
-		nine_slice(s_nine_slice_hp,xx-1+4,yy-2+4,xx-1+4+1*size*back_bar_lerp,yy-2+4+bar_height,1,c_black)
+	nine_slice(s_nine_slice_hp,xx-1,yy-2,xx-1+1*size*back_bar_lerp,yy-2+bar_height,1,c_black)
+	nine_slice(s_nine_slice_hp,xx-1+4,yy-2+4,xx-1+4+1*size*back_bar_lerp,yy-2+4+bar_height,1,c_black)
 	}
 
 
@@ -282,10 +281,112 @@ if current_turn != e_current_turn.player_ {
 		}
 	}else{
 	
-	nine_slice(s_nine_slice_hp,xx-1,yy-2,xx-1+1*size*back_bar_lerp,yy-2+bar_height,1,back_hp_bar_color)
 
+	if struct = player { 
+			var size_ = .45;
+			var x___ = xx-1+o_game.camera.width*.04;
+			var y___ = yy-2-o_game.camera.height*.06;
+	}else{
+			var size_ = .25;
+			x___ = xx-1+o_game.camera.width*.04;
+			y___ = yy-2+o_game.camera.height*.05;
+	}
+	
+//	var spr_width = sprite_get_width(heart_name);
+//	var spr_height = sprite_get_height(heart_name);
+//	
+//	var xoff = sprite_get_xoffset(heart_name)*size_;
+//	var yoff = sprite_get_yoffset(heart_name)*size_;
+//	
+//	var hp_div = abs( 1- divide(struct.hp , struct.hp_max));
+//	var sprite_diff = spr_height * hp_div;
+
+	
+	//gum
+//	draw_sprite_part_ext(heart_name,1,0,sprite_diff,spr_width ,spr_height, x___-xoff,y___-yoff+sprite_diff*size_,size_,size_,C_GUM,1);
+//	var hp_div = abs( 1- divide(struct.hp-potential_damage , struct.hp_max));
+//	var sprite_diff = spr_height * hp_div;
+
+	
+	//white
+	//draw_sprite_part_ext(heart_name,1,0,sprite_diff,spr_width ,spr_height, x___-xoff,y___-yoff+sprite_diff*size_,size_,size_,c_white,1);
+
+	//draw_outline(heart_name,0,x___,y___,size_,size_,0,c_white,1);
+	//draw_sprite_ext(heart_name,0,x___,y___,size_,size_,0,c_white,1);
+	nine_slice(s_nine_slice_hp,xx-1,yy-2,xx-1+1*size*back_bar_lerp,yy-2+bar_height,1,back_hp_bar_color)
 	nine_slice(s_nine_slice_hp,xx-1,yy-2,xx-1+1*size*front_bar_lerp,yy-2+bar_height,1,front_hp_bar_color)
 	}
+	
+	
+	
+	
+	
+	if struct = player { 
+				
+
+		var col_ = c_white;
+		draw_set_halign(fa_center);
+		draw_set_color(col_);
+		var x_ = -o_game.camera.width*.438;
+		var y_ = -o_game.camera.height*.41;
+	
+		/*
+		if total_intent_enemy_damage <= 0 { 
+			color = "c_lime"
+		}else{
+		var color = "c_yellow"	
+		}
+		draw_status_information = "[c_yellow]WHEN YOU END TURN[]\nYOU'LL TAKE ["+color+"]"+string(total_intent_enemy_damage)+"[] DAMAGE";
+		*/
+		var _l = -o_game.camera.width*.47;
+		var _t = -o_game.camera.height*.43;
+		var _r = -o_game.camera.width*.41; 
+		var _b = -o_game.camera.height*.33;
+		
+
+		
+		draw_outline(s_impending_damage_icon,0,-o_game.camera.width*.44,-o_game.camera.height*.375,1,1,0,c_black,1);
+		draw_outline(s_impending_damage_icon,0,-o_game.camera.width*.44,-o_game.camera.height*.375,1,1,0,c_black,1);
+		draw_outline(s_impending_damage_icon,0,-o_game.camera.width*.44+1,-o_game.camera.height*.375+1,1,1,0,c_black,1);
+
+
+		 if total_intent_enemy_damage <= 0 {
+				 
+				 	var color_ = C_LIME;
+		
+			 }else{
+				 
+					var color_ = C_GUM;
+		 
+			 }
+
+		draw_sprite_ext(s_impending_damage_icon,0,-o_game.camera.width*.44,-o_game.camera.height*.375,1,1,0,color_,1);
+		draw_text_outline(x_,y_,string(total_intent_enemy_damage),c_black)
+		draw_text(x_,y_,string(total_intent_enemy_damage));
+		draw_set_color(c_white);
+		
+		//draw_rectangle(_l,_t,_r,_b,1)
+		
+		if boon_collision( _l,_t,_r,_b, MX,MY) {
+			
+			 
+			 if total_intent_enemy_damage <= 0 {
+				 
+				 	var color_ = "c_lime";
+		
+			 }else{
+				 
+					var color_ = "c_yellow";
+		 
+			 }
+			
+			
+			draw_status_information = "[c_yellow]WHEN YOU END TURN[]\nYOU'LL TAKE ["+color_+"]"+string(total_intent_enemy_damage)+"[] DAMAGE";
+		
+		}
+		 
+	}
+		
 	
 	draw_set_color(front_text_color);
 	if i = 0 {

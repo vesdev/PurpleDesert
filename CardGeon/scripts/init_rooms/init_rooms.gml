@@ -1,13 +1,11 @@
 // Script assets have changed for v2.3.0 see
 
-
-
-
-function map_restart() { 
+function map_restart(){
 	
 	room_restart();
 	instance_destroy();
 	create(0,0,obj_mapgen);
+
 }
 
 
@@ -390,13 +388,12 @@ for(var i=0; i<ds_list_size(room_list); i++) {
 	
 					//can't be the starting room or the boss room
 		if this_room.type = e_room_type.default_encounter { 
-			if chance(.60) { //.70
+			if chance(.40) { //.60
 						this_room.type = e_room_type.empty_room;
-						if chance(.25){ 
-					//,e_room_type.shop_room_potions  ,e_room_type.shop_room_stuff 
-						this_room.type = choose(e_room_type.rest_site , e_room_type.chest_small_room ,
-												e_room_type.shop_room_removal ,e_room_type.shop_room_tokens, e_room_type.shop_room_cards);
-						// e_room_type.chest_small_room;
+						if chance(.20){ 
+								//,e_room_type.shop_room_potions  ,e_room_type.shop_room_stuff 
+								this_room.type = choose(e_room_type.rest_site , e_room_type.chest_small_room ,e_room_type.shop_room_removal ,e_room_type.shop_room_tokens, e_room_type.shop_room_cards);
+								// e_room_type.chest_small_room;
 							
 							if this_room.type = e_room_type.shop_room_cards{ 
 								boon_randomize()
@@ -434,7 +431,7 @@ for(var i=0; i<ds_list_size(room_list); i++) {
 			}
 //if(other_room_index > i) {
 				var other_room = ds_list_find_value(room_list, other_room_index);	
-					other_room.type = e_room_type.default_encounter;
+				//	other_room.type = e_room_type.default_encounter;
 				//	boss_room.type = e_room_type.default_encounter;
 			//	}		
 		}	

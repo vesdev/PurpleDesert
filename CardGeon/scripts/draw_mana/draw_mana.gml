@@ -1,6 +1,8 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_mana(){
+	
+if live_call() return live_result;
 
 
 
@@ -9,9 +11,17 @@ var yy = 100 +yoffgame;
 
 if number_of_enemies = 0 exit;
 
+
+
+
 draw_set_halign(fa_left);
 var x_ = xx+10 ;
 var y_ = yy-10 ;
+var scale = .5;
+draw_sprite_ext(s_mana_icon_2,0,-o_game.camera.width*.3,-o_game.camera.height*.33,scale,scale,0,c_white,1);
+
+
+
 var scale = 1;
 var sprite = s_mana_icon; 
 var sprite_height_ = sprite_get_height(sprite)+20;
@@ -29,7 +39,29 @@ var change_with_potential_mana_loss = change;
 var bbox_yoffset = 5;
 var bbox_xoffset = 5;
 //draw_rectangle(x_-xoffset-bbox_xoffset,y_-yoffset-bbox_yoffset,x_-xoffset+sprite_width_+bbox_xoffset,yy-yoffset+sprite_height_*.5+bbox_yoffset,1);
+xx = -o_game.camera.width*0.29;
+yy = -o_game.camera.height*0.255;
 
+
+
+//	var output_string_scribble = string(max(0,round(struct.hp*struct.potential_health_lerp)))+"[c_white][scale, .5]/"+string(struct.hp_max);
+
+
+//	scribble("[s_font_health][c_gum]"+output_string_scribble).draw(xx,hp_y);
+	
+if potential_mana_loss > 0 
+{ 
+
+	mana_text_color = "[C_GUM]";
+
+}else{
+	
+}
+	
+
+scribble("[fa_center][s_font_health]"+mana_text_color+string(round(player.mana-potential_mana_loss))+"[]/"+string(player.mana_max)).draw(xx-2,yy);
+
+exit;
 shader_set(sh_fill_with_image_blend);
 draw_sprite_ext(s_mana_icon,3,x_+3,y_+3,scale,scale,0,c_black,1); //dropshadow
 shader_reset();
@@ -38,17 +70,14 @@ shader_reset();
 if mana_icon_timer <= mana_icon_time { 
 	
 	var y_mana_offset = easings(e_ease.easeoutelastic,-10,10,mana_icon_time,mana_icon_timer);
-	
 	y_ -= y_mana_offset;
 	scribble("[fa_center][c_gum]NOT ENOUGH").draw(x_,yy-70+y_mana_offset*.2);
 	var _interval = 12;
-	
 	if (mana_icon_timer % _interval) <= _interval/2 and mana_icon_timer > 0 {
 		draw_outline_thick(s_mana_icon,3,x_,y_,scale,scale,0,C_GUM,1); //white outline
 		draw_outline(s_mana_icon,3,x_,y_,scale,scale,0,C_DARK,1); //white outline
 			mana_text_color = "[c_gum][shake]";
 	}
-
 	mana_icon_timer++;
 }
 
@@ -62,8 +91,8 @@ if !hovered_over_card and allow_player_input() and boon_collision( x_-xoffset-bb
 
 
 
-draw_sprite_ext(s_mana_icon,3,x_,y_,scale,scale,0,c_white,1); //white outline
-draw_sprite_ext(s_mana_icon,2,x_,y_,scale,scale,0,c_white,1); //purple bar
+//draw_sprite_ext(s_mana_icon,3,x_,y_,scale,scale,0,c_white,1); //white outline
+//draw_sprite_ext(s_mana_icon,2,x_,y_,scale,scale,0,c_white,1); //purple bar
 
 
 

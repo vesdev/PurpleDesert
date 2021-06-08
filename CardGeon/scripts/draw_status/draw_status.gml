@@ -1,7 +1,8 @@
 // Script assets have changed for v2.3.0 see
 function draw_status(xx , yy, struct){ 
-if live_call(xx , yy, struct) return live_result;
-
+	
+	if live_call(xx , yy, struct) return live_result;
+	
 	//active_enemies = [];
 	//active_enemies  = [new_enemy(e_enemies.babydragon) , new_enemy(e_enemies.babydragon) , new_enemy(e_enemies.babydragon)];
 	yy +=  camera.height*0.2 +yoffgame;	
