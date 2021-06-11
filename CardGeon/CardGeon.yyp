@@ -33,6 +33,7 @@
     {"id":{"name":"IK_documentation","path":"scripts/IK_documentation/IK_documentation.yy",},"order":3,},
     {"id":{"name":"arm_meeting_line","path":"scripts/arm_meeting_line/arm_meeting_line.yy",},"order":6,},
     {"id":{"name":"til_dungeon_wall_32x32","path":"tilesets/til_dungeon_wall_32x32/til_dungeon_wall_32x32.yy",},"order":2,},
+    {"id":{"name":"scr_music","path":"scripts/scr_music/scr_music.yy",},"order":0,},
     {"id":{"name":"GMLive_action","path":"scripts/GMLive_action/GMLive_action.yy",},"order":0,},
     {"id":{"name":"s_theatre","path":"sprites/s_theatre/s_theatre.yy",},"order":2,},
     {"id":{"name":"s_hit_cloak","path":"sprites/s_hit_cloak/s_hit_cloak.yy",},"order":0,},
