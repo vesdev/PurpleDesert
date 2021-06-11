@@ -1,6 +1,11 @@
 /// @description 
 //show_debug_overlay(true)
 
+
+
+
+
+
 enum e_resolution {	
 	hd_960,
 	android_1480,
@@ -101,6 +106,7 @@ xoffgame = 0;
 yoffgame = 0;
 
 scribble_font_add_all();
+
 scribble_font_bake_outline("f_round", "outline_default", 1,  4, c_black, false); //default 1 not 1.5
 
 var _font_string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.abcdefghijklmnopqrstuvwxyz1234567890<>,!¡':-+%*?¿()/@=_АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюяÑÜ{};\"ÁÂÃÀÇÉÊÍÓÔÕÚáâãàçéêíóôõúúåÅäÄöÖΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩΆΈΎΌΉΏαβγδεζηθικλμνξοπρστυφχψωάέύίόήώ\\È$ÄÖÜäöüß`";
@@ -115,7 +121,11 @@ font_boon = font_add_sprite_ext(s_font_boon, _font_string, true, 1);//characters
 var _font_string = "0123456789.-";
 font_damage_number = font_add_sprite_ext(s_font_crit_number_large, _font_string, true, 1);
 var _font_string = "0123456789-+./";
-font_health_number = font_add_sprite_ext(s_font_health, _font_string, true, 1);
+font_health_number = f_vhs;// font_add_sprite_ext(s_font_health, _font_string, true, 1);
+
+//font_health_number = font_add(f_vhs)
+
+global.font_ui_numbers = "f_vhs";
 
 scribble_font_add_from_sprite("s_font_health", _font_string, 1);
 
@@ -828,6 +838,31 @@ for (var i =0; i <e_token.size_;i++){
 	player.token_stats[@ i].amount_affects_stat_by2 =	token.amount2_per_level_up;
 	player.token_stats[@ i].amount_affects_stat_by3 =	token.amount3_per_level_up;	
 }
+synth_wave ={
+	
+	//initialis surfaces
+	surf : surface_create(200, 180),
+	clipping_mask : surface_create(180, 180),
+	col : floor(random(16777216)),
+
+	//ignore bm values - these were just for me messing with blend modes
+	bm_1 : 0,
+	bm_2 : 0,
+
+	//number of sides the shape will have
+	sides : irandom_range(4, 8),
+
+	//for opening/closing the portal
+	active : false,
+
+	//scaling the surface
+	xscale : 0,
+	yscale : 0,
+	
+	
+}
+
+
 depth = DEPTH_GAME;
 reset_battle_camera();
 force_end_turn = false;

@@ -7,7 +7,37 @@ function debug() {
 	}
 	show_debug_message(str);
 }
+function draw_shape(xx, yy, sides, angle, radius, color, alpha, fill, width)
+{
 
+	var prim = pr_trianglefan;
+	var dir = 0;
+	draw_set_colour(color);
+	draw_set_alpha(alpha);
+	
+	if(fill)
+	{
+		draw_primitive_begin(prim);
+	}
+	else
+	{
+		draw_primitive_begin(pr_trianglestrip);
+	}
+	
+	for (var i = 0; i <= ceil((sides)); i++)
+	{
+	    dir = ((((360 / sides) * i) + angle) - (360 / sides))
+	    radius = radius
+	       
+	    draw_vertex_colour((xx + lengthdir_x((radius - width), dir)), (yy + lengthdir_y((radius - width), dir)), color, alpha);
+	    draw_vertex_colour((xx + lengthdir_x(radius, dir)), (yy + lengthdir_y(radius, dir)), color, alpha); 
+	}
+	draw_primitive_end();
+	draw_set_alpha(1)
+	return;
+	
+
+}
 //BOON's perfect collision system, because I don't trust instance_place or instance_position
 function boon_collision(_l,_t,_r,_b, x_check, y_check) { 
 

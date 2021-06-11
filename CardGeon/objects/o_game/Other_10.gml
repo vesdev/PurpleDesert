@@ -1,12 +1,16 @@
 if live_call() return live_result;
 
+draw_synth();
+
+
+
+sprite_set_live(s_rainy_street,1);
 
 if turn_phase  =  e_turn_phase.standby_phase {  //idk do standby phase stuff here
 	turn_phase  =  e_turn_phase.main_phase;	
 	switch game.combat.turns {
 		case 0: repeat ( check_stuff(e_stuff.mana_restoring_pie)) { 
 				add_card_to(hand, e_card.coco_emergency_cake, false);	
-		
 		}
  		break;	
 	}
@@ -38,6 +42,7 @@ for (var j=0; j< array_length(wire_array); j++){
 	}
 }
 */
+
 //draw_curve_line()
 camera.zoom = 1;
 
@@ -158,8 +163,8 @@ var y__ = camera.height*.205;
 //exhaust
 draw_outline(s_ui_deck_circle,0,x__+xoffgame,y__+yoffgame,1,1,0,c_black,1);
 draw_sprite_ext(s_ui_deck_circle,0,x__+xoffgame,y__+yoffgame,1,1,0,C_LAVENDER,1);
-draw_text_outline(x__+xoffgame+text_xoffset, y__+yoffgame+text_yoffset,string(discard_size),c_black)
-draw_text(x__+xoffgame+text_xoffset,y__+yoffgame+text_yoffset,string(discard_size));
+draw_text_outline(x__+xoffgame+text_xoffset, y__+yoffgame+text_yoffset,string(exhaust_size),c_black)
+draw_text(x__+xoffgame+text_xoffset,y__+yoffgame+text_yoffset,string(exhaust_size));
 
 
 //var scribble_discard = scribble("[fa_right]DISCARD "+string(discard_size));

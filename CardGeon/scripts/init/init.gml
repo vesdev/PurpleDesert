@@ -1956,7 +1956,7 @@ function draw_card_matrix_contents(struct, card_border_struct ) {
 	//	card_border_struct.desc = scribble("[fa_center][fa_top]"+keywords_+struct.desc() ).wrap(	300*border_scale).blend(c_black, 1);
 					
 	var titlex = border_scale;
-	var titley = -12*border_scale;
+	var titley = -19*border_scale;
 	var text_box_width  = 120;
 	var card_xorigin = sprite_get_xoffset(s_card_border);
 	var card_yorigin = sprite_get_yoffset(s_card_border);
@@ -1976,7 +1976,7 @@ function draw_card_matrix_contents(struct, card_border_struct ) {
 	//	draw_rectangle(desc_left,desc_top,desc_right,desc_bot	,false);
 	
 		var descx = 0;
-		var descy = desc_box_height-20;
+		var descy = desc_box_height-30;
 		draw_set_color(c_white);
 
 	desc.blend(c_black,1).draw(descx-1*scale,descy);

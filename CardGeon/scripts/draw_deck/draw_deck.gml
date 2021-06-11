@@ -1331,7 +1331,6 @@ function draw_cards_in_exhaust(){
 }
 
 function draw_exhast(){ 
-	if live_call() return live_result;
 
 	if exhaust_flash_timer <= exhaust_flash_timer{ 
 	

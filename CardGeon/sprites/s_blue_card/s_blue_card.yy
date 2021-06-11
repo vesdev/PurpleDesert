@@ -8,9 +8,9 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 4,
-  "bbox_right": 394,
+  "bbox_right": 395,
   "bbox_top": 0,
-  "bbox_bottom": 526,
+  "bbox_bottom": 529,
   "HTile": false,
   "VTile": false,
   "For3D": false,
@@ -26,9 +26,11 @@
   "frames": [
     {"compositeImage":{"FrameId":{"name":"55f53b07-2fa2-4541-a300-4a2f4e29c935","path":"sprites/s_blue_card/s_blue_card.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
         {"FrameId":{"name":"55f53b07-2fa2-4541-a300-4a2f4e29c935","path":"sprites/s_blue_card/s_blue_card.yy",},"LayerId":{"name":"95065732-6e9e-4315-ab3a-8916c6358e71","path":"sprites/s_blue_card/s_blue_card.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"55f53b07-2fa2-4541-a300-4a2f4e29c935","path":"sprites/s_blue_card/s_blue_card.yy",},"LayerId":{"name":"9382c310-c215-42c9-98d9-6f1c2a654755","path":"sprites/s_blue_card/s_blue_card.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"s_blue_card","path":"sprites/s_blue_card/s_blue_card.yy",},"resourceVersion":"1.0","name":"55f53b07-2fa2-4541-a300-4a2f4e29c935","tags":[],"resourceType":"GMSpriteFrame",},
     {"compositeImage":{"FrameId":{"name":"7cd72ff5-6c1f-433e-966d-afa008cd081a","path":"sprites/s_blue_card/s_blue_card.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
         {"FrameId":{"name":"7cd72ff5-6c1f-433e-966d-afa008cd081a","path":"sprites/s_blue_card/s_blue_card.yy",},"LayerId":{"name":"95065732-6e9e-4315-ab3a-8916c6358e71","path":"sprites/s_blue_card/s_blue_card.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"7cd72ff5-6c1f-433e-966d-afa008cd081a","path":"sprites/s_blue_card/s_blue_card.yy",},"LayerId":{"name":"9382c310-c215-42c9-98d9-6f1c2a654755","path":"sprites/s_blue_card/s_blue_card.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"s_blue_card","path":"sprites/s_blue_card/s_blue_card.yy",},"resourceVersion":"1.0","name":"7cd72ff5-6c1f-433e-966d-afa008cd081a","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
@@ -69,6 +71,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 2","resourceVersion":"1.0","name":"9382c310-c215-42c9-98d9-6f1c2a654755","tags":[],"resourceType":"GMImageLayer",},
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1","resourceVersion":"1.0","name":"95065732-6e9e-4315-ab3a-8916c6358e71","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,

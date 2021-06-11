@@ -11,6 +11,7 @@ ds_list_clear(exhaust);
 repeat(5) {
 	add_card_for_run(deck , e_card.coco_default_attack);
 	add_card_for_run(deck , e_card.coco_default_armor);	
+		add_card_for_run(deck , e_card.coco_coupe_de_grace);	
 }
 
 

@@ -1,7 +1,6 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_mana(){
-	
 if live_call() return live_result;
 
 
@@ -17,9 +16,9 @@ if number_of_enemies = 0 exit;
 draw_set_halign(fa_left);
 var x_ = xx+10 ;
 var y_ = yy-10 ;
-var scale = .5;
-draw_sprite_ext(s_mana_icon_2,0,-o_game.camera.width*.3,-o_game.camera.height*.33,scale,scale,0,c_white,1);
+var scale = .3;
 
+draw_sprite_ext(s_mana_icon_2,0,o_game.camera.width*.45,-o_game.camera.height*.14,scale,scale,0,c_white,1);
 
 
 var scale = 1;
@@ -39,8 +38,8 @@ var change_with_potential_mana_loss = change;
 var bbox_yoffset = 5;
 var bbox_xoffset = 5;
 //draw_rectangle(x_-xoffset-bbox_xoffset,y_-yoffset-bbox_yoffset,x_-xoffset+sprite_width_+bbox_xoffset,yy-yoffset+sprite_height_*.5+bbox_yoffset,1);
-xx = -o_game.camera.width*0.29;
-yy = -o_game.camera.height*0.255;
+xx = o_game.camera.width*0.45;
+yy = -o_game.camera.height*0.09;
 
 
 
@@ -59,7 +58,7 @@ if potential_mana_loss > 0
 }
 	
 
-scribble("[fa_center][s_font_health]"+mana_text_color+string(round(player.mana-potential_mana_loss))+"[]/"+string(player.mana_max)).draw(xx-2,yy);
+scribble("[fa_center]["+global.font_ui_numbers+"]"+mana_text_color+string(round(player.mana-potential_mana_loss))+"[]/"+string(player.mana_max)).draw(xx-2,yy);
 
 exit;
 shader_set(sh_fill_with_image_blend);
