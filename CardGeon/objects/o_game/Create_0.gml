@@ -924,6 +924,8 @@ drawLightSolids = function()
 //new sunset
 str_sunset = new sunset(-350,-250);
 
+//3d waves
+waves3d = new wave3D();
 
 depth = DEPTH_GAME;
 reset_battle_camera();
