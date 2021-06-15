@@ -1,8 +1,102 @@
 if live_call() return live_result;
 
+
+//surface
+
+
+if surface_exists(meatball_str.surf) {
+	surface_set_target( meatball_str.surf );
+	draw_clear_alpha(c_black,0);
+	shader_set(sh_meatballs);
+	shader_set_uniform_f(meatball_str.u_size,3);
+	shader_set_uniform_f(meatball_str.u_time,current_time*.001);
+	draw_sprite_ext(s_pixel,0,0,0,meatball_str.surf_width,meatball_str.surf_height,0,c_white,1);
+	shader_reset();
+	surface_reset_target();
+	
+	
+}else{
+ meatball_str.surf = surface_create(meatball_str.surf_width,meatball_str.surf_height);
+}
+
+
+
+	
+if surface_exists(surf_bg) {
+	
+surface_set_target(surf_bg);
+
+var col = make_color_rgb(16, 12, 25);
+draw_clear_alpha(col,1);
+gpu_set_blendmode(bm_normal);
+	if surface_exists( meatball_str.surf){
+		
+		var inner_outline_col = C_PINK
+		draw_surface_ext(meatball_str.surf,-1,0,1,1,0,inner_outline_col,1);
+		draw_surface_ext(meatball_str.surf, 1,0,1,1,0,inner_outline_col,1);
+		draw_surface_ext(meatball_str.surf,0,-1,1,1,0,inner_outline_col,1);
+		draw_surface_ext(meatball_str.surf,0, 1,1,1,0,inner_outline_col,1);
+		
+		
+		var col = col;
+		draw_surface_ext(meatball_str.surf,0,0,1,1,0,col,1);
+		
+		
+	}
+
+
+
+
+
+var yoffset = 30;
+var alpha = 1;
+var color = merge_color( C_PINK , C_DARK,.85);
+
+
+draw_sprite_ext(s_fade,0,0,0+yoffset,surf_bg_width,.15,0,color,alpha);
+draw_sprite_ext(s_pixel,0,0,96+yoffset,surf_bg_width,surf_bg_height,0,color,alpha);
+gpu_set_blendmode(bm_add);
+//16, 12, 25
+	var alpha = .25;
+	var color = C_GUM;
+	var xoffset_gradiant = 480;
+	var xx_ = player.x+xoffset_gradiant;
+	var yy_ = 135;
+	var xoffset = 1;
+	var yoffset =  1;
+	var xscale_ = .3;
+	var yscale_ = .05;
+	
+	var scale_  = 5;
+
+	draw_sprite_ext(s_gradient,0,surf_bg_width*.5,surf_bg_height*.2,xscale_*scale_,yscale_*scale_,0,c_white,alpha*.2);
+
+	var alpha_ = .07;
+	
+	//player
+	draw_sprite_ext(s_gradient,0,xx_,yy_,xscale_,yscale_,0,c_white,alpha_);
+
+	for (var i =0; i <array_length(active_enemies); i++) { 
+		draw_sprite_ext(s_gradient,0,active_enemies[@ i].x+xoffset_gradiant ,yy_,xscale_,yscale_,0,c_white,alpha_);
+	}
+
+
+
+
+
+
+	gpu_set_blendmode(bm_normal);
+surface_reset_target();
+
+	draw_surface(surf_bg,-camera.width*.5,-camera.height*.5);
+
+}else{
+surf_bg = surface_create(surf_bg_width,surf_bg_height);	
+}
+
+
+
 draw_synth();
-
-
 
 sprite_set_live(s_rainy_street,1);
 
@@ -11,8 +105,7 @@ if turn_phase  =  e_turn_phase.standby_phase {  //idk do standby phase stuff her
 	switch game.combat.turns {
 		case 0: repeat ( check_stuff(e_stuff.mana_restoring_pie)) { 
 				add_card_to(hand, e_card.coco_emergency_cake, false);	
-		}
- 		break;	
+		}	break;	
 	}
 }
 
@@ -106,11 +199,14 @@ if current_turn = e_current_turn.player_ {
 //player.buff.attack.amount = 0;
 
 
+
+
+
 draw_status_information = false;
 mana_text_color = "[c_white]";
 deck_size = ds_list_size(deck);
 discard_size = ds_list_size(discard);
-
+exhaust_size = ds_list_size(exhaust);
 //draw deck 
 //deck_flash_timer = SEC;
 draw_discard_and_deck();
@@ -163,7 +259,7 @@ var y__ = camera.height*.205;
 //exhaust
 draw_outline(s_ui_deck_circle,0,x__+xoffgame,y__+yoffgame,1,1,0,c_black,1);
 draw_sprite_ext(s_ui_deck_circle,0,x__+xoffgame,y__+yoffgame,1,1,0,C_LAVENDER,1);
-draw_text_outline(x__+xoffgame+text_xoffset, y__+yoffgame+text_yoffset,string(exhaust_size),c_black)
+draw_text_outline(x__+xoffgame+text_xoffset, y__+yoffgame+text_yoffset,ds_list_size(exhaust),c_black)
 draw_text(x__+xoffgame+text_xoffset,y__+yoffgame+text_yoffset,string(exhaust_size));
 
 
@@ -201,12 +297,14 @@ var color = "[c_white]";
 
 player_defaultx_position = 110;
 player_defaulty_position = 100;
+
 draw_stuff();
-draw_struct(player,player_defaultx_position +xoffgame,111 +yoffgame);
+draw_struct(player,player_defaultx_position +xoffgame, 135+yoffgame);
 
 /////////////////////
+
 draw_tokens();
-draw_health_bar(50,100+15,player,0);
+draw_health_bar(50,100+40,player,0);
 draw_discover();
 if number_of_enemies != 0 { 
 	draw_mana();
@@ -240,8 +338,6 @@ if draw_status_information != false  {
 	
 	if status_info.desc != draw_status_information { 
 		status_info.scribble_desc =  scribble((( "[fa_center]"+ draw_status_information  ))).wrap(status_info.wrap_amount);
-		
-	
 		
 		var bbox_ = status_info.scribble_desc.get_bbox(0,y_);
 		status_info.x0 =  bbox_.x0;

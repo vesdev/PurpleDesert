@@ -13,26 +13,18 @@ if keyboard_check_pressed(ord("F")){
         }    
 }
 
-with synth_wave { 
 
+/*
+
+with synth_wave { 
 xscale += (mouse_wheel_up() - mouse_wheel_down())*0.1;
 yscale = xscale;
 bm_2 += keyboard_check(vk_up) - keyboard_check(vk_down);
-
-if(active)
-{
-		xscale =  lerp(xscale ,1, 0.03);
-		yscale =  lerp(yscale ,1, 0.03);
-	
-}
-else
-{
-	xscale =  lerp(xscale ,0, 0.1);
-	yscale =  lerp(yscale ,0, 0.1);
+	xscale =  lerp(xscale ,2, 0.03);
+	yscale =  lerp(yscale ,2, 0.03);
 }
 
-}
-
+*/
 
 
 #region glance

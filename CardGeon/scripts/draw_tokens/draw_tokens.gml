@@ -2,9 +2,12 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_tokens(){
 
+if live_call() return live_result;
+
+
 for (var i = player.max_token_amount-1; i >= 0; i--) {
 	var x_ = player_defaultx_position-56 + i * 25 +xoffgame;
-	var y_ = player_defaulty_position+camera.height*0.14 +yoffgame;
+	var y_ = player_defaulty_position+camera.height*0.19 +yoffgame;
 	
 var sprite = s_token_circle;
 	
@@ -33,7 +36,7 @@ if len = 0 exit;
 			var max_len =  (player.max_token_amount-1) * 25
 	
 			var x_ =  player_defaultx_position-53 - i * 25 + max_len +xoffgame ;
-			var y_ =  player_defaulty_position+80 +yoffgame;
+			var y_ =  player_defaulty_position+120 +yoffgame;
 	
 			var sprite =  s_token_circle;
 	

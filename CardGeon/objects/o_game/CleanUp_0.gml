@@ -1,5 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
+
+surface_free(surf_bg);
+
 ds_list_destroy(discard_to_deck_queue.list);
 ds_list_destroy(deck);
 ds_list_destroy(hand);

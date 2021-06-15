@@ -1,5 +1,11 @@
 function end_enemy_turn(){
 	
+	
+	with o_game.synth_wave { 
+		xscale_target = 0;
+		yscale_target = 0;
+	}
+	
 	turn_phase  =  e_turn_phase.draw_phase;
 	dealt_a_crit_this_turn = false;
 	player.this_turn_token_was_summoned = false;

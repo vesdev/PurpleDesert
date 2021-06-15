@@ -1244,7 +1244,7 @@ function draw_discard(){
 	}
 }
 function draw_cards_in_exhaust(){
-	
+
 	var offset = 22;
 	init_card_border_step(0);
 	var card_height_ = 210;
@@ -1308,14 +1308,14 @@ function draw_cards_in_exhaust(){
 	
 //	draw_sprite_ext(s_discard,0,discardx,discardy,discard_xsize,discard_xsize,0,c_white,1)
 	
-	if boon_collision( exhaustx-offset,exhausty-offset,exhaustx+offset,exhausty+offset,MX,MY){
-	draw_outline_thick(s_exhaust,0,exhaustx,exhausty,exhaust_size,exhaust_size,0,c_white,1);
+if boon_collision( exhaustx-offset,exhausty-offset,exhaustx+offset,exhausty+offset,MX,MY){
+	draw_outline_thick(s_exhaust,0,exhaustx,exhausty,exhaust_size, ds_list_size(exhaust) ,0,c_white,1);
 		if m1_pressed { 
 			exhaust_flash_timer = 0;
 			m1_pressed = false;
 			pause_combat_to_show_discard = false;
 			pause_combat_to_show_exhaust = false;
-		for (var i = 0; i <ds_list_size(active_cards_list)-1;i++){ 
+		for (var i = 0; i < ds_list_size(active_cards_list)-1;i++){ 
 			var card_ = active_cards_list[| i];
 				card_.x_ = 0;
 				card_.y_ = 0;

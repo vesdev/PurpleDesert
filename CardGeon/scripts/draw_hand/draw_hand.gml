@@ -1,5 +1,8 @@
 // Script assets have changed for v2.3.0 see
 function draw_hand(){
+
+
+
 /*
 touch_screen_card = { 
 	enable : 0,
@@ -151,7 +154,7 @@ if hovered_over_card and allow_player_input() and hand_size > 0 {
 
 									if player.mana >= hand[| hand_hover_array].cost { 
 											draw_caret_surface();
-											potential_mana_loss =  lerp(potential_mana_loss, hand[| hand_hover_array].cost , .2);//25 * abs(sin(current_time*0.001));
+											potential_mana_loss =  hand[| hand_hover_array].cost;// lerp(potential_mana_loss, hand[| hand_hover_array].cost , .2);//25 * abs(sin(current_time*0.001));
 											mana_text_color = "[s_caret][c_yellow]";
 									}else{ 
 										if m1_pressed and no_discover_effects(){ 

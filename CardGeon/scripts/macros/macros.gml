@@ -17,7 +17,7 @@
 #macro SEC game_get_speed(gamespeed_fps)
 
 
-#macro C_ARMOR make_color_rgb(168, 168, 168) 
+
 #macro C_GRAY make_color_rgb(208, 208, 208) //default gray color
 #macro C_GUM   make_color_rgb(248, 16, 88) //default red color
 #macro C_WINE make_color_rgb(153, 18, 87)
@@ -28,7 +28,8 @@
 #macro C_PURPLE make_color_rgb(167, 69,  233)
 #macro C_AQUA $FFCA00 // make_color_rgb(10, 246, 250)
 #macro C_FUCHISIA make_color_rgb(255,53,253) 
-#macro C_BLUE make_color_rgb(27, 183, 214 )
+#macro C_BLUE make_color_rgb(8,212,252 )
+#macro C_ARMOR  make_color_rgb(8,212,252 )
 #macro C_LAVENDER make_color_rgb(157, 168, 224)
 #macro C_NAVY make_color_rgb(29, 54, 153)
 

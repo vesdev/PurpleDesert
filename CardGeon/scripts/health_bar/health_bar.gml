@@ -79,7 +79,7 @@ for (var i = 0; i < armor_len; i++) {
 	if i >= 1 { 
 	//we are in armor territory
 	var shield_x_offset = 0;
-	var shield_y_offset = 15;
+	var shield_y_offset = 10;
 	
 	var size = 1;
 	var time = SEC*.5;
@@ -93,10 +93,12 @@ for (var i = 0; i < armor_len; i++) {
 	var angle = 0;
 
 	var text_color = C_ARMOR;
-	var back_text_color = C_DARK;
-		front_hp_bar_color = c_ltgray;
+	var back_text_color = c_white;
+		front_hp_bar_color = C_BLUE;
+
 		
-	if struct.armor_ui_timer <= time { 
+		
+if struct.armor_ui_timer <= time { 
 		//angle = easings(e_ease.easeoutexpo,0,1,time,struct.armor_ui_timer);
 		size = easings(e_ease.easeoutexpo,0,1,time,struct.armor_ui_timer);
 		shield_y_offset = easings(e_ease.easeoutexpo,shield_y_offset+change,-change,time,struct.armor_ui_timer);
@@ -115,17 +117,16 @@ if current_turn != e_current_turn.player_ {
 	}
 		struct.armor_ui_timer++;
 }
-	
+		
+
 
 		var armor_x = xx-1-17-8;
 		var armor_y = yy-2+shield_y_offset-3;
 		
-	if struct = player {
-	
-		var armor_x = xx+120;
-		var armor_y =yy-2+shield_y_offset-3-40;
+	if struct = player { 
 		
-		
+		armor_x += 150;
+		armor_y -= 30;
 	}
 
 
@@ -152,7 +153,7 @@ if current_turn != e_current_turn.player_ {
 		var width_ = sprite_get_width(sprite_)*.5;
 		var height_ = sprite_get_height(sprite_)*.5;
 		
-		var _l =armor_x-width_-offset ;
+		var _l = armor_x-width_-offset ;
 		var _t = armor_y-height_-offset;
 		var _r = armor_x+width_+offset;
 		var _b = armor_y+height_+offset;
@@ -160,7 +161,18 @@ if current_turn != e_current_turn.player_ {
 		
 		if struct = player and boon_collision(_l,_t,_r,_b,MX,MY){
 			
-			draw_status_information = "[s_status_armor][c_yellow]ARMOR[]\n"+struct.title+" IS BLOCKING [c_yellow]"+string(struct.armor)+"[] DAMAGE.\nARMOR LASTS [c_yellow]1[] TURN.";
+			var col1 = "c_gum";
+			if total_intent_enemy_damage = 0 { 
+				col1 = "c_lime";
+			}
+			draw_status_information = "[s_status_armor][c_yellow]ARMOR[]\n"+struct.title+" IS BLOCKING [c_yellow]"+string(struct.armor)+"["+col1+"] [s_damage_icon] DAMAGE.";
+			
+				if player.buff.armor_keep.amount = 0 { 
+				
+					draw_status_information += "\n\n[c_blue]ARMOR[] IS [c_gum]DESTROYED[] ON THE START OF YOUR TURN";
+				
+				}
+			
 			draw_outline_thick(sprite_,0,armor_x,armor_y,size,size,angle*360,c_white,1);
 			draw_outline(sprite_,0,armor_x,armor_y,size,size,angle*360,C_DARK,1);
 			
@@ -187,13 +199,10 @@ if current_turn != e_current_turn.player_ {
 	
 	
 		front_bar_lerp = struct.armor_bar_front_lerp;
-		
 		var back_bar_lerp = struct.armor_bar_back_lerp;
 		var front_bar_lerp = percent*struct.armor_bar_front_lerp;
 		var percent_with_potential = (struct.armor)/struct.hp_max;
-	
 		struct.armor_bar_back_lerp = lerp(struct.armor_bar_back_lerp,percent_with_potential,.2);
-	
 		back_bar_lerp = clamp(back_bar_lerp,0,1);
 
 		
@@ -204,32 +213,28 @@ if current_turn != e_current_turn.player_ {
 		draw_outline(sprite_,0,armor_x,armor_y,size,size,angle*360,C_DARK,1);
 			back_text_color = C_YELLOW;
 			text_color = C_DARK;
-			text_outline_thick(xx-1-6,yy-2+shield_y_offset,armor_string_,C_DARK	);
+		text_outline_thick(armor_x,armor_y+shield_y_offset,armor_string_,C_DARK	);
 
 	}
 		draw_sprite_ext(sprite_,0,armor_x,armor_y,size,size,angle*360,color,1);
 	
-	if struct.armor_ui_timer <= time*.1 {
-	draw_outline(s_status_armor,0,xx-1-17-8,yy-2+shield_y_offset-3,size,size,angle*360,color,1);
-	}
 
-	draw_set_halign(fa_right);
+
+
+	draw_set_font(font_damage_number);
+
+	draw_set_halign(fa_center);
+		if struct.armor_ui_timer <= time*.1 {
+	draw_outline(s_status_armor,0,armor_x,armor_y,size,size,angle*360,color,1);
+	}
+	
 	//text_outline_thick(xx-1-6,yy-2+shield_y_offset,string(struct.armor),back_text_color)
-	draw_text(xx-1-6,yy-2+shield_y_offset,armor_string_);
+	//draw_text(armor_x,yy-2+shield_y_offset,armor_string_);
 ///////////////////
-
-	
-	draw_text_outline(xx-1-6,yy-2+shield_y_offset,armor_string_,back_text_color)
+	draw_text_outline(armor_x,armor_y+shield_y_offset,armor_string_,back_text_color)
 	draw_set_color(text_color);
-	
-	if struct = player { 
-		
-
-	draw_text(xx-1-6+150+10,yy-2-40+shield_y_offset,armor_string_);
-	}else{
-	
-	draw_text(xx-1-6,yy-2+shield_y_offset,armor_string_);
-	}
+	draw_text(armor_x,armor_y+shield_y_offset,armor_string_);
+	draw_set_font(f_vhs);
 	}
 	
 	
@@ -341,71 +346,67 @@ if current_turn != e_current_turn.player_ {
 		draw_set_halign(fa_center);
 		draw_set_color(col_);
 	
-		/*
-		if total_intent_enemy_damage <= 0 { 
-			color = "c_lime"
-		}else{
-		var color = "c_yellow"	
-		}
-		draw_status_information = "[c_yellow]WHEN YOU END TURN[]\nYOU'LL TAKE ["+color+"]"+string(total_intent_enemy_damage)+"[] DAMAGE";
-		*/
+	
 		var _l = -o_game.camera.width*.33;
 		var _t = -o_game.camera.height*.42;
-		var _r = _l+60; 
-		var _b = _t+60;
+		var _r = _l+30; 
+		var _b = _t+20;
 		
-		var _l_sprite = _l+50;
-		var _t_sprite = _t+33;
+		var _l_sprite = _l+10;
+		var _t_sprite = _t+3;
 		
 		var x_ = _l+30;
 		var y_ = _t+25;
-	
+
 		
-		if o_game.current_turn = e_current_turn.player_ { 
-		draw_outline(s_impending_damage_icon,0,_l_sprite,_t_sprite,1,1,0,c_black,1);
-		draw_outline(s_impending_damage_icon,0,_l_sprite+1,_t_sprite+1,1,1,0,c_black,1);
-		}
+		if o_game.current_turn = e_current_turn.player_ and number_of_enemies > 0{ 
+			
+			
+		//draw_outline(s_damage_icon,0,_l_sprite,_t_sprite,1,1,0,c_black,1);
+		//draw_outline(s_damage_icon,0,_l_sprite+1,_t_sprite+1,1,1,0,c_black,1);
+		
 		
 		 if total_intent_enemy_damage <= 0 {
 				 	var color_ = C_LIME;
+					var ang_ = 0;
 			 }else{
 					var color_ = C_GUM;
+					ang_ = current_time*0.05;
 			 }
 			 
-			 
-		draw_sprite_ext(s_impending_damage_icon,0,_l_sprite,_t_sprite,1,1,0,color_,1);
-		var str =  string(player.armor) +"/"+string(total_intent_enemy_damage);
+		draw_outline(s_damage_icon,0,_l_sprite+2,_t_sprite+2,1,1,ang_,c_black,1)	 			
+		draw_outline(s_damage_icon,0,_l_sprite,_t_sprite,1,1,ang_,c_black,1)	 
+		draw_sprite_ext(s_damage_icon,0,_l_sprite,_t_sprite,1,1,ang_,color_,1);
+		}
+		//var str =  string(player.armor) +"/"+string(total_intent_enemy_damage);
 				
 		
 		
 		
 		//draw_text_outline(x_,y_,str,c_black)
-		draw_set_halign(fa_center)
+		draw_set_halign(fa_center);
 		
+		x_ -= 18;
+		y_ -= 10;
+		//draw_outline(s_larger_shield,0,x_-10,_t_sprite,1,1,0,c_black,1);
+		//draw_sprite_ext(s_larger_shield,0,x_-12,_t_sprite,1,1,0,C_BLUE,1);
+		draw_set_font(font_health_number_white);
 		
+		//draw_text(x_-12,y_,string(player.armor))
+	
+	
 		
-		x_ -= 30;
-		draw_outline(s_larger_shield,0,x_-10,_t_sprite,1,1,0,c_black,1);
-		draw_sprite_ext(s_larger_shield,0,x_-12,_t_sprite,1,1,0,C_BLUE,1);
-		draw_set_font(font_damage_number);
-		
-		draw_text(x_-12,y_,string(player.armor))
-		
-		
-		x_ += 5;
-		
-		
-		//draw_text(x_,y_,)
-		x_ += 30;
-		draw_text(x_+15,y_,string(total_intent_enemy_damage))
+		if o_game.current_turn = e_current_turn.player_  and number_of_enemies > 0{  
+			draw_text_outline(x_+1,y_+1,string(total_intent_enemy_damage), c_black)
+			draw_text_outline(x_,y_,string(total_intent_enemy_damage), c_black)
+			draw_text(x_,y_,string(total_intent_enemy_damage))
+		}
 		draw_set_font(f_vhs);
 		draw_set_color(c_white);
 		draw_set_halign(fa_left)
-		//draw_rectangle(_l,_t,_r,_b,1)
+		//draw_rectangle(_l-10,_t-20,_r,_b+10,1)
 		
-		if boon_collision( _l,_t,_r,_b, MX,MY) {
-			
-			 
+		if boon_collision( _l-10,_t-20,_r,_b+10, MX,MY) {
 			 if total_intent_enemy_damage <= 0 {
 				 	var color_ = "c_lime";
 			 }else{
@@ -414,7 +415,7 @@ if current_turn != e_current_turn.player_ {
 			
 			
 			
-			draw_status_information = "[c_yellow]WHEN YOU END TURN[]\nYOU'LL TAKE ["+color_+"] "+string(total_intent_enemy_damage)+" [s_damage_icon][] DAMAGE\n\n[c_blue][s_ui_shield][] ARMOR IS THE AMOUNT OF DAMAGE YOU WILL [c_lime]BLOCK[].\n\n["+color_+"][s_damage_icon][] IS THE TOTAL DAMAGE[] YOU WILL TAKE THIS TURN\n\n[c_blue][s_ui_shield][] ARMOR IS [c_gum]DESTROYED[] ON THE START OF YOUR TURN";
+			draw_status_information = "[c_yellow] TOTAL ENEMY DAMAGE[]\nAFTER ENDING YOUR TURN\nYOU'LL TAKE ["+color_+"] "+string(total_intent_enemy_damage)+" []["+color_+"][s_damage_icon][] DAMAGE";
 		
 			
 			
@@ -431,13 +432,23 @@ if current_turn != e_current_turn.player_ {
 	
 	draw_set_color(c_white);	
 }	
-var hp_y = yy - camera.height*-.02
-	var output_string_scribble = string(max(0,round(struct.hp*struct.potential_health_lerp)))+"[c_white][scale, .5]/"+string(struct.hp_max);
+var hp_y = yy - camera.height*.02;
+	var output_string_scribble = string(max(0,round(struct.hp*struct.potential_health_lerp)))+"[][c_white]/"+string(struct.hp_max);
 
-if struct =  player{ 
-//	output_string_scribble += "[scale, 1][c_gum] -"+string(total_intent_enemy_damage);
-}
-	scribble("["+global.font_ui_numbers+"][c_gum]"+output_string_scribble).draw(xx,hp_y);
+
+
+	var scribble_numb = scribble("[f_outrun][c_gum]"+output_string_scribble);
+	
+	
+	scribble_numb.blend(c_black,1).draw(xx-1,hp_y);
+	scribble_numb.draw(xx-1,hp_y);
+	scribble_numb.draw(xx+1,hp_y);
+	scribble_numb.draw(xx,hp_y-1);
+	scribble_numb.draw(xx,hp_y+1);
+	scribble_numb.draw(xx+2,hp_y+2);
+	scribble_numb.draw(xx+2,hp_y+1);
+	scribble_numb.blend(c_white,1).draw(xx,hp_y);
+	
 	
 draw_set_font(font_boon);		
 }

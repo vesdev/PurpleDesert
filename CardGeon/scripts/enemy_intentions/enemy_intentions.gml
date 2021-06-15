@@ -1,6 +1,8 @@
 // Script assets have changed for v2.3.0 
 
 function draw_enemy_intention(xx,yy, construct, sprite_only){
+	
+	
 		//don't show the attacking sprite
 		if current_turn = e_current_turn.enemy_ and construct.finished_attacking exit;
 		var override = false;
@@ -37,7 +39,7 @@ function draw_enemy_intention(xx,yy, construct, sprite_only){
 			var len = array_length(active_enemies);
 			var i = 	array_find_value(construct, active_enemies);	
 				var time_ = current_time + i * SEC*5;
-					yy += sin(time_*0.005)*2;
+					yy += sin(time_*0.001)*5;
 			}
 			
 			
@@ -51,7 +53,28 @@ function draw_enemy_intention(xx,yy, construct, sprite_only){
 				var spr_width = sprite_get_width(sprite);
 				var spr_height = sprite_get_height(sprite);
 				
-				scribble("[fa_left][fa_middle][c_gum][outline_boon]"+get_damage_string(construct,queue_pos)).draw(xx+spr_width*.5,yy+spr_height*.5);
+				var scr = scribble("[fa_left][fa_middle][c_gum][s_font_health_numbers]"+get_damage_string(construct,queue_pos))
+			
+					var x_ = xx+spr_width*.51;
+					var y_ = yy+spr_height*.5;
+					//.draw(xx+spr_width*.51,yy+spr_height*.5);
+			
+			
+					scr.blend(c_black,1).draw(x_-1,y_);
+					scr.draw(x_-1,y_);
+					scr.draw(x_+1,y_);
+					scr.draw(x_,y_-1);
+					scr.draw(x_,y_+1);
+					scr.draw(x_+2,y_+2);
+					scr.draw(x_+2,y_+1);
+					scr.blend(c_white,1).draw(x_,y_);
+	
+			
+					
+					
+					
+					
+			
 			}
 		}else{
 			sprite = override_sprite;	

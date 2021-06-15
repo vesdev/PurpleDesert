@@ -27,6 +27,9 @@ var timer = queue[| 0].timer;
 var current_enemy = queue[| 0].struct;
 var scr = queue[| 0].queue_script;
 
+
+o_game.synth_wave.xtarget = current_enemy.x;
+
 if scr != noone{ 
 	
 queue[| 0].queue_script(timer,time, current_enemy);
@@ -105,6 +108,28 @@ var len = array_length(discover_queue.array );
 					
 					scribble_end_turn.draw(end_turn_x_position,end_turn_y_position);
 					if m1_pressed || force_end_turn {
+						
+						
+						with o_game.synth_wave {
+						
+						
+						
+						
+
+						for (var i = 0; i < number_of_enemies;i++){ 
+							var enemy_ = active_enemies[@ i];
+						
+						}
+						
+						
+
+						xtarget = enemy_.x;
+						x_position = enemy_.x;
+						
+						xscale_target = 2;
+						yscale_target = 2;
+						
+						}
 						force_end_turn = false;
 						game.combat.turns++;
 						game.run.turns++;

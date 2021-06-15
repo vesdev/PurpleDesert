@@ -18,8 +18,9 @@ var x_ = xx+10 ;
 var y_ = yy-10 ;
 var scale = .3;
 
-draw_sprite_ext(s_mana_icon_2,0,o_game.camera.width*.45,-o_game.camera.height*.14,scale,scale,0,c_white,1);
 
+sprite_set_live(s_electricity_small,1);
+//draw_sprite_ext(s_electricity_small,0,o_game.camera.width*.1,o_game.camera.height*.24,1,1,0,c_white,1);
 
 var scale = 1;
 var sprite = s_mana_icon; 
@@ -38,10 +39,22 @@ var change_with_potential_mana_loss = change;
 var bbox_yoffset = 5;
 var bbox_xoffset = 5;
 //draw_rectangle(x_-xoffset-bbox_xoffset,y_-yoffset-bbox_yoffset,x_-xoffset+sprite_width_+bbox_xoffset,yy-yoffset+sprite_height_*.5+bbox_yoffset,1);
-xx = o_game.camera.width*0.45;
-yy = -o_game.camera.height*0.09;
+xx = -o_game.camera.width*0.28;
+yy = -o_game.camera.height*0.39;
+
+var _l =  xx-20;
+var _t =  yy-80;
+var _r =  xx+30;
+var _b =  yy+30;
 
 
+//draw_rectangle(_l,_t,_r,_b, 1 );
+
+if boon_collision( _l,_t,_r,_b,MX,MY){
+
+	draw_status_information = "[c_yellow][s_electricity_small] ENERGY[]\nTHE RESOURCE USED TO [c_lime]PLAY CARDS.[] YOU RESTORE [c_lime]"+string(player.mana_gain)+"[] AT THE [c_yellow]START OF YOUR TURN";
+	
+}
 
 //	var output_string_scribble = string(max(0,round(struct.hp*struct.potential_health_lerp)))+"[c_white][scale, .5]/"+string(struct.hp_max);
 
@@ -51,14 +64,46 @@ yy = -o_game.camera.height*0.09;
 if potential_mana_loss > 0 
 { 
 
-	mana_text_color = "[C_GUM]";
+
 
 }else{
 	
 }
-	
+var scale = .1;
 
-scribble("[fa_center]["+global.font_ui_numbers+"]"+mana_text_color+string(round(player.mana-potential_mana_loss))+"[]/"+string(player.mana_max)).draw(xx-2,yy);
+if potential_mana_loss = 0 || !m1_check { 
+var scr = scribble("[fa_center][s_font_health_numbers]"+mana_text_color+string(round(player.mana-potential_mana_loss))+"[]_[s_font_boon_sunset]/"+string(player.mana_max))
+
+
+draw_outline(s_electricity_large,0,xx+2,yy-20+2,scale,scale,0,c_black,1);
+draw_outline(s_electricity_large,0,xx,yy-20,scale,scale,0,c_black,1);
+
+
+draw_sprite_ext(s_electricity_large,0,xx,yy-20,scale,scale,0,C_YELLOW,1);
+	
+}else{
+	mana_text_color = "[c_gum]";	
+	
+scr = scribble("[fa_center]"+mana_text_color+"[s_font_crit_number_large]"+string(round(player.mana-potential_mana_loss))+"[]_[s_font_boon_sunset]/"+string(player.mana_max))
+var amount_ = .5;
+
+var x_ = random_range(-amount_,amount_);
+var y_ = random_range(-amount_,amount_);
+
+draw_sprite_ext(s_electricity_large,0,xx+2+x_,yy-20+2+y_,scale,scale,0,C_BLUE,1);
+draw_sprite_ext(s_electricity_large,0,xx+x_,yy-20+y_,scale,scale,0,C_PINK,1);
+	
+}
+
+scr.blend(c_black,1).draw(xx-1,yy);
+scr.draw(xx-1,yy);
+scr.draw(xx+1,yy);
+scr.draw(xx,yy-1);
+scr.draw(xx,yy+1);
+scr.draw(xx+2,yy+2);
+scr.draw(xx+2,yy+1);
+scr.blend(c_white,1).draw(xx,yy);
+	
 
 exit;
 shader_set(sh_fill_with_image_blend);

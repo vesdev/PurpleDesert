@@ -1,7 +1,9 @@
 /// @description 
+
+//shader_set_live(sh_outrun_sunset,1);
+
+
 //show_debug_overlay(true)
-
-
 
 
 
@@ -111,21 +113,38 @@ scribble_font_bake_outline("f_round", "outline_default", 1,  4, c_black, false);
 
 var _font_string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.abcdefghijklmnopqrstuvwxyz1234567890<>,!¡':-+%*?¿()/@=_АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюяÑÜ{};\"ÁÂÃÀÇÉÊÍÓÔÕÚáâãàçéêíóôõúúåÅäÄöÖΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩΆΈΎΌΉΏαβγδεζηθικλμνξοπρστυφχψωάέύίόήώ\\È$ÄÖÜäöüß`";
 scribble_font_add_from_sprite("s_font_boon", _font_string, 1, 4);
+scribble_font_add_from_sprite("s_font_boon_sunset", _font_string, 1, 4);
 scribble_font_set_default("s_font_boon");
 scribble_font_bake_outline("s_font_boon","outline_boon", 1, 4, c_black, false); //default 1 not 1.5
 
-globalvar font_boon, font_damage_number, font_health_number;
+globalvar font_boon,font_boon_sunset, font_damage_number, font_health_number, font_outrun, font_health_number_white;
+
 
 
 font_boon = font_add_sprite_ext(s_font_boon, _font_string, true, 1);//characters I gotta add 死ぁあぃいぅうぇえぉおかがきぎくぐけこごしじすせぜそぞただだちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼェエォオカガキギクグケゲコゴサザシジスズソゾタダテデッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャュユョヨラリルレロワヌンヴカケブ
+font_boon_sunset = font_add_sprite_ext(s_font_boon_sunset, _font_string, true, 1);//characters I gotta add 死ぁあぃいぅうぇえぉおかがきぎくぐけこごしじすせぜそぞただだちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼェエォオカガキギクグケゲコゴサザシジスズソゾタダテデッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャュユョヨラリルレロワヌンヴカケブ
+
+
 var _font_string = "0123456789.-";
 font_damage_number = font_add_sprite_ext(s_font_crit_number_large, _font_string, true, 1);
+
+font_health_number_white = font_add_sprite_ext(s_font_health_numbers_white, _font_string, true, 1);
+
+
+scribble_font_add_from_sprite("s_font_crit_number_large", _font_string, 1);
+
+scribble_font_add_from_sprite("s_font_health_numbers", _font_string, 1);
+
+
+
+
+
 var _font_string = "0123456789-+./";
 font_health_number = f_vhs;// font_add_sprite_ext(s_font_health, _font_string, true, 1);
 
 //font_health_number = font_add(f_vhs)
 
-global.font_ui_numbers = "f_vhs";
+global.font_ui_numbers = "f_outrun";
 
 scribble_font_add_from_sprite("s_font_health", _font_string, 1);
 
@@ -705,10 +724,10 @@ card_array_queue = { //when we want to play a card scripts, it gets stored into 
 	array : [],
 	timer : 0,
 	time_func : function(){
-								var time_ = SEC*.25;
-								if fast_mode time_ *= .5;
-								return time_;
-							}
+				var time_ = SEC*.25;
+				if fast_mode time_ *= .5;
+				return time_;
+			}
 }
 
 
@@ -838,28 +857,56 @@ for (var i =0; i <e_token.size_;i++){
 	player.token_stats[@ i].amount_affects_stat_by2 =	token.amount2_per_level_up;
 	player.token_stats[@ i].amount_affects_stat_by3 =	token.amount3_per_level_up;	
 }
-synth_wave ={
-	
-	//initialis surfaces
-	surf : surface_create(200, 180),
-	clipping_mask : surface_create(180, 180),
-	col : floor(random(16777216)),
 
+
+
+
+
+
+
+max_number_of_enemies = 20;
+
+
+
+synth_wave = {
+	
+	
+	x_position : 0,
+	xtarget : 0,
+	
+	xscale_target : 0,
+	yscale_target : 0,
+	//initialis surfaces
+	surf : surface_create(400, 380),
+	clipping_mask : surface_create(380, 380),
+	col : floor(random(16777216)),
 	//ignore bm values - these were just for me messing with blend modes
 	bm_1 : 0,
 	bm_2 : 0,
-
 	//number of sides the shape will have
 	sides : irandom_range(4, 8),
-
 	//for opening/closing the portal
 	active : false,
-
 	//scaling the surface
 	xscale : 0,
 	yscale : 0,
 	
-	
+	xscale_target : 0,
+	yscale_target : 0
+}
+
+surf_bg_width = 1000;
+surf_bg_height = 1000;
+surf_bg = surface_create(surf_bg_width,surf_bg_width);
+
+
+meatball_str ={ 
+	surf_width : 1000,
+	surf_height : 1000,
+	surf : surface_create(1000,1000),
+	u_size : shader_get_uniform(sh_meatballs,"u_size_mod"),
+	ball_size : 2,
+	u_time : shader_get_uniform(sh_meatballs,"u_time"),
 }
 
 

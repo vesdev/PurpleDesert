@@ -1,6 +1,16 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_struct(struct, x , y ){
+
+if live_call(struct, x , y ) return live_result;
+
+
+
+
+//	draw_ellipse_color(x-xoff,y-yoff,x+xoff,y+yoff,c_white,c_black,false);
+
+	
+
 	if struct.selected_by_card.enable = true{
 
 		var y_light_off = 0;
@@ -196,7 +206,7 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 	draw_set_halign(fa_center);
 	draw_set_font(font_damage_number);
 		var x_ = x+xoffset +40 *struct.xscale_facing;
-		var y_ = y+z+yoffset-40;
+		var y_ = y+z+yoffset-50;
 		var critx = x_+5;
 		var crity = y_;
 		var text_size = 1;
@@ -211,8 +221,9 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 		var outline_thick = noone;
 		var outline = noone;
 		var front_color = noone;
+		number_struct.is_a_crit = true;
 		var is_a_crit = number_struct.is_a_crit;
-		
+	
 		
 		var rotate_square_size = 1;
 		var sqare_col = c_white;
@@ -278,13 +289,14 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 					
 					number_struct.outro_timer++;
 				
-					
-				
+	
 				}else{
 				
-				//	number_struct.outro_timer = 0;
-				//	number_struct.stay_static_timer = 0;
-				//	number_struct.intro_timer = 0;
+				//number_struct.outro_timer = 0;
+				//number_struct.stay_static_timer = 0;
+				//number_struct.intro_timer = 0;
+				
+				
 					number_struct.onscreen = false;
 					draw_set_color(c_white);
 					draw_set_font(font_boon);
@@ -315,6 +327,7 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 	}
 	
 	
+	y_ += 20;
 	
 	if struct.blocking_sprite != s_white_square { 
 	//shield
@@ -354,7 +367,7 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 	}
 	
 
-
+	
 
 
 		if outline_thick != noone { 

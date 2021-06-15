@@ -310,7 +310,7 @@ function  playable_character(title, hp, spr_idle, spr_hit, spr_low_hp, spr_victo
 		break;
 		
 		case e_token.coco_salmon:
-		case e_token.coco_beetle: turn = 3; starting_amount_ = 4;
+		case e_token.coco_beetle: turn = 5; starting_amount_ = 5;
 		break;
 	}
 	array_push(token_stats, new master_token_struct(turn , starting_amount_));
