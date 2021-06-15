@@ -909,6 +909,21 @@ meatball_str ={
 	u_time : shader_get_uniform(sh_meatballs,"u_time"),
 }
 
+//light system
+lighting = new LightSystem(0x050505);
+lighting.SetSize(camera.width, camera.height, .5);//width, height, quality(0-1)
+
+//light sources that gets used
+lights = [];
+
+//everything is drawn here casts a shadow
+drawLightSolids = function()
+{
+	//if(instance_exists(obj_mapgen)) draw_tilemap(wall_tilemap,0,0);
+	draw_player_minimap( obj_mapgen.draw_playerx-camera.x, obj_mapgen.draw_playery-camera.y);
+}
+
+
 
 depth = DEPTH_GAME;
 reset_battle_camera();

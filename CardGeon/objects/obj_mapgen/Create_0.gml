@@ -147,6 +147,10 @@ playery = 0;
 room_wmargin = 640; //makes sure the player never sees the edge of the room
 room_hmargin = 640;//to make it more mysterious
 room_notification = noone;
+
+player_light = new LightNode(playerx,playery,.99,0xFF99AA);
+array_push(o_game.lights, player_light);
+
 //generate rooms
 room_list = ds_list_create();
 struct_mapgen_create_rooms(room_list, NUMROOMS, (NUMROOMS)/2);
