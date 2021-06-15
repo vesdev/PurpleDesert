@@ -154,11 +154,8 @@
     {"id":{"name":"spr_glance_bg","path":"sprites/spr_glance_bg/spr_glance_bg.yy",},"order":2,},
     {"id":{"name":"s_white_square","path":"sprites/s_white_square/s_white_square.yy",},"order":13,},
     {"id":{"name":"s_dungeon_burned","path":"sprites/s_dungeon_burned/s_dungeon_burned.yy",},"order":5,},
-<<<<<<< HEAD
     {"id":{"name":"s_font_boon_sunset","path":"sprites/s_font_boon_sunset/s_font_boon_sunset.yy",},"order":12,},
-=======
     {"id":{"name":"sha_light_system_post","path":"shaders/sha_light_system_post/sha_light_system_post.yy",},"order":2,},
->>>>>>> origin/main
     {"id":{"name":"s_hit_antlion","path":"sprites/s_hit_antlion/s_hit_antlion.yy",},"order":1,},
     {"id":{"name":"seg_calculate","path":"scripts/seg_calculate/seg_calculate.yy",},"order":2,},
     {"id":{"name":"s_ui_bomb","path":"sprites/s_ui_bomb/s_ui_bomb.yy",},"order":7,},
