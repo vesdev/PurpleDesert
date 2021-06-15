@@ -5,7 +5,7 @@ function wave3D() constructor
 	tempCam = camera_create();
 
 	u_time = shader_get_uniform(sha_waves_3d, "time");
-	u_width = shader_get_uniform(sha_waves_3d, "width");
+	u_sat = shader_get_uniform(sha_waves_3d, "sat");
 
 	//Begin defining a format
 	vertex_format_begin();
@@ -65,7 +65,7 @@ function wave3D() constructor
 	}
 	vertex_end(vb_plane);
 	
-	static Draw = function()
+	static Draw = function(saturation)
 	{
 		var _s = sin(current_time*0.001)*20;
 		var _cam = view_current;
@@ -80,6 +80,7 @@ function wave3D() constructor
 
 		shader_set(sha_waves_3d);
 		shader_set_uniform_f(u_time, current_time*0.0001);
+		shader_set_uniform_f(u_sat, saturation);
 		vertex_submit(vb_plane, pr_trianglelist, -1);
 		shader_reset();
 

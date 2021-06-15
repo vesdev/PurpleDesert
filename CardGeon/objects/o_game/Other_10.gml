@@ -98,7 +98,7 @@ surf_bg = surface_create(surf_bg_width,surf_bg_height);
 
 
 draw_synth();
-waves3d.Draw();
+waves3d.Draw(1.5);
 
 sprite_set_live(s_rainy_street,1);
 

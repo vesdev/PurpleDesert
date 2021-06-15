@@ -12,7 +12,6 @@ varying vec4 v_vColour;
 varying float fTime;
 
 uniform float time;
-uniform float width;
 
 float random (in vec2 st) {
     return fract(sin(dot(st.xy,

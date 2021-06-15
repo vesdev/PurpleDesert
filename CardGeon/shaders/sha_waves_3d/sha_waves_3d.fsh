@@ -7,6 +7,7 @@ varying vec4 v_vColour;
 varying float fTime;
 
 const float outline = 0.08;
+uniform float sat;
 
 float random (in vec2 st) {
     return fract(sin(dot(st.xy,
@@ -57,9 +58,11 @@ void main()
 		smoothstep(1.-v_vTexcoord.y, outline, .5)
 		);
 		
-	col.r *= fbm(v_vTexcoord*1.+fTime*10.);
-	col.g *= fbm(v_vTexcoord*2.+fTime*10.)*.4;
-	col.b *= fbm(v_vTexcoord*2.+fTime*10.);
+		
+	float grad = gl_FragCoord.y*0.001;
+	col.r *= fbm(v_vTexcoord*1.+fTime*10.)*grad*sat;
+	col.g *= fbm(v_vTexcoord*2.+fTime*10.)*grad*.4*sat;
+	col.b *= fbm(v_vTexcoord*2.+fTime*10.)*grad*sat;
 	col.a = 1.;
 	
 	
