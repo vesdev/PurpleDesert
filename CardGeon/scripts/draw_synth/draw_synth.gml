@@ -1,10 +1,15 @@
 // Script assets have changed for v2.3.0 see
 function draw_synth(){
-
-
-	with o_game.synth_wave{
+	
+	if live_call() return live_result;
 	
 
+	with o_game.synth_wave{
+		
+		xscale_target = 2;
+		yscale_target = 2;
+		
+		
 		var currnet_enemy = 0;
 	
 		var current_x = 0; //enmy position

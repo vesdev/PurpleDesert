@@ -18,9 +18,6 @@ function boon_randomize() {
 //https://slay-the-spire.fandom.com/wiki/Buffs  great base until we get something original
 //https://slay-the-spire.fandom.com/wiki/Debuff
 	
-	
-	
-	
 function struct_buff(amount, lose_per_turn, sprite,  title, desc_func ) constructor  { 
 	self.amount = amount;
 	self.lose_per_turn = lose_per_turn;
