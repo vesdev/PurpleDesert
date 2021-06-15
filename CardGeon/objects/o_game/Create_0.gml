@@ -924,6 +924,8 @@ drawLightSolids = function()
 }
 
 
+//3d waves
+waves3d = new wave3D();
 
 depth = DEPTH_GAME;
 reset_battle_camera();

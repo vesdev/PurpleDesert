@@ -90,6 +90,7 @@ surface_reset_target();
 
 	draw_surface(surf_bg,-camera.width*.5,-camera.height*.5);
 
+	
 }else{
 surf_bg = surface_create(surf_bg_width,surf_bg_height);	
 }
@@ -97,6 +98,7 @@ surf_bg = surface_create(surf_bg_width,surf_bg_height);
 
 
 draw_synth();
+waves3d.Draw();
 
 sprite_set_live(s_rainy_street,1);
 
