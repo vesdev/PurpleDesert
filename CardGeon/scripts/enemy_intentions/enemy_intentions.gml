@@ -1,18 +1,20 @@
 // Script assets have changed for v2.3.0 
 
 function draw_enemy_intention(xx,yy, construct, sprite_only){
-	
+
 	
 		//don't show the attacking sprite
 		if current_turn = e_current_turn.enemy_ and construct.finished_attacking exit;
-		var override = false;
-		var override_text = "";
-		var override_sprite = noone;
-		if construct.buff.asleep.amount > 0  { 
-			override_text = "IS ASLEEP [s_status_sleep]";
-			override_sprite = s_status_sleep;
-			override = true;
-		}
+
+
+			var override = false;
+			var override_text = "";
+			var override_sprite = noone;
+			if construct.buff.asleep.amount > 0  { 
+				override_text = "IS ASLEEP [s_status_sleep]";
+				override_sprite = s_status_sleep;
+				override = true;
+			}
 		
 		xx += construct.intention_x_offset;
 		
@@ -58,8 +60,6 @@ function draw_enemy_intention(xx,yy, construct, sprite_only){
 					var x_ = xx+spr_width*.51;
 					var y_ = yy+spr_height*.5;
 					//.draw(xx+spr_width*.51,yy+spr_height*.5);
-			
-			
 					scr.blend(c_black,1).draw(x_-1,y_);
 					scr.draw(x_-1,y_);
 					scr.draw(x_+1,y_);
@@ -68,18 +68,18 @@ function draw_enemy_intention(xx,yy, construct, sprite_only){
 					scr.draw(x_+2,y_+2);
 					scr.draw(x_+2,y_+1);
 					scr.blend(c_white,1).draw(x_,y_);
-	
-			
-					
-					
-					
-					
-			
 			}
 		}else{
 			sprite = override_sprite;	
 		}
-		//	draw_outline_thick(sprite,0,xx,yy,1,1,0,c_white,1);
+			draw_outline_thick(sprite,0,xx+2,yy+2,1,1,0,c_black,1);
+			draw_outline_thick(sprite,0,xx+1,yy+1,1,1,0,c_black,1);
+			draw_outline_thick(sprite,0,xx-1,yy,1,1,0,c_black,1);
+			draw_outline_thick(sprite,0,xx+1,yy,1,1,0,c_black,1);
+			draw_outline_thick(sprite,0,xx,yy+1,1,1,0,c_black,1);
+			draw_outline_thick(sprite,0,xx,yy-1,1,1,0,c_black,1);
+			
+			draw_outline_thick(sprite,0,xx,yy,1,1,0,C_PINK,1);
 			draw_outline(sprite,0,xx,yy,1,1,0,C_DARK,1);
 			draw_sprite_ext(sprite,0,xx,yy,1,1,0,c_white,1);
 			construct.intent_timer = 0;

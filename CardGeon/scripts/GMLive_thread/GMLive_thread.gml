@@ -41,8 +41,7 @@ function gml_thread(l_program,l_actions,l_args1,l_locals,l_self1,l_other1,l_offs
 		var l_q=self.h_scope;
 		if(l_q!=undefined)for(l_q=self.h_scope.h_next;l_q!=undefined;l_q=l_q.h_next){
 			var l_p=l_q.h_offset;
-			var l_ap=gml_std_haxe_enum_tools_getParameter(ds_list_find_value(l_q.h_actions,(l_p>0?l_p-1:0)),0);
-			l_s+="\n called from "+l_ap.h_to_string();
+			l_s+="\n called from "+gml_std_haxe_enum_tools_getParameter(ds_list_find_value(l_q.h_actions,(l_p>0?l_p-1:0)),0).h_to_string();
 		}
 		return l_s;
 	}

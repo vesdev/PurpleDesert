@@ -47,7 +47,6 @@ gpu_set_blendmode(bm_normal);
 
 
 
-
 var yoffset = 30;
 var alpha = 1;
 var color = merge_color( C_PINK , C_DARK,.85);
@@ -85,6 +84,7 @@ gpu_set_blendmode(bm_add);
 
 
 
+
 	gpu_set_blendmode(bm_normal);
 surface_reset_target();
 
@@ -93,8 +93,9 @@ surface_reset_target();
 }else{
 surf_bg = surface_create(surf_bg_width,surf_bg_height);	
 }
-
-
+str_sunset.x = -camera.width*.5;
+str_sunset.y = -camera.width*.3;
+str_sunset.draw();
 
 draw_synth();
 
@@ -368,6 +369,9 @@ if draw_status_information != false  {
 	status_info.scribble_desc.draw(x_,y_);
 	
 }
+
+
+
 
 if m1_release { 
 		hovered_over_card = false;	

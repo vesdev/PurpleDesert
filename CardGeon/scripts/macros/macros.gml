@@ -22,10 +22,12 @@
 #macro C_GUM   make_color_rgb(248, 16, 88) //default red color
 #macro C_WINE make_color_rgb(153, 18, 87)
 #macro C_RED make_color_rgb(248, 0, 0) //hard red color
-#macro C_PINK $B04DFF //make_color_rgb(255,50,197)
+#macro C_PINK make_color_rgb(255, 101, 162)
 #macro C_LIME $79FF00 // make_color_rgb(45 ,255,63)
-#macro C_YELLOW $00FFED //make_color_rgb(248, 248, 0)
+#macro C_YELLOW make_color_rgb(255,244,76)
 #macro C_PURPLE make_color_rgb(167, 69,  233)
+#macro C_PEACH make_color_rgb(255, 151, 129)
+
 #macro C_AQUA $FFCA00 // make_color_rgb(10, 246, 250)
 #macro C_FUCHISIA make_color_rgb(255,53,253) 
 #macro C_BLUE make_color_rgb(8,212,252 )

@@ -158,11 +158,11 @@ function gml_builder(l_pg,l_src)constructor{
 					case "self":self.h_out_node=gml_node_self(l_tk0.h_d);break;
 					case "other":self.h_out_node=gml_node_other(l_tk0.h_d);break;
 					default:
-						if(gml_asset_index.h_get(l_s1)!=undefined){
-							l_i=gml_asset_index.h_get(l_s1);
+						if(variable_struct_get(gml_asset_index.h_obj,l_s1)!=undefined){
+							l_i=variable_struct_get(gml_asset_index.h_obj,l_s1);
 							self.h_out_node=gml_node_number(l_tk0.h_d,l_i,undefined);
 						} else {
-							var l_m=self.h_program.h_macro_map.h_get(l_s1);
+							var l_m=variable_struct_get(self.h_program.h_macro_map.h_obj,l_s1);
 							if(l_m!=undefined&&l_m.h_is_expr){
 								self.h_out_node=gml_node_tools_clone(l_m.h_node);
 							} else {
@@ -291,25 +291,18 @@ function gml_builder(l_pg,l_src)constructor{
 						var l_d=l_tk0.h_d;
 						if(self.h_offset>=self.h_length){
 							self.h_out_node=gml_node_global_ref(l_d);
-						} else {
-							var l__g1=self.h_tokens[self.h_offset];
-							if(l__g1==undefined){
-								self.h_out_node=gml_node_global_ref(l_d);
-							} else if(l__g1.__enumIndex__==5){
-								l_tk=self.h_tokens[self.h_offset++];
-								if(self.h_offset>=self.h_length){
-									return self.h_expect("a field name",l_tk);
-								} else {
-									var l__g1=self.h_tokens[self.h_offset];
-									if(l__g1==undefined){
-										return self.h_expect("a field name",self.h_tokens[self.h_offset]);
-									} else if(l__g1.__enumIndex__==10){
-										self.h_offset+=1;
-										self.h_out_node=gml_node_global(l__g1.h_d,l__g1.h_id);
-									} else return self.h_expect("a field name",self.h_tokens[self.h_offset]);
-								}
-							} else self.h_out_node=gml_node_global_ref(l_d);
-						}
+						} else if(self.h_tokens[self.h_offset].__enumIndex__==5){
+							l_tk=self.h_tokens[self.h_offset++];
+							if(self.h_offset>=self.h_length){
+								return self.h_expect("a field name",l_tk);
+							} else {
+								var l__g1=self.h_tokens[self.h_offset];
+								if(l__g1.__enumIndex__==10){
+									self.h_offset+=1;
+									self.h_out_node=gml_node_global(l__g1.h_d,l__g1.h_id);
+								} else return self.h_expect("a field name",self.h_tokens[self.h_offset]);
+							}
+						} else self.h_out_node=gml_node_global_ref(l_d);
 						break;
 					case 26:
 						if(self.h_offset>=self.h_length){
@@ -329,7 +322,7 @@ function gml_builder(l_pg,l_src)constructor{
 					case 25:
 						if(self.h_build_expr(l_flags))return true;
 						var l__g1=self.h_out_node;
-						if(l__g1.__enumIndex__==17)self.h_out_node=gml_node_construct(l__g1.h_d,l__g1.h_x,l__g1.h_args); else return self.h_expect("a callable value after `new`",l_tk0);
+						if(l__g1.__enumIndex__==22)self.h_out_node=gml_node_construct(l__g1.h_d,l__g1.h_x,l__g1.h_args); else return self.h_expect("a callable value after `new`",l_tk0);
 						break;
 					case 24:
 						var l_d=l_tk0.h_d;
@@ -342,13 +335,11 @@ function gml_builder(l_pg,l_src)constructor{
 							while(--l_n>=0){
 								if(self.h_scripts[l_n].h_name==l_s)break;
 							}
-							if(!(l_n>0))break;
+							if(l_n<=0)break;
 						}
 						var l_scrName;
 						var l__g1=self.h_tokens[self.h_offset];
-						if(l__g1==undefined){
-							l_scrName=undefined;
-						} else if(l__g1.__enumIndex__==10){
+						if(l__g1.__enumIndex__==10){
 							var l__name=l__g1.h_id;
 							self.h_offset+=1;
 							l_scrName=l__name;
@@ -369,13 +360,17 @@ function gml_builder(l_pg,l_src)constructor{
 						l_scr.h_named_args=self.h_build_script_args_map;
 						self.h_build_script_args_map=undefined;
 						l_scr.h_arguments=self.h_build_script_args_argc;
+						var l_argPrefix=self.h_build_script_args_prefix;
 						gml_std_gml_internal_ArrayImpl_push(self.h_scripts,l_scr);
 						self.h_current_script=l_s;
 						if(self.h_offset>=self.h_length)return self.h_error_at("Expected function body",self.h_source.h_get_eof());
 						l_tk=self.h_tokens[self.h_offset];
 						if(l_tk.__enumIndex__==22)var l__g1=l_tk.h_d; else return self.h_expect("a `{`",self.h_tokens[self.h_offset]);
 						self.h_build_line();
-						l_scr.h_node=self.h_out_node;
+						if(l_argPrefix!=undefined){
+							gml_std_gml_internal_ArrayImpl_push(l_argPrefix,self.h_out_node);
+							l_scr.h_node=gml_node_block(gml_std_haxe_enum_tools_getParameter(self.h_out_node,0),l_argPrefix);
+						} else l_scr.h_node=self.h_out_node;
 						self.h_out_node=gml_node_func_literal(l_d,l_s);
 						self.h_current_script=l_oldName;
 						break;
@@ -577,20 +572,15 @@ function gml_builder(l_pg,l_src)constructor{
 						self.h_out_node=gml_node_block(l_d,[]);
 						while(self.h_offset<self.h_length){
 							l_tk2=self.h_tokens[self.h_offset++];
-							if(l_tk2==undefined){
-								return self.h_error("Expected a global variable name.",l_tk2);
-							} else if(l_tk2.__enumIndex__==10){
+							if(l_tk2.__enumIndex__==10){
 								l_d=l_tk2.h_d;
 								l_s=l_tk2.h_id;
 								l_i=array_length(self.h_macro_names);
 								self.h_macro_names[@l_i]=l_s;
 								self.h_macro_nodes[@l_i]=new gml_macro(l_s,gml_node_global(l_d,l_s),true,false);
-								var l__g1=self.h_tokens[self.h_offset];
-								if(l__g1!=undefined){
-									if(l__g1.__enumIndex__==4){
-										self.h_offset+=1;
-										continue;
-									}
+								if(self.h_tokens[self.h_offset].__enumIndex__==4){
+									self.h_offset+=1;
+									continue;
 								}
 							} else return self.h_error("Expected a global variable name.",l_tk2);
 							break;
@@ -607,9 +597,7 @@ function gml_builder(l_pg,l_src)constructor{
 								case 10:
 									if(self.h_offset>=self.h_length)return self.h_error_at("Expected a variable value",self.h_source.h_get_eof());
 									l_tk=self.h_tokens[self.h_offset];
-									if(l_tk==undefined){
-										self.h_out_node=undefined;
-									} else if(l_tk.__enumIndex__==17){
+									if(l_tk.__enumIndex__==17){
 										if(l_tk.h_op==-1){
 											self.h_offset+=1;
 											if(self.h_build_expr(0))return true;
@@ -673,7 +661,7 @@ function gml_builder(l_pg,l_src)constructor{
 										} else self.h_out_node=undefined;
 										var l_ec=new gml_enum_ctr(l__g1.h_id,l__g1.h_d,self.h_out_node);
 										gml_std_gml_internal_ArrayImpl_push(l_e.h_ctr_list,l_ec);
-										l_e.h_ctr_map.h_set(l_ec.h_name,l_ec);
+										variable_struct_set(l_e.h_ctr_map.h_obj,l_ec.h_name,l_ec);
 										l_sep=false;
 									} else return self.h_expect("a comma or a closing bracket",self.h_tokens[self.h_offset]);
 									break;
@@ -689,20 +677,15 @@ function gml_builder(l_pg,l_src)constructor{
 						l_x1=self.h_out_node;
 						if(self.h_offset>=self.h_length)return self.h_error_at("Expected a then-expression",self.h_source.h_get_eof());
 						var l__g1=self.h_tokens[self.h_offset];
-						if(l__g1!=undefined){
-							if(l__g1.__enumIndex__==9){
-								if(l__g1.h_kw==5)self.h_offset+=1;
-							}
+						if(l__g1.__enumIndex__==9){
+							if(l__g1.h_kw==5)self.h_offset+=1;
 						}
 						if(self.h_build_line())return true;
 						l_x2=self.h_out_node;
 						l_i=self.h_offset;
 						if(self.h_offset<self.h_length){
 							var l__g1=self.h_tokens[self.h_offset];
-							if(l__g1==undefined){
-								self.h_offset=l_i;
-								l_x=undefined;
-							} else if(l__g1.__enumIndex__==9){
+							if(l__g1.__enumIndex__==9){
 								if(l__g1.h_kw==6){
 									self.h_offset+=1;
 									if(self.h_build_line())return true;
@@ -809,62 +792,32 @@ function gml_builder(l_pg,l_src)constructor{
 					case 14:
 						var l_d=l__g;
 						if(self.h_offset>=self.h_length)return self.h_error_at("Expected for-loop header",self.h_source.h_get_eof());
-						var l__g1=self.h_tokens[self.h_offset];
-						if(l__g1==undefined){
-							l_proc=false;
-						} else if(l__g1.__enumIndex__==18){
+						if(self.h_tokens[self.h_offset].__enumIndex__==18){
 							self.h_offset+=1;
 							l_proc=true;
 						} else l_proc=false;
 						if(self.h_offset>=self.h_length)return self.h_error_at("Expected for-loop init",self.h_source.h_get_eof());
-						var l__g1=self.h_tokens[self.h_offset];
-						if(l__g1==undefined){
-							if(self.h_build_line_inner(true))return true;
-							l_x=self.h_out_node;
-							var l__g2=self.h_tokens[self.h_offset];
-							if(l__g2!=undefined){
-								if(l__g2.__enumIndex__==3)self.h_offset+=1;
-							}
-						} else if(l__g1.__enumIndex__==3){
+						if(self.h_tokens[self.h_offset].__enumIndex__==3){
 							self.h_offset+=1;
 							l_x=gml_node_block(l_d,[]);
 						} else {
 							if(self.h_build_line_inner(true))return true;
 							l_x=self.h_out_node;
-							var l__g1=self.h_tokens[self.h_offset];
-							if(l__g1!=undefined){
-								if(l__g1.__enumIndex__==3)self.h_offset+=1;
-							}
+							if(self.h_tokens[self.h_offset].__enumIndex__==3)self.h_offset+=1;
 						}
 						if(self.h_offset>=self.h_length)return self.h_error_at("Expected for-loop condition",self.h_source.h_get_eof());
-						var l__g1=self.h_tokens[self.h_offset];
-						if(l__g1==undefined){
-							if(self.h_build_expr(0))return true;
-							l_x1=self.h_out_node;
-							if(self.h_offset>=self.h_length)return self.h_error_at("Expected for-loop post-action",self.h_source.h_get_eof());
-							var l__g2=self.h_tokens[self.h_offset];
-							if(l__g2!=undefined){
-								if(l__g2.__enumIndex__==3)self.h_offset+=1;
-							}
-						} else if(l__g1.__enumIndex__==3){
+						if(self.h_tokens[self.h_offset].__enumIndex__==3){
 							self.h_offset+=1;
 							l_x1=gml_node_number(l_d,1,"1");
 						} else {
 							if(self.h_build_expr(0))return true;
 							l_x1=self.h_out_node;
 							if(self.h_offset>=self.h_length)return self.h_error_at("Expected for-loop post-action",self.h_source.h_get_eof());
-							var l__g1=self.h_tokens[self.h_offset];
-							if(l__g1!=undefined){
-								if(l__g1.__enumIndex__==3)self.h_offset+=1;
-							}
+							if(self.h_tokens[self.h_offset].__enumIndex__==3)self.h_offset+=1;
 						}
 						if(self.h_offset>=self.h_length)return self.h_error_at("Expected for-loop post-action",self.h_source.h_get_eof());
 						if(l_proc){
-							var l__g1=self.h_tokens[self.h_offset];
-							if(l__g1==undefined){
-								if(self.h_build_line())return true;
-								l_x2=self.h_out_node;
-							} else if(l__g1.__enumIndex__==19){
+							if(self.h_tokens[self.h_offset].__enumIndex__==19){
 								self.h_offset+=1;
 								l_proc=false;
 								l_x2=gml_node_block(l_d,[]);
@@ -877,12 +830,7 @@ function gml_builder(l_pg,l_src)constructor{
 							l_x2=self.h_out_node;
 						}
 						if(l_proc){
-							var l__g1=self.h_tokens[self.h_offset];
-							if(l__g1==undefined){
-								return self.h_expect("a closing parenthesis",self.h_tokens[self.h_offset]);
-							} else if(l__g1.__enumIndex__==19){
-								self.h_offset+=1;
-							} else return self.h_expect("a closing parenthesis",self.h_tokens[self.h_offset]);
+							if(self.h_tokens[self.h_offset].__enumIndex__==19)self.h_offset+=1; else return self.h_expect("a closing parenthesis",self.h_tokens[self.h_offset]);
 						}
 						if(self.h_build_line())return true;
 						self.h_out_node=gml_node_for(l_d,l_x,l_x1,l_x2,self.h_out_node);
@@ -957,10 +905,7 @@ function gml_builder(l_pg,l_src)constructor{
 								if(l__g1.h_kw==22)self.h_offset+=1; else return self.h_error("Expected a catch-block",self.h_tokens[self.h_offset]);
 							} else return self.h_error("Expected a catch-block",self.h_tokens[self.h_offset]);
 						}
-						var l__g1=self.h_tokens[self.h_offset];
-						if(l__g1==undefined){
-							l_proc=false;
-						} else if(l__g1.__enumIndex__==18){
+						if(self.h_tokens[self.h_offset].__enumIndex__==18){
 							self.h_offset+=1;
 							l_proc=true;
 						} else l_proc=false;
@@ -1031,7 +976,7 @@ function gml_builder(l_pg,l_src)constructor{
 				break;
 			case 10:
 				var l_s=l_tk.h_id;
-				var l_m=self.h_program.h_macro_map.h_get(l_s);
+				var l_m=variable_struct_get(self.h_program.h_macro_map.h_obj,l_s);
 				if(l_m!=undefined&&l_m.h_is_stat){
 					self.h_out_node=gml_node_tools_clone(l_m.h_node);
 				} else {
@@ -1073,7 +1018,7 @@ function gml_builder(l_pg,l_src)constructor{
 		}
 		return false;
 	}
-	static h_build_outer=function(l_name,l_namedArgs,l_namedArgc,l_isFunc){
+	static h_build_outer=function(l_name,l_namedArgs,l_namedArgc,l_isFunc,l_prefixStatements){
 		self.h_current_script=l_name;
 		var l_pos;
 		if(self.h_offset>=self.h_length)l_pos=self.h_source.h_get_eof(); else l_pos=self.h_tokens[self.h_offset].h_d;
@@ -1085,10 +1030,17 @@ function gml_builder(l_pg,l_src)constructor{
 		var l_nodes;
 		if(l_isFunc){
 			if(self.h_build_line())return true;
-			l_scr.h_node=self.h_out_node;
+			var l_scrNode=self.h_out_node;
+			if(l_prefixStatements!=undefined){
+				gml_std_gml_internal_ArrayImpl_push(l_prefixStatements,l_scrNode);
+				l_scrNode=gml_node_block(gml_std_haxe_enum_tools_getParameter(l_scrNode,0),l_prefixStatements);
+			}
+			l_scr.h_node=l_scrNode;
 			l_scr=self.h_scripts[0];
 			var l__g=l_scr.h_node;
-			if(l__g.__enumIndex__==92)l_nodes=l__g.h_nodes; else l_nodes=[l_scr.h_node];
+			if(l__g.__enumIndex__==97)l_nodes=l__g.h_nodes; else l_nodes=[l_scr.h_node];
+		} else if(l_prefixStatements!=undefined){
+			l_nodes=l_prefixStatements;
 		} else l_nodes=[];
 		while(self.h_offset<self.h_length){
 			var l__g=self.h_tokens[self.h_offset];
@@ -1119,6 +1071,7 @@ function gml_builder(l_pg,l_src)constructor{
 		var l_nextArgs=new haxe_ds_string_map();
 		var l_nextArgc=0;
 		var l_proc=true;
+		var l_nextPrefix=undefined;
 		if(self.h_offset>=self.h_length)return self.h_error_at("Expected script arguments",self.h_source.h_get_eof());
 		var l__g=self.h_tokens[self.h_offset];
 		var l_tmp;
@@ -1127,15 +1080,24 @@ function gml_builder(l_pg,l_src)constructor{
 			self.h_offset+=1;
 		} else while(l_proc&&self.h_offset<self.h_length){
 			var l__g=self.h_tokens[self.h_offset];
-			if(l__g==undefined){
-				return self.h_expect("an argument",self.h_tokens[self.h_offset]);
-			} else if(l__g.__enumIndex__==10){
-				var l_s=l__g.h_id;
-				var l_nextArg=l_s;
-				if(l_nextArgs.h_exists(l_nextArg))return self.h_error("An argument named "+l_nextArg+" is already defined at position "+gml_std_Std_stringify(l_nextArgs.h_get(l_nextArg)),self.h_tokens[self.h_offset]);
-				l_nextArgs.h_set(l_s,l_nextArgc);
-				l_nextArgc++;
+			if(l__g.__enumIndex__==10){
+				var l_argName=l__g.h_id;
+				var l_nextArg=l_argName;
+				if(variable_struct_exists(l_nextArgs.h_obj,l_nextArg))return self.h_error("An argument named "+l_nextArg+" is already defined at position "+gml_std_Std_stringify(variable_struct_get(l_nextArgs.h_obj,l_nextArg)),self.h_tokens[self.h_offset]);
+				var l_argIndex=l_nextArgc++;
+				variable_struct_set(l_nextArgs.h_obj,l_argName,l_argIndex);
 				self.h_offset+=1;
+				var l__g2=self.h_tokens[self.h_offset];
+				if(l__g2.__enumIndex__==17){
+					if(l__g2.h_op==-1){
+						var l_defPos=l__g2.h_d;
+						self.h_offset+=1;
+						if(self.h_build_expr(0))return true;
+						var l_ifNode=gml_node_if_then(l_defPos,gml_node_bin_op(l_defPos,64,gml_node_arg_const(l_defPos,l_argIndex),gml_node_undefined(l_defPos)),gml_node_set_op(l_defPos,-1,gml_node_arg_const(l_defPos,l_argIndex),self.h_out_node),undefined);
+						if(l_nextPrefix==undefined)l_nextPrefix=[];
+						gml_std_gml_internal_ArrayImpl_push(l_nextPrefix,l_ifNode);
+					}
+				}
 				switch(self.h_tokens[self.h_offset].__enumIndex__){
 					case 19:
 						self.h_offset+=1;
@@ -1148,12 +1110,14 @@ function gml_builder(l_pg,l_src)constructor{
 		}
 		self.h_build_script_args_map=l_nextArgs;
 		self.h_build_script_args_argc=l_nextArgc;
+		self.h_build_script_args_prefix=l_nextPrefix;
 		return false;
 	}
+	static h_build_script_args_prefix=undefined;
 	static h_build_script_args_map=undefined;
 	static h_build_script_args_argc=undefined;
 	static h_build_loop=function(l_first){
-		if(self.h_build_outer(l_first,undefined,0,false))return true;
+		if(self.h_build_outer(l_first,undefined,0,false,undefined))return true;
 		var l_hasFirstFunc=false;
 		while(self.h_offset<self.h_length){
 			var l_tk=self.h_tokens[self.h_offset];
@@ -1163,6 +1127,7 @@ function gml_builder(l_pg,l_src)constructor{
 					var l_nextName=l_tk.h_name;
 					var l_nextArgs=undefined;
 					var l_nextArgc=0;
+					var l_nextPrefix=undefined;
 					if(!(l_tk.h_lb||self.h_offset>=self.h_length)){
 						var l__g1=self.h_tokens[self.h_offset];
 						var l_tmp;
@@ -1172,10 +1137,11 @@ function gml_builder(l_pg,l_src)constructor{
 							if(self.h_build_script_args())return true;
 							l_nextArgs=self.h_build_script_args_map;
 							l_nextArgc=self.h_build_script_args_argc;
+							l_nextPrefix=self.h_build_script_args_prefix;
 							self.h_build_script_args_map=undefined;
 						}
 					}
-					if(self.h_build_outer(l_nextName,l_nextArgs,l_nextArgc,false))return true;
+					if(self.h_build_outer(l_nextName,l_nextArgs,l_nextArgc,false,l_nextPrefix))return true;
 					break;
 				case 9:
 					if(l_tk.h_kw==24){
@@ -1206,7 +1172,7 @@ function gml_builder(l_pg,l_src)constructor{
 						}
 						var l_nextArgs1=self.h_build_script_args_map;
 						self.h_build_script_args_map=undefined;
-						if(self.h_build_outer(l_nextName1,l_nextArgs1,self.h_build_script_args_argc,true))return true;
+						if(self.h_build_outer(l_nextName1,l_nextArgs1,self.h_build_script_args_argc,true,self.h_build_script_args_prefix))return true;
 					} else return self.h_expect("A script declaration",l_tk);
 					break;
 				default:return self.h_expect("A script declaration",l_tk);
@@ -1217,6 +1183,7 @@ function gml_builder(l_pg,l_src)constructor{
 	static h_program=undefined;
 	self.h_build_script_args_argc=0;
 	self.h_build_script_args_map=undefined;
+	self.h_build_script_args_prefix=[];
 	self.h_current_script=undefined;
 	self.h_error_text=undefined;
 	self.h_macro_nodes=[];

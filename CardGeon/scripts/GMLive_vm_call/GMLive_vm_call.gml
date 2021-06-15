@@ -83,17 +83,11 @@ function vm_group_call_call_func(l_th,l_act,l_func,l_instFlags,l_array1,l_arrOff
 		case -6:
 			l_notFound=true;
 			with (l_inst[l_inst[0]]) {
-				if(l_argc<81){
-					var l_cf=vm_impl_gml_thread_construct_funcs[l_argc];
-					l_v1=l_cf(l_func,l_array1,l_arrOffset);
-				} else l_v1=vm_impl_gml_thread_construct_error();
+				if(l_argc<81)l_v1=vm_impl_gml_thread_construct_funcs[l_argc](l_func,l_array1,l_arrOffset); else l_v1=vm_impl_gml_thread_construct_error();
 				l_notFound=false;
 			}
 			if(l_notFound){
-				if(l_argc<81){
-					var l_cf=vm_impl_gml_thread_construct_funcs[l_argc];
-					l_v1=l_cf(l_func,l_array1,l_arrOffset);
-				} else l_v1=vm_impl_gml_thread_construct_error();
+				if(l_argc<81)l_v1=vm_impl_gml_thread_construct_funcs[l_argc](l_func,l_array1,l_arrOffset); else l_v1=vm_impl_gml_thread_construct_error();
 			}
 			break;
 		default:
@@ -133,12 +127,13 @@ function vm_group_call_on_call_script(l_th,l_act){
 	var l_n=l_act.h_argc;
 	var l_q=l_th.h_scope;
 	var l_st=l_q.h_stack;
-	var l_args1=[];
+	var l_arr=[];
 	var l_k=l_st[0]-l_n;
-	array_copy(l_args1,0,l_st,l_k+1,l_n);
+	array_copy(l_arr,0,l_st,l_k+1,l_n);
 	array_copy(l_st,l_k+1,gml_stack_fill_value_arr,0,l_n);
 	l_st[@0]=l_k;
-	if(array_length(l_args1)<l_scr.h_arguments)array_resize(l_args1,l_scr.h_arguments);
+	var l_args1=l_arr;
+	gml_value_list_pad_to_size_with_null(l_args1,l_scr.h_arguments);
 	var l_inst=l_q.h_inst;
 	var l_nq=new gml_thread_scope(l_scr.h_actions,0,l_args1,array_create(l_scr.h_locals),l_inst[l_inst[0]],l_inst[l_inst[0]-1],l_q);
 	l_nq.h_program=l_q.h_program;
@@ -250,7 +245,7 @@ function live_method(l_newSelf,l_func){
 	if(live_enabled){
 		if(is_method(l_func)){
 			var l_meta=method_get_self(l_func);
-			if(variable_struct_exists(l_meta,"live:self")){
+			if(is_struct(l_meta)&&variable_struct_exists(l_meta,"live:self")){
 				var l_nmeta=haxe__dynamic_access_dynamic_access_impl__copy(l_meta);
 				variable_struct_set(l_nmeta,"live:self",l_newSelf);
 				return method(l_nmeta,l_func);
@@ -260,24 +255,37 @@ function live_method(l_newSelf,l_func){
 	}else return undefined;
 }
 
+function live_method_get_self(l_func){
+	if(live_enabled){
+		var l_fnSelf=method_get_self(l_func);
+		if(is_struct(l_fnSelf)&&variable_struct_exists(l_fnSelf,"live:self"))return variable_struct_get(l_fnSelf,"live:self");
+		return l_fnSelf;
+	}else return undefined;
+}
+
 if(live_enabled)
 function vm_group_call_on_func_literal_lf(){
 	if(false)show_debug_message(argument[argument_count-1]);
 	var l_meta=self;
 	var l_ctx=variable_struct_get(l_meta,"live:context");
-	if(l_ctx==undefined)throw gml_std_haxe_Exception_thrown("It would appear that you've re-bound a GMLive function to a different scope. Please use live_method() rather than method() to do so.");
+	var l_pg;
+	if(l_ctx!=undefined){
+		var l_livedata=variable_struct_get(live_live_map.h_obj,l_ctx);
+		if(l_livedata==undefined)throw gml_std_haxe_Exception_thrown("Trying to call a nonexistent GMLive program: "+l_ctx);
+		l_pg=l_livedata.program;
+		if(l_pg==undefined){
+			live_log("Trying to call a broken GMLive program "+l_ctx+", returning undefined");
+			return undefined;
+		}
+	} else {
+		l_pg=variable_struct_get(l_meta,"live:program");
+		if(l_pg==undefined)throw gml_std_haxe_Exception_thrown("It would appear that you've re-bound a GMLive function to a different scope. Please use live_method() rather than method() to do so.");
+	}
 	var l_argc=argument_count;
 	var l_args1=array_create(l_argc);
 	var l_i=0;
 	for(var l__g1=l_argc;l_i<l__g1;l_i++){
 		l_args1[@l_i]=argument[l_i];
-	}
-	var l_livedata=live_live_map.h_get(l_ctx);
-	if(l_livedata==undefined)throw gml_std_haxe_Exception_thrown("Trying to call a nonexistent GMLive program: "+l_ctx);
-	var l_pg=l_livedata.program;
-	if(l_pg==undefined){
-		live_log("Trying to call a broken GMLive program "+l_ctx+", returning undefined");
-		return undefined;
 	}
 	live_custom_self=variable_struct_get(l_meta,"live:self");
 	live_custom_other=self;
@@ -296,8 +304,10 @@ function vm_group_call_on_func_literal(l_th,l_act){
 	var l_q=l_th.h_scope;
 	var l_meta={}
 	var l_this1=l_q.h_inst;
-	variable_struct_set(l_meta,"live:self",l_this1[l_this1[0]]);
-	variable_struct_set(l_meta,"live:context",l_th.h_scope.h_program.h_live_ident);
+	var l_funcSelf=l_this1[l_this1[0]];
+	if(!is_struct(l_funcSelf)&&instanceof(l_funcSelf)=="instance")l_funcSelf=l_funcSelf.id;
+	variable_struct_set(l_meta,"live:self",l_funcSelf);
+	if(l_th.h_scope.h_program.h_live_ident!=undefined)variable_struct_set(l_meta,"live:context",l_th.h_scope.h_program.h_live_ident); else variable_struct_set(l_meta,"live:program",l_th.h_scope.h_program);
 	variable_struct_set(l_meta,"live:function",l_act.h_name);
 	gml_stack_push(l_q.h_stack,method(l_meta,vm_group_call_on_func_literal_lf));
 	return gml_thread_proc_result_ok;

@@ -9,6 +9,8 @@ function live_room_loader_run_cc(l_ccRaw,l_ccPath){
 	var l_ccProgram=new gml_program([new gml_source(l_ccPath,l_ccRaw,l_ccPath)]);
 	var l_ccError=l_ccProgram.h_error_text;
 	if(l_ccError==undefined){
+		live_custom_self=self;
+		live_custom_other=other;
 		var l_ccThread=l_ccProgram.h_call_v(l_ccPath,array_create(0));
 		if(l_ccThread.h_status!=gml_thread_status_done){
 			l_ccError=l_ccThread.h_error_text;
@@ -117,7 +119,9 @@ function live_room_loader_add_layer(l_ql){
 				for(var l__g1=l_qth;l_y<l__g1;l_y++){
 					var l_x=0;
 					for(var l__g3=l_qtw;l_x<l__g3;l_x++){
-						tilemap_set(l_rt,ds_list_find_value(l_qtd,l_qti++),l_rx+l_x,l_ry+l_y);
+						var l_td=ds_list_find_value(l_qtd,l_qti++);
+						if(tile_get_empty(l_td))l_td=0;
+						tilemap_set(l_rt,l_td,l_rx+l_x,l_ry+l_y);
 					}
 				}
 			}

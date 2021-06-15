@@ -2,7 +2,7 @@
 // PLEASE DO NOT FORGET to remove paid extensions from your project when publishing the source code!
 // And if you are using git, you can exclude GMLive by adding
 // `scripts/GMLive*` and `extensions/GMLive/` lines to your `.gitignore`.
-// Generated at 2021-04-03 19:14:18 (9700ms) for v2.3+
+// Generated at 2021-06-06 13:57:15 (10262ms) for v2.3.1+
 globalvar gml_std_haxe_type_markerValue;if(live_enabled)gml_std_haxe_type_markerValue=[];
 globalvar mt_gml_std_Date;if(live_enabled)mt_gml_std_Date=new gml_std_haxe_class(-1,"gml_std_Date");
 globalvar mt_gml_builder;if(live_enabled)mt_gml_builder=new gml_std_haxe_class(-1,"gml_builder");
@@ -10,7 +10,7 @@ globalvar mt_gml_program;if(live_enabled)mt_gml_program=new gml_std_haxe_class(-
 globalvar mt_gml_enum;if(live_enabled)mt_gml_enum=new gml_std_haxe_class(-1,"gml_enum");
 globalvar mt_gml_enum_ctr;if(live_enabled)mt_gml_enum_ctr=new gml_std_haxe_class(-1,"gml_enum_ctr");
 globalvar mt_gml_macro;if(live_enabled)mt_gml_macro=new gml_std_haxe_class(-1,"gml_macro");
-globalvar mt_gml_node;if(live_enabled)mt_gml_node=new gml_std_haxe_enum(-1,"gml_node",["undefined","number","cstring","enum_ctr","array_decl","object_decl","ensure_array","ident","self","other","global_ref","script","native_script","const","arg_const","arg_index","arg_count","call","call_script","call_script_at","call_script_id","call_script_with_array","call_field","call_func","call_func_at","construct","func_literal","prefix","postfix","un_op","bin_op","set_op","to_bool","from_bool","in","local","local_set","local_aop","global","global_set","global_aop","field","field_set","field_aop","env","env_set","env_aop","env_fd","env_fd_set","env_fd_aop","env1d","env1d_set","env1d_aop","alarm","alarm_set","alarm_aop","index","index_set","index_aop","index_prefix","index_postfix","index2d","index2d_set","index2d_aop","index2d_prefix","index2d_postfix","raw_id","raw_id_set","raw_id_aop","raw_id_prefix","raw_id_postfix","raw_id2d","raw_id2d_set","raw_id2d_aop","raw_id2d_prefix","raw_id2d_postfix","ds_list","ds_list_set","ds_list_aop","ds_list_prefix","ds_list_postfix","ds_map","ds_map_set","ds_map_aop","ds_map_prefix","ds_map_postfix","ds_grid","ds_grid_set","ds_grid_aop","ds_grid_prefix","ds_grid_postfix","var_decl","block","if_then","ternary","switch","wait","fork","while","do_until","do_while","repeat","for","with","once","return","exit","break","continue","debugger","try_catch","throw","comment_line","comment_line_pre","comment_line_post","comment_line_sep","comment_block","comment_block_pre","comment_block_post"]);
+globalvar mt_gml_node;if(live_enabled)mt_gml_node=new gml_std_haxe_enum(-1,"gml_node",["undefined","number","cstring","other_const","enum_ctr","array_decl","object_decl","ensure_array_for_local","ensure_array_for_global","ensure_array_for_field","ensure_array_for_index","ensure_array_for_index2d","ident","self","other","global_ref","script","native_script","const","arg_const","arg_index","arg_count","call","call_script","call_script_at","call_script_id","call_script_with_array","call_field","call_func","call_func_at","construct","func_literal","prefix","postfix","un_op","bin_op","set_op","to_bool","from_bool","in","local","local_set","local_aop","global","global_set","global_aop","field","field_set","field_aop","env","env_set","env_aop","env_fd","env_fd_set","env_fd_aop","env1d","env1d_set","env1d_aop","alarm","alarm_set","alarm_aop","index","index_set","index_aop","index_prefix","index_postfix","index2d","index2d_set","index2d_aop","index2d_prefix","index2d_postfix","raw_id","raw_id_set","raw_id_aop","raw_id_prefix","raw_id_postfix","raw_id2d","raw_id2d_set","raw_id2d_aop","raw_id2d_prefix","raw_id2d_postfix","ds_list","ds_list_set","ds_list_aop","ds_list_prefix","ds_list_postfix","ds_map","ds_map_set","ds_map_aop","ds_map_prefix","ds_map_postfix","ds_grid","ds_grid_set","ds_grid_aop","ds_grid_prefix","ds_grid_postfix","var_decl","block","if_then","ternary","switch","wait","fork","while","do_until","do_while","repeat","for","with","once","return","exit","break","continue","debugger","try_catch","throw","comment_line","comment_line_pre","comment_line_post","comment_line_sep","comment_block","comment_block_pre","comment_block_post"]);
 globalvar mt_gml_pos;if(live_enabled)mt_gml_pos=new gml_std_haxe_class(-1,"gml_pos");
 globalvar mt_gml_script;if(live_enabled)mt_gml_script=new gml_std_haxe_class(-1,"gml_script");
 globalvar mt_gml_source;if(live_enabled)mt_gml_source=new gml_std_haxe_class(-1,"gml_source");
@@ -21,7 +21,7 @@ globalvar mt_gml_std_haxe_Exception;if(live_enabled)mt_gml_std_haxe_Exception=ne
 globalvar mt_haxe_ds_basic_map;if(live_enabled)mt_haxe_ds_basic_map=new gml_std_haxe_class(-1,"haxe_ds_basic_map");
 globalvar mt_haxe_ds_string_map;if(live_enabled)mt_haxe_ds_string_map=new gml_std_haxe_class(-1,"haxe_ds_string_map");
 if(live_enabled)mt_haxe_ds_string_map.h_superClass=mt_haxe_ds_basic_map;
-globalvar mt_gml_action;if(live_enabled)mt_gml_action=new gml_std_haxe_enum(-1,"gml_action",["discard","dup","dup2x","dup_in","undefined","number","cstring","array_decl","object_decl","const","self","other","local","local_set","local_aop","global","global_set","global_aop","field","field_set","field_aop","index","index_set","index_aop","index2d","index2d_set","index2d_aop","env","env_set","env_aop","env1d","env1d_set","env1d_aop","ds_aop","arg_const","arg_const_set","arg_const_aop","arg_index","arg_index_set","arg_index_aop","arg_count","add_int","equ_op","neq_op","concat","bin_op","un_op","in","call_script","call_script_id","call_script_with_array","call_func","call_field","construct","func_literal","jump","jump_if","jump_unless","bool_and","bool_or","switch","switch_case","repeat_jump","repeat_pre","with_pre","with_next","with_post","break","continue","return","result","try","catch","finally","throw","wait","fork","ensure_array_local","ensure_array_global","ensure_array_field","alarm","alarm_set","alarm_aop"]);
+globalvar mt_gml_action;if(live_enabled)mt_gml_action=new gml_std_haxe_enum(-1,"gml_action",["discard","dup","dup2x","dup_in","undefined","number","cstring","array_decl","object_decl","const","self","other","local","local_set","local_aop","global","global_set","global_aop","field","field_set","field_aop","index","index_set","index_aop","index2d","index2d_set","index2d_aop","env","env_set","env_aop","env1d","env1d_set","env1d_aop","ds_aop","arg_const","arg_const_set","arg_const_aop","arg_index","arg_index_set","arg_index_aop","arg_count","add_int","equ_op","neq_op","concat","bin_op","un_op","in","call_script","call_script_id","call_script_with_array","call_func","call_field","construct","func_literal","jump","jump_if","jump_unless","bool_and","bool_or","switch","switch_case","repeat_jump","repeat_pre","with_pre","with_next","with_post","break","continue","return","result","try","catch","finally","throw","wait","fork","ensure_array_for_local","ensure_array_for_global","ensure_array_for_field","ensure_array_for_index","ensure_array_for_index2d","alarm","alarm_set","alarm_aop"]);
 globalvar mt_gml_thread_scope;if(live_enabled)mt_gml_thread_scope=new gml_std_haxe_class(-1,"gml_thread_scope");
 globalvar mt_gml_with_scope;if(live_enabled)mt_gml_with_scope=new gml_std_haxe_class(-1,"gml_with_scope");
 globalvar mt_gml_thread_proc_result;if(live_enabled)mt_gml_thread_proc_result=new gml_std_haxe_enum(-1,"gml_thread_proc_result",["ok","error","sync_pos","sync_scope"]);
@@ -189,20 +189,20 @@ function gml_std_Std_parseInt(l_value){
 }
 
 if(live_enabled)
-function gml_std_string_pos_ext_haxe(this,l_sub,l_startPos){
+function gml_std_string_pos_ext_haxe(l_this,l_sub,l_startPos){
 	if(l_startPos==undefined)l_startPos=0;
 	if(false)show_debug_message(argument[1]);
-	var l_out=string_pos(l_sub,(l_startPos>0?string_delete(this,1,l_startPos):this));
+	var l_out=string_pos(l_sub,(l_startPos>0?string_delete(l_this,1,l_startPos):l_this));
 	if(l_out>0)return l_out+l_startPos-1; else return -1;
 }
 
 if(live_enabled)
-function gml_std_string_pos_last(this,l_sub,l_startPos){
+function gml_std_string_pos_last(l_this,l_sub,l_startPos){
 	if(false)show_debug_message(argument[1]);
 	var l_out=-1;
-	if(l_startPos==undefined)l_startPos=string_length(this);
+	if(l_startPos==undefined)l_startPos=string_length(l_this);
 	while(true){
-		var l_p=gml_std_string_pos_ext_haxe(this,l_sub,l_out+1);
+		var l_p=gml_std_string_pos_ext_haxe(l_this,l_sub,l_out+1);
 		if(l_p==-1||l_p>l_startPos)break;
 		l_out=l_p;
 	}
@@ -210,8 +210,8 @@ function gml_std_string_pos_last(this,l_sub,l_startPos){
 }
 
 if(live_enabled)
-function gml_std_string_split(this,l_del){
-	var l_str=this;
+function gml_std_string_split(l_this,l_del){
+	var l_str=l_this;
 	var l_num=0;
 	var l_arr=array_create(string_count(l_del,l_str)+1);
 	for(var l_pos=string_pos(l_del,l_str);l_pos>0;l_pos=string_pos(l_del,l_str)){
@@ -224,17 +224,17 @@ function gml_std_string_split(this,l_del){
 }
 
 if(live_enabled)
-function gml_std_string_substr(this,l_pos,l_len){
+function gml_std_string_substr(l_this,l_pos,l_len){
 	if(false)show_debug_message(argument[1]);
-	if(l_pos<0)l_pos+=string_length(this);
-	if(l_len==undefined)return string_delete(this,1,l_pos); else return string_copy(this,1+l_pos,l_len);
+	if(l_pos<0)l_pos+=string_length(l_this);
+	if(l_len==undefined)return string_delete(l_this,1,l_pos); else return string_copy(l_this,1+l_pos,l_len);
 }
 
 if(live_enabled)
-function gml_std_string_substring(this,l_start,l_end){
+function gml_std_string_substring(l_this,l_start,l_end){
 	if(false)show_debug_message(argument[1]);
 	if(l_end==undefined){
-		if(l_start>0)return string_delete(this,1,l_start); else return this;
+		if(l_start>0)return string_delete(l_this,1,l_start); else return l_this;
 	}
 	if(l_start<0)l_start=0;
 	if(l_end<0)l_end=0;
@@ -243,12 +243,12 @@ function gml_std_string_substring(this,l_start,l_end){
 		l_start=l_end;
 		l_end=l_tmp;
 	}
-	var l_len=string_length(this);
+	var l_len=string_length(l_this);
 	if(l_start>=l_len){
 		return "";
 	} else if(l_end>=l_len){
-		if(l_start>0)return string_delete(this,1,l_start); else return this;
-	} else return string_copy(this,l_start+1,l_end-l_start);
+		if(l_start>0)return string_delete(l_this,1,l_start); else return l_this;
+	} else return string_copy(l_this,l_start+1,l_end-l_start);
 }
 
 if(live_enabled)
@@ -324,7 +324,7 @@ function gml_enum(l_name,l_pos)constructor{
 		var l_ctr=new gml_enum_ctr(l_name,self.h_pos,gml_node_number(self.h_pos,l_val,string(l_val)));
 		l_ctr.h_value=l_val;
 		gml_std_gml_internal_ArrayImpl_push(self.h_ctr_list,l_ctr);
-		self.h_ctr_map.h_set(l_name,l_ctr);
+		variable_struct_set(self.h_ctr_map.h_obj,l_name,l_ctr);
 	}
 	static h_print=function(){
 		var l_r="(enum "+self.h_name+" { ";
@@ -350,7 +350,7 @@ function gml_enum(l_name,l_pos)constructor{
 if(live_enabled)
 function gml_enum_create_builtin(l_name){
 	var l_e=new gml_enum(l_name,new gml_pos(new gml_source("built-in",""),0,0));
-	gml_enum_map.h_set(l_name,l_e);
+	variable_struct_set(gml_enum_map.h_obj,l_name,l_e);
 	return l_e;
 }
 
@@ -383,8 +383,7 @@ function gml_macro(l_name,l_node,l_isExpr,l_isStat)constructor{
 
 if(live_enabled)
 function ast_gml_node_tools_ni_concat_pos_iter(l_q,l_st){
-	var l_pos=gml_std_haxe_enum_tools_getParameter(l_q,0);
-	gml_std_haxe_enum_tools_setParameter(l_q,0,l_pos.h_concat(ast_gml_node_tools_ni_concat_pos_pos));
+	gml_std_haxe_enum_tools_setParameter(l_q,0,gml_std_haxe_enum_tools_getParameter(l_q,0).h_concat(ast_gml_node_tools_ni_concat_pos_pos));
 	return gml_node_tools_seek(l_q,undefined,ast_gml_node_tools_ni_concat_pos_iter);
 }
 
@@ -593,11 +592,10 @@ function gml_func_add(l_signature,l_func){
 			}
 			l_pos=gml_std_string_pos_ext_haxe(l_arg,":");
 			if(l_pos>=0){
-				var l_name=gml_std_string_substring(l_arg,0,l_pos);
-				if(gml_std_string_pos_ext_haxe(l_name,"?")>=0)l_opt=true;
+				if(gml_std_string_pos_ext_haxe(gml_std_string_substring(l_arg,0,l_pos),"?")>=0)l_opt=true;
 				var l_type=gml_std_StringTools_trim(gml_std_string_substring(l_arg,l_pos+1));
-				if(l_tmap.h_exists(l_type)){
-					var l_tfun=l_tmap.h_get(l_type);
+				if(variable_struct_exists(l_tmap.h_obj,l_type)){
+					var l_tfun=variable_struct_get(l_tmap.h_obj,l_type);
 					if(gml_std_string_pos_ext_haxe(l_arg,"...")>=0)l_rest=l_tfun;
 					l_argt[@l_i]=l_tfun;
 				} else throw gml_std_haxe_Exception_thrown("\""+l_type+"\" is not a known type (in argument["+string(l_i)+"] \""+l_arg+"\" in \""+l_signature+"\")");
@@ -633,37 +631,37 @@ function gml_func_add(l_signature,l_func){
 		l_i=l_k+1;
 	}
 	var l_name=gml_parse_name(l_s,l_i);
-	if(l_inst!=0)gml_inst_data.h_set(l_name,l_inst);
-	gml_func_eval.h_set(l_name,gml_std_string_pos_ext_haxe(l_flags,"#")>=0);
-	gml_func_args.h_set(l_name,l_argt);
-	gml_func_rest.h_set(l_name,l_rest);
-	gml_func_arg0.h_set(l_name,l_arg0);
-	gml_func_arg1.h_set(l_name,l_arg1);
-	gml_func_script.h_set(l_name,l_func);
-	gml_func_sig.h_set(l_name,l_s);
+	if(l_inst!=0)variable_struct_set(gml_inst_data.h_obj,l_name,l_inst);
+	variable_struct_set(gml_func_eval.h_obj,l_name,(gml_std_string_pos_ext_haxe(l_flags,"#")>=0));
+	variable_struct_set(gml_func_args.h_obj,l_name,l_argt);
+	variable_struct_set(gml_func_rest.h_obj,l_name,l_rest);
+	variable_struct_set(gml_func_arg0.h_obj,l_name,l_arg0);
+	variable_struct_set(gml_func_arg1.h_obj,l_name,l_arg1);
+	variable_struct_set(gml_func_script.h_obj,l_name,l_func);
+	variable_struct_set(gml_func_sig.h_obj,l_name,l_s);
 }
 
 if(live_enabled)
 function gml_func_copy(l_to,l_from){
-	if(!gml_func_script.h_exists(l_from))throw gml_std_haxe_Exception_thrown("Can't find "+l_from);
-	gml_func_eval.h_set(l_to,gml_func_eval.h_get(l_from));
-	gml_func_args.h_set(l_to,gml_func_args.h_get(l_from));
-	gml_func_rest.h_set(l_to,gml_func_rest.h_get(l_from));
-	gml_func_arg0.h_set(l_to,gml_func_arg0.h_get(l_from));
-	gml_func_arg1.h_set(l_to,gml_func_arg1.h_get(l_from));
-	gml_func_script.h_set(l_to,gml_func_script.h_get(l_from));
-	gml_func_sig.h_set(l_to,gml_func_sig.h_get(l_from));
+	if(!variable_struct_exists(gml_func_script.h_obj,l_from))throw gml_std_haxe_Exception_thrown("Can't find "+l_from);
+	variable_struct_set(gml_func_eval.h_obj,l_to,variable_struct_get(gml_func_eval.h_obj,l_from));
+	variable_struct_set(gml_func_args.h_obj,l_to,variable_struct_get(gml_func_args.h_obj,l_from));
+	variable_struct_set(gml_func_rest.h_obj,l_to,variable_struct_get(gml_func_rest.h_obj,l_from));
+	variable_struct_set(gml_func_arg0.h_obj,l_to,variable_struct_get(gml_func_arg0.h_obj,l_from));
+	variable_struct_set(gml_func_arg1.h_obj,l_to,variable_struct_get(gml_func_arg1.h_obj,l_from));
+	variable_struct_set(gml_func_script.h_obj,l_to,variable_struct_get(gml_func_script.h_obj,l_from));
+	variable_struct_set(gml_func_sig.h_obj,l_to,variable_struct_get(gml_func_sig.h_obj,l_from));
 }
 
 if(live_enabled)
 function gml_remove_func(l_name){
-	if(!gml_func_script.h_exists(l_name))return false;
-	gml_func_script.h_remove(l_name);
-	gml_func_eval.h_remove(l_name);
-	gml_func_args.h_remove(l_name);
-	gml_func_arg0.h_remove(l_name);
-	gml_func_arg1.h_remove(l_name);
-	gml_func_sig.h_remove(l_name);
+	if(!variable_struct_exists(gml_func_script.h_obj,l_name))return false;
+	haxe__dynamic_access_dynamic_access_impl__remove(gml_func_script.h_obj,l_name);
+	haxe__dynamic_access_dynamic_access_impl__remove(gml_func_eval.h_obj,l_name);
+	haxe__dynamic_access_dynamic_access_impl__remove(gml_func_args.h_obj,l_name);
+	haxe__dynamic_access_dynamic_access_impl__remove(gml_func_arg0.h_obj,l_name);
+	haxe__dynamic_access_dynamic_access_impl__remove(gml_func_arg1.h_obj,l_name);
+	haxe__dynamic_access_dynamic_access_impl__remove(gml_func_sig.h_obj,l_name);
 	return true;
 }
 
@@ -678,46 +676,46 @@ function gml_var_add(l_s,l_func){
 	var l_pos=gml_std_string_pos_ext_haxe(l_s,":");
 	if(l_pos>=0){
 		var l_tstr=gml_std_string_substring(l_s,l_pos+1);
-		if(gml_type_check_map.h_exists(l_tstr)){
-			l_type=gml_type_check_map.h_get(l_tstr);
+		if(variable_struct_exists(gml_type_check_map.h_obj,l_tstr)){
+			l_type=variable_struct_get(gml_type_check_map.h_obj,l_tstr);
 			l_s=gml_std_string_substring(l_s,0,l_pos);
 		} else throw gml_std_haxe_Exception_thrown("`"+l_tstr+"` is not a known type.");
 	}
 	var l_name=gml_parse_name(l_s,0);
 	if(gml_std_string_pos_ext_haxe(l_s,"[")>=0)l_flags|=2;
 	if(gml_std_string_pos_ext_haxe(l_s,"*")>=0)l_flags|=1;
-	gml_var_flags.h_set(l_name,l_flags);
-	gml_var_refs.h_set(l_name,l_func);
-	gml_var_types.h_set(l_name,l_type);
+	variable_struct_set(gml_var_flags.h_obj,l_name,l_flags);
+	variable_struct_set(gml_var_refs.h_obj,l_name,l_func);
+	variable_struct_set(gml_var_types.h_obj,l_name,l_type);
 }
 
 if(live_enabled)
 function gml_remove_var(l_name){
-	if(!gml_var_refs.h_exists(l_name))return false;
-	gml_var_refs.h_remove(l_name);
-	gml_var_flags.h_remove(l_name);
-	gml_var_types.h_remove(l_name);
+	if(!variable_struct_exists(gml_var_refs.h_obj,l_name))return false;
+	haxe__dynamic_access_dynamic_access_impl__remove(gml_var_refs.h_obj,l_name);
+	haxe__dynamic_access_dynamic_access_impl__remove(gml_var_flags.h_obj,l_name);
+	haxe__dynamic_access_dynamic_access_impl__remove(gml_var_types.h_obj,l_name);
 	return true;
 }
 
 if(live_enabled)
 function gml_const_add(l_name,l_value){
-	gml_const_map.h_set(l_name,true);
-	gml_const_val.h_set(l_name,l_value);
+	variable_struct_set(gml_const_map.h_obj,l_name,true);
+	variable_struct_set(gml_const_val.h_obj,l_name,l_value);
 }
 
 if(live_enabled)
 function gml_remove_const(l_name){
-	if(gml_const_map.h_exists(l_name)){
-		gml_const_map.h_remove(l_name);
-		gml_const_val.h_remove(l_name);
+	if(variable_struct_exists(gml_const_map.h_obj,l_name)){
+		haxe__dynamic_access_dynamic_access_impl__remove(gml_const_map.h_obj,l_name);
+		haxe__dynamic_access_dynamic_access_impl__remove(gml_const_val.h_obj,l_name);
 		return true;
 	} else return false;
 }
 
 if(live_enabled)
 function gml_asset_add(l_name,l_index){
-	gml_asset_index.h_set(l_name,l_index);
+	variable_struct_set(gml_asset_index.h_obj,l_name,l_index);
 }
 
 if(live_enabled)
@@ -751,26 +749,26 @@ if(live_enabled)
 function gml_seek_adjfix_proc(l_q,l_st){
 	var l__g=l_q;
 	switch(l__g.__enumIndex__){
-		case 28:
+		case 33:
 			var l_d=l__g.h_d;
 			var l_x=l__g.h_x;
 			var l_b=l__g.h_inc;
 			var l_pre;
-			if(l_q.__enumIndex__==27)l_pre=true; else l_pre=false;
+			if(l_q.__enumIndex__==32)l_pre=true; else l_pre=false;
 			var l_o;
 			var l_inBlock=gml_node_tools_is_in_block(l_x,ds_list_find_value(l_st,0));
 			if(l_pre||l_inBlock){
 				var l__g=l_x;
 				switch(l__g.__enumIndex__){
-					case 81:
+					case 86:
 						l_o=(l_b?16:17);
 						gml_std_haxe_enum_tools_setTo(l_q,gml_node_ds_map_aop(l_d,l__g.h_lx,l__g.h_id,l_o,gml_node_number(l_d,1,undefined)));
 						break;
-					case 76:
+					case 81:
 						l_o=(l_b?16:17);
 						gml_std_haxe_enum_tools_setTo(l_q,gml_node_ds_list_aop(l_d,l__g.h_lx,l__g.h_id,l_o,gml_node_number(l_d,1,undefined)));
 						break;
-					case 86:
+					case 91:
 						l_o=(l_b?16:17);
 						gml_std_haxe_enum_tools_setTo(l_q,gml_node_ds_grid_aop(l_d,l__g.h_lx,l__g.h_i1,l__g.h_i2,l_o,gml_node_number(l_d,1,undefined)));
 						break;
@@ -782,25 +780,25 @@ function gml_seek_adjfix_proc(l_q,l_st){
 				}
 			}
 			break;
-		case 27:
+		case 32:
 			var l_d=l__g.h_d;
 			var l_x=l__g.h_x;
 			var l_pre;
-			if(l_q.__enumIndex__==27)l_pre=true; else l_pre=false;
+			if(l_q.__enumIndex__==32)l_pre=true; else l_pre=false;
 			var l_o;
 			var l_inBlock=gml_node_tools_is_in_block(l_x,ds_list_find_value(l_st,0));
 			if(l_pre||l_inBlock){
 				var l__g1=l_x;
 				switch(l__g1.__enumIndex__){
-					case 81:
+					case 86:
 						l_o=(l__g.h_inc?16:17);
 						gml_std_haxe_enum_tools_setTo(l_q,gml_node_ds_map_aop(l_d,l__g1.h_lx,l__g1.h_id,l_o,gml_node_number(l_d,1,undefined)));
 						break;
-					case 76:
+					case 81:
 						l_o=(l__g.h_inc?16:17);
 						gml_std_haxe_enum_tools_setTo(l_q,gml_node_ds_list_aop(l_d,l__g1.h_lx,l__g1.h_id,l_o,gml_node_number(l_d,1,undefined)));
 						break;
-					case 86:
+					case 91:
 						l_o=(l__g.h_inc?16:17);
 						gml_std_haxe_enum_tools_setTo(l_q,gml_node_ds_grid_aop(l_d,l__g1.h_lx,l__g1.h_i1,l__g1.h_i2,l_o,gml_node_number(l_d,1,undefined)));
 						break;
@@ -819,7 +817,7 @@ function gml_seek_adjfix_proc(l_q,l_st){
 if(live_enabled)
 function gml_seek_alarms_check(l_x){
 	var l__g=l_x;
-	if(l__g.__enumIndex__==41){
+	if(l__g.__enumIndex__==46){
 		if(l__g.h_fd=="alarm")return l__g.h_x; else return undefined;
 	} else return undefined;
 }
@@ -829,11 +827,11 @@ function gml_seek_alarms_proc(l_q,l_st){
 	var l_r;
 	var l__g=l_q;
 	switch(l__g.__enumIndex__){
-		case 66:
+		case 71:
 			l_r=gml_seek_alarms_check(l__g.h_x);
 			if(l_r!=undefined)gml_std_haxe_enum_tools_setTo(l_q,gml_node_alarm(l__g.h_d,l_r,l__g.h_id));
 			break;
-		case 56:
+		case 61:
 			l_r=gml_seek_alarms_check(l__g.h_x);
 			if(l_r!=undefined)gml_std_haxe_enum_tools_setTo(l_q,gml_node_alarm(l__g.h_d,l_r,l__g.h_id));
 			break;
@@ -845,7 +843,7 @@ if(live_enabled)
 function gml_seek_arguments_proc(l_q,l_st){
 	gml_node_tools_seek(l_q,l_st,gml_program_seek_func);
 	var l__g=l_q;
-	if(l__g.__enumIndex__==14){
+	if(l__g.__enumIndex__==19){
 		var l_i=l__g.h_id;
 		if(gml_program_seek_script.h_arguments<=l_i)gml_program_seek_script.h_arguments=l_i+1;
 	}
@@ -856,78 +854,76 @@ if(live_enabled)
 function gml_seek_calls_proc(l_q,l_st){
 	var l_n,l_s;
 	var l__g=l_q;
-	if(l__g!=undefined){
-		if(l__g.__enumIndex__==17){
-			var l_d=l__g.h_d;
-			var l_x=l__g.h_x;
-			var l_w=l__g.h_args;
-			var l__g=l_x;
-			switch(l__g.__enumIndex__){
-				case 11:
-					var l_o=l__g.h_ref;
-					l_n=l_o.h_arguments;
-					l_s=l_o.h_name;
-					if(l_n<=0||array_length(l_w)==l_n)gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_script(l_d,l_s,l_w)); else return gml_program_seek_inst.h_error("Wrong number of arguments for `"+l_s+"`",l_d);
-					break;
-				case 41:
-					var l_s=l__g.h_fd;
-					if(gml_func_arg0.h_exists(l_s)){
-						if(gml_inst_data.h_exists(l_s))gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_func_at(l_d,l__g.h_x,l_s,l_w)); else return gml_program_seek_inst.h_error("`"+l_s+"` cannot be called on an instance",l__g.h_d);
-					} else if(gml_program_seek_inst.h_script_map.h_exists(l_s)){
-						l_n=gml_program_seek_inst.h_script_map.h_get(l_s).h_arguments;
-						if(l_n<=0||array_length(l_w)==l_n)gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_script_at(l_d,l__g.h_x,l_s,l_w)); else return gml_program_seek_inst.h_error("Wrong number of arguments for `"+l_s+"`",l_d);
-					} else gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_field(l_d,l__g.h_x,l_s,l_w));
-					break;
-				case 12:
-					var l_s=l__g.h_name;
-					var l_n0=gml_func_arg0.h_get(l_s);
-					if(l_n0!=undefined){
-						var l_n1=gml_func_arg1.h_get(l_s);
-						var l_wn=array_length(l_w);
-						if(l_wn<l_n0||l_wn>l_n1){
-							if(l_n0==l_n1){
-								l_s="`"+l_s+"` takes "+gml_std_Std_stringify(l_n0)+" argument";
-								if(l_n0!=1)l_s+="s";
-							} else if(l_wn<l_n0){
-								l_s="`"+l_s+"` requires at least "+gml_std_Std_stringify(l_n0)+" argument";
-								if(l_n0!=1)l_s+="s";
-							} else {
-								l_s="`"+l_s+"` takes no more than "+gml_std_Std_stringify(l_n1)+" argument";
-								if(l_n1!=1)l_s+="s";
-							}
-							l_s+=", got "+string(l_wn);
-							return gml_program_seek_inst.h_error(l_s,gml_std_haxe_enum_tools_getParameter(l_x,0));
-						} else gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_func(l_d,l_s,l_w));
-					} else if(gml_parser_gml23){
-						gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_script_id(l_d,l_x,l_w));
-					} else return gml_program_seek_inst.h_error("`"+l_s+"` is not a function or script",gml_std_haxe_enum_tools_getParameter(l_x,0));
-					break;
-				case 7:
-					var l_s1=l__g.h_id;
-					var l_n0=gml_func_arg0.h_get(l_s1);
-					if(l_n0!=undefined){
-						var l_n1=gml_func_arg1.h_get(l_s1);
-						var l_wn=array_length(l_w);
-						if(l_wn<l_n0||l_wn>l_n1){
-							if(l_n0==l_n1){
-								l_s1="`"+l_s1+"` takes "+gml_std_Std_stringify(l_n0)+" argument";
-								if(l_n0!=1)l_s1+="s";
-							} else if(l_wn<l_n0){
-								l_s1="`"+l_s1+"` requires at least "+gml_std_Std_stringify(l_n0)+" argument";
-								if(l_n0!=1)l_s1+="s";
-							} else {
-								l_s1="`"+l_s1+"` takes no more than "+gml_std_Std_stringify(l_n1)+" argument";
-								if(l_n1!=1)l_s1+="s";
-							}
-							l_s1+=", got "+string(l_wn);
-							return gml_program_seek_inst.h_error(l_s1,gml_std_haxe_enum_tools_getParameter(l_x,0));
-						} else gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_func(l_d,l_s1,l_w));
-					} else if(gml_parser_gml23){
-						gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_script_id(l_d,l_x,l_w));
-					} else return gml_program_seek_inst.h_error("`"+l_s1+"` is not a function or script",gml_std_haxe_enum_tools_getParameter(l_x,0));
-					break;
-				default:if(gml_parser_gml23)gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_script_id(l_d,l_x,l_w)); else return gml_program_seek_inst.h_error("Expression is not callable",gml_std_haxe_enum_tools_getParameter(l_x,0));
-			}
+	if(l__g.__enumIndex__==22){
+		var l_d=l__g.h_d;
+		var l_x=l__g.h_x;
+		var l_w=l__g.h_args;
+		var l__g=l_x;
+		switch(l__g.__enumIndex__){
+			case 16:
+				var l_o=l__g.h_ref;
+				l_n=l_o.h_arguments;
+				l_s=l_o.h_name;
+				gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_script(l_d,l_s,l_w));
+				break;
+			case 46:
+				var l_s=l__g.h_fd;
+				if(variable_struct_exists(gml_func_arg0.h_obj,l_s)){
+					if(variable_struct_exists(gml_inst_data.h_obj,l_s))gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_func_at(l_d,l__g.h_x,l_s,l_w)); else return gml_program_seek_inst.h_error("`"+l_s+"` cannot be called on an instance",l__g.h_d);
+				} else if(variable_struct_exists(gml_program_seek_inst.h_script_map.h_obj,l_s)){
+					l_n=variable_struct_get(gml_program_seek_inst.h_script_map.h_obj,l_s).h_arguments;
+					if(l_n<=0||array_length(l_w)==l_n)gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_script_at(l_d,l__g.h_x,l_s,l_w)); else return gml_program_seek_inst.h_error("Wrong number of arguments for `"+l_s+"`",l_d);
+				} else gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_field(l_d,l__g.h_x,l_s,l_w));
+				break;
+			case 17:
+				var l_s=l__g.h_name;
+				var l_n0=variable_struct_get(gml_func_arg0.h_obj,l_s);
+				if(l_n0!=undefined){
+					var l_n1=variable_struct_get(gml_func_arg1.h_obj,l_s);
+					var l_wn=array_length(l_w);
+					if(l_wn<l_n0||l_wn>l_n1){
+						if(l_n0==l_n1){
+							l_s="`"+l_s+"` takes "+gml_std_Std_stringify(l_n0)+" argument";
+							if(l_n0!=1)l_s+="s";
+						} else if(l_wn<l_n0){
+							l_s="`"+l_s+"` requires at least "+gml_std_Std_stringify(l_n0)+" argument";
+							if(l_n0!=1)l_s+="s";
+						} else {
+							l_s="`"+l_s+"` takes no more than "+gml_std_Std_stringify(l_n1)+" argument";
+							if(l_n1!=1)l_s+="s";
+						}
+						l_s+=", got "+string(l_wn);
+						return gml_program_seek_inst.h_error(l_s,gml_std_haxe_enum_tools_getParameter(l_x,0));
+					} else gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_func(l_d,l_s,l_w));
+				} else if(gml_parser_gml23){
+					gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_script_id(l_d,l_x,l_w));
+				} else return gml_program_seek_inst.h_error("`"+l_s+"` is not a function or script",gml_std_haxe_enum_tools_getParameter(l_x,0));
+				break;
+			case 12:
+				var l_s1=l__g.h_id;
+				var l_n0=variable_struct_get(gml_func_arg0.h_obj,l_s1);
+				if(l_n0!=undefined){
+					var l_n1=variable_struct_get(gml_func_arg1.h_obj,l_s1);
+					var l_wn=array_length(l_w);
+					if(l_wn<l_n0||l_wn>l_n1){
+						if(l_n0==l_n1){
+							l_s1="`"+l_s1+"` takes "+gml_std_Std_stringify(l_n0)+" argument";
+							if(l_n0!=1)l_s1+="s";
+						} else if(l_wn<l_n0){
+							l_s1="`"+l_s1+"` requires at least "+gml_std_Std_stringify(l_n0)+" argument";
+							if(l_n0!=1)l_s1+="s";
+						} else {
+							l_s1="`"+l_s1+"` takes no more than "+gml_std_Std_stringify(l_n1)+" argument";
+							if(l_n1!=1)l_s1+="s";
+						}
+						l_s1+=", got "+string(l_wn);
+						return gml_program_seek_inst.h_error(l_s1,gml_std_haxe_enum_tools_getParameter(l_x,0));
+					} else gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_func(l_d,l_s1,l_w));
+				} else if(gml_parser_gml23){
+					gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_script_id(l_d,l_x,l_w));
+				} else return gml_program_seek_inst.h_error("`"+l_s1+"` is not a function or script",gml_std_haxe_enum_tools_getParameter(l_x,0));
+				break;
+			default:if(gml_parser_gml23)gml_std_haxe_enum_tools_setTo(l_q,gml_node_call_script_id(l_d,l_x,l_w)); else return gml_program_seek_inst.h_error("Expression is not callable",gml_std_haxe_enum_tools_getParameter(l_x,0));
 		}
 	}
 	return gml_node_tools_seek(l_q,l_st,gml_program_seek_func);
@@ -936,29 +932,28 @@ function gml_seek_calls_proc(l_q,l_st){
 if(live_enabled)
 function gml_seek_enum_fields_proc_one(l_q,l_st){
 	var l__g=l_q;
-	if(l__g.__enumIndex__==41){
+	if(l__g.__enumIndex__==46){
 		var l_d=l__g.h_d;
 		var l_x=l__g.h_x;
 		var l_f=l__g.h_fd;
 		var l__g=l_x;
-		if(l__g!=undefined){
-			if(l__g.__enumIndex__==7){
-				var l_s=l__g.h_id;
-				var l_e=gml_program_seek_inst.h_enum_map.h_get(l_s);
-				if(l_e==undefined)l_e=gml_enum_map.h_get(l_s);
-				if(l_e!=undefined){
-					if(!l_e.h_has_values)gml_seek_enum_values_proc_one(l_e);
-					var l_c=l_e.h_ctr_map.h_get(l_f);
-					if(l_c!=undefined){
-						if(l_c.h_value==undefined)return gml_program_seek_inst.h_error("Recursive enum reference to "+l_s+"."+l_f,l_d);
-						gml_std_haxe_enum_tools_setTo(l_q,gml_node_number(l_d,l_c.h_value,undefined));
-						return false;
-					} else return gml_program_seek_inst.h_error("Enum `"+l_s+"` does not contain field `"+l_f+"`",l_d);
-				}
+		if(l__g.__enumIndex__==12){
+			var l_s=l__g.h_id;
+			var l_e=variable_struct_get(gml_program_seek_inst.h_enum_map.h_obj,l_s);
+			if(l_e==undefined)l_e=variable_struct_get(gml_enum_map.h_obj,l_s);
+			if(l_e!=undefined){
+				if(!l_e.h_has_values)gml_seek_enum_values_proc_one(l_e);
+				var l_c=variable_struct_get(l_e.h_ctr_map.h_obj,l_f);
+				if(l_c!=undefined){
+					if(l_c.h_value==undefined)return gml_program_seek_inst.h_error("Recursive enum reference to "+l_s+"."+l_f,l_d);
+					gml_std_haxe_enum_tools_setTo(l_q,gml_node_number(l_d,l_c.h_value,undefined));
+					return false;
+				} else return gml_program_seek_inst.h_error("Enum `"+l_s+"` does not contain field `"+l_f+"`",l_d);
 			}
 		}
-		if(gml_var_flags.h_exists(l_f)){
-			if((gml_var_flags.h_get(l_f)&4)==0)return gml_program_seek_inst.h_error("`"+l_f+"` is not an instance-specific variable.",l_d);
+		var l_flags=variable_struct_get(gml_var_flags.h_obj,l_f);
+		if(l_flags!=undefined){
+			if((l_flags&4)==0)return gml_program_seek_inst.h_error("`"+l_f+"` is not an instance-specific variable.",l_d);
 		}
 	}
 	return gml_node_tools_seek(l_q,l_st,gml_seek_enum_fields_proc_one);
@@ -1016,13 +1011,11 @@ function gml_seek_enum_values_proc(){
 if(live_enabled)
 function gml_seek_fields_proc(l_q,l_st){
 	var l__g=l_q;
-	if(l__g!=undefined){
-		if(l__g.__enumIndex__==41){
-			var l_d=l__g.h_d;
-			var l_x=l__g.h_x;
-			var l_s=l__g.h_fd;
-			if(l_x.__enumIndex__==10)gml_std_haxe_enum_tools_setTo(l_q,gml_node_global(l_d,l_s));
-		}
+	if(l__g.__enumIndex__==46){
+		var l_d=l__g.h_d;
+		var l_x=l__g.h_x;
+		var l_s=l__g.h_fd;
+		if(l_x.__enumIndex__==15)gml_std_haxe_enum_tools_setTo(l_q,gml_node_global(l_d,l_s));
 	}
 	return gml_node_tools_seek(l_q,l_st,gml_program_seek_func);
 }
@@ -1031,7 +1024,7 @@ if(live_enabled)
 function gml_seek_idents_proc(l_q,l_st){
 	var l_d,l_s;
 	var l__g=l_q;
-	if(l__g.__enumIndex__==7){
+	if(l__g.__enumIndex__==12){
 		l_d=l__g.h_d;
 		l_s=l__g.h_id;
 	} else {
@@ -1041,56 +1034,58 @@ function gml_seek_idents_proc(l_q,l_st){
 	if(l_d!=undefined)while(true){
 		var l_scr=gml_program_seek_script;
 		if(l_scr!=undefined){
-			var l_i=l_scr.h_named_args.h_get(l_s);
+			var l_i=variable_struct_get(l_scr.h_named_args.h_obj,l_s);
 			if(l_i!=undefined){
 				gml_std_haxe_enum_tools_setTo(l_q,gml_node_arg_const(l_d,l_i));
-				if(false)continue; else break;
+				if(true)break; else continue;
 			}
-			l_i=l_scr.h_local_map.h_get(l_s);
+			l_i=variable_struct_get(l_scr.h_local_map.h_obj,l_s);
 			if(l_i!=undefined){
 				gml_std_haxe_enum_tools_setTo(l_q,gml_node_local(l_d,l_s));
-				if(false)continue; else break;
+				if(true)break; else continue;
 			}
 		}
-		var l_mcr=gml_program_seek_inst.h_macro_map.h_get(l_s);
+		var l_mcr=variable_struct_get(gml_program_seek_inst.h_macro_map.h_obj,l_s);
 		if(l_mcr!=undefined){
 			gml_std_haxe_enum_tools_setTo(l_q,gml_node_tools_clone(l_mcr.h_node));
 			ast_gml_node_tools_ni_concat_pos_rec(l_q,l_d);
 			gml_seek_idents_proc(l_q,l_st);
-			if(false)continue; else break;
+			if(true)break; else continue;
 		}
-		if(gml_const_map.h_get(l_s)==true){
-			gml_std_haxe_enum_tools_setTo(l_q,gml_seek_eval_value_to_node(gml_const_val.h_get(l_s),l_d));
-			if(false)continue; else break;
+		if(variable_struct_get(gml_const_map.h_obj,l_s)==true){
+			var l_val=variable_struct_get(gml_const_val.h_obj,l_s);
+			var l_valNode=gml_seek_eval_value_to_node(l_val,l_d);
+			if(l_valNode!=undefined)gml_std_haxe_enum_tools_setTo(l_q,l_valNode); else return gml_program_seek_inst.h_error(("Cannot create a node for `"+l_s+"` ("+typeof(l_val)+")"),l_d);
+			if(true)break; else continue;
 		}
-		var l_flags=gml_var_flags.h_get(l_s);
+		var l_flags=variable_struct_get(gml_var_flags.h_obj,l_s);
 		if(l_flags!=undefined){
 			if((l_flags&4)!=0)gml_std_haxe_enum_tools_setTo(l_q,gml_node_env_fd(l_d,gml_node_self(l_d),l_s)); else gml_std_haxe_enum_tools_setTo(l_q,gml_node_env(l_d,l_s));
 			if(ds_list_size(l_st)>0){
 				var l__g=ds_list_find_value(l_st,0);
 				switch(l__g.__enumIndex__){
-					case 56:
+					case 61:
 						var l_d1=l__g.h_d;
 						var l_k=l__g.h_id;
 						if((l_flags&2)!=0)gml_std_haxe_enum_tools_setTo(ds_list_find_value(l_st,0),gml_node_env1d(l_d1,l_s,l_k)); else return gml_program_seek_inst.h_error("`"+l_s+"` is not an array.",l_d1);
 						break;
-					case 61:return gml_program_seek_inst.h_error("`"+l_s+"` is not a 2d array.",l__g.h_d);
+					case 66:return gml_program_seek_inst.h_error("`"+l_s+"` is not a 2d array.",l__g.h_d);
 					default:if((l_flags&2)!=0)gml_std_haxe_enum_tools_setTo(l_q,gml_node_env1d(l_d,l_s,gml_node_number(l_d,0,undefined)));
 				}
 			}
-			if(false)continue; else break;
+			if(true)break; else continue;
 		}
-		var l_scr1=gml_program_seek_inst.h_script_map.h_get(l_s);
+		var l_scr1=variable_struct_get(gml_program_seek_inst.h_script_map.h_obj,l_s);
 		if(l_scr1!=undefined){
 			gml_std_haxe_enum_tools_setTo(l_q,gml_node_script(l_d,l_scr1));
-			if(false)continue; else break;
+			if(true)break; else continue;
 		}
-		var l_fscr=gml_func_script_id.h_get(l_s);
+		var l_fscr=variable_struct_get(gml_func_script_id.h_obj,l_s);
 		if(l_fscr!=undefined){
 			gml_std_haxe_enum_tools_setTo(l_q,gml_node_native_script(l_d,l_s,l_fscr));
-			if(false)continue; else break;
+			if(true)break; else continue;
 		}
-		if(!false)break;
+		if(true)break;
 	}
 	return gml_node_tools_seek(l_q,l_st,gml_program_seek_func);
 }
@@ -1099,13 +1094,13 @@ if(live_enabled)
 function gml_seek_locals_proc(l_q,l_st){
 	var l__g=l_q;
 	switch(l__g.__enumIndex__){
-		case 110:
+		case 115:
 			var l_s=l__g.h_cap;
-			if(!gml_program_seek_script.h_local_map.h_exists(l_s))gml_program_seek_script.h_local_map.h_set(l_s,gml_program_seek_script.h_locals++);
+			if(!variable_struct_exists(gml_program_seek_script.h_local_map.h_obj,l_s))variable_struct_set(gml_program_seek_script.h_local_map.h_obj,l_s,gml_program_seek_script.h_locals++);
 			break;
-		case 91:
+		case 96:
 			var l_s=l__g.h_name;
-			if(!gml_program_seek_script.h_local_map.h_exists(l_s))gml_program_seek_script.h_local_map.h_set(l_s,gml_program_seek_script.h_locals++);
+			if(!variable_struct_exists(gml_program_seek_script.h_local_map.h_obj,l_s))variable_struct_set(gml_program_seek_script.h_local_map.h_obj,l_s,gml_program_seek_script.h_locals++);
 			break;
 	}
 	return gml_node_tools_seek(l_q,l_st,gml_program_seek_func);
@@ -1114,7 +1109,7 @@ function gml_seek_locals_proc(l_q,l_st){
 if(live_enabled)
 function gml_seek_self_fields_proc(l_q,l_st){
 	var l__g=l_q;
-	if(l__g.__enumIndex__==7){
+	if(l__g.__enumIndex__==12){
 		var l_d=l__g.h_d;
 		gml_std_haxe_enum_tools_setTo(l_q,gml_node_field(l_d,gml_node_self(l_d),l__g.h_id));
 	}
@@ -1192,6 +1187,13 @@ function gml_std_gml_internal_ArrayImpl_copy(l_arr){
 }
 
 if(live_enabled)
+function haxe__dynamic_access_dynamic_access_impl__remove(l_this1,l_key){
+	var l_result=variable_struct_exists(l_this1,l_key);
+	variable_struct_remove(l_this1,l_key);
+	return l_result;
+}
+
+if(live_enabled)
 function haxe__dynamic_access_dynamic_access_impl__copy(l_this1){
 	var l_fields=variable_struct_get_names(l_this1);
 	var l_r={}
@@ -1243,90 +1245,32 @@ function gml_std_haxe_Exception_thrown(l_value){
 
 if(live_enabled)
 function haxe_ds_basic_map_new(){
-	self.h_cached_keys=undefined;
-	self.h_blanks=0;
 	self.h_obj={}
 }
 
 if(live_enabled)
 function haxe_ds_basic_map()constructor{
 	static h_obj=undefined;
-	static h_blanks=undefined;
-	static h_cached_keys=undefined;
 	static h_clear=method(undefined,haxe_ds_basic_map_h_clear);
-	static h_exists=method(undefined,haxe_ds_basic_map_h_exists);
-	static h_get=method(undefined,haxe_ds_basic_map_h_get);
-	static h_set=method(undefined,haxe_ds_basic_map_h_set);
-	static h_remove=method(undefined,haxe_ds_basic_map_h_remove);
 	method(self, haxe_ds_basic_map_new)();
 	static __class__=mt_haxe_ds_basic_map;
 }
 
 if(live_enabled)
 function haxe_ds_basic_map_h_clear(){
-	var l_obj=self.h_obj;
-	var l_keys=variable_struct_get_names(l_obj);
-	var l_keyCount=array_length(l_keys);
-	if(self.h_blanks==l_keyCount)return 0;
-	var l_blank=haxe_ds_basic_map_blank;
-	var l_i=-1;
-	while(++l_i<l_keyCount){
-		variable_struct_set(l_obj,l_keys[l_i],l_blank);
+	var l__g=0;
+	var l__g1=variable_struct_get_names(self.h_obj);
+	while(l__g<array_length(l__g1)){
+		var l_key=l__g1[l__g];
+		l__g++;
+		haxe__dynamic_access_dynamic_access_impl__remove(self.h_obj,l_key);
 	}
-	self.h_blanks=l_keyCount;
-}
-
-if(live_enabled)
-function haxe_ds_basic_map_h_exists(l_key){
-	if(variable_struct_exists(self.h_obj,l_key)){
-		if(self.h_blanks>0)return variable_struct_get(self.h_obj,l_key)!=haxe_ds_basic_map_blank; else return true;
-	} else return false;
-}
-
-if(live_enabled)
-function haxe_ds_basic_map_h_get(l_key){
-	var l_val=variable_struct_get(self.h_obj,l_key);
-	if(l_val!=haxe_ds_basic_map_blank)return l_val; else return undefined;
-}
-
-if(live_enabled)
-function haxe_ds_basic_map_h_set(l_key,l_val){
-	if(self.h_blanks>0){
-		var l_cachedKeys=self.h_cached_keys;
-		if(l_cachedKeys!=undefined){
-			if(variable_struct_exists(self.h_obj,l_key)){
-				if(variable_struct_get(self.h_obj,l_key)==haxe_ds_basic_map_blank)self.h_blanks--;
-			} else l_cachedKeys[@array_length(l_cachedKeys)]=l_key;
-		} else if(variable_struct_get(self.h_obj,l_key)==haxe_ds_basic_map_blank){
-			self.h_blanks--;
-		}
-	}
-	variable_struct_set(self.h_obj,l_key,l_val);
-}
-
-if(live_enabled)
-function haxe_ds_basic_map_h_remove(l_key){
-	if(variable_struct_exists(self.h_obj,l_key)){
-		if(self.h_blanks>0){
-			if(variable_struct_get(self.h_obj,l_key)==haxe_ds_basic_map_blank)return false;
-			self.h_cached_keys=undefined;
-		}
-		variable_struct_set(self.h_obj,l_key,haxe_ds_basic_map_blank);
-		self.h_blanks++;
-		return true;
-	} else return false;
 }
 
 if(live_enabled)
 function haxe_ds_string_map()constructor{
 	static h_obj=undefined;
-	static h_blanks=undefined;
-	static h_cached_keys=undefined;
 	static h_clear=method(undefined,haxe_ds_basic_map_h_clear);
-	static h_exists=method(undefined,haxe_ds_basic_map_h_exists);
-	static h_get=method(undefined,haxe_ds_basic_map_h_get);
-	static h_set=method(undefined,haxe_ds_basic_map_h_set);
-	static h_remove=method(undefined,haxe_ds_basic_map_h_remove);
 	method(self, haxe_ds_basic_map_new)();
 	static __class__=mt_haxe_ds_string_map;
 }
@@ -1351,6 +1295,19 @@ function shader_set_live(l_sh,l_live1){
 			l_i=ds_list_find_index(live_shader_live_shaders_start,l_sh);
 			if(l_i>=0)ds_list_delete(live_shader_live_shaders_start,l_i);
 			ds_list_add(live_shader_live_shaders_stop,l_sh);
+		}
+	}
+}
+
+function live_validate_scripts(){
+	if(live_enabled){
+		var l_names=["GMLive_call","live_call","GMLive_tools","live_execute_string","GMLive_token","mc_gml_token","GMLive_parser","gml_parser_run","GMLive_node","mc_gml_node","GMLive_nodeTools","gml_node_tools_seek","GMLive_builder","gml_builder","GMLive_compiler","gml_compile_program","GMLive_seekEval","gml_seek_eval_eval","GMLive_seekSetOp","gml_seek_set_op_proc","GMLive_action","mc_gml_action","GMLive_new","vm_impl_gml_thread_construct_init","GMLive_exec","vm_gml_thread_exec_slice_init","GMLive_program","gml_program","GMLive_thread","gml_thread","GMLive_vm","vm_group_op_impl","GMLive_vm_init","vm_v2_gml_thread_v2_handlers_init","GMLive_vm_call","live_method","GMLiveAPI","live_preinit_api","GMLive_roomLoader","live_room_start","GMLive_http","live_async_http"];
+		var l_i=0;
+		var l_count=array_length(l_names);
+		while(l_i<l_count){
+			var l_scr=l_names[l_i++];
+			var l_ref=l_names[l_i++];
+			if(-1==asset_get_index(l_ref))show_error(("Function `"+l_ref+"` is missing!"+("\nCheck that script resource `"+l_scr+"` exists (Ctrl+T) and is not just a single empty function;")+"\ndelete and re-import if necessary!"),false);
 		}
 	}
 }
@@ -1418,7 +1375,7 @@ function gml_action_list_print_action(l_act){
 	var l_r="L"+string(l_pos.h_row)+"\tc"+string(l_pos.h_col)+"\t"+gml_std_Type_enumConstructor(l_act);
 	switch(l_act.__enumIndex__){
 		case 48:return l_r+"("+l_act.h_script.h_name+", "+string(l_act.h_argc)+")";
-		case 8:return l_r+"("+gml_std_gml_internal_ArrayImpl_join(l_act.h_keys,",")+")";
+		case 8:return l_r+"("+gml_std_gml_internal_ArrayImpl_join(l_act.h_fields,",")+")";
 		case 28:return l_r+"(\""+gml_action_list_print_action_get_func_name(l_act.h_f)+"\", \""+gml_action_list_print_action_get_func_name(l_act.h_ch)+"\")";
 		case 27:return l_r+"(\""+gml_action_list_print_action_get_func_name(l_act.h_f)+"\")";
 		case 51:
@@ -1494,44 +1451,44 @@ function gml_thread_scope(l_actions,l_offset,l_args1,l_locals,l_self1,l_other1,l
 if(live_enabled)
 function gml_type_check_init(){
 	var l_r=new haxe_ds_string_map();
-	l_r.h_set("any",gml_type_check_any);
-	l_r.h_set("bool",gml_type_check_number);
-	l_r.h_set("number",gml_type_check_number);
-	l_r.h_set("?number",gml_type_check_z_number);
-	l_r.h_set("float",gml_type_check_number);
-	l_r.h_set("?float",gml_type_check_z_number);
-	l_r.h_set("real",gml_type_check_number);
-	l_r.h_set("?real",gml_type_check_z_number);
-	l_r.h_set("color",gml_type_check_number);
-	l_r.h_set("date",gml_type_check_number);
-	l_r.h_set("int",gml_type_check_int);
-	l_r.h_set("index",gml_type_check_index);
-	l_r.h_set("id",gml_type_check_index);
-	l_r.h_set("sprite",gml_type_check_index);
-	l_r.h_set("background",gml_type_check_index);
-	l_r.h_set("sound",gml_type_check_index);
-	l_r.h_set("font",gml_type_check_index);
-	l_r.h_set("script",gml_type_check_index);
-	l_r.h_set("shader",gml_type_check_index);
-	l_r.h_set("timeline",gml_type_check_index);
-	l_r.h_set("object",gml_type_check_index);
-	l_r.h_set("room",gml_type_check_index);
-	l_r.h_set("buffer",gml_type_check_index);
-	l_r.h_set("list",gml_type_check_index);
-	l_r.h_set("grid",gml_type_check_index);
-	l_r.h_set("string",gml_type_check_string);
-	l_r.h_set("?string",gml_type_check_z_string);
-	l_r.h_set("array",gml_type_check_array);
-	l_r.h_set("?array",gml_type_check_z_array);
-	l_r.h_set("sprite",gml_type_check_index);
-	l_r.h_set("background",gml_type_check_index);
-	l_r.h_set("sound",gml_type_check_index);
-	l_r.h_set("font",gml_type_check_index);
-	l_r.h_set("path",gml_type_check_index);
-	l_r.h_set("timeline",gml_type_check_index);
-	l_r.h_set("script",gml_type_check_index);
-	l_r.h_set("object",gml_type_check_index);
-	l_r.h_set("room",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"any",gml_type_check_any);
+	variable_struct_set(l_r.h_obj,"bool",gml_type_check_number);
+	variable_struct_set(l_r.h_obj,"number",gml_type_check_number);
+	variable_struct_set(l_r.h_obj,"?number",gml_type_check_z_number);
+	variable_struct_set(l_r.h_obj,"float",gml_type_check_number);
+	variable_struct_set(l_r.h_obj,"?float",gml_type_check_z_number);
+	variable_struct_set(l_r.h_obj,"real",gml_type_check_number);
+	variable_struct_set(l_r.h_obj,"?real",gml_type_check_z_number);
+	variable_struct_set(l_r.h_obj,"color",gml_type_check_number);
+	variable_struct_set(l_r.h_obj,"date",gml_type_check_number);
+	variable_struct_set(l_r.h_obj,"int",gml_type_check_int);
+	variable_struct_set(l_r.h_obj,"index",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"id",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"sprite",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"background",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"sound",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"font",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"script",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"shader",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"timeline",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"object",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"room",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"buffer",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"list",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"grid",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"string",gml_type_check_string);
+	variable_struct_set(l_r.h_obj,"?string",gml_type_check_z_string);
+	variable_struct_set(l_r.h_obj,"array",gml_type_check_array);
+	variable_struct_set(l_r.h_obj,"?array",gml_type_check_z_array);
+	variable_struct_set(l_r.h_obj,"sprite",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"background",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"sound",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"font",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"path",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"timeline",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"script",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"object",gml_type_check_index);
+	variable_struct_set(l_r.h_obj,"room",gml_type_check_index);
 	return l_r;
 }
 
@@ -1670,6 +1627,18 @@ function gml_value_list_copy(l_this1){
 }
 
 if(live_enabled)
+function gml_value_list_pad_to_size_with_null(l_this1,l_newSize){
+	var l_curSize=array_length(l_this1);
+	if(l_curSize<l_newSize){
+		array_resize(l_this1,l_newSize);
+		while(l_curSize<l_newSize){
+			l_this1[@l_curSize]=undefined;
+			l_curSize++;
+		}
+	}
+}
+
+if(live_enabled)
 function gml_with_scope(l_data,l_nxt)constructor{
 	static h_index=undefined;
 	static h_length=undefined;
@@ -1736,30 +1705,26 @@ if(live_enabled)function mc_gml_thread_proc_result()constructor{
 	static __enum__=mt_gml_thread_proc_result;
 }
 
-if(live_enabled)global.__mp_gml_thread_proc_result_ok=[];
 if(live_enabled)function mc_gml_thread_proc_result_ok():mc_gml_thread_proc_result()constructor{
-	static __enumParams__=global.__mp_gml_thread_proc_result_ok;
+	static __enumParams__=[];
 	static __enumIndex__=0;
 }
 globalvar gml_thread_proc_result_ok;if(live_enabled)gml_thread_proc_result_ok=new mc_gml_thread_proc_result_ok();
 
-if(live_enabled)global.__mp_gml_thread_proc_result_error=[];
 if(live_enabled)function mc_gml_thread_proc_result_error():mc_gml_thread_proc_result()constructor{
-	static __enumParams__=global.__mp_gml_thread_proc_result_error;
+	static __enumParams__=[];
 	static __enumIndex__=1;
 }
 globalvar gml_thread_proc_result_error;if(live_enabled)gml_thread_proc_result_error=new mc_gml_thread_proc_result_error();
 
-if(live_enabled)global.__mp_gml_thread_proc_result_sync_pos=[];
 if(live_enabled)function mc_gml_thread_proc_result_sync_pos():mc_gml_thread_proc_result()constructor{
-	static __enumParams__=global.__mp_gml_thread_proc_result_sync_pos;
+	static __enumParams__=[];
 	static __enumIndex__=2;
 }
 globalvar gml_thread_proc_result_sync_pos;if(live_enabled)gml_thread_proc_result_sync_pos=new mc_gml_thread_proc_result_sync_pos();
 
-if(live_enabled)global.__mp_gml_thread_proc_result_sync_scope=[];
 if(live_enabled)function mc_gml_thread_proc_result_sync_scope():mc_gml_thread_proc_result()constructor{
-	static __enumParams__=global.__mp_gml_thread_proc_result_sync_scope;
+	static __enumParams__=[];
 	static __enumIndex__=3;
 }
 globalvar gml_thread_proc_result_sync_scope;if(live_enabled)gml_thread_proc_result_sync_scope=new mc_gml_thread_proc_result_sync_scope();
@@ -1815,7 +1780,6 @@ globalvar gml_seek_eval_invalid_value;if(live_enabled)gml_seek_eval_invalid_valu
 globalvar gml_seek_set_op_resolve_set_op_safe;
 globalvar gml_seek_set_op_resolve_set_op_xw;
 globalvar gml_std_gml_internal_ArrayImpl_join_buf;if(live_enabled)gml_std_gml_internal_ArrayImpl_join_buf=undefined;
-globalvar haxe_ds_basic_map_blank;if(live_enabled)haxe_ds_basic_map_blank=[];
 globalvar live_async_http_1_found;if(live_enabled)live_async_http_1_found=new haxe_ds_string_map();
 globalvar live_async_http_1_acc;if(live_enabled)live_async_http_1_acc=ds_list_create();
 globalvar live_shader_updated;if(live_enabled)live_shader_updated=live_shader_updated_default;
@@ -1828,6 +1792,7 @@ globalvar live_request_guid;if(live_enabled)live_request_guid=undefined;
 globalvar live_request_id;if(live_enabled)live_request_id=undefined;
 globalvar live_config;if(live_enabled)live_config=undefined;
 globalvar live_runtime_version;if(live_enabled)live_runtime_version="";
+globalvar live_build_date;if(live_enabled)live_build_date=0;
 globalvar live_request_time;if(live_enabled)live_request_time=0;
 globalvar live_request_rate;if(live_enabled)live_request_rate=1;
 globalvar live_request_password;if(live_enabled)live_request_password="";
@@ -1887,6 +1852,7 @@ globalvar vm_group_op_funcs;if(live_enabled)vm_group_op_funcs=vm_group_op_impl()
 globalvar vm_v2_gml_thread_v2_handlers;if(live_enabled)vm_v2_gml_thread_v2_handlers=vm_v2_gml_thread_v2_handlers_init();
 
 if(live_enabled){
+	live_validate_scripts();
 	gml_parser_set_gml23(true);
 	live_preinit_api();
 	live_preinit_project();

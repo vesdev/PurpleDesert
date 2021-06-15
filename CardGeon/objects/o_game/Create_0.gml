@@ -1,7 +1,5 @@
 /// @description 
 
-//shader_set_live(sh_outrun_sunset,1);
-
 
 //show_debug_overlay(true)
 
@@ -923,6 +921,8 @@ drawLightSolids = function()
 	draw_player_minimap( obj_mapgen.draw_playerx-camera.x, obj_mapgen.draw_playery-camera.y);
 }
 
+//new sunset
+str_sunset = new sunset(-350,-250);
 
 
 depth = DEPTH_GAME;

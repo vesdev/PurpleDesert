@@ -5,7 +5,7 @@
 
 if(live_enabled)
 function vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,l_name,l_fn){
-	var l_id=l_map.h_get(l_name);
+	var l_id=variable_struct_get(l_map.h_obj,l_name);
 	if(l_id!=undefined)l_funcs[@l_id]=l_fn; else throw gml_std_haxe_Exception_thrown("Can't find "+l_name);
 }
 
@@ -16,7 +16,7 @@ function vm_v2_gml_thread_v2_handlers_init(){
 	var l_funcs=array_create(array_length(l_names),undefined);
 	var l_i=0;
 	for(var l__g1=array_length(l_names);l_i<l__g1;l_i++){
-		l_map.h_set(l_names[l_i],l_i);
+		variable_struct_set(l_map.h_obj,l_names[l_i],l_i);
 		l_funcs[@l_i]=vm_v2_gml_thread_v2_on_unknown;
 	}
 	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"discard",vm_group_stack_on_discard);
@@ -71,9 +71,11 @@ function vm_v2_gml_thread_v2_handlers_init(){
 	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"index2d",vm_group_array_on_index2d);
 	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"index2d_set",vm_group_array_on_index2d_set);
 	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"index2d_aop",vm_group_array_on_index2d_aop);
-	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"ensure_array_local",vm_group_ensure_on_ensure_array_local);
-	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"ensure_array_global",vm_group_ensure_on_ensure_array_global);
-	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"ensure_array_field",vm_group_ensure_on_ensure_array_field);
+	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"ensure_array_for_local",vm_group_ensure_plus_on_ensure_array_for_local);
+	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"ensure_array_for_global",vm_group_ensure_plus_on_ensure_array_for_global);
+	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"ensure_array_for_field",vm_group_ensure_plus_on_ensure_array_for_field);
+	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"ensure_array_for_index",vm_group_ensure_plus_on_ensure_array_for_index);
+	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"ensure_array_for_index2d",vm_group_ensure_plus_on_ensure_array_for_index2d);
 	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"alarm",vm_group_alarm_on_alarm);
 	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"alarm_set",vm_group_alarm_on_alarm_set);
 	vm_v2_gml_thread_v2_handlers_init_set(l_funcs,l_map,"alarm_aop",vm_group_alarm_on_alarm_aop);

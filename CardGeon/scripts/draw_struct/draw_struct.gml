@@ -221,7 +221,6 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 		var outline_thick = noone;
 		var outline = noone;
 		var front_color = noone;
-		number_struct.is_a_crit = true;
 		var is_a_crit = number_struct.is_a_crit;
 	
 		

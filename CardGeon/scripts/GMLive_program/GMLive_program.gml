@@ -47,19 +47,11 @@ function gml_program(l_sources)constructor{
 	static h_call_v=function(l_name,l_args1,l_copy){
 		if(l_copy==undefined)l_copy=true;
 		if(false)show_debug_message(argument[2]);
-		if(self.h_script_map.h_exists(l_name)){
-			var l_scr=self.h_script_map.h_get(l_name);
+		if(variable_struct_exists(self.h_script_map.h_obj,l_name)){
+			var l_scr=variable_struct_get(self.h_script_map.h_obj,l_name);
 			var l_locals=array_create(l_scr.h_locals);
 			if(l_copy)l_args1=gml_value_list_copy(l_args1);
-			var l_argc=array_length(l_args1);
-			var l_scrArgc=l_scr.h_arguments;
-			if(l_argc<l_scrArgc){
-				array_resize(l_args1,l_scrArgc);
-				var l_i=l_argc;
-				for(var l__g1=l_scrArgc;l_i<l__g1;l_i++){
-					l_args1[@l_i]=undefined;
-				}
-			}
+			gml_value_list_pad_to_size_with_null(l_args1,l_scr.h_arguments);
 			var l_th=new gml_thread(self,l_scr.h_actions,l_args1,l_locals);
 			l_th.h_callback=self.h_callback;
 			l_th.h_time_tag=self.h_time_tag;
@@ -121,15 +113,15 @@ function gml_program(l_sources)constructor{
 		switch(l__g.__enumIndex__){
 			case 1:l_r=l__g.h_value;break;
 			case 2:l_r=l__g.h_value;break;
-			case 41:
+			case 46:
 				var l__hx_tmp=l__g.h_x;
-				if(l__hx_tmp.__enumIndex__==7){
+				if(l__hx_tmp.__enumIndex__==12){
 					var l_d=l__g.h_d;
 					var l_s=l__hx_tmp.h_id;
 					var l_f=l__g.h_fd;
-					var l_e=self.h_enum_map.h_get(l_s);
+					var l_e=variable_struct_get(self.h_enum_map.h_obj,l_s);
 					if(l_e!=undefined){
-						var l_c=l_e.h_ctr_map.h_get(l_f);
+						var l_c=variable_struct_get(l_e.h_ctr_map.h_obj,l_f);
 						if(l_c!=undefined){
 							l_r=l_c.h_value;
 							if(l_r==undefined)return self.h_error("Value of "+l_s+"."+l_f+" is not known here",l_d);
@@ -137,7 +129,7 @@ function gml_program(l_sources)constructor{
 					} else return self.h_error("Could not find enum "+l_s,l_d);
 				} else return self.h_error("Can not evaluate this compile-time",gml_std_haxe_enum_tools_getParameter(l_q,0));
 				break;
-			case 30:
+			case 35:
 				if(self.h_eval(l__g.h_a))return true;
 				l_r=self.h_eval_value;
 				if(self.h_eval(l__g.h_b))return true;
@@ -189,11 +181,11 @@ function gml_program(l_sources)constructor{
 			while(l__g1<array_length(l__g2)){
 				var l_scr=l__g2[l__g1];
 				l__g1++;
-				if(self.h_script_map.h_exists(l_scr.h_name)){
+				if(variable_struct_exists(self.h_script_map.h_obj,l_scr.h_name)){
 					if(l_scr.h_name==l_main){
-						var l__g3=self.h_script_map.h_get(l_main).h_node;
+						var l__g3=variable_struct_get(self.h_script_map.h_obj,l_main).h_node;
 						var l_tmp;
-						if(l__g3.__enumIndex__==92)l_tmp=array_length(l__g3.h_nodes)==0; else l_tmp=false;
+						if(l__g3.__enumIndex__==97)l_tmp=array_length(l__g3.h_nodes)==0; else l_tmp=false;
 						if(l_tmp){
 							var l_w=self.h_script_array;
 							var l_i=0;
@@ -206,18 +198,18 @@ function gml_program(l_sources)constructor{
 									l_w[@l_n-1]=l_scr;
 								} else l_i++;
 							}
-							self.h_script_map.h_set(l_scr.h_name,l_scr);
+							variable_struct_set(self.h_script_map.h_obj,l_scr.h_name,l_scr);
 						} else {
 							self.h_error("Cannot override prefix-script \""+l_main+"\" because it is not empty",l_scr.h_pos);
 							return 0;
 						}
 					} else {
-						self.h_error("Script "+l_scr.h_name+" is already defined at "+self.h_script_map.h_get(l_scr.h_name).h_pos.h_to_string(),l_scr.h_pos);
+						self.h_error("Script "+l_scr.h_name+" is already defined at "+variable_struct_get(self.h_script_map.h_obj,l_scr.h_name).h_pos.h_to_string(),l_scr.h_pos);
 						return 0;
 					}
 				} else {
 					gml_std_gml_internal_ArrayImpl_push(self.h_script_array,l_scr);
-					self.h_script_map.h_set(l_scr.h_name,l_scr);
+					variable_struct_set(self.h_script_map.h_obj,l_scr.h_name,l_scr);
 				}
 			}
 			var l__g5=0;
@@ -226,14 +218,14 @@ function gml_program(l_sources)constructor{
 				var l_e=l__g6[l__g5];
 				l__g5++;
 				gml_std_gml_internal_ArrayImpl_push(self.h_enum_array,l_e);
-				self.h_enum_map.h_set(l_e.h_name,l_e);
+				variable_struct_set(self.h_enum_map.h_obj,l_e.h_name,l_e);
 			}
 			var l_mcrNames=l_b.h_macro_names;
 			var l_mcrNodes=l_b.h_macro_nodes;
 			var l_mcrMap=self.h_macro_map;
 			var l_i1=0;
 			for(var l__g8=array_length(l_mcrNames);l_i1<l__g8;l_i1++){
-				l_mcrMap.h_set(l_mcrNames[l_i1],l_mcrNodes[l_i1]);
+				variable_struct_set(l_mcrMap.h_obj,l_mcrNames[l_i1],l_mcrNodes[l_i1]);
 			}
 		} else if(l_src.h_opt){
 			var l_errorNext=l_b.h_error_text;

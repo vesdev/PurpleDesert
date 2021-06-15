@@ -6,8 +6,7 @@
 // Most of the functions that you are actually supposed to touch are here
 if(live_enabled)
 function live_temp_path_init(){
-	var l_now=gml_std_Date_now();
-	return "gmlive-"+gml_std_Std_stringify(l_now.h_getTime());
+	return "gmlive-"+gml_std_Std_stringify(gml_std_Date_now().h_getTime());
 }
 
 if(live_enabled)
@@ -27,7 +26,7 @@ function live_log(l_s){
 
 if(live_enabled)
 function live_update_script_impl_add_source(l_name,l_acc,l_found,l_m){
-	l_found.h_set(l_name,true);
+	variable_struct_set(l_found.h_obj,l_name,true);
 	var l_tokenCount=l_m.h_token_count;
 	if(l_tokenCount<0)return 0;
 	var l_tokens=l_m.h_tokens;
@@ -55,13 +54,13 @@ function live_update_script_impl_index_rec(l_tokens,l_tokensLen,l_acc,l_found){
 		var l_tk=l_tokens[l_tokensPos];
 		var l_id;
 		if(l_tk.__enumIndex__==10)l_id=l_tk.h_id; else continue;
-		if(l_found.h_exists(l_id))continue;
-		var l_src=l_macros.h_get(l_id);
+		if(variable_struct_exists(l_found.h_obj,l_id))continue;
+		var l_src=variable_struct_get(l_macros.h_obj,l_id);
 		if(l_src!=undefined){
 			live_update_script_impl_add_source(l_id,l_acc,l_found,l_src);
 			continue;
 		}
-		l_src=l_enums.h_get(l_id);
+		l_src=variable_struct_get(l_enums.h_obj,l_id);
 		if(l_src!=undefined){
 			if(l_tokensPos>0){
 				if(l_tokens[l_tokensPos-1].__enumIndex__==5)continue;
@@ -73,7 +72,7 @@ function live_update_script_impl_index_rec(l_tokens,l_tokensLen,l_acc,l_found){
 			live_update_script_impl_add_source(l_id,l_acc,l_found,l_src);
 			continue;
 		}
-		l_found.h_set(l_id,true);
+		variable_struct_set(l_found.h_obj,l_id,true);
 	}
 }
 
@@ -81,10 +80,10 @@ function live_update_script_impl(l_name,l_ident,l_code){
 	if(live_enabled){
 		var l_found=live_async_http_1_found;
 		var l_acc=live_async_http_1_acc;
-		var l_data=live_live_map.h_get(l_ident);
+		var l_data=variable_struct_get(live_live_map.h_obj,l_ident);
 		if(l_data==undefined){
 			l_data={program:undefined,ident:l_ident}
-			live_live_map.h_set(l_ident,l_data);
+			variable_struct_set(live_live_map.h_obj,l_ident,l_data);
 		}
 		var l_source=new gml_source(l_name,l_code,l_name);
 		var l_tokens=gml_parser_run(l_source);
@@ -240,11 +239,10 @@ function live_function_add(l_signature,l_func){
 				}
 				l_pos=gml_std_string_pos_ext_haxe(l_arg,":");
 				if(l_pos>=0){
-					var l_name=gml_std_string_substring(l_arg,0,l_pos);
-					if(gml_std_string_pos_ext_haxe(l_name,"?")>=0)l_opt=true;
+					if(gml_std_string_pos_ext_haxe(gml_std_string_substring(l_arg,0,l_pos),"?")>=0)l_opt=true;
 					var l_type=gml_std_StringTools_trim(gml_std_string_substring(l_arg,l_pos+1));
-					if(l_tmap.h_exists(l_type)){
-						var l_tfun=l_tmap.h_get(l_type);
+					if(variable_struct_exists(l_tmap.h_obj,l_type)){
+						var l_tfun=variable_struct_get(l_tmap.h_obj,l_type);
 						if(gml_std_string_pos_ext_haxe(l_arg,"...")>=0)l_rest=l_tfun;
 						l_argt[@l_i]=l_tfun;
 					} else throw gml_std_haxe_Exception_thrown("\""+l_type+"\" is not a known type (in argument["+string(l_i)+"] \""+l_arg+"\" in \""+l_signature+"\")");
@@ -280,14 +278,14 @@ function live_function_add(l_signature,l_func){
 			l_i=l_k+1;
 		}
 		var l_name=gml_parse_name(l_s,l_i);
-		if(l_inst!=0)gml_inst_data.h_set(l_name,l_inst);
-		gml_func_eval.h_set(l_name,gml_std_string_pos_ext_haxe(l_flags,"#")>=0);
-		gml_func_args.h_set(l_name,l_argt);
-		gml_func_rest.h_set(l_name,l_rest);
-		gml_func_arg0.h_set(l_name,l_arg0);
-		gml_func_arg1.h_set(l_name,l_arg1);
-		gml_func_script.h_set(l_name,l_func);
-		gml_func_sig.h_set(l_name,l_s);
+		if(l_inst!=0)variable_struct_set(gml_inst_data.h_obj,l_name,l_inst);
+		variable_struct_set(gml_func_eval.h_obj,l_name,(gml_std_string_pos_ext_haxe(l_flags,"#")>=0));
+		variable_struct_set(gml_func_args.h_obj,l_name,l_argt);
+		variable_struct_set(gml_func_rest.h_obj,l_name,l_rest);
+		variable_struct_set(gml_func_arg0.h_obj,l_name,l_arg0);
+		variable_struct_set(gml_func_arg1.h_obj,l_name,l_arg1);
+		variable_struct_set(gml_func_script.h_obj,l_name,l_func);
+		variable_struct_set(gml_func_sig.h_obj,l_name,l_s);
 	}
 }
 
@@ -395,7 +393,7 @@ function live_update(){
 				live_request_time=l_now+live_request_rate*1000;
 				var l_url;
 				if(live_request_guid==undefined){
-					l_url=live_request_url+"/init?password="+live_request_password+"&version="+string(105)+"&config="+live_config+"&runtime="+live_runtime_version;
+					l_url=live_request_url+"/init?password="+live_request_password+"&version="+string(105)+"&config="+live_config+"&runtime="+live_runtime_version+"&buildDate="+gml_std_Std_stringify(live_build_date);
 				} else {
 					l_url=live_request_url+"/update?guid="+((live_request_guid==undefined?"null":live_request_guid));
 					var l_sl=live_live_sprites_stop;
@@ -474,6 +472,9 @@ function live_init(l_updateRate,l_url,l_password){
 		live_log("Initializing...");
 		live_config=os_get_config();
 		live_runtime_version=GM_runtime_version;
+		var l_date1=gml_std_Date_now();
+		l_date1.h_date=GM_build_date;
+		live_build_date=l_date1.h_getTime();
 		live_request_rate=l_updateRate;
 		live_request_url=l_url;
 		live_request_password=l_password;
@@ -513,7 +514,7 @@ function live_init(l_updateRate,l_url,l_password){
 		if(l_url==undefined)for(l_i=100000;script_exists(l_i);l_i++){
 			l_s=script_get_name(l_i);
 			gml_func_add(l_s+"(...)",l_i);
-			gml_func_script_id.h_set(l_s,l_i);
+			variable_struct_set(gml_func_script_id.h_obj,l_s,l_i);
 		}
 		live_log("Indexed OK!");
 	}
@@ -542,6 +543,9 @@ function live_preinit_project(){
 	gml_func_add("live_call_ext(...):",live_preinit_project_fake_call);
 	gml_func_add("live_defcall_ext(...):",live_preinit_project_fake_call);
 	gml_func_add("live_method(self, func):",live_method);
+	gml_func_add("method(self, func):",live_method);
+	gml_func_add("live_method_get_self(func):",live_method_get_self);
+	gml_func_add("method_get_self(func):",live_method_get_self);
 	gml_func_add("live_execute_string(:string):",live_execute_string);
 	gml_func_add("live_snippet_create(:string, :string=\"snippet\"):",live_snippet_create);
 	gml_func_add("live_snippet_call(snip, ...rest):",live_snippet_call);

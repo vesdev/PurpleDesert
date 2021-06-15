@@ -40,8 +40,7 @@ function vm_group_alarm_on_alarm_aop(l_th,l_act){
 		return l_th.h_proc_error2(gml_std_haxe_Exception_caught(l__g).h_native,l_act)
 	}
 	try{
-		var l_fn=vm_group_op_funcs[l_o];
-		l_v=l_fn(l_v,l_st[l_z+2]);
+		l_v=vm_group_op_funcs[l_o](l_v,l_st[l_z+2])
 	}catch(l__g){
 		return l_th.h_proc_error2(gml_std_haxe_Exception_caught(l__g).h_native,l_act)
 	}
@@ -104,8 +103,7 @@ function vm_group_arg_on_arg_const_aop(l_th,l_act){
 		l_st[@l_i1]=0;
 		l_st[@0]=l_i1-1;
 		try{
-			var l_fn=vm_group_op_funcs[l_o];
-			l_val=l_fn(l_arg,l_val);
+			l_val=vm_group_op_funcs[l_o](l_arg,l_val)
 		}catch(l__g){
 			return l_th.h_proc_error2(gml_std_haxe_Exception_caught(l__g).h_native,l_act)
 		}
@@ -164,8 +162,7 @@ function vm_group_arg_on_arg_index_aop(l_th,l_act){
 		var l_args1=l_q.h_args;
 		if(l_i>=0&&l_i<array_length(l_args1)){
 			try{
-				var l_fn=vm_group_op_funcs[l_o];
-				l_v=l_fn(l_args1[l_i],l_v);
+				l_v=vm_group_op_funcs[l_o](l_args1[l_i],l_v)
 			}catch(l__g){
 				return l_th.h_proc_error2(gml_std_haxe_Exception_caught(l__g).h_native,l_act)
 			}
@@ -213,8 +210,7 @@ function vm_group_array_on_index_aop(l_th,l_act){
 		return l_th.h_proc_error2(gml_std_haxe_Exception_caught(l__g).h_native,l_act)
 	}
 	try{
-		var l_fn=vm_group_op_funcs[l_o];
-		l_v=l_fn(l_v,l_st[l_z+2]);
+		l_v=vm_group_op_funcs[l_o](l_v,l_st[l_z+2])
 	}catch(l__g){
 		return l_th.h_proc_error2(gml_std_haxe_Exception_caught(l__g).h_native,l_act)
 	}
@@ -267,8 +263,7 @@ function vm_group_array_on_index2d_aop(l_th,l_act){
 		return l_th.h_proc_error2(gml_std_haxe_Exception_caught(l__g).h_native,l_act)
 	}
 	try{
-		var l_fn=vm_group_op_funcs[l_o];
-		l_v=l_fn(l_v,l_st[l_z+3]);
+		l_v=vm_group_op_funcs[l_o](l_v,l_st[l_z+3])
 	}catch(l__g){
 		return l_th.h_proc_error2(gml_std_haxe_Exception_caught(l__g).h_native,l_act)
 	}
@@ -281,30 +276,112 @@ function vm_group_array_on_index2d_aop(l_th,l_act){
 }
 
 if(live_enabled)
-function vm_group_ensure_on_ensure_array_local(l_th,l_act){
-	var l_i=l_act.h_i;
-	var l_locals=l_th.h_scope.h_locals;
-	if(!is_array(l_locals[l_i]))l_locals[@l_i]=array_create(0);
+function vm_group_ensure_plus_on_ensure_array_for_local(l_th,l_act){
+	var l_ind=l_act.h_ind;
+	var l_q=l_th.h_scope;
+	var l_locals=l_q.h_locals;
+	var l_val=l_locals[l_ind];
+	if(!is_array(l_val)){
+		l_val=[];
+		l_locals[@l_ind]=l_val;
+	}
+	var l_st=l_q.h_stack;
+	var l_i=l_st[0]+1;
+	if(l_i>=array_length(l_st))l_st[@array_length(l_st)*2]=0;
+	l_st[@l_i]=l_val;
+	l_st[@0]=l_i;
 	return gml_thread_proc_result_ok;
 }
 
 if(live_enabled)
-function vm_group_ensure_on_ensure_array_global(l_th,l_act){
-	var l_s=l_act.h_fd;
-	if(!is_array(variable_global_get(l_s)))variable_global_set(l_s,[]);
+function vm_group_ensure_plus_on_ensure_array_for_global(l_th,l_act){
+	var l_name=l_act.h_name;
+	var l_q=l_th.h_scope;
+	var l_val=variable_global_get(l_name);
+	if(!is_array(l_val)){
+		l_val=[];
+		variable_global_set(l_name,l_val);
+	}
+	var l_st=l_q.h_stack;
+	var l_i=l_st[0]+1;
+	if(l_i>=array_length(l_st))l_st[@array_length(l_st)*2]=0;
+	l_st[@l_i]=l_val;
+	l_st[@0]=l_i;
 	return gml_thread_proc_result_ok;
 }
 
 if(live_enabled)
-function vm_group_ensure_on_ensure_array_field(l_th,l_act){
-	var l_field=l_act.h_fd;
+function vm_group_ensure_plus_on_ensure_array_for_field(l_th,l_act){
+	var l_name=l_act.h_field;
 	var l_st=l_th.h_scope.h_stack;
-	var l_i=l_st[0];
-	var l_r=l_st[l_i];
-	l_st[@l_i]=0;
-	l_st[@0]=l_i-1;
-	var l_o=l_r;
-	if(!is_array(variable_instance_get(l_o,l_field)))variable_instance_set(l_o,l_field,[]);
+	var l_z=l_st[0];
+	var l_obj=l_st[l_z];
+	var l_val=variable_instance_get(l_obj,l_name);
+	if(!is_array(l_val)){
+		l_val=[];
+		variable_instance_set(l_obj,l_name,l_val);
+	}
+	l_st[@l_z]=l_val;
+	return gml_thread_proc_result_ok;
+}
+
+if(live_enabled)
+function vm_group_ensure_plus_on_ensure_array_for_index(l_th,l_act){
+	var l_st=l_th.h_scope.h_stack;
+	var l_z=l_st[0]-1;
+	l_st[@0]=l_z;
+	var l_arr=l_st[l_z];
+	var l_ind=l_st[l_z+1];
+	var l_val;
+	if(l_ind<array_length(l_arr)){
+		l_val=l_arr[l_ind];
+		if(!is_array(l_val)){
+			l_val=[];
+			l_arr[@l_ind]=l_val;
+		}
+	} else {
+		l_val=[];
+		l_arr[@l_ind]=l_val;
+	}
+	l_st[@l_z]=l_val;
+	l_st[@l_z+1]=0;
+	return gml_thread_proc_result_ok;
+}
+
+if(live_enabled)
+function vm_group_ensure_plus_on_ensure_array_for_index2d(l_th,l_act){
+	var l_st=l_th.h_scope.h_stack;
+	var l_z=l_st[0]-2;
+	l_st[@0]=l_z;
+	var l_arr=l_st[l_z];
+	var l_val;
+	var l_ind=l_st[l_z+1];
+	if(l_ind<array_length(l_arr)){
+		l_val=l_arr[l_ind];
+		if(!is_array(l_val)){
+			l_val=[];
+			l_arr[@l_ind]=l_val;
+		}
+	} else {
+		l_val=[];
+		l_arr[@l_ind]=l_val;
+	}
+	l_arr=l_val;
+	var l_ind=l_st[l_z+2];
+	if(l_ind<array_length(l_arr)){
+		l_val=l_arr[l_ind];
+		if(!is_array(l_val)){
+			l_val=[];
+			l_arr[@l_ind]=l_val;
+		}
+	} else {
+		l_val=[];
+		l_arr[@l_ind]=l_val;
+	}
+	l_arr=l_val;
+	l_st[@l_z]=l_val;
+	l_st[@l_z+1]=0;
+	l_st[@l_z+2]=0;
 	return gml_thread_proc_result_ok;
 }
 
@@ -346,8 +423,7 @@ function vm_group_env_on_env_aop(l_th,l_act){
 	l_st[@l_i]=0;
 	l_st[@0]=l_i-1;
 	try{
-		var l_fn1=vm_group_op_funcs[l_op];
-		l_ev=l_fn1(l_ev,l_sv);
+		l_ev=vm_group_op_funcs[l_op](l_ev,l_sv)
 	}catch(l__g){
 		return l_th.h_proc_error2(gml_std_haxe_Exception_caught(l__g).h_native,l_act)
 	}
@@ -400,8 +476,7 @@ function vm_group_env_on_env1d_aop(l_th,l_act){
 		return l_th.h_proc_error2(gml_std_haxe_Exception_caught(l__g).h_native,l_act)
 	}
 	try{
-		var l_fn1=vm_group_op_funcs[l_o];
-		l_ev=l_fn1(l_ev,l_v);
+		l_ev=vm_group_op_funcs[l_o](l_ev,l_v)
 	}catch(l__g){
 		return l_th.h_proc_error2(gml_std_haxe_Exception_caught(l__g).h_native,l_act)
 	}
@@ -491,8 +566,7 @@ function vm_group_field_on_field_aop(l_th,l_act){
 		l_cur=variable_instance_get(l_ctx,l_s);
 		if(l_cur!=undefined||variable_instance_exists(l_ctx,l_s)){
 			try{
-				var l_fn=vm_group_op_funcs[l_o];
-				l_cur=l_fn(l_cur,l_val);
+				l_cur=vm_group_op_funcs[l_o](l_cur,l_val)
 			}catch(l__g){
 				var l_x=gml_std_haxe_Exception_caught(l__g).h_native;
 				l_st[@l_z]=0;
@@ -514,8 +588,7 @@ function vm_group_field_on_field_aop(l_th,l_act){
 			l_cur=variable_instance_get(self,l_s);
 			if(l_cur!=undefined||variable_instance_exists(l_ctx,l_s)){
 				try{
-					var l_fn=vm_group_op_funcs[l_o];
-					l_cur=l_fn(l_cur,l_val);
+					l_cur=vm_group_op_funcs[l_o](l_cur,l_val)
 				}catch(l__g){
 					var l_x=gml_std_haxe_Exception_caught(l__g).h_native;
 					l_st[@l_z]=0;
@@ -602,9 +675,7 @@ function vm_group_global_on_global_aop(l_th,l_act){
 		l_st[@l_i]=0;
 		l_st[@0]=l_i-1;
 		try{
-			var l_a=variable_global_get(l_s);
-			var l_fn=vm_group_op_funcs[l_o];
-			l_val=l_fn(l_a,l_val);
+			l_val=vm_group_op_funcs[l_o](variable_global_get(l_s),l_val)
 		}catch(l__g){
 			return l_th.h_proc_error2(gml_std_haxe_Exception_caught(l__g).h_native,l_act)
 		}
@@ -857,14 +928,17 @@ function vm_group_literal_on_array_decl(l_th,l_act){
 
 if(live_enabled)
 function vm_group_literal_on_object_decl(l_th,l_act){
-	var l_keys=l_act.h_keys;
+	var l_fields=l_act.h_fields;
 	var l_obj={}
-	var l_n=array_length(l_keys);
+	var l_n=array_length(l_fields);
 	var l_stack=l_th.h_scope.h_stack;
 	var l_stackStart=l_stack[0]-l_n+1;
 	var l_i=l_n;
 	while(--l_i>=0){
-		variable_struct_set(l_obj,l_keys[l_i],l_stack[l_stackStart+l_i]);
+		var l_fd=l_fields[l_i];
+		var l_val=l_stack[l_stackStart+l_i];
+		if(l_fd.bindFunc)l_val=live_method(l_obj,l_val);
+		variable_struct_set(l_obj,l_fd.name,l_val);
 	}
 	gml_stack_discard_multi(l_stack,l_n);
 	var l_i=l_stack[0]+1;
@@ -910,8 +984,7 @@ function vm_group_local_on_local_aop(l_th,l_act){
 	l_st[@0]=l_i1-1;
 	var l_cur=l_locals[l_i];
 	try{
-		var l_fn=vm_group_op_funcs[l_op];
-		l_cur=l_fn(l_cur,l_val);
+		l_cur=vm_group_op_funcs[l_op](l_cur,l_val)
 	}catch(l__g){
 		return l_th.h_proc_error2(gml_std_haxe_Exception_caught(l__g).h_native,l_act)
 	}
@@ -1042,8 +1115,7 @@ function vm_group_op_on_bin_op(l_th,l_act){
 	var l_st=l_th.h_scope.h_stack;
 	var l_z=l_st[0]-1;
 	l_st[@0]=l_z;
-	var l_fn=vm_group_op_funcs[l_act.h_o];
-	l_st[@l_z]=l_fn(l_st[l_z],l_st[l_z+1]);
+	l_st[@l_z]=vm_group_op_funcs[l_act.h_o](l_st[l_z],l_st[l_z+1]);
 	l_st[@l_z+1]=0;
 	return gml_thread_proc_result_ok;
 }
@@ -1124,8 +1196,7 @@ function vm_group_op_on_ds_aop(l_th,l_act){
 		return l_th.h_proc_error2(l_x,l_act);
 	}
 	try{
-		var l_fn=vm_group_op_funcs[l__o];
-		l_st[@l_k+l_getterArgc]=l_fn(l_v,l_st[l_k+l_getterArgc]);
+		l_st[@l_k+l_getterArgc]=vm_group_op_funcs[l__o](l_v,l_st[l_k+l_getterArgc])
 	}catch(l__g){
 		var l_x=gml_std_haxe_Exception_caught(l__g).h_native;
 		gml_stack_pop_multi(l_st,l_setterArgc);
@@ -1159,8 +1230,7 @@ function vm_group_special_on_fork(l_th,l_act){
 	var l_out=l_act.h_out;
 	var l_st=l_th.h_scope.h_stack;
 	if(l_out)gml_stack_push(l_st,1);
-	var l_thf=l_th.h_fork();
-	l_thf.h_exec();
+	l_th.h_fork().h_exec();
 	if(l_out)l_st[@l_st[0]]=0;
 	return gml_thread_proc_result_sync_pos;
 }

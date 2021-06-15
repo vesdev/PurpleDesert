@@ -6,6 +6,10 @@ function draw_status(xx , yy, struct){
 	//active_enemies = [];
 	//active_enemies  = [new_enemy(e_enemies.babydragon) , new_enemy(e_enemies.babydragon) , new_enemy(e_enemies.babydragon)];
 	yy +=  camera.height*0.2 +yoffgame;	
+	
+	if struct = player { 
+	yy += 	camera.height*0.05;
+	}
 	var buff_list = struct.buff;
 	var str = "";
 	var struct_variable_names = variable_struct_get_names(buff_list);

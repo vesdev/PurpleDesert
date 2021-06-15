@@ -10,24 +10,21 @@ function gml_seek_eval_node_to_value(l_node){
 		case 0:return undefined;
 		case 1:return l__g.h_value;
 		case 2:return l__g.h_value;
-		case 13:return gml_const_val.h_get(l__g.h_id);
-		case 3:return l__g.h_ctr.h_value;
-		case 12:return l__g.h_id;
+		case 18:return variable_struct_get(gml_const_val.h_obj,l__g.h_id);
+		case 4:return l__g.h_ctr.h_value;
+		case 17:return l__g.h_id;
 		default:return gml_seek_eval_invalid_value;
 	}
 }
 
 if(live_enabled)
 function gml_seek_eval_value_to_node(l_val,l_d){
-	if(is_bool(l_val)){
-		return gml_node_number(l_d,(l_val?1:0),undefined);
-	} else if(is_numeric(l_val)){
-		return gml_node_number(l_d,l_val,undefined);
-	} else if(is_string(l_val)){
-		return gml_node_cstring(l_d,l_val);
-	} else if(l_val==undefined){
-		return gml_node_undefined(l_d);
-	} else return undefined;
+	if(is_bool(l_val))return gml_node_number(l_d,(l_val?1:0),undefined);
+	if(is_numeric(l_val))return gml_node_number(l_d,l_val,undefined);
+	if(is_string(l_val))return gml_node_cstring(l_d,l_val);
+	if(l_val==undefined)return gml_node_undefined(l_d);
+	if(is_ptr(l_val))return gml_node_other_const(l_d,l_val);
+	return undefined;
 }
 
 if(live_enabled)
@@ -40,8 +37,8 @@ function gml_seek_eval_proc(l_q,l_st){
 		case 0:break;
 		case 1:break;
 		case 2:break;
-		case 13:break;
-		case 30:
+		case 18:break;
+		case 35:
 			var l__g2=l__g.h_o;
 			if(l__g2==16){
 				var l_d=l__g.h_d;
@@ -57,7 +54,7 @@ function gml_seek_eval_proc(l_q,l_st){
 							gml_std_haxe_enum_tools_setTo(l_q,gml_node_cstring(l_d,l_v1+l_v2));
 						} else {
 							var l__g=l_b;
-							if(l__g.__enumIndex__==30){
+							if(l__g.__enumIndex__==35){
 								if(l__g.h_o==16){
 									var l__hx_tmp=l__g.h_a;
 									if(l__hx_tmp.__enumIndex__==2){
@@ -88,7 +85,7 @@ function gml_seek_eval_proc(l_q,l_st){
 						}
 					} else if(is_string(l_v2)){
 						var l__g=l_a;
-						if(l__g.__enumIndex__==30){
+						if(l__g.__enumIndex__==35){
 							if(l__g.h_o==16){
 								var l__hx_tmp=l__g.h_b;
 								if(l__hx_tmp.__enumIndex__==2){
@@ -161,14 +158,14 @@ function gml_seek_eval_proc(l_q,l_st){
 				}
 			}
 			break;
-		case 23:
+		case 28:
 			var l_name=l__g.h_funcName;
 			var l_args1=l__g.h_args;
 			l_n=array_length(l_args1);
 			for(l_i=0;l_i<l_n;l_i++){
 				if(gml_seek_eval_proc(l_args1[l_i],l_st))l_z=false;
 			}
-			if(l_z&&gml_func_eval.h_get(l_name)){
+			if(l_z&&variable_struct_get(gml_func_eval.h_obj,l_name)){
 				var l_evalArgs=array_create(l_n);
 				var l_val;
 				l_i=0;
@@ -188,11 +185,10 @@ function gml_seek_eval_proc(l_q,l_st){
 					var l_th0=gml_thread_current;
 					gml_thread_current=l_th;
 					l_th.h_status=gml_thread_status_running;
-					var l_fn=gml_func_script.h_get(l_name);
 					var l_sf;
 					if(l_n<81){
 						l_sf=vm_gml_thread_exec_slice_funcs[l_n];
-						l_val=l_sf(l_fn,l_evalArgs,0);
+						l_val=l_sf(variable_struct_get(gml_func_script.h_obj,l_name),l_evalArgs,0);
 					} else l_val=vm_gml_thread_exec_slice_error();
 					gml_thread_current=l_th0;
 					if(l_th.h_status!=gml_thread_status_error){

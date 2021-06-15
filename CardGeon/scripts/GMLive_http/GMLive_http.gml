@@ -34,7 +34,7 @@ function live_async_http_0(l_map){
 		var l_scrFunc=asset_get_index(l_scrName);
 		if(l_scrFunc==-1)l_scrFunc=asset_get_index(l_scrName);
 		gml_func_add(ds_list_find_value(l_list,l_i+1),l_scrFunc);
-		gml_func_script_id.h_set(l_scrName,l_scrFunc);
+		variable_struct_set(gml_func_script_id.h_obj,l_scrName,l_scrFunc);
 	}
 	l_list=ds_map_find_value(l_map,"globals");
 	l_n=ds_list_size(l_list);
@@ -59,7 +59,7 @@ function live_async_http_0(l_map){
 	for(l_i=0;l_i<l_n;l_i+=2){
 		l_s=ds_list_find_value(l_list,l_i);
 		var l_s1="macro:"+l_s;
-		l_srcMap.h_set(l_s,new gml_source(l_s1,"#macro "+l_s+" "+gml_std_Std_stringify(ds_list_find_value(l_list,l_i+1)),l_s1,true));
+		variable_struct_set(l_srcMap.h_obj,l_s,new gml_source(l_s1,"#macro "+l_s+" "+gml_std_Std_stringify(ds_list_find_value(l_list,l_i+1)),l_s1,true));
 	}
 	l_srcMap=live_live_enums;
 	l_srcMap.h_clear();
@@ -69,7 +69,7 @@ function live_async_http_0(l_map){
 	for(l_i=0;l_i<l_n;l_i++){
 		l_s=ds_list_find_value(l_list,l_i);
 		l_s=ds_list_find_value(l_names,l_i);
-		l_srcMap.h_set(l_s,new gml_source("enum "+l_s,ds_list_find_value(l_list,l_i),"enum "+l_s,true));
+		variable_struct_set(l_srcMap.h_obj,l_s,new gml_source("enum "+l_s,ds_list_find_value(l_list,l_i),"enum "+l_s,true));
 	}
 	live_log("Ready!");
 }
