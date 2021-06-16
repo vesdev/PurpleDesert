@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Shader_Scripts",
-    "path": "folders/Scripts/Shader_Scripts.yy",
+    "name": "Scripts",
+    "path": "folders/Scripts/Scripts.yy",
   },
   "resourceVersion": "1.0",
   "name": "scr_sunset",

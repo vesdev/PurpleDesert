@@ -1093,9 +1093,6 @@ if !upgrade_card_select.enable{
 					}else{
 						cannot_upgrade_card_timer = 0;
 					}
-					
-					
-					
 			}
 	}
 //	draw_deck();	
@@ -1103,7 +1100,7 @@ if !upgrade_card_select.enable{
 
 
 function draw_deck() { 
-
+	if live_call() return live_result;
 	//time looks amazing at SEC*.3 or .4
 	if deck_flash_timer <= deck_flash_time{ 
 	var _interval = 14;
@@ -1121,7 +1118,7 @@ function draw_deck() {
 		draw_sprite_ext(s_ui_deck,0,deckx,decky,size,size,0,c_white,1);
 		gpu_set_fog(false,c_white,1,1)
 
-		draw_text_outline(10+xoffgame,65+yoffgame,"DECK_"+string(deck_size),c_white);
+		//draw_text_outline(10+xoffgame,65+yoffgame,"DECK_"+string(deck_size),c_white);
 		deck_color = C_DARK;
 	}
 
@@ -1216,9 +1213,10 @@ function draw_cards_in_discard(){
 }
 
 function draw_discard(){ 
-
+	if live_call() return live_result;
 	//time looks amazing at SEC*.3 or .4
 	discard_flash_time = SEC*.4;
+	
 	if discard_flash_timer <= discard_flash_time{ 
 	
 	var _interval = 14;
@@ -1244,7 +1242,8 @@ function draw_discard(){
 	}
 }
 function draw_cards_in_exhaust(){
-
+if live_call() return live_result;
+	
 	var offset = 22;
 	init_card_border_step(0);
 	var card_height_ = 210;
@@ -1307,9 +1306,10 @@ function draw_cards_in_exhaust(){
 	*/
 	
 //	draw_sprite_ext(s_discard,0,discardx,discardy,discard_xsize,discard_xsize,0,c_white,1)
-	
+
 if boon_collision( exhaustx-offset,exhausty-offset,exhaustx+offset,exhausty+offset,MX,MY){
-	draw_outline_thick(s_exhaust,0,exhaustx,exhausty,exhaust_size, ds_list_size(exhaust) ,0,c_white,1);
+		draw_outline_thick(s_exhaust,0,exhaustx,exhausty,exhaust_size,exhaust_size ,0,c_white,1);
+
 		if m1_pressed { 
 			exhaust_flash_timer = 0;
 			m1_pressed = false;
@@ -1331,6 +1331,7 @@ if boon_collision( exhaustx-offset,exhausty-offset,exhaustx+offset,exhausty+offs
 }
 
 function draw_exhast(){ 
+	if live_call() return live_result;
 
 	if exhaust_flash_timer <= exhaust_flash_timer{ 
 	

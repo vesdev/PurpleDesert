@@ -427,11 +427,11 @@ if o_game.game_state = e_gamestate.battle exit;
 draw_set_alpha(1.0);
 
 //draw lighting
-player_light.x = mouse_x;
-player_light.y = mouse_y;
+//player_light.x = mouse_x;
+//player_light.y = mouse_y;
 with(o_game)
 {
-	lighting.Draw(camera.x-camera.width/2, camera.y-camera.height/2, lights, drawLightSolids);
+//	lighting.Draw(camera.x-camera.width/2, camera.y-camera.height/2, lights, drawLightSolids);
 }
 
 draw_rooms();

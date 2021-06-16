@@ -4,7 +4,6 @@ function draw_mana(){
 if live_call() return live_result;
 
 
-
 var xx = 50  +xoffgame;
 var yy = 100 +yoffgame;
 
@@ -104,6 +103,28 @@ scr.draw(xx+2,yy+2);
 scr.draw(xx+2,yy+1);
 scr.blend(c_white,1).draw(xx,yy);
 	
+	
+if mana_icon_timer <= mana_icon_time { 
+	var yy_original = yy;
+	yy += 90;
+	var y_mana_offset = easings(e_ease.easeoutelastic,-10,10,mana_icon_time,mana_icon_timer);
+	yy -= y_mana_offset;
+	
+	scribble("[fa_center][c_yellow][s_electricity_small] [c_gum][shake]NEED ENERGY [c_yellow][s_electricity_small]").draw(xx,yy-70+y_mana_offset*.2);
+	var _interval = 12;
+	if (mana_icon_timer % _interval) <= _interval/2 and mana_icon_timer > 0 {
+
+		draw_outline(s_electricity_large,0,xx,yy_original-20,scale,scale,0,c_yellow,1);
+	
+		draw_sprite_ext(s_electricity_large,0,xx,yy_original-20,scale,scale,0,C_DARK,1);
+			mana_text_color = "[c_gum][shake]";
+	}
+	mana_icon_timer++;
+}
+
+
+
+	
 
 exit;
 shader_set(sh_fill_with_image_blend);
@@ -111,19 +132,6 @@ draw_sprite_ext(s_mana_icon,3,x_+3,y_+3,scale,scale,0,c_black,1); //dropshadow
 shader_reset();
 
 
-if mana_icon_timer <= mana_icon_time { 
-	
-	var y_mana_offset = easings(e_ease.easeoutelastic,-10,10,mana_icon_time,mana_icon_timer);
-	y_ -= y_mana_offset;
-	scribble("[fa_center][c_gum]NOT ENOUGH").draw(x_,yy-70+y_mana_offset*.2);
-	var _interval = 12;
-	if (mana_icon_timer % _interval) <= _interval/2 and mana_icon_timer > 0 {
-		draw_outline_thick(s_mana_icon,3,x_,y_,scale,scale,0,C_GUM,1); //white outline
-		draw_outline(s_mana_icon,3,x_,y_,scale,scale,0,C_DARK,1); //white outline
-			mana_text_color = "[c_gum][shake]";
-	}
-	mana_icon_timer++;
-}
 
 scribble("[fa_left]"+mana_text_color+string(round(player.mana-potential_mana_loss))+"[]/"+string(player.mana_max)).draw(xx-2,yy);
 

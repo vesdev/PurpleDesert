@@ -35,7 +35,7 @@ function spoil_parent() constructor{
 	self.sprite = noone;
 	self.title = ""; //name of it
 	self.desc = function() { return ""}; // array, first the target, then the value is the script that is used, then all sequential values are the argumnents
-
+	self.obtain_sound = sfx_get_coin;
 	self.keywords = noone;
 	self.amount = noone;
 }
@@ -47,6 +47,7 @@ function  init_gold( amount) : spoil_parent() constructor{
 	self.init_script = function(gold_amount) { player.gold += gold_amount   }; 
 	self.keywords = noone; //keywords the card contains  for example exhaust, if none then use noone
 	self.amount = amount;
+	self.obtain_sound = sfx_get_coin;
 	type = e_spoil_type.gold;
 }
 
@@ -59,7 +60,7 @@ function init_spoil_add_card(card_enum_array) : spoil_parent()constructor{
 	self.desc = function() { return "ADD A [c_lime]CARD[] TO YOUR DECK"}; // array, first the target, then the value is the script that is used, then all sequential values are the argumnents
 	self.init_script = function() { 
 		
-		
+	self.obtain_sound = sfx_draw_card_2;
 		
 		discover_queue.type = e_discover.add_for_run;
 		discover( added_cards );

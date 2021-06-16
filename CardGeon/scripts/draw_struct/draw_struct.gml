@@ -45,7 +45,6 @@ if live_call(struct, x , y ) return live_result;
 		struct.current_sprite = struct.sprite_hit;
 		}
 		if timer <= 0 draw_flash = true;
-		
 	}else {
 		if struct = player { 
 		var time_ = SEC*.15;	
@@ -130,15 +129,9 @@ if struct.selected_by_card.enable = true{
 
 //game_mode_player_selected = clamp(game_mode_player_selected,0, e_game_mode.size_-1);
 
-
-	
 var size =6;
-
 var middle = floor(size/4);
-
 var ang_ =  sin(current_time*0.01); //side_box_x = 89 default;
-
-
 
 var alpha = 0;
 
@@ -153,8 +146,6 @@ if i % 2 == 0 {
 	
 	xsize_ = xsize2;
 	ysize_ = ysize2;
-		
-	
 }else{
 	xsize_ = xsize
 	ysize_ = ysize;
@@ -175,14 +166,12 @@ var xoff_ = 0;
 if struct = player { 
 xoff_ -= 10;
 }
-	var scale = 1/(abs(ylen-10)/15+1);
+
+var scale = 1/(abs(ylen-10)/15+1);
 //	draw_sprite_ext(s_light,0,w/2+xlen,h/2+ylen-50+y_offset,1,1,0,c_white,alpha);
 
-	
-	
 var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y+z+yoffset+yoff_);
 	draw_sprite_ext(s_caret,0,xlen+x+xoffset+xoff_,ylen+y+z+yoffset+yoff_,1,1,dir_,struct.selected_by_card.color,1);
-	
 		if struct.selected_by_card.timer < struct.selected_by_card.time*.2 {
 			particle_evaporate(xlen+x+xoffset+xoff_,ylen+y+z+yoffset+yoff_,10, struct.selected_by_card.color,0,noone,SEC*.1,0,-.001);
 		}
@@ -233,9 +222,25 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 		if is_a_crit { 
 			front_square_col = c_white;
 		}
-		
-		
 		if number_struct.intro_timer <= number_struct.intro_time_func() { 			
+			
+			
+			
+			if number_struct.intro_timer = 1 {
+				var snd_ = sfx_deal_damage;
+				
+				if struct.armor > 0 { 
+					snd_ = 	sfx_block_damage;
+				}
+				
+				if is_a_crit{ 
+					
+					o_game.meatball_str.timer = 0;	
+					snd_ = sfx_deal_damage_crit;
+				}
+				
+				audio_play( snd_ );	
+			}
 			
 		if number_struct.intro_timer < SEC*.2{
 			outline_thick = C_GUM;
@@ -243,8 +248,8 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 			front_color = c_yellow;	
 		}
 			
-			critchange = easings(e_ease.easeoutelastic,-critchange_amount,critchange_amount,number_struct.intro_time_func(),number_struct.intro_timer);			
-			y_offset = easings(number_struct.intro_easesing_type,change,-change,number_struct.intro_time_func(),number_struct.intro_timer);			
+		critchange = easings(e_ease.easeoutelastic,-critchange_amount,critchange_amount,number_struct.intro_time_func(),number_struct.intro_timer);			
+		y_offset = easings(number_struct.intro_easesing_type,change,-change,number_struct.intro_time_func(),number_struct.intro_timer);			
 		
 		
 		jolt_left_change = 0;

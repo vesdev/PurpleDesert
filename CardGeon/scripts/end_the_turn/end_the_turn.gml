@@ -13,7 +13,7 @@ self.timer = 0; //timer start
 }
 
 function can_end_the_turn() { 
-
+if live_call() return live_result;
 
 
 if current_turn = e_current_turn.enemy_ {  
@@ -103,26 +103,34 @@ var len = array_length(discover_queue.array );
 	if len = 0 and allow_player_input() {
 	
 		if boon_collision(_left_enemy_collision,_top_enemy_collision,_right_enemy_collision,_bot_enemy_collision,MX,MY) || force_end_turn{ 
+					
+					var warning = "";
+					
+					
+					if total_intent_enemy_damage > 0 { 
+						
+						warning += "[c_yellow]WARNING[] AT THE END OF THE TURN YOU WILL TAKE [c_gum]"+string(total_intent_enemy_damage)+" [s_damage_icon] [] DAMAGE\nPUT ON [c_blue][s_ui_shield] ARMOR[] TO PROTECT YOURSELF\n";
+						
+					}
+					
+					
+					if player.mana >= 10 { 
+						warning += "\n[c_yellow]WARNING[] YOU HAVE [c_yellow]"+string(player.mana)+" [s_electricity_small][] [c_gum]UNSPENT[] ENERGY (PLAY CARDS TO USE ENERGY)\n\n";
+					}
+					
+					
 					var scribble_end_turn =  scribble("[fa_center][c_yellow]END TURN");
 					draw_status_information = "YOU CAN ALSO [c_yellow]END YOUR TURN[] BY [s_m2_pressed] RIGHT CLICKING [c_lime]TWICE[]";
 					
 					scribble_end_turn.draw(end_turn_x_position,end_turn_y_position);
 					if m1_pressed || force_end_turn {
-						
+							
+						audio_play(sfx_end_turn);
 						
 						with o_game.synth_wave {
-						
-						
-						
-						
-
-						for (var i = 0; i < number_of_enemies;i++){ 
-							var enemy_ = active_enemies[@ i];
-						
-						}
-						
-						
-
+							
+							
+						var enemy_ = active_enemies[@ 0];
 						xtarget = enemy_.x;
 						x_position = enemy_.x;
 						
@@ -318,9 +326,7 @@ function enque_all_enemies() {
 							break;
 						default:
 									ds_list_add(queue_, new add_queue( show_attack_animation ,  struct, SEC*1));
-					
 						break;
-						
 						}
 						
 					
@@ -375,7 +381,7 @@ function  show_intent_animation(timer, time, struct) {
 
 function  show_added_card_animation(timer, time, struct)  {
 	
-		
+		if live_call(timer, time, struct) return live_result;
 	
 	
 		//show warning to player
@@ -459,6 +465,8 @@ function  show_added_card_animation(timer, time, struct)  {
 				var ylen = lengthdir_y(yoffset, angle_add);
 				xlen += struct.intention_x_offset ;
 			
+			
+			
 				draw_sprite_ext(s_caret,index,struct.x+xlen,struct.y-struct.intention_y_offset+ylen-10,-size,size,	 angle_add,	 c_white,1);
 				draw_outline( s_caret,index,struct.x+xlen,struct.y-struct.intention_y_offset+ylen-10,-size,size,	 angle_add,	 c_white,1);
 				draw_outline( s_caret,index,struct.x+xlen,struct.y-struct.intention_y_offset+ylen-10,-size,size,	 angle_add,	 C_GUM,1);
@@ -471,7 +479,7 @@ function  show_added_card_animation(timer, time, struct)  {
 			if !struct.finished_attacking{
 				deck_flash_timer = 0;
 				current_attack.main_script();
-						//remove it from the array if we said to
+				//remove it from the array if we said to
 			}
 		}
 }

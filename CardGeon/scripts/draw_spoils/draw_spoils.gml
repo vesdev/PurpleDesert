@@ -71,6 +71,9 @@ for (var i = 0; i < len; ++i){
 	
 	if m1_pressed { 
 		m1_pressed = false;
+		
+		audio_play(struct.obtain_sound);
+		
 		switch struct.type {
 			case e_spoil_type.gold:	 struct.init_script(struct.amount); 
 			array_delete(hand_over_rewards_array,i,1);

@@ -1,19 +1,28 @@
 // Script assets have changed for v2.3.0 see
 function draw_synth(){
 	
-	if live_call() return live_result;
-	
+
 
 	with o_game.synth_wave{
 		
-		xscale_target = 2;
-		yscale_target = 2;
-		
+
 		
 		var currnet_enemy = 0;
 	
 		var current_x = 0; //enmy position
 		var current_y = 50;
+	
+		if o_game.current_turn = e_current_turn.player_ and array_length(active_enemies) > 0  { 
+			
+				
+			var enemy_ = active_enemies[@ 0];
+		
+		
+			if xscale <= .01 { 
+			col = choose(C_FUCHISIA, C_PEACH, C_ORANGE, C_BLUE , C_PINK, C_YELLOW);
+			xtarget = enemy_.x;
+			}
+		}
 	
 		x_position = lerp( x_position , xtarget, .2);
 		
@@ -42,7 +51,7 @@ function draw_synth(){
 
 		//the horizon coordinates
 		var horizon_y = round(cam_y + 60);
-		var horizon_x = surf_width/2 + (cam_x)
+		var horizon_x = surf_width/2 + (cam_x)+30
 
 		if surface_exists(surf)
 		{
@@ -121,7 +130,7 @@ function draw_synth(){
 			//set the background to a 0 alpha (without this stretching or animating the mask causes black bars)
 			draw_clear_alpha(c_white, 0);
 			//for rotating the clipping mask
-			var ang = round((360*((spd+ 1/360) % 1)));
+			var ang = round((360*((spd+ 1/360) % 2)));
 			//draw the white sprite we are using for our clipping mask - note this has to be a sprite, you can't draw a shape here
 			//draw_sprite_ext(s_impending_damage_icon, 1, ww/2 +80 , hh/2   +80, xscale, yscale, -ang, c_white, 1);
 			draw_sprite_ext(s_impending_damage_icon, 1, ww/2 , hh/2 , xscale, yscale, ang, c_white, 1);
@@ -135,11 +144,24 @@ function draw_synth(){
 
 		//draw my cool scanlines shader on the surface
 		draw_surface_ext(clipping_mask, xx - ww/2, yy - hh/2, 1, 1, 0, c_white, 1);
+		
+		gpu_set_blendmode(bm_normal);
+		draw_outline_thick(s_impending_damage_icon, 1, xx,yy  , xscale, yscale, ang, col, 1);
+		
+		draw_outline_thick(s_impending_damage_icon, 1, xx+5,yy+5  , xscale, yscale, ang, col, 1);
+		
+		draw_outline(s_impending_damage_icon, 1, xx,yy  , xscale, yscale, ang, c_black, 1);
+		draw_outline(s_impending_damage_icon, 1, xx+5,yy+5 , xscale, yscale, ang, c_black, 1);
+		
 		gpu_set_blendmode(bm_add);
+		
+		
 		shader_set(sh_lines);
 		draw_surface_ext(clipping_mask, xx - ww/2,yy - hh/2 , 1, 1, 0,c_white, 1);
 		shader_reset();
+		
 		gpu_set_blendmode(bm_normal);
+		
 
 
 

@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "s_dungeon_wall",
-    "path": "sprites/s_dungeon_wall/s_dungeon_wall.yy",
+    "name": "s_city_buildings",
+    "path": "sprites/s_city_buildings/s_city_buildings.yy",
   },
   "tileWidth": 32,
   "tileHeight": 32,

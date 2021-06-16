@@ -167,7 +167,7 @@ function draw_discover(){
 				if boon_collision( -w_,y_-h_,w_,y_+h_,MX,MY) {
 					 border_col = C_LIME;
 					 if m1_pressed { 
-						
+						audio_play(sfx_grab_a_card_1);
 						discover_queue.array = [];
 						
 					 }

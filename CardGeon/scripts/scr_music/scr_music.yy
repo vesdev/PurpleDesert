@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Sound",
-    "path": "folders/Scripts/Sound.yy",
+    "name": "Scripts",
+    "path": "folders/Scripts/Scripts.yy",
   },
   "resourceVersion": "1.0",
   "name": "scr_music",

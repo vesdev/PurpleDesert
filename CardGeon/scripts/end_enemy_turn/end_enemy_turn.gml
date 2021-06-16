@@ -32,6 +32,8 @@ function end_enemy_turn(){
 	}
 	//=	
 	draw_card_queue = player.default_draw_amount;
+card_draw_sounds.enable = true;
+card_draw_sounds.sound_queue = draw_card_queue;
 
 
 	

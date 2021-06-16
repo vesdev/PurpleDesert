@@ -428,8 +428,6 @@ if current_turn != e_current_turn.player_ {
 	if i = 0 {
 		//draw_text(xx,yy,output_string);
 	}
-	
-	
 	draw_set_color(c_white);	
 }	
 var hp_y = yy - camera.height*.02;

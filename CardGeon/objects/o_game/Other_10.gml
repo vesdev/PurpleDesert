@@ -1,14 +1,21 @@
 if live_call() return live_result;
 
 
+
 //surface
-
-
 if surface_exists(meatball_str.surf) {
 	surface_set_target( meatball_str.surf );
+	
+	if meatball_str.timer <= meatball_str.time {
+		var change = 1;
+		meatball_str.size_mod = easings(e_ease.easeoutback,1+change,-change,meatball_str.time,meatball_str.timer);
+		meatball_str.timer++;
+	}
+	
+	
 	draw_clear_alpha(c_black,0);
 	shader_set(sh_meatballs);
-	shader_set_uniform_f(meatball_str.u_size,3);
+	shader_set_uniform_f(meatball_str.u_size,3*meatball_str.size_mod );
 	shader_set_uniform_f(meatball_str.u_time,current_time*.001);
 	draw_sprite_ext(s_pixel,0,0,0,meatball_str.surf_width,meatball_str.surf_height,0,c_white,1);
 	shader_reset();
@@ -23,10 +30,12 @@ if surface_exists(meatball_str.surf) {
 
 	
 if surface_exists(surf_bg) {
-	
 surface_set_target(surf_bg);
-
 var col = make_color_rgb(16, 12, 25);
+		
+if  meatball_str.timer <= SEC*.05{ 
+	 col = C_AQUA;
+}
 draw_clear_alpha(col,1);
 gpu_set_blendmode(bm_normal);
 	if surface_exists( meatball_str.surf){
@@ -36,15 +45,9 @@ gpu_set_blendmode(bm_normal);
 		draw_surface_ext(meatball_str.surf, 1,0,1,1,0,inner_outline_col,1);
 		draw_surface_ext(meatball_str.surf,0,-1,1,1,0,inner_outline_col,1);
 		draw_surface_ext(meatball_str.surf,0, 1,1,1,0,inner_outline_col,1);
-		
-		
 		var col = col;
 		draw_surface_ext(meatball_str.surf,0,0,1,1,0,col,1);
-		
-		
 	}
-
-
 
 
 var yoffset = 30;
@@ -67,7 +70,6 @@ gpu_set_blendmode(bm_add);
 	var yscale_ = .05;
 	
 	var scale_  = 5;
-
 	draw_sprite_ext(s_gradient,0,surf_bg_width*.5,surf_bg_height*.2,xscale_*scale_,yscale_*scale_,0,c_white,alpha*.2);
 
 	var alpha_ = .07;
@@ -78,12 +80,6 @@ gpu_set_blendmode(bm_add);
 	for (var i =0; i <array_length(active_enemies); i++) { 
 		draw_sprite_ext(s_gradient,0,active_enemies[@ i].x+xoffset_gradiant ,yy_,xscale_,yscale_,0,c_white,alpha_);
 	}
-
-
-
-
-
-
 
 	gpu_set_blendmode(bm_normal);
 surface_reset_target();
@@ -123,21 +119,7 @@ if allow_player_input() and current_turn = e_current_turn.player_ {
 		}
 	}
 }
-//arm_apply_force(4,270);
-// wire_array[@ 0].starty = -camera.height*.5;
-// wire_array[@ 0].arm_length = 10;
-//draw_curve_line()
-/*
-for (var j=0; j< array_length(wire_array); j++){ 
-	for (var i = 0; i < wire_array[@ j].seg_amount; i++) {
-		draw_line(wire_array[@ j].seg_x[i], wire_array[@ j].seg_y[i], wire_array[@ j].seg_x[i+1], wire_array[@ j].seg_y[i+1]);
-		if i = wire_array[@ j].seg_amount-1{ 
-		var dir = point_direction(wire_array[@ j].seg_x[i-1], wire_array[@ j].seg_y[i-1], wire_array[@ j].seg_x[i], wire_array[@ j].seg_y[i]);
-		draw_sprite_ext(s_light,0,wire_array[@ j].seg_x[i], wire_array[@ j].seg_y[i],1,1,dir+90,c_white,1);
-		}
-	}
-}
-*/
+
 
 //draw_curve_line()
 camera.zoom = 1;
@@ -263,7 +245,7 @@ var y__ = camera.height*.205;
 draw_outline(s_ui_deck_circle,0,x__+xoffgame,y__+yoffgame,1,1,0,c_black,1);
 draw_sprite_ext(s_ui_deck_circle,0,x__+xoffgame,y__+yoffgame,1,1,0,C_LAVENDER,1);
 draw_text_outline(x__+xoffgame+text_xoffset, y__+yoffgame+text_yoffset,ds_list_size(exhaust),c_black)
-draw_text(x__+xoffgame+text_xoffset,y__+yoffgame+text_yoffset,string(exhaust_size));
+draw_text(x__+xoffgame+text_xoffset,y__+yoffgame+text_yoffset,ds_list_size(exhaust));
 
 
 //var scribble_discard = scribble("[fa_right]DISCARD "+string(discard_size));

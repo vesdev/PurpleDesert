@@ -1053,6 +1053,8 @@ function buff_set(buff, amount){
 
 function armor_change(target, armor_amount) { 
 		//add or remove armor buffs/debuff
+		
+		
 	target.armor_ui_timer = 0;
 	
 	
@@ -1064,6 +1066,9 @@ function armor_change(target, armor_amount) {
 	
 
 	armor_amount = round(armor_amount);
+	if armor_amount > 0 { 
+		audio_play(sfx_gain_armor);	
+	}
 	
 	target.armor += armor_amount; //in case there are modifiers
 	return armor_amount; //return total armor
@@ -1106,8 +1111,10 @@ function add_card_to(list, enum_, permanently){
 function draw_a_card(amount) { 
 	o_game.draw_card_queue = amount;
 
-	if o_game.turn_phase  !=  e_turn_phase.draw_phase{ 
-			
+
+
+	if o_game.turn_phase !=  e_turn_phase.draw_phase{ 
+		audio_play( choose( sfx_draw_card_1), 0 );	
 		repeat(check_stuff(e_stuff.locust_crown)) {
 				add_token(e_token.coco_salmon);
 		}
@@ -1129,12 +1136,24 @@ function queue_card(amount) {
 		
 		var len = ds_list_size(discard);
 		
+			audio_play(sfx_card_shuffle);
+		
 		for (var i = 0; i < len;++i ) {
+			
 				discard_to_deck_queue.draw_amount += 1;
 				discard_to_deck_queue.enable = true;
 				discard_to_deck_queue.timer = 0;
+				discard_to_deck_queue.time_func = function(){
+					
+					if !fast_mode { 
+						var time = SEC*.25;
+						}else{
+							time = SEC*.25;
+					}
+						return  divide( time, ds_list_size( discard ) ); ;
+				}
 				ds_list_add(discard_to_deck_queue.list, discard[| i]);
-				//	ds_list_delete(discard, i);
+				//ds_list_delete(discard, i);
 		}  
 		ds_list_clear(discard);
 		//draw discard into deck shuffle here
@@ -2175,7 +2194,7 @@ function go_to_next_state(game_state_enum){
 	with obj_mapgen{	
 		next_game_state_queue = game_state_enum;
 		curtain_xoffset = -gui_width;
-		curtain_yoffset = -sprite_get_height(s_red_curtain)*.1;
+		curtain_yoffset = 0;
 		curtain_timer = 0;
 		curtain_timer_up = 0;
 	}

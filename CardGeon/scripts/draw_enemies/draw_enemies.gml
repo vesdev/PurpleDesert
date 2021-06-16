@@ -2,6 +2,13 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_enemies(){
 
+
+
+
+
+
+
+
 //var lenx = lengthdir_x(1000,held.dir);
 //var leny = lengthdir_y(1000,held.dir);
 
@@ -12,8 +19,6 @@ hovering_over_a_target = false;
 var check_if_you_are_currently_holding_a_card = false; //only for single target cards
 	//DRAW ENEMIES
 var len = number_of_enemies;
-
-
 
 	for (var i = 0; i < len;i++){ 
 		var enemy_ = active_enemies[@ i];
@@ -160,12 +165,9 @@ var len = number_of_enemies;
 										if m1_release{
 											enemy_.force_outline_color = false
 											if i  = number_of_enemies-1 and check_if_you_are_currently_holding_a_card = false {
-													hovered_over_card = false;	
-												
+													hovered_over_card = false;			
 											}
 										}
-										
-										
 								break;
 							case e_target.all_enemies:
 							

@@ -1,6 +1,23 @@
 /// @description Insert description here
 
 
+if card_draw_sounds.enable {
+	if card_draw_sounds.sound_timer >=  card_draw_sounds.sound_interval {
+
+		audio_play(choose(sfx_draw_card_1,sfx_draw_card_2));
+	
+		card_draw_sounds.sound_queue--;
+		card_draw_sounds.sound_timer = 0;
+	}
+	
+	if card_draw_sounds.sound_queue <= 0 { 
+		card_draw_sounds.enable = false;
+	}
+	
+	card_draw_sounds.sound_timer++;
+}
+
+
 if keyboard_check_pressed(ord("F")){	
     if window_get_fullscreen()
         {

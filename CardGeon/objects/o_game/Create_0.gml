@@ -1,10 +1,8 @@
 /// @description 
 
-
+create(0,0,o_rain_system);
 //show_debug_overlay(true)
-
-
-
+//audio_play_sound(mus_lofi,1,1);
 
 enum e_resolution {	
 	hd_960,
@@ -60,6 +58,15 @@ case os_windows:
 	var w = 960;
 
 break;
+}
+
+
+
+card_draw_sounds = { 
+	enable : false,
+	sound_queue : 5,
+	sound_interval : SEC*.15,	
+	sound_timer : 0,
 }
 
 //aspect = 1366/768;
@@ -388,7 +395,6 @@ for (var xx= 0; xx < card_name.size_; ++xx) {
 
 
 
-
 discard_to_deck_queue = { 	
 	list : ds_list_create(),
 	enable : false,
@@ -599,7 +605,7 @@ potential_mana_loss = 0;
 mana_icon_yoffset =0;
 mana_icon_xoffset =0;
 mana_icon_timer = 0;
-mana_icon_time = SEC*.75;
+mana_icon_time = SEC*1.75;
 mana_icon_timer = mana_icon_time*2;
 
 //window_set_size(640,360);
@@ -899,6 +905,12 @@ surf_bg = surface_create(surf_bg_width,surf_bg_width);
 
 
 meatball_str ={ 
+	
+	timer : 0,
+	time : SEC*.25,
+	size_mod : 1,
+
+	
 	surf_width : 1000,
 	surf_height : 1000,
 	surf : surface_create(1000,1000),
@@ -918,7 +930,7 @@ lights = [];
 drawLightSolids = function()
 {
 	//if(instance_exists(obj_mapgen)) draw_tilemap(wall_tilemap,0,0);
-	draw_player_minimap( obj_mapgen.draw_playerx-camera.x, obj_mapgen.draw_playery-camera.y);
+	//draw_player_minimap( obj_mapgen.draw_playerx-camera.x, obj_mapgen.draw_playery-camera.y);
 }
 
 //new sunset

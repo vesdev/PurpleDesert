@@ -159,6 +159,8 @@ if hovered_over_card and allow_player_input() and hand_size > 0 {
 									}else{ 
 										if m1_pressed and no_discover_effects(){ 
 											mana_icon_timer = 0;
+											
+											audio_play(sfx_not_enough_electricity);
 										}
 								}
 						}
@@ -236,8 +238,7 @@ if hovered_over_card and allow_player_input() and hand_size > 0 {
 function draw_discard_and_deck() {
 	if live_call() return live_result;
 	
-	
-	
+
 deckx = o_game.camera.width*.9+xoffgame;
 decky = o_game.camera.height*.1+yoffgame;
 
@@ -247,9 +248,7 @@ var offset = 22;
 
 
 
-if !pause_combat_to_show_discard and boon_collision( deckx-offset,decky-offset,deckx+offset,decky+offset,MX,MY){
-
-
+if !pause_combat_to_show_discard and !pause_combat_to_show_exhaust and boon_collision( deckx-offset,decky-offset,deckx+offset,decky+offset,MX,MY){
 
 	draw_outline_thick(s_ui_deck,0,deckx,decky,1,1,0,c_white,1)
 	draw_status_information = "[c_yellow]DECK[]\nIT'S SEEN BETTER DAYS YET IT'S ALWAYS RELIABLE ... LIKE ME!\n[c_lime]CLICK[] TO VIEW[]";
@@ -300,26 +299,28 @@ var time = discard_to_deck_queue.time_func();
 if discard_to_deck_queue.enable { 
 	var timer = discard_to_deck_queue.timer;
 	var time = time;
+	
 	if timer <= time{ 
-		
 	discard_xsize = easings(e_ease.easeoutback,0,1,time,timer);
-	var xoffset =  easings(e_ease.easeoutexpo,camera.width*.5,-camera.width*1.45,time,timer);
+	var xoffset =  easings(e_ease.easeoutexpo,camera.width*.5,-camera.width*0.56,time,timer);
 	var index =  easings(e_ease.easeinquad,0,3,time*.45,timer);
-	draw_sprite(s_ui_card_discard_to_deck,index,camera.width-40+xoffgame+xoffset,-camera.height*.45);
-
+	draw_sprite_ext(s_ui_deck,index,camera.width-40+xoffgame+xoffset,-camera.height*.40
+	,1,1,0,choose(C_YELLOW, C_AQUA, c_white, C_FUCHISIA, C_PEACH),1);
 	discard_to_deck_queue.timer++;
+	
 	}else{
-		
 		
 	var pos = ds_list_find_value(discard_to_deck_queue.list,0);
 	ds_list_add(deck,pos);
-	
 	ds_list_delete(discard_to_deck_queue.list,0);
 	discard_to_deck_queue.timer = 0; 
 	deck_flash_timer = 0;
+	
 	if ds_list_empty(discard_to_deck_queue.list){ 
-		discard_to_deck_queue.draw_amount = clamp(discard_to_deck_queue.draw_amount,0,hand_size_max_limit);	
-			
+		
+		
+		
+			discard_to_deck_queue.draw_amount = clamp(discard_to_deck_queue.draw_amount,0,hand_size_max_limit);	
 			discard_to_deck_queue.draw_amount = 0;
 			ds_list_shuffle(deck);	
 			ds_list_add(hand,deck[| 0]);
@@ -375,9 +376,9 @@ if boon_collision( discardx-offset,discardy-offset,discardx+offset,discardy+offs
 }
 
 //draw_rectangle(exhaustx-offset,exhausty-offset,exhaustx+offset,exhausty+offset,1)
-
 if boon_collision( exhaustx-offset,exhausty-offset,exhaustx+offset,exhausty+offset,MX,MY){
-	draw_outline_thick(s_exhaust,0,exhaustx,exhausty,exhaust_size,exhaust_size,0,c_white,1)
+		draw_outline_thick(s_exhaust,0,exhaustx,exhausty,1,1 ,0,c_white,1);
+
 	draw_status_information = "[c_yellow]EXILE []\nREMOVED FROM COMBAT PILE\n[c_lime]CLICK[] TO VIEW[]";
 
 	if m1_pressed{
@@ -405,8 +406,8 @@ draw_exhast();
 if discard_to_deck_queue.enable and discard_to_deck_queue.timer <= time ||  discard_icon_size_timer <= discard_icon_size_time*.2{ 
 
 var col = c_white;
-if discard_to_deck_queue.enable col = C_GUM;
-	draw_outline(s_discard,0,camera.width-40+xoffgame,50+yoffgame,discard_xsize,discard_xsize,0,col,.5);
+if discard_to_deck_queue.enable col = choose(C_FUCHISIA,C_YELLOW, C_AQUA,C_PINK);
+	draw_outline(s_discard,0,discardx,discardy,discard_xsize*1.2,discard_xsize*1.2,0,col,.5);
 }	
 draw_discard();
 
