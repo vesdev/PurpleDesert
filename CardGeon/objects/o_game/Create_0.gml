@@ -2,7 +2,7 @@
 
 create(0,0,o_rain_system);
 //show_debug_overlay(true)
-//audio_play_sound(mus_lofi,1,1);
+audio_play_sound(mus_lofi,1,1);
 
 enum e_resolution {	
 	hd_960,
@@ -449,7 +449,6 @@ ds_list_add(stuff_list,
 	e_stuff.tokens_stay,
 	e_stuff.lucky_penny,
 	e_stuff.more_spoil_options,
-
 );
 /*
 ds_list_add(stuff_list, 

@@ -83,7 +83,7 @@ function draw_cards_in_shop(){
 		
 		can_upgrade_card = true;
 		
-		var scr = scribble("[scale, 2][c_yellow]BACK");
+		var scr = scribble("[scale, 2][c_yellow]MAP");
 		var x_ = -camera.width*.45;
 		var y_ = -camera.height*.45;
 		
@@ -214,11 +214,11 @@ if !shop_card_select.enable{
 		
 		if player.gold >= shop_card_select.struct.price{ 				
 					
+			audio_play(sfx_draw_card_2);
+			audio_play(sfx_bought_card);
+					
 			add_card_for_run(deck, shop_card_select.struct.enum_);
 			//ds_list_delete(card_shop, shop_card_select.i);
-			
-	
-			
 			array_delete(obj_mapgen.standing_on.room_struct.shop_array, shop_card_select.i,1);
 			
 			player.gold -= shop_card_select.struct.price;
@@ -317,7 +317,7 @@ function draw_tokens_in_shop(){
 
 		can_upgrade_card = true;
 		
-		var scr = scribble("[scale, 2][c_yellow]BACK");
+		var scr = scribble("[scale, 2][c_yellow]MAP");
 		var x_ = -camera.width*.45;
 		var y_ = -camera.height*.45;
 		
@@ -631,7 +631,7 @@ function draw_cards_in_library_to_remove(){
 	
 	if o_game.game_state = e_gamestate.choose_path{
 		
-		var scr = scribble("[scale, 2][c_yellow]BACK");
+		var scr = scribble("[scale, 2][c_yellow]MAP");
 		var x_ = -camera.width*.45;
 		var y_ = -camera.height*.45;
 		
@@ -870,7 +870,7 @@ function draw_cards_in_library(){
 		
 		can_upgrade_card = true;
 		
-		var scr = scribble("[scale, 2][c_yellow]BACK");
+		var scr = scribble("[scale, 2][c_yellow]MAP");
 		var x_ = -camera.width*.45;
 		var y_ = -camera.height*.45;
 		
@@ -1023,13 +1023,10 @@ if !upgrade_card_select.enable{
 				enable_event = false;
 				standing_on.type = e_room_type.empty_room;
 				var this_room = ds_list_find_value(room_list, standing_on.i)				
-				this_room.type = e_room_type.empty_room;
-				
+				this_room.type = e_room_type.empty_room;		
 			}
 			o_game.camera.zoom = .1;
 		}
-		
-		
 	}
 	
 	

@@ -14,7 +14,7 @@
   "duration": 2.07126,
   "parent": {
     "name": "Selection",
-    "path": "folders/Audio/SFX/Selection.yy",
+    "path": "folders/Audio/Selection.yy",
   },
   "resourceVersion": "1.0",
   "name": "sfx_end_turn",

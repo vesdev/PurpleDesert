@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 0.48,
+  "volume": 1.0,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -10,14 +10,14 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "sfx_grab_a_card_1.wav",
-  "duration": 0.505,
+  "soundFile": "sfx_whoosh_2.wav",
+  "duration": 1.36958,
   "parent": {
-    "name": "SFX",
-    "path": "folders/Audio/SFX.yy",
+    "name": "Overworld",
+    "path": "folders/Audio/SFX/Overworld.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sfx_grab_a_card_1",
+  "name": "sfx_whoosh_2",
   "tags": [],
   "resourceType": "GMSound",
 }

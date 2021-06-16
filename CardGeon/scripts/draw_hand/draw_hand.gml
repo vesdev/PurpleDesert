@@ -159,8 +159,7 @@ if hovered_over_card and allow_player_input() and hand_size > 0 {
 									}else{ 
 										if m1_pressed and no_discover_effects(){ 
 											mana_icon_timer = 0;
-											
-											audio_play(sfx_not_enough_electricity);
+											audio_play(sfx_meep_merp);
 										}
 								}
 						}

@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 0.2,
+  "volume": 0.44,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -10,14 +10,14 @@
     "name": "audiogroup_sfx",
     "path": "audiogroups/audiogroup_sfx",
   },
-  "soundFile": "sfx_meep_merp.wav",
-  "duration": 0.509195,
+  "soundFile": "sfx_bought_card.wav",
+  "duration": 0.514433,
   "parent": {
-    "name": "Selection",
-    "path": "folders/Audio/Selection.yy",
+    "name": "Shops",
+    "path": "folders/Audio/SFX/Overworld/Shops.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sfx_meep_merp",
+  "name": "sfx_bought_card",
   "tags": [],
   "resourceType": "GMSound",
 }

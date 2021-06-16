@@ -43,7 +43,9 @@ var width_ = o_game.camera.width;
 boon_randomize();
 
 debug(obj_mapgen.next_game_state_queue);
-if o_game.game_state = e_gamestate.choose_path and obj_mapgen.next_game_state_queue = noone{ 
+if o_game.game_state = e_gamestate.choose_path and obj_mapgen.next_game_state_queue = noone
+	and !obj_mapgen.browsing_card_shop and !obj_mapgen.enable_event
+{ 
 	
 	part_particles_create(sys_rain,
 	random_range(x_-700,x_+width_+100),y_-15,pt_rain1,1);

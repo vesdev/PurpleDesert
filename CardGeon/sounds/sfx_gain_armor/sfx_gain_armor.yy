@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 0.27,
+  "volume": 0.28,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_sfx",
   },
   "soundFile": "sfx_gain_armor.wav",
-  "duration": 1.255,
+  "duration": 0.505,
   "parent": {
     "name": "Battle Effects",
     "path": "folders/Audio/SFX/Battle Effects.yy",

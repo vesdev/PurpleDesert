@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 0.36,
+  "volume": 0.34,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_sfx",
   },
   "soundFile": "sfx_get_coin.wav",
-  "duration": 1.005,
+  "duration": 0.505,
   "parent": {
     "name": "Loot",
     "path": "folders/Audio/SFX/Loot.yy",

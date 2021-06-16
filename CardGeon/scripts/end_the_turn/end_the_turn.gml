@@ -468,8 +468,8 @@ function  show_added_card_animation(timer, time, struct)  {
 			
 			
 				draw_sprite_ext(s_caret,index,struct.x+xlen,struct.y-struct.intention_y_offset+ylen-10,-size,size,	 angle_add,	 c_white,1);
-				draw_outline( s_caret,index,struct.x+xlen,struct.y-struct.intention_y_offset+ylen-10,-size,size,	 angle_add,	 c_white,1);
-				draw_outline( s_caret,index,struct.x+xlen,struct.y-struct.intention_y_offset+ylen-10,-size,size,	 angle_add,	 C_GUM,1);
+				draw_sprite_ext_outline( s_caret,index,struct.x+xlen,struct.y-struct.intention_y_offset+ylen-10,-size,size,	 angle_add,	 c_white,1);
+				draw_sprite_ext_outline( s_caret,index,struct.x+xlen,struct.y-struct.intention_y_offset+ylen-10,-size,size,	 angle_add,	 C_PEACH,1);
 		}
 			
 
@@ -543,8 +543,8 @@ function  show_attack_animation(timer, time, struct) {
 				xlen += struct.intention_x_offset ;
 			
 				draw_sprite_ext(s_caret,index,struct.x+xlen,struct.y-struct.intention_y_offset+ylen-10,-size,size,	 angle_add,	 c_white,1);
-				draw_outline( s_caret,index,struct.x+xlen,struct.y-struct.intention_y_offset+ylen-10,-size,size,	 angle_add,	 c_white,1);
-				draw_outline( s_caret,index,struct.x+xlen,struct.y-struct.intention_y_offset+ylen-10,-size,size,	 angle_add,	 C_GUM,1);
+				draw_sprite_ext_outline(s_caret,index,struct.x+xlen,struct.y-struct.intention_y_offset+ylen-10,-size,size,	 angle_add,	 c_white,1);
+				draw_sprite_ext_outline( s_caret,index,struct.x+xlen,struct.y-struct.intention_y_offset+ylen-10,-size,size,	 angle_add,	 C_PEACH,1);
 		}
 		show_enemy_outcome(timer,time,struct);
 	//	struct.intention_y_offset = 25;

@@ -19,8 +19,6 @@ var w = gui_width;
 var spr_w = sprite_get_width(s_palm_trees);
 
 
-
-
 if battle_transition_timer > 0 exit;
 
 if curtain_timer > curtain_time and curtain_timer_up > curtain_time_up exit;
@@ -43,8 +41,6 @@ if curtain_timer > curtain_time and curtain_timer_up > curtain_time_up exit;
 	if o_game.game_state = e_gamestate.battle { 
 		visible_ = true;
 	}
-	
-	
 		curtain_yoffset = 0;
 	var lay_id = layer_get_id("Battle_Background");
 		layer_set_visible(lay_id,visible_);
@@ -52,14 +48,9 @@ if curtain_timer > curtain_time and curtain_timer_up > curtain_time_up exit;
 		curtain_timer_up++;
 	}else{
 		curtain_timer_up = 0;
-		
-		
 	//	curtain_timer = 0;
 	//	curtain_xoffset = 0;
 	}
-	
-	
-	
 	var yoff = o_game.camera.height*.55+curtain_yoffset;
 	var dis = 150;
 	

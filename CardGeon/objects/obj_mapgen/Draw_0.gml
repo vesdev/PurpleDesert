@@ -195,7 +195,7 @@ if !selecting_card_upgrade{
 	
 	var scr_eat = scribble("[fa_center]EAT [s_map_rest_area]\nRESTORE [c_lime]+"+string(round(player.rest_area_restore_mod*100))+"%[] MAX HP\n"+text_to_add).wrap(cam.width*offset)
 	var scr_or = scribble("[fa_center][c_yellow]OR[]")
-	var scr_later = scribble("[fa_center][c_gum]BACK[]")
+	var scr_later = scribble("[fa_center][c_gum]MAP[]")
 	var scr_upgrade = scribble("[fa_center][c_lime]UPGRADE[] [s_map_card]\nA CARD IN YOUR DECK").wrap(cam.width*offset)
 	
 	var bbox_eat = scr_eat.get_bbox(cam.x -cam.width/8,cam.y-cam.height*0.03);
@@ -280,9 +280,6 @@ var upgrade_color = C_GRAY;
 		with o_game{
 			o_game.camera.x = 0;
 			o_game.camera.y = 0;
-			
-			
-
 			draw_cards_in_library();
 		}	
 		center_camera_on_player = SEC*.2;

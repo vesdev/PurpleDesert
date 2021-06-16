@@ -64,20 +64,20 @@ function draw_discover(){
 							case e_discover.add_for_combat: 
 										
 										//discover_queue.type = e_discover.add_for_run;
+										audio_play(sfx_draw_card_1);
 										add_card_to(discover_queue.place_to_add, enum_, false);
 										ds_list_shuffle(discover_queue.place_to_add	)
+										
 							break;
 							case e_discover.add_for_run:
+							
+										audio_play(sfx_draw_card_1);
+										add_card_to(deck, enum_, true);
+										ds_list_shuffle(card_spoils);
 											
-											add_card_to(deck, enum_, true);
-											ds_list_shuffle(card_spoils);
-											
-										if discover_queue.type = e_discover.add_for_run  {
-											
-												
-											
-												var len = array_length(hand_over_rewards_array);
-												for (var i= 0; i< len ;i ++){ 
+									if discover_queue.type = e_discover.add_for_run  {
+										var len = array_length(hand_over_rewards_array);
+										for (var i= 0; i< len ;i ++){ 
 														var struct_ = hand_over_rewards_array[@ i];
 														if struct_.type = e_spoil_type.choose_card { 
 														array_delete(hand_over_rewards_array,i,1);
@@ -90,6 +90,8 @@ function draw_discover(){
 										}
 							break;				
 							case e_discover.play_token:
+							
+										audio_play(sfx_spawn_a_new_token);
 										add_token( enum_);
 										ds_list_shuffle(all_token_list)
 							break;

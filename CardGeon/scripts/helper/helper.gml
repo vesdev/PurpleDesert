@@ -96,6 +96,16 @@ function draw_outline(sprite, index, xx, yy, xscale, yscale, angle, outline_colo
 	
 }
 
+
+function draw_sprite_ext_outline(sprite, index, xx, yy, xscale, yscale, angle, outline_color, alpha) {
+	
+	draw_sprite_ext(sprite, index, xx+1,yy,xscale, yscale, angle, outline_color, alpha);
+	draw_sprite_ext(sprite, index, xx-1,yy,xscale, yscale, angle, outline_color, alpha);
+	draw_sprite_ext(sprite, index, xx,yy+1,xscale, yscale, angle, outline_color, alpha);
+	draw_sprite_ext(sprite, index, xx,yy-1,xscale, yscale, angle, outline_color, alpha);
+	
+}
+
 function draw_outline_thick(sprite, index, xx, yy, xscale, yscale, angle, outline_color, alpha) {
 	
 	shader_set(sh_fill_with_image_blend);

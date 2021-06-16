@@ -135,23 +135,23 @@ switch standing_on.type{
 									//standing_on.type = e_room_type.empty_room;
 									//var this_room = ds_list_find_value(room_list, standing_on.i)				
 									//this_room.type = e_room_type.empty_room;
-								
 							break;
 							
 							case e_room_type.shop_room_cards:
+							
+								audio_play(sfx_whoosh_2);
+							
 								//open the chest
 									enable_event = true;
 								o_game.shop_card_select.enable = false;
 									other.event_struct = card_shop_struct;
 									with o_game{ 
-									
 										other.event_struct.type = e_event_type.shop_card;
 									}
-								o_game.camera.zoom = 3;
-		
-					
+								o_game.camera.zoom = 3;					
 							break;	
 							case e_room_type.shop_room_tokens:
+								audio_play(sfx_whoosh_2);
 								//open the chest
 								enable_event = true;
 								o_game.shop_card_select.enable = false;
@@ -175,9 +175,10 @@ switch standing_on.type{
 							
 							if player.gold < player.card_removal_price {
 								
-							not_enough_money_for_card_remove_timer = SEC*3;	
+								not_enough_money_for_card_remove_timer = SEC*3;	
 								
 							}else{
+								audio_play(sfx_whoosh_2);
 								o_game.remove_card_select.enable = false;
 							with o_game{ 
 									other.event_struct = new overworld_event_parent();

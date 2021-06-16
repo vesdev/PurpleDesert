@@ -290,7 +290,6 @@ var col = c_grey;
 		
 		for (var xx = x1 div CELL_SIZE; xx < (x1+w) div CELL_SIZE; xx++){ 
 			for (var yy = y1 div CELL_SIZE; yy < (y1+h) div CELL_SIZE; yy++){ 
-		
 						grid_change(FLOOR,xx*CELL_SIZE,yy*CELL_SIZE,true);
 						//nine_slice(s_nine_slice_default,x_,y_,x_+CELL_SIZE,y_+CELL_SIZE,1,c_white)
 				}
