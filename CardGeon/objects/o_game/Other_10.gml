@@ -99,7 +99,7 @@ str_sunset.y = -camera.width*.3;
 str_sunset.draw();
 
 draw_synth();
-waves3d.Draw(1.5);
+road3d.Draw();
 
 sprite_set_live(s_rainy_street,1);
 
