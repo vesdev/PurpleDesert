@@ -94,7 +94,7 @@ str_sunset.y = -camera.width*.3;
 str_sunset.draw();
 
 draw_synth();
-road3d.Draw();
+waves3d.Draw(1.5);
 
 
 if turn_phase  =  e_turn_phase.standby_phase {  //idk do standby phase stuff here

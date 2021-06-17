@@ -10,8 +10,6 @@ const float outline = 0.05;
 const float line = 0.01;
 const float glow = 0.3;
 
-const vec4 color = vec4(0.4,0.1,0.7,1.);
-
 float random (in vec2 st) {
     return fract(sin(dot(st.xy,
                          vec2(12.9898,78.233)))*
@@ -35,6 +33,9 @@ float noise (in vec2 st) {
             (d - b) * u.x * u.y;
 }
 
+const vec4 color = vec4(0.3,0.05,0.5,1.);
+const vec4 lightColor = vec4(0.5,0.1,0.7,1.);
+
 #define OCTAVES 6
 float fbm (in vec2 st) {
     // Initial values
@@ -54,32 +55,16 @@ float fbm (in vec2 st) {
 
 void main()
 {
-	//road color
+	//magic
 	vec2 coord = vec2((v_vTexcoord.x-.5)*7., v_vTexcoord.y);
-	vec4 col = vec4(0.3,0.3,0.3, 1);
-	col += vec4(
-		smoothstep(coord.x, outline,(1.-glow))+
-		smoothstep(1.-coord.x, outline,(1.-glow))
-		)*color*4.;
-		
-	float yellowLine = step(1.-coord.x-0.5, line)*step(coord.x-0.5, line);
-	yellowLine *= step(sin((coord.y*150.+fTime*150.)), 0.5);
-	
-	//line color
-	col.rgb += yellowLine*color.rgb*2.;
-	
-	
-	float roadMask = step(1.-coord.x, 1.)*step(coord.x, 1.);
-	
-	col *= roadMask;
-	
-	vec4 groundCol = color*(1.-roadMask);
-	groundCol.rgb *= fbm(v_vTexcoord*10.+vec2(0,fTime*10.))*0.5+0.5;
-	
+	vec4 groundCol = color;
+	groundCol.rgb *= fbm(v_vTexcoord*10.+vec2(0,fTime*10.))*0.7+0.5;
 	float dist = smoothstep(v_vTexcoord.y, outline, .5);
-		
 	groundCol *= dist*2.;
 	groundCol.a = 1.;
+	vec4 final = groundCol+max(v_vColour*dist,0.)*lightColor;
+	final.a = 1.;
 	
-    gl_FragColor = groundCol+col;
+	//done
+    gl_FragColor = final;
 }

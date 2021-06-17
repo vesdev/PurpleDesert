@@ -6,7 +6,7 @@ varying vec4 v_vColour;
 
 varying float fTime;
 
-const float outline = 0.08;
+const float outline = 0.03;
 uniform float sat;
 
 float random (in vec2 st) {
@@ -52,10 +52,13 @@ float fbm (in vec2 st) {
 void main()
 {
 	vec4 col = vec4(
-		smoothstep(v_vTexcoord.x, outline, .5)+
-		smoothstep(1.-v_vTexcoord.x, outline, .5)+
-		smoothstep(v_vTexcoord.y, outline, .5)+
-		smoothstep(1.-v_vTexcoord.y, outline, .5)
+			min(
+				smoothstep(v_vTexcoord.x, outline, .7)+
+				smoothstep(1.-v_vTexcoord.x, outline, .7)+
+				smoothstep(v_vTexcoord.y, outline, .7)+
+				smoothstep(1.-v_vTexcoord.y, outline, .7), 
+				1.
+			)
 		);
 		
 		

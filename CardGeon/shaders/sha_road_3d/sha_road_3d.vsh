@@ -12,7 +12,6 @@ varying vec4 v_vColour;
 varying float fTime;
 
 uniform float time;
-uniform float width;
 
 float random (in vec2 st) {
     return fract(sin(dot(st.xy,
@@ -53,6 +52,21 @@ float fbm (in vec2 st) {
     return value;
 }
 
+float getHeight(vec2 uv)
+{
+	return fbm(uv);
+}
+
+vec4 bumpFromDepth(float height, vec2 uv, float stp, float scale) {
+
+	vec2 dxy = height - vec2(
+		getHeight(uv + vec2(stp, 0.)),
+		getHeight(uv + vec2(0., stp))
+	);
+
+	return vec4(normalize(vec3(dxy * scale, 1.)), height);
+}
+
 void main()
 {
 	vec2 coord = in_Position.xy*0.01;
@@ -60,13 +74,18 @@ void main()
 	vec2 roadCoord = vec2((in_TextureCoord.x-.5)*7., in_TextureCoord.y);
 	float roadMask = step(1.-roadCoord.x, 1.)*step(roadCoord.x, 1.);
 	
-	float heightMap = (1.-roadMask)*(fbm(coord)*-abs(in_Position.x*.4));
+	float heightMap = getHeight(coord+time);
+	float scale = -abs(in_Position.x*.4)+sin(in_Position.y+time*30.)*30.;
 	
-    vec4 object_space_pos = vec4( in_Position.x+fbm(vec2(0,coord.y*0.1)+time)*-100., in_Position.y, in_Position.z+sin(coord.y+time*20.)*-30.+heightMap, 1.0);
+    vec4 object_space_pos = vec4( in_Position.x, in_Position.y, in_Position.z+heightMap*scale, 1.0);
 	
     gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION] * object_space_pos;
     
-    v_vColour = in_Colour;
+	float stp = 32.*0.01;
+	vec4 bump = bumpFromDepth(heightMap, coord+time, stp, scale);
+	
+    v_vColour = vec4(vec3(dot(bump.xyz,vec3(-1.,0., 1.))), 1.);
+
     v_vTexcoord = in_TextureCoord;
 	fTime = time;
 }
