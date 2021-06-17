@@ -936,6 +936,7 @@ str_sunset = new sunset(-350,-250);
 //3d waves
 waves3d = new wave3D();
 road3d = new road3D();
+starBG = new starBackground();
 
 depth = DEPTH_GAME;
 reset_battle_camera();

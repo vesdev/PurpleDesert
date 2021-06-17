@@ -71,11 +71,11 @@ void main()
 {
 	vec2 coord = in_Position.xy*0.01;
 	
-	vec2 roadCoord = vec2((in_TextureCoord.x-.5)*7., in_TextureCoord.y);
-	float roadMask = step(1.-roadCoord.x, 1.)*step(roadCoord.x, 1.);
+	//vec2 roadCoord = vec2((in_TextureCoord.x-.5)*7., in_TextureCoord.y);
+	//float roadMask = step(1.-roadCoord.x, 1.)*step(roadCoord.x, 1.);
 	
 	float heightMap = getHeight(coord+time);
-	float scale = -abs(in_Position.x*.4)+sin(in_Position.y+time*30.)*30.;
+	float scale = sin(in_Position.y+time*30.)*30.+100.-abs(in_Position.x*.3);
 	
     vec4 object_space_pos = vec4( in_Position.x, in_Position.y, in_Position.z+heightMap*scale, 1.0);
 	

@@ -2,6 +2,7 @@ if live_call() return live_result;
 
 
 //surface
+/*
 if surface_exists(meatball_str.surf) {
 	surface_set_target( meatball_str.surf );
 	
@@ -24,8 +25,6 @@ if surface_exists(meatball_str.surf) {
 }else{
  meatball_str.surf = surface_create(meatball_str.surf_width,meatball_str.surf_height);
 }
-
-
 
 	
 if surface_exists(surf_bg) {
@@ -89,12 +88,16 @@ surface_reset_target();
 }else{
 surf_bg = surface_create(surf_bg_width,surf_bg_height);	
 }
+*/
+
+starBG.Draw(camera.x-camera.width/2, camera.y-camera.height/2, camera.width, camera.height);
+
 str_sunset.x = -camera.width*.5;
 str_sunset.y = -camera.width*.3;
 str_sunset.draw();
 
 draw_synth();
-waves3d.Draw(1.5);
+road3d.Draw();
 
 
 if turn_phase  =  e_turn_phase.standby_phase {  //idk do standby phase stuff here
