@@ -487,8 +487,6 @@ ds_list_shuffle(enemy_dungeon_list)
 
 
 ds_list_insert(enemy_dungeon_list, 0 , [e_enemies.firefox]);
-
-
 ds_list_insert(enemy_dungeon_list, 0 , [e_enemies.bee, e_enemies.bee]);
 ds_list_insert(enemy_dungeon_list, 0 ,[e_enemies.snake]
 );

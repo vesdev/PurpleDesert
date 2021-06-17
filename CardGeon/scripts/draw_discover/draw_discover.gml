@@ -70,6 +70,7 @@ function draw_discover(){
 										
 							break;
 							case e_discover.add_for_run:
+								
 							
 										audio_play(sfx_draw_card_1);
 										add_card_to(deck, enum_, true);
@@ -78,20 +79,18 @@ function draw_discover(){
 									if discover_queue.type = e_discover.add_for_run  {
 										var len = array_length(hand_over_rewards_array);
 										for (var i= 0; i< len ;i ++){ 
-														var struct_ = hand_over_rewards_array[@ i];
+												var struct_ = hand_over_rewards_array[@ i];
 														if struct_.type = e_spoil_type.choose_card { 
 														array_delete(hand_over_rewards_array,i,1);
 														i--;
 														len--;
-														}
+													}
 														//type = e_spoil_type.gold;	
 			
 											}
 										}
 							break;				
 							case e_discover.play_token:
-							
-										audio_play(sfx_spawn_a_new_token);
 										add_token( enum_);
 										ds_list_shuffle(all_token_list)
 							break;

@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 0.19,
+  "volume": 0.27,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -10,14 +10,14 @@
     "name": "audiogroup_sfx",
     "path": "audiogroups/audiogroup_sfx",
   },
-  "soundFile": "sfx_card_shuffle.wav",
-  "duration": 0.473208,
+  "soundFile": "sfx_add_new_status.wav",
+  "duration": 1.2485,
   "parent": {
-    "name": "Card Ui",
-    "path": "folders/Audio/SFX/Card Ui.yy",
+    "name": "Damage",
+    "path": "folders/Audio/SFX/Damage.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sfx_card_shuffle",
+  "name": "sfx_add_new_status",
   "tags": [],
   "resourceType": "GMSound",
 }

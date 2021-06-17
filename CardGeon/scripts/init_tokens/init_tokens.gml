@@ -125,6 +125,8 @@ function token_check_execute(token_enum,e_token_type_ ){
 }
 function add_token(token_enum) { 
 	
+	audio_stop_sound(sfx_spawn_a_new_token);
+	audio_play(sfx_spawn_a_new_token);
 	var returned_token = token_struct(token_enum);
 	
 		if returned_token != noone {

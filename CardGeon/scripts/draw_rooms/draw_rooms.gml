@@ -184,6 +184,9 @@ var col = c_grey;
 						draw_set_color(c_lime);
 					//	draw_rectangle( other_struct.x1+room_xoffset,other_struct.y1+room_yoffset,other_struct.x1+other_struct.w+room_xoffset,other_struct.h+room_yoffset,true);
 						if !go_to_battle and  o_game.m1_pressed and i != player_room_index and next_game_state_queue = noone {
+									
+									audio_play(sfx_coco_overworld_move_1,sfx_coco_overworld_move_2,sfx_coco_overworld_move_3);
+									
 									o_game.m1_pressed = false;
 									other_struct.room_visibility_state = e_room_visibility_state.visible_but_not_on_it;
 									player_room_index = i;

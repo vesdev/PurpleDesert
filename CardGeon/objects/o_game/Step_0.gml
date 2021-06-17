@@ -1,6 +1,7 @@
 /// @description Insert description here
 
-
+player.gold = 999;
+player.gold_amount = 999;
 if card_draw_sounds.enable {
 	if card_draw_sounds.sound_timer >=  card_draw_sounds.sound_interval {
 

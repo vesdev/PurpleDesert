@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 0.19,
+  "volume": 0.12,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -10,14 +10,14 @@
     "name": "audiogroup_sfx",
     "path": "audiogroups/audiogroup_sfx",
   },
-  "soundFile": "sfx_card_shuffle.wav",
-  "duration": 0.473208,
+  "soundFile": "sfx_coco_overworld_move_3.wav",
+  "duration": 1.890556,
   "parent": {
-    "name": "Card Ui",
-    "path": "folders/Audio/SFX/Card Ui.yy",
+    "name": "Coco Move",
+    "path": "folders/Audio/SFX/Overworld/Coco Move.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sfx_card_shuffle",
+  "name": "sfx_coco_overworld_move_3",
   "tags": [],
   "resourceType": "GMSound",
 }

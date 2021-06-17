@@ -88,13 +88,11 @@ for(var k=0; k<ds_map_size(player_links); k++) {
 				{ 
 				
 					target_zoom = 2;
-				}
-						//	debug("CAM X "+string(cam.y-cam.height*.5));
-			}	
+			}
+				//	debug("CAM X "+string(cam.y-cam.height*.5));
 		}	
+	}	
 }
-
-	
 
 	cam.zoom = lerp(cam.zoom,target_zoom,.2);	
 	

@@ -13,8 +13,8 @@
   "soundFile": "sfx_whoosh_3.wav",
   "duration": 1.269603,
   "parent": {
-    "name": "Overworld",
-    "path": "folders/Audio/SFX/Overworld.yy",
+    "name": "Shops",
+    "path": "folders/Audio/SFX/Overworld/Shops.yy",
   },
   "resourceVersion": "1.0",
   "name": "sfx_whoosh_3",

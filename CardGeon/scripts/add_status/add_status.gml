@@ -1,5 +1,6 @@
 function get_status_arg(creator,struct) { 
 
+
 	//creator is the unit with the status effect
 	//struct is the status struct list
 	//struct.amount

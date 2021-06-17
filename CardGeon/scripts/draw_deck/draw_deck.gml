@@ -361,7 +361,7 @@ function draw_tokens_in_shop(){
 	var save_x = noone;
 	var save_y = noone;
 if !shop_card_select.enable{ 
-	scribble("[fa_center][scale, 2][c_lime]UPGRADE[c_white] A TOKEN FOR THE REMAINING [c_yellow]RUN[]").draw(0,-o_game.camera.height*0.4);
+	scribble("[fa_center][scale, 2]UPGRADES [c_lime]ALL FUTURE VERSIONS[c_white]\nOF THIS TOKEN FOR THE REST OF THE [c_yellow]RUN[]").draw(0,-o_game.camera.height*0.4);
 	scribble("[fa_center][scale, 2]UPGRADING [c_gum]DESTROYS[c_white] THE SHOP").draw(0,o_game.camera.height*0.3);
 
 	var len = array_length(obj_mapgen.standing_on.room_struct.shop_array);

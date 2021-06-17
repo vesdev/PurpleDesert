@@ -16,7 +16,7 @@ var _b = -camera.height*.1;
 
 var len = array_length(hand_over_rewards_array);
 if len = 0  { 
-	var str = "[fa_center][s_caret]GET THE HECK [c_lime]OUT OF HERE";
+	var str = "[fa_center][s_caret]GET THE HECK [c_lime]OUTTA OF HERE";
 }else{
 	var str = "[fa_center][s_caret]LEAVE [c_yellow]WITHOUT[] THE STUFF";
 }
@@ -32,6 +32,7 @@ draw_set_color(c_white);
 if no_discover_effects() and boon_collision(bbox.x0,bbox.y0-yoffset, bbox.x3,bbox.y3+yoffset,  MX,MY){
 
 	if m1_pressed  { 
+		audio_play(sfx_get_the_heck_outta_here);
 		m1_pressed = false;
 		//RETURN TO THE MAP
 		hand_over_rewards_array = [];

@@ -25,7 +25,6 @@
   "gridY": 0,
   "frames": [
     {"compositeImage":{"FrameId":{"name":"405c5f10-9a61-4f39-8efd-c272f9fadd91","path":"sprites/s_ui_deck_circle/s_ui_deck_circle.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"405c5f10-9a61-4f39-8efd-c272f9fadd91","path":"sprites/s_ui_deck_circle/s_ui_deck_circle.yy",},"LayerId":{"name":"a5e46dda-565b-48d2-b6c8-8dd586bb79bf","path":"sprites/s_ui_deck_circle/s_ui_deck_circle.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"405c5f10-9a61-4f39-8efd-c272f9fadd91","path":"sprites/s_ui_deck_circle/s_ui_deck_circle.yy",},"LayerId":{"name":"8e3c4e49-4b49-49bb-b423-16f587862973","path":"sprites/s_ui_deck_circle/s_ui_deck_circle.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"s_ui_deck_circle","path":"sprites/s_ui_deck_circle/s_ui_deck_circle.yy",},"resourceVersion":"1.0","name":"405c5f10-9a61-4f39-8efd-c272f9fadd91","tags":[],"resourceType":"GMSpriteFrame",},
   ],

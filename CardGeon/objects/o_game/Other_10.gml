@@ -1,7 +1,6 @@
 if live_call() return live_result;
 
 
-
 //surface
 if surface_exists(meatball_str.surf) {
 	surface_set_target( meatball_str.surf );
@@ -97,7 +96,6 @@ str_sunset.draw();
 draw_synth();
 road3d.Draw();
 
-sprite_set_live(s_rainy_street,1);
 
 if turn_phase  =  e_turn_phase.standby_phase {  //idk do standby phase stuff here
 	turn_phase  =  e_turn_phase.main_phase;	

@@ -25,7 +25,10 @@ function remove_token_duration(amount){
 		 }		
 }
 
-function remove_all_armor(struct){ 
+function remove_all_armor(struct){
+	
+
+	
 	if struct.armor < 0 armor = 0;
 	if struct.armor > 0 { 
 	struct.armor = 0;

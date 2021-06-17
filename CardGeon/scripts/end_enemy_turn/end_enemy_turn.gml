@@ -1,6 +1,8 @@
 function end_enemy_turn(){
 	
 	
+	audio_play(sfx_armor_break);
+	
 	with o_game.synth_wave { 
 		xscale_target = 0;
 		yscale_target = 0;
@@ -12,9 +14,6 @@ function end_enemy_turn(){
 	player.this_turn_token_died = false;
 	//play destroy armor animation	
 	change_mana(player.mana_gain,true);
-	
-	
-
 	
 	var stuff_array = o_game.all_passive_treasures;
 	var len = array_length(stuff_array);
@@ -30,10 +29,11 @@ function end_enemy_turn(){
 			}
 		}
 	}
+	
 	//=	
 	draw_card_queue = player.default_draw_amount;
-card_draw_sounds.enable = true;
-card_draw_sounds.sound_queue = draw_card_queue;
+	card_draw_sounds.enable = true;
+	card_draw_sounds.sound_queue = draw_card_queue;
 
 
 	

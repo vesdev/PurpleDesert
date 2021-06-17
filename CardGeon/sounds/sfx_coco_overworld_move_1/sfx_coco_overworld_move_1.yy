@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 1.0,
+  "volume": 0.1,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -10,14 +10,14 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "sfx_whoosh_1.wav",
-  "duration": 1.352052,
+  "soundFile": "sfx_coco_overworld_move_1.wav",
+  "duration": 1.97624707,
   "parent": {
-    "name": "Shops",
-    "path": "folders/Audio/SFX/Overworld/Shops.yy",
+    "name": "Coco Move",
+    "path": "folders/Audio/SFX/Overworld/Coco Move.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sfx_whoosh_1",
+  "name": "sfx_coco_overworld_move_1",
   "tags": [],
   "resourceType": "GMSound",
 }

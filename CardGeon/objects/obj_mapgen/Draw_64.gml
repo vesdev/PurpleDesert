@@ -32,6 +32,7 @@ if curtain_timer > curtain_time and curtain_timer_up > curtain_time_up exit;
 	
 
 	if next_game_state_queue != noone and curtain_timer_up >= curtain_time*.47 {  //curtain_timer_up = curtain_time*.71 switch rooms on this frame
+			audio_play(sfx_palm_tree_transition);
 			o_game.game_state	= next_game_state_queue;
 			next_game_state_queue = noone;
 			center_camera_on_player = SEC*.2;

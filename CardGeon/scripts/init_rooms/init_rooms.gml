@@ -232,11 +232,6 @@ for(var i=0; i<ds_list_size(room_list); i++) {
 var elite_room = ds_list_find_value(room_list, elite_placement_index);
 	if elite_room.type = e_room_type.default_encounter {
 			elite_room.type = e_room_type.hard_encounter;
-			
-			
-			
-			 
-			 
 	}
 	
 	
@@ -477,6 +472,26 @@ room_yoffset = room_hmargin-top;
 
 //draw_rectangle(left+room_xoffset,top+room_yoffset,right+room_xoffset,bot+room_yoffset,1);
 
+
+///DEBUG AND REMOVE DEFAULT FIGH 
+/*
+for(var i=0; i < ds_list_size(room_list); i++) {
+
+		var this_room = ds_list_find_value(room_list, i);
+		var link_amount = ds_map_size(this_room.links);
+		
+				var xx = (this_room.x1+this_room.x2)/2;
+				var yy = (this_room.y1+this_room.y2)/2;
+		
+					//Rooms that only link to one other rooms,
+					//can't be the starting room or the boss room
+					
+				if this_room.type = e_room_type.default_encounter  { 
+
+					this_room.type = e_room_type.empty_room;
+				}
+}
+*/
 
 room_set_width(r_dungeon,right+room_wmargin);
 room_set_height(r_dungeon,bot+room_hmargin);

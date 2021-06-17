@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 1.0,
+  "volume": 0.48,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -10,14 +10,14 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "sfx_whoosh_1.wav",
-  "duration": 1.352052,
+  "soundFile": "sfx_grab_a_card.wav",
+  "duration": 0.505,
   "parent": {
-    "name": "Shops",
-    "path": "folders/Audio/SFX/Overworld/Shops.yy",
+    "name": "Fight is Over",
+    "path": "folders/Audio/SFX/Fight is Over.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sfx_whoosh_1",
+  "name": "sfx_grab_a_card",
   "tags": [],
   "resourceType": "GMSound",
 }

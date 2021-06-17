@@ -60,7 +60,7 @@ function init_spoil_add_card(card_enum_array) : spoil_parent()constructor{
 	self.desc = function() { return "ADD A [c_lime]CARD[] TO YOUR DECK"}; // array, first the target, then the value is the script that is used, then all sequential values are the argumnents
 	self.init_script = function() { 
 		
-	self.obtain_sound = sfx_draw_card_2;
+	self.obtain_sound = sfx_card_shuffle;
 		
 		discover_queue.type = e_discover.add_for_run;
 		discover( added_cards );
@@ -297,7 +297,7 @@ function stuff_struct(stuff_enum) {
 				
 
 	
-				case e_stuff.max_hp:	returned_stuff = new create_stuff( s_stuff_jelly, "BIBIMBAP",function()  {
+				case e_stuff.max_hp:	returned_stuff = new create_stuff( s_stuff_bibimbap, "BIBIMBAP",function()  {
 														return "[c_lime]+20[] MAX HP and Heal [c_lime]20[] HP";
 													},
 														function()  { with o_game{ player.hp_max += 20; restore_health(20)} }  , 0,
@@ -305,7 +305,7 @@ function stuff_struct(stuff_enum) {
 				break;
 				
 				case e_stuff.royal_jelly:	returned_stuff = new create_stuff( s_stuff_jelly, "ROYAL JELLY",function()  {
-														return "HEAL [c_lime]7[] HEALTH AFTER DEFEATING A ROOM";
+														return "HEAL [c_lime]7[] HEALTH AFTER COMBAT";
 													},
 													noone , 0,
 													noone, e_rarity.rare);
@@ -348,7 +348,7 @@ function stuff_struct(stuff_enum) {
 				break;				
 	
 				case e_stuff.more_max_mana:	returned_stuff = new create_stuff( s_passive_more_max_mana, "CARNE ASADA",function()  {
-														return "INCREASE YOUR MAX MANA BY [c_lime]10[].\n[c_gum]YOU STILL GAIN +"+string(player.mana_gain)+" PER TURN.[]";
+														return "INCREASE YOUR MAX ENERGY BY [c_lime]10[].\n[c_gum]YOU STILL GAIN +"+string(player.mana_gain)+" PER TURN.\n SO EXTRA ENERGY CARRIES OVER[]";
 													},
 													function()  { with o_game{ player.mana_max += 10;  } } , 0,
 													noone, e_rarity.uncommon);
@@ -374,7 +374,7 @@ function stuff_struct(stuff_enum) {
 				break;		
 				case e_stuff.molding_clay:	returned_stuff = new create_stuff( s_passive_molding_clay , "MOLDING CLAY",
 														function()  {
-															return "GAIN [c_yellow]+2[] RE AT THE START OF A FIGHT";
+															return "GAIN [c_yellow]+2[] RESILIENCE AT THE START OF A FIGHT";
 														},
 														noone, 0,noone, e_rarity.common);
 				break;
@@ -386,7 +386,7 @@ function stuff_struct(stuff_enum) {
 				break;
 				case e_stuff.tokens_stay:	returned_stuff = new create_stuff( s_passive_tokens_stay , "CHARISMA",
 														function()  {
-															return "TOKENS [c_lime]STAY[] WITH YOU IN BETWEEN FIGHTS";
+															return "TOKENS [c_lime]STAY[] WITH YOU IN BETWEEN COMBAT";
 														},
 														noone, 0,noone, e_rarity.uncommon);
 				break;
