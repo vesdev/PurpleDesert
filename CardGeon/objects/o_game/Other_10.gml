@@ -97,8 +97,14 @@ str_sunset.y = -camera.width*.3;
 str_sunset.draw();
 
 draw_synth();
-road3d.Draw();
-
+if (obj_mapgen.player_room_index == obj_mapgen.elite_placement_index)
+{
+	waves3d.Draw(1.5);
+}
+else
+{
+	road3d.Draw();
+}
 
 if turn_phase  =  e_turn_phase.standby_phase {  //idk do standby phase stuff here
 	turn_phase  =  e_turn_phase.main_phase;	
