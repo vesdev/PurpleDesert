@@ -19,8 +19,6 @@ if live_call() return live_result;
 if current_turn = e_current_turn.enemy_ {  
 	
 //enemy step draw code
-
-
 var queue = o_game.end_turn_queue;
 var time = queue[| 0].time;
 var timer = queue[| 0].timer;
@@ -105,22 +103,20 @@ var len = array_length(discover_queue.array );
 		if boon_collision(_left_enemy_collision,_top_enemy_collision,_right_enemy_collision,_bot_enemy_collision,MX,MY) || force_end_turn{ 
 					
 					var warning = "";
-					
+					draw_status_information = "";
 					
 					if total_intent_enemy_damage > 0 { 
-						
-						warning += "[c_yellow]WARNING[] AT THE END OF THE TURN YOU WILL TAKE [c_gum]"+string(total_intent_enemy_damage)+" [s_damage_icon] [] DAMAGE\nPUT ON [c_blue][s_ui_shield] ARMOR[] TO PROTECT YOURSELF\n";
-						
+					draw_status_information  += "[c_yellow]WARNING[] AT THE END OF THE TURN YOU WILL TAKE [c_gum]"+string(total_intent_enemy_damage)+" [s_damage_icon] [] DAMAGE\nPUT ON [c_blue][s_ui_shield] ARMOR[] TO PROTECT YOURSELF\n\n";
 					}
 					
 					
 					if player.mana >= 10 { 
-						warning += "\n[c_yellow]WARNING[] YOU HAVE [c_yellow]"+string(player.mana)+" [s_electricity_small][] [c_gum]UNSPENT[] ENERGY (PLAY CARDS TO USE ENERGY)\n\n";
+					draw_status_information += "[c_yellow]WARNING[] YOU HAVE [s_font_boon_sunset]"+string(player.mana)+"/"+string(player.mana_max)+" [][c_gum]UNSPENT[] [c_yellow][s_electricity_small][] ENERGY \n (PLAY CARDS TO USE ENERGY)\n\n";
 					}
 					
 					
 					var scribble_end_turn =  scribble("[fa_center][c_yellow]END TURN");
-					draw_status_information = "YOU CAN ALSO [c_yellow]END YOUR TURN[] BY [s_m2_pressed] RIGHT CLICKING [c_lime]TWICE[]";
+					draw_status_information += "YOU CAN ALSO [c_yellow]END YOUR TURN[] BY [s_m2_pressed] RIGHT CLICKING [c_lime]TWICE[]";
 					
 					scribble_end_turn.draw(end_turn_x_position,end_turn_y_position);
 					if m1_pressed || force_end_turn {

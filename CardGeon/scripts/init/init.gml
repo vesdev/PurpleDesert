@@ -463,7 +463,7 @@ function new_enemy(enemy_enum) {
 				case e_enemies.pear: returned_enemy = new enemy( 100, 
 										[
 										new intent_add_card(deck, e_card.status_tired, 1), //8 DAMAGE , 2 TIMES
-										new intent_attack(20),
+										new intent_attack(10),
 										/*new intent_buff_armor(all_buffs.attack, 3, 15),
 										,*/
 										]
@@ -500,7 +500,6 @@ function new_enemy(enemy_enum) {
 					
 					
 				case e_enemies.snake: returned_enemy = new enemy( 80, 
-				
 										[
 										new intent_attack(20), //deal damage and apply a debuff
 										new intent_debuff(all_buffs.armor_reduction,1),
@@ -530,7 +529,6 @@ function new_enemy(enemy_enum) {
 										new intent_attack([5,5]), //8 DAMAGE , 2 TIMES
 										new intent_debuff(all_buffs.armor_reduction, 4),
 										new intent_attack(20)
-										
 										]
 										,false , s_idle_antlion,s_hit_antlion,"FOX-LION") //, [intentions.attack , 10] 
 				break;	

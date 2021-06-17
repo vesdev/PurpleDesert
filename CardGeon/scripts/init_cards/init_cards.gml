@@ -1006,7 +1006,7 @@ switch card_enum {
 								return "DEAL "+damage_string(10)+" DAMAGE. GET [c_lime]+4[] [s_status_pow_remove_on_crit]";
 							}	, 10,
 							[new card_struct_attack_single(10),
-							new card_struct_buff(all_buffs.temp_attack, 5)],
+							new card_struct_buff(all_buffs.temp_attack, 4)],
 						[keywords.cant_crit, keywords.temp_attack], e_card_type.red , e_card.coco_up1_powerup_punch);
 	break;	
 

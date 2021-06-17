@@ -2,11 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_enemies(){
 
-
-
-
-
-
+if live_call() return live_result;
 
 
 //var lenx = lengthdir_x(1000,held.dir);

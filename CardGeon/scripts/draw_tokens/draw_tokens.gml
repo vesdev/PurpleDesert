@@ -42,8 +42,8 @@ if len = 0 exit;
 	
 	
 	
-			var width = sprite_get_width(sprite);
-			var height = sprite_get_height(sprite);
+			var width = 22;
+			var height = 10;
 			var xoffset = sprite_get_xoffset(sprite);
 			var yoffset = sprite_get_yoffset(sprite);
 	
@@ -60,20 +60,26 @@ if len = 0 exit;
 				 }
 				 
 			}
-			
-			//draw_rectangle(x_,y_-7, x_+width,y_+height,0);
-			if allow_player_input() and boon_collision(x_,y_-7, x_+width,y_+height , MX,MY ){
-				draw_status_information = "[c_yellow]"+token_struct.title+"[]"+" "+"["+sprite_get_name(token_struct.sprite_idle)+"]\n"+token_struct.desc()+"\n\n"+token_struct.desc_additional();//+"\n"+token_str_lasts_turns(token_struct);
-				draw_outline_thick(sprite, current_time*0.01 , x_, y_-15 , 1, 1, 0, c_white,1 );
+			x_ -= 5;
+			y_ -= 28;	
+				var  bbox_yoffset = 10;
+		//	draw_rectangle(x_,y_-7+bbox_yoffset, x_+width,y_+height+bbox_yoffset,0);
+
+			if allow_player_input() and boon_collision(x_,y_-7+bbox_yoffset, x_+width,y_+height+bbox_yoffset , MX,MY ){
+				draw_status_information = "[c_yellow]"+token_struct.title+"[]"+" "+"["+sprite_get_name(token_struct.sprite_idle)+"]\n"+token_struct.desc()+"\n\n"+token_struct.desc_additional()+token_str_lasts_turns(token_struct);
+				draw_outline_thick(sprite, current_time*0.01 , x_, y_ , 1, 1, 0, c_white,1 );
 			}
-			draw_outline(sprite, current_time*0.01 , x_, y_-15 , 1, 1, 0, C_DARK,1 );
-			draw_sprite_ext(sprite, current_time*0.01 , x_, y_-15 , 1, 1, 0, c_white,1 );
+	
+			draw_outline(sprite, current_time*0.01 , x_, y_ , 1, 1, 0, C_DARK,1 );
+			draw_sprite_ext(sprite, current_time*0.01 , x_, y_ , 1, 1, 0, c_white,1 );
 		
 			draw_set_halign(fa_right);
 			draw_set_valign(fa_top);
 			
 			var str = token_struct.turns_to_live;//  check_token_turns_to_live(token_struct);
 			draw_set_halign(fa_right);
+			y_ += 10;
+			x_ += 5;
 			draw_text_outline(x_+20, y_,str,C_DARK);
 			draw_set_color(c_yellow);
 			if str = 1 draw_set_color(C_GUM);

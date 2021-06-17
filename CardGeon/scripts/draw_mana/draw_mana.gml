@@ -18,7 +18,6 @@ var y_ = yy-10 ;
 var scale = .3;
 
 
-sprite_set_live(s_electricity_small,1);
 //draw_sprite_ext(s_electricity_small,0,o_game.camera.width*.1,o_game.camera.height*.24,1,1,0,c_white,1);
 
 var scale = 1;
@@ -70,20 +69,21 @@ if potential_mana_loss > 0
 }
 var scale = .1;
 
+
 if potential_mana_loss = 0 || !m1_check { 
 var scr = scribble("[fa_center][s_font_health_numbers]"+mana_text_color+string(round(player.mana-potential_mana_loss))+"[]_[s_font_boon_sunset]/"+string(player.mana_max))
 
 
 draw_outline(s_electricity_large,0,xx+2,yy-20+2,scale,scale,0,c_black,1);
 draw_outline(s_electricity_large,0,xx,yy-20,scale,scale,0,c_black,1);
-
-
 draw_sprite_ext(s_electricity_large,0,xx,yy-20,scale,scale,0,C_YELLOW,1);
 	
 }else{
-	mana_text_color = "[c_gum]";	
 	
-scr = scribble("[fa_center]"+mana_text_color+"[s_font_crit_number_large]"+string(round(player.mana-potential_mana_loss))+"[]_[s_font_boon_sunset]/"+string(player.mana_max))
+	
+mana_text_color = "[c_gum]";	
+	
+scr = scribble("[fa_center]"+mana_text_color+"[s_font_health_numbers]"+string(round(player.mana-potential_mana_loss))+"[]_[s_font_boon_sunset]/"+string(player.mana_max))
 var amount_ = .5;
 
 var x_ = random_range(-amount_,amount_);

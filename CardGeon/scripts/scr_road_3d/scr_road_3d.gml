@@ -24,10 +24,10 @@ function road3D() constructor
 	vertex_begin(vb_plane, format);
 	
 	//Using size to keep it square if we decide to change how iug it is.
-	size = 10;
+	size = 32;
 
-	width = 150;
-	height = 95;
+	width = 64;
+	height = 64;
 
 	var _x = -width*size/2;
 	var _y = -height*size/2;
@@ -74,13 +74,11 @@ function road3D() constructor
 	
 	static Draw = function()
 	{
-		gpu_push_state();
-		gpu_set_cullmode(cull_clockwise);
 		
 		var _s = sin(current_time*0.001)*20;
 		var _cam = view_current;
 		var _vm = matrix_get(matrix_world);
-		var _mat = matrix_build(0,0,0,-45,0,0,1,1,1);
+		var _mat = matrix_build(0,0,0,-70,0,0,1,1,1);
 		
 		camera_set_proj_mat(tempCam, matrix_build_projection_perspective_fov(-45, -view_get_wport(_cam)/view_get_hport(_cam), 1, 99999));
 		camera_set_view_mat(tempCam, matrix_build_lookat(0, 0, -999, 0, 0, 0, 0, 1, 0));
@@ -95,8 +93,6 @@ function road3D() constructor
 
 		matrix_set(matrix_world,_vm);
 		camera_apply(_cam);
-		
-		gpu_pop_state();
 
 	}
 }

@@ -3,7 +3,6 @@ function draw_health_bar(xx,yy,struct, potential_damage){
 	if live_call(xx,yy,struct, potential_damage) return live_result;
 	
 
-sprite_set_live(images,1);
 var heart_name = images;
 draw_set_font(font_health_number);
 xx += xoffgame;
@@ -438,6 +437,22 @@ var hp_y = yy - camera.height*.02;
 	var scribble_numb = scribble("[f_outrun][c_gum]"+output_string_scribble);
 	
 	
+		
+	var w = 70;
+	var h = 40;
+	var y_off = 20;
+//	draw_rectangle(xx,hp_y+y_off,xx+w+y_off,hp_y+h+y_off,1);
+	
+	if boon_collision(xx,hp_y+y_off,xx+w+y_off,hp_y+h+y_off,MX,MY){
+			if struct = player { 
+					draw_status_information = "[s_card_heart_small][c_yellow]HEALTH[]\nRUN OUTTA THIS AND YOU [c_gum]LOSE";
+		
+			}else{
+						draw_status_information = "[s_card_heart_small][c_yellow]HEALTH[]\nTAKE EM OUT TO [c_lime]WIN";
+	
+			}
+	}
+	
 	scribble_numb.blend(c_black,1).draw(xx-1,hp_y);
 	scribble_numb.draw(xx-1,hp_y);
 	scribble_numb.draw(xx+1,hp_y);
@@ -446,6 +461,8 @@ var hp_y = yy - camera.height*.02;
 	scribble_numb.draw(xx+2,hp_y+2);
 	scribble_numb.draw(xx+2,hp_y+1);
 	scribble_numb.blend(c_white,1).draw(xx,hp_y);
+	
+
 	
 	
 draw_set_font(font_boon);		

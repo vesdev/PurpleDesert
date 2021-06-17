@@ -36,7 +36,7 @@ float noise (in vec2 st) {
             (d - b) * u.x * u.y;
 }
 
-#define OCTAVES 2
+#define OCTAVES 6
 float fbm (in vec2 st) {
     // Initial values
     float value = 0.0;
@@ -75,16 +75,16 @@ void main()
 	//float roadMask = step(1.-roadCoord.x, 1.)*step(roadCoord.x, 1.);
 	
 	float heightMap = getHeight(coord+time);
-	float scale = sin(in_Position.y*0.05+time*10.)*25.-abs(in_Position.x*.4)*2.;
+	float scale = sin(in_Position.y+time*30.)*30.+100.-abs(in_Position.x*.3);
 	
-    vec4 object_space_pos = vec4( in_Position.x, in_Position.y, in_Position.z+heightMap*scale+200., 1.0);
+    vec4 object_space_pos = vec4( in_Position.x, in_Position.y, in_Position.z+heightMap*scale, 1.0);
 	
     gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION] * object_space_pos;
     
-	float stp = 10.*0.01;
+	float stp = 32.*0.01;
 	vec4 bump = bumpFromDepth(heightMap, coord+time, stp, scale);
 	
-    v_vColour = vec4(vec3(dot(bump.xyz,vec3(1.,-1., 1.))), 1.);
+    v_vColour = vec4(vec3(dot(bump.xyz,vec3(-1.,0., 1.))), 1.);
 
     v_vTexcoord = in_TextureCoord;
 	fTime = time;

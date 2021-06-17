@@ -67,7 +67,6 @@ function wave3D() constructor
 	
 	static Draw = function(saturation)
 	{
-	
 		var _s = sin(current_time*0.001)*20;
 		var _cam = view_current;
 		var _vm = matrix_get(matrix_world);

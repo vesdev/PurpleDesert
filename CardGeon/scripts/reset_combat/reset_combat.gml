@@ -13,9 +13,7 @@ function reset_combat(){
 		player.tempoary_crit_damage = 0;
 		player.tempoary_crit_chance = 0;
 		
-		repeat( check_stuff(e_stuff.molding_clay)){ 
-				add_buff(player, all_buffs.endurance, 2);
-		}
+
 			
 		
 		has_pressed_card_spoils = false;
@@ -49,7 +47,12 @@ function reset_combat(){
 			buff_struct.played_init_animation = false;
 		
 		}
-		
+	
+	
+		repeat( check_stuff(e_stuff.molding_clay)){ 
+				add_buff(player, all_buffs.endurance, 2);
+		}	
+	
 		var list_ = deck;
 		var len = ds_list_size(list_);
 		for (var i = 0; i < len;++i ) {
