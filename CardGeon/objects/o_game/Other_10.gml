@@ -4,14 +4,11 @@ if live_call() return live_result;
 /*
 if surface_exists(meatball_str.surf) {
 	surface_set_target( meatball_str.surf );
-	
 	if meatball_str.timer <= meatball_str.time {
 		var change = 1;
 		meatball_str.size_mod = easings(e_ease.easeoutback,1+change,-change,meatball_str.time,meatball_str.timer);
 		meatball_str.timer++;
 	}
-	
-	
 	draw_clear_alpha(c_black,0);
 	shader_set(sh_meatballs);
 	shader_set_uniform_f(meatball_str.u_size,3*meatball_str.size_mod );
@@ -63,25 +60,17 @@ gpu_set_blendmode(bm_add);
 	var yoffset =  1;
 	var xscale_ = .3;
 	var yscale_ = .05;
-	
 	var scale_  = 5;
 	draw_sprite_ext(s_gradient,0,surf_bg_width*.5,surf_bg_height*.2,xscale_*scale_,yscale_*scale_,0,c_white,alpha*.2);
-
 	var alpha_ = .07;
-	
 	//player
 	draw_sprite_ext(s_gradient,0,xx_,yy_,xscale_,yscale_,0,c_white,alpha_);
-
 	for (var i =0; i <array_length(active_enemies); i++) { 
 		draw_sprite_ext(s_gradient,0,active_enemies[@ i].x+xoffset_gradiant ,yy_,xscale_,yscale_,0,c_white,alpha_);
 	}
-
 	gpu_set_blendmode(bm_normal);
 surface_reset_target();
-
 	draw_surface(surf_bg,-camera.width*.5,-camera.height*.5);
-
-	
 }else{
 surf_bg = surface_create(surf_bg_width,surf_bg_height);	
 }
@@ -105,7 +94,7 @@ else
 	road3d.Draw();
 }
 
-if turn_phase  =  e_turn_phase.standby_phase {  //idk do standby phase stuff here
+if turn_phase = e_turn_phase.standby_phase {  //idk do standby phase stuff here
 	turn_phase  =  e_turn_phase.main_phase;	
 	switch game.combat.turns {
 		case 0: repeat ( check_stuff(e_stuff.mana_restoring_pie)) { 
