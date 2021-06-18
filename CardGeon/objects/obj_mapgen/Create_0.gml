@@ -2,8 +2,31 @@
 //show_debug_overlay(1);
 
 
+synth_wave = {
+	x_position : 0,
+	xtarget : 0,
+	xscale_target : 0,
+	yscale_target : 0,
+	//initialis surfaces
+	surf : surface_create(400, 380),
+	clipping_mask : surface_create(380, 380),
+	col : floor(random(16777216)),
+	//ignore bm values - these were just for me messing with blend modes
+	bm_1 : 0,
+	bm_2 : 0,
+	//number of sides the shape will have
+	sides : irandom_range(4, 8),
+	//for opening/closing the portal
+	active : false,
+	//scaling the surface
+	xscale : 0,
+	yscale : 0,
+	xscale_target : 0,
+	yscale_target : 0
+	
+}
 
-shader_set_live(sh_outrun_sunset,1);
+
 
 uResolution = shader_get_uniform(sh_fog_heavy,"uResolution");
 uTime = shader_get_uniform(sh_fog_heavy,"uTime");

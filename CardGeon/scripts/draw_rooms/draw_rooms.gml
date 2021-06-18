@@ -22,11 +22,13 @@ function grid_change(value,xx,yy, burn_ground){
 		}
 		grid[# xx, yy] = value;
 	
-		scr_update_tile(grid, xx, yy, obj_mapgen.wall_tilemap, 1);
-		
-		if burn_ground { 
+		//scr_update_tile(grid, xx, yy, obj_mapgen.wall_tilemap, 1);
 			obj_mapgen.grid_burn[# xx, yy] = 1;
 			scr_update_tile(obj_mapgen.grid_burn, xx, yy, obj_mapgen.burn_tilemap, 1);	
+	
+		if burn_ground { 
+	//		obj_mapgen.grid_burn[# xx, yy] = 1;
+	//		scr_update_tile(obj_mapgen.grid_burn, xx, yy, obj_mapgen.burn_tilemap, 1);	
 		}
 	}
 	//xx *= 32;
@@ -184,6 +186,10 @@ var col = c_grey;
 						draw_set_color(c_lime);
 					//	draw_rectangle( other_struct.x1+room_xoffset,other_struct.y1+room_yoffset,other_struct.x1+other_struct.w+room_xoffset,other_struct.h+room_yoffset,true);
 						if !go_to_battle and  o_game.m1_pressed and i != player_room_index and next_game_state_queue = noone {
+									
+									with obj_lighting_controller{ 
+										event_user(0);
+									}
 									
 									audio_play(sfx_coco_overworld_move_1,sfx_coco_overworld_move_2,sfx_coco_overworld_move_3);
 									

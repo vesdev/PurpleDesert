@@ -204,10 +204,10 @@ if os_type == os_windows {
 	shader_set(sh_fog_heavy);
 	shader_set_uniform_f(uResolution,1/room_width,1/room_height);	
 	shader_set_uniform_f(uTime,current_time*.003);
-	shader_set_uniform_f(uOpacity,.2);
+	shader_set_uniform_f(uOpacity,.15);
 	shader_set_uniform_f(cloudscale,5);	
 	draw_sprite_ext(s_pixel,0,0, 
 	0, room_width*1.5, 
-	room_height*1.5, 0,C_PURPLE,1);
+	room_height*1.5, 0,c_white,1);
 	shader_reset();
 }

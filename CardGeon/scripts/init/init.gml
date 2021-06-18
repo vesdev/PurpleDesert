@@ -216,7 +216,7 @@ buff = {
 		armor_keep:			 new struct_buff(0,0, s_keyword_armor_keep,"ARMOR KEEP", function(amount) { return"ARMOR [c_lime]ISN'T[] DESTROYED AT THE START OF YOUR TURN."}),
 		lucky:				 new struct_buff(0,0, s_status_lucky,"LUCKY", function() { return"THIS TURN YOUR NEXT CARD [c_lime]ALWAYS[] CRITS."}),
 		replay_red:	 new struct_buff(0,0, s_status_replay_red,"REPLAY RED", function(amount) { return"YOUR NEXT [c_yellow]"+string(amount)+" RED CARD(S)[] IS PLAYED [c_lime]AGAIN."}),
-		token_summoning_restores_mana :	 new struct_buff(0,0, s_status_cheer_squad,"CHEER SQUAD", function(amount) { return"RESTORE [c_lime]"+string(amount)+"[] MANA WHEN YOU SUMMON A TOKEN."}),
+		token_summoning_restores_mana :	 new struct_buff(0,0, s_status_cheer_squad,"CHEER SQUAD", function(amount) { return"RESTORE [c_lime]"+string(amount)+"[] ENERGY WHEN YOU SUMMON A TOKEN."}),
 		crit_chance_up :  new struct_buff(0,0, s_status_crit_chance_up,"HONEYCOMB", function(amount) { return"[c_lime]+"+string(round( 100*amount*(player.token_stats[@ e_token.coco_bee].starting_amount+player.token_stats[@ e_token.coco_bee].output1()  )))+"%[] [s_keyword_lucky] CRIT CHANCE [c_gum]BUFF IS LOST ON CRIT.[]\n[c_aqua]TOTAL CRIT CHANCE: "+string( round( get_crit_chance(player)*100))+"%"     }),
 		crit_damage_up :  new struct_buff(0,0, s_status_crit_damage_up,"BATWING", function(amount) { return"[c_lime]+"+string(round( 100*amount*(player.token_stats[@ e_token.coco_bat].starting_amount+player.token_stats[@ e_token.coco_bat].output1())  ))+"%[] [s_keyword_attack] CRIT DAMAGE [c_gum]BUFF IS LOST ON CRIT.[]\n[c_aqua]TOTAL CRIT DAMAGE:  "+string( round( get_crit_damage(player)*100))+"%"		}),
 

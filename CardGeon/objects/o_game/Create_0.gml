@@ -1,6 +1,6 @@
 /// @description 
 
-create(0,0,o_rain_system);
+//create(0,0,o_rain_system);
 //show_debug_overlay(true)
 //audio_play_sound(sketch1_b,1,1);
 
@@ -868,11 +868,8 @@ max_number_of_enemies = 20;
 
 
 synth_wave = {
-	
-	
 	x_position : 0,
 	xtarget : 0,
-	
 	xscale_target : 0,
 	yscale_target : 0,
 	//initialis surfaces
@@ -889,7 +886,6 @@ synth_wave = {
 	//scaling the surface
 	xscale : 0,
 	yscale : 0,
-	
 	xscale_target : 0,
 	yscale_target : 0
 }

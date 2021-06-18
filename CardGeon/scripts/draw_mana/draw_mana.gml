@@ -136,7 +136,7 @@ shader_reset();
 scribble("[fa_left]"+mana_text_color+string(round(player.mana-potential_mana_loss))+"[]/"+string(player.mana_max)).draw(xx-2,yy);
 
 if !hovered_over_card and allow_player_input() and boon_collision( x_-xoffset-bbox_xoffset,y_-yoffset-bbox_yoffset,x_-xoffset+sprite_width_+bbox_xoffset,yy-yoffset+sprite_height_*.5+bbox_yoffset ,MX,MY) {
-	draw_status_information = "[c_yellow]MANA[]\nTHE RESOURCE NEEDED TO [c_yellow]PLAY CARDS[]. YOU GAIN [c_yellow]"+string(player.mana_gain)+"[] PER TURN.";
+	draw_status_information = "[c_yellow]ENERGY[]\nTHE RESOURCE NEEDED TO [c_yellow]PLAY CARDS[]. YOU GAIN [c_yellow]"+string(player.mana_gain)+"[] PER TURN.";
 	draw_outline_thick(s_mana_icon,3,x_,y_,scale,scale,0,c_white,1); //white outline
 	draw_outline(s_mana_icon,3,x_,y_,scale,scale,0,C_DARK,1); //white outline
 }

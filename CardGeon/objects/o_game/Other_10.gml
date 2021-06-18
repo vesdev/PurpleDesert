@@ -1,5 +1,6 @@
-
 //surface
+if live_call() return live_result;
+
 /*
 if surface_exists(meatball_str.surf) {
 	surface_set_target( meatball_str.surf );
@@ -23,8 +24,6 @@ if surface_exists(meatball_str.surf) {
 }else{
  meatball_str.surf = surface_create(meatball_str.surf_width,meatball_str.surf_height);
 }
-
-	
 if surface_exists(surf_bg) {
 surface_set_target(surf_bg);
 var col = make_color_rgb(16, 12, 25);
@@ -95,6 +94,8 @@ str_sunset.y = -camera.width*.3;
 str_sunset.draw();
 
 draw_synth();
+
+
 if (obj_mapgen.player_room_index == obj_mapgen.elite_placement_index)
 {
 	waves3d.Draw(1.5);

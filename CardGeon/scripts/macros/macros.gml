@@ -10,6 +10,10 @@
 #macro _CAM_WIDTH camera_get_view_width(view_camera[0])
 #macro _CAM_HEIGHT camera_get_view_height(view_camera[0])
 
+
+
+
+
 #macro I "Instances"
 #macro MX mouse_x
 #macro MY mouse_y

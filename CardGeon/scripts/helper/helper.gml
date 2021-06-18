@@ -7,6 +7,16 @@ function debug() {
 	}
 	show_debug_message(str);
 }
+
+function approach(_current, _target, _amount) {
+
+
+	if (_current < _target) {
+	    return min(_current+_amount, _target); 
+	} else {
+	    return max(_current-_amount, _target);
+	}
+}
 function draw_shape(xx, yy, sides, angle, radius, color, alpha, fill, width)
 {
 
@@ -1032,7 +1042,7 @@ function destroy_tile(xx,yy) {
 		
 		if grid[# xx,yy] != FLOOR { 
 			grid[# xx, yy] = FLOOR;
-			scr_update_tile(grid, xx, yy, wall_tilemap, 1);
+			//scr_update_tile(grid, xx, yy, wall_tilemap, 1);
 			scr_update_tile(grid, xx, yy, burn_tilemap, 0);	
 		}
 	}

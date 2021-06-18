@@ -813,14 +813,14 @@ switch card_enum {
 		
 		case e_card.coco_generate_emergency_cake: card_ = new card("MAKE EMERGENCY PIE",
 					function()  {
-					return "ADD A CARD WITH [c_yellow]RETAIN[] THAT RESTORES [c_lime]10[] MANA"}, 0,
+					return "ADD A CARD WITH [c_yellow]RETAIN[] THAT RESTORES [c_lime]10[] ENERGY"}, 0,
 					new card_struct_generate_specific_card(e_card.coco_emergency_cake, hand, 1), 
 					[keywords.single_use, keywords.retain_dont_print], e_card_type.strat , e_card.coco_up1_generate_emergency_cake, noone);
 		break;
 		
 		case e_card.coco_up1_generate_emergency_cake: card_ = new card("MAKE EMERGENCY PIE+",
 					function()  {
-					return "ADD 2 CARDS WITH [c_yellow]RETAIN[] THAT RESTORES [c_lime]10[] MANA"}, 0,
+					return "ADD 2 CARDS WITH [c_yellow]RETAIN[] THAT RESTORES [c_lime]10[] ENERGY"}, 0,
 					new card_struct_generate_specific_card(e_card.coco_emergency_cake, hand, 1), 
 					[keywords.single_use, keywords.retain_dont_print], e_card_type.strat , noone
 				);
@@ -829,7 +829,7 @@ switch card_enum {
 		
 		case e_card.coco_emergency_cake: card_ = new card("PIE",
 				function()  {
-					return "RESTORES [c_lime]10[] MANA"}, 0,
+					return "RESTORES [c_lime]10[] ENERGY"}, 0,
 					new card_struct_change_mana(10), 
 						[keywords.single_use, keywords.retain], e_card_type.strat, noone);
 		break;		
@@ -919,7 +919,7 @@ switch card_enum {
 		
 		case e_card.coco_all_in:
 						card_ = new card("ALL IN",
-									function(){ return "DEAL "+damage_string(80)+" DAMAGE.\n[c_pink]ON CRIT:[] GET [c_yellow]+30[] MANA"; },
+									function(){ return "DEAL "+damage_string(80)+" DAMAGE.\n[c_pink]ON CRIT:[] GET [c_yellow]+30[] ENERGY"; },
 									30,
 									
 									[new card_struct_attack_single(80),
@@ -933,7 +933,7 @@ switch card_enum {
 
 		case e_card.coco_up1_all_in:
 						card_ = new card("ALL IN+",
-									function(){ return "DEAL "+damage_string(100)+" DAMAGE.\n[c_pink]ON CRIT:[] GET [c_yellow]+30[] MANA"; },
+									function(){ return "DEAL "+damage_string(100)+" DAMAGE.\n[c_pink]ON CRIT:[] GET [c_yellow]+30[] ENERGY"; },
 									30,
 									
 									[new card_struct_attack_single(100),
@@ -1094,7 +1094,7 @@ switch card_enum {
 	case e_card.coco_token_summoning: 
 				card_ = new card("CHEER SQUAD", 
 							function()  {
-								return "[c_lime]+10[] MANA AFTER [c_yellow]SUMMONING A TOKEN[]"
+								return "[c_lime]+10[] ENERGY AFTER [c_yellow]SUMMONING A TOKEN[]"
 							}	, 20,
 							new card_struct_buff(all_buffs.token_summoning_restores_mana, 10 ),
 						[keywords.passive], e_card_type.passive , e_card.coco_up1_token_summoning);
@@ -1103,7 +1103,7 @@ switch card_enum {
 	case e_card.coco_up1_token_summoning: 
 				card_ = new card("CHEER SQUAD+", 
 							function()  {
-								return "[c_lime]+10[] MANA AFTER [c_yellow]SUMMONING A TOKEN[]"
+								return "[c_lime]+10[] ENERGY AFTER [c_yellow]SUMMONING A TOKEN[]"
 							}	, 10,
 								new card_struct_buff(all_buffs.token_summoning_restores_mana, 10 ),
 						[keywords.passive], e_card_type.passive , noone);

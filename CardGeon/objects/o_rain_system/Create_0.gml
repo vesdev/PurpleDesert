@@ -21,7 +21,7 @@ part_type_direction(pt_rain1,angle,angle,0,0);
 part_type_orientation(pt_rain1,0,0,0,0,0);
 part_type_life(pt_rain1,SEC*.1,SEC*1.4);
 
-part_type_sprite(pt_rain2,s_pt_rain_1,0,0,true);
+part_type_sprite(pt_rain2,s_pt_rain_2,0,0,true);
 part_type_size(pt_rain2,1,1,0,0);
 part_type_color1(pt_rain2,c_white);
 part_type_alpha2(pt_rain2,1,.1);

@@ -250,7 +250,7 @@ function stuff_struct(stuff_enum) {
 				case e_stuff.you_win:
 				
 				returned_stuff = new create_stuff(s_passive_boss_saphire, "YOU WIN",function()  {
-														return "CONGRATS YOU DID IT! +10 MANA, +10 MANA REGEN, PLEASE SEND [c_lime]YOUR FEEDBACK[]! SO THIS GAME CAN GET BETTER!";
+														return "CONGRATS YOU DID IT! +10 ENERGY, +10 ENERGY REGEN, PLEASE SEND [c_lime]YOUR FEEDBACK[]! SO THIS GAME CAN GET BETTER!";
 													},
 													function()  { with o_game{ player.mana_gain += 10; player.mana_max += 10;  } }, 0,
 													noone, e_rarity.boss);				
@@ -281,15 +281,15 @@ function stuff_struct(stuff_enum) {
 				break;
 
 				case e_stuff.sunflower:	returned_stuff = new create_stuff( s_stuff_sunflower, "SUNFLOWER",function()  {
-														return "EVERY [c_yellow]3[] TURNS GAIN [c_lime]+10[] MANA";
+														return "EVERY [c_yellow]3[] TURNS GAIN [c_lime]+10[] ENERGY";
 													},
 													noone,0,
 													0, e_rarity.rare);
 				break;
 
 
-				case e_stuff.mana_restoring_pie:	returned_stuff = new create_stuff( s_stuff_pie, "MANA INFUSED PIE",function()  {
-														return "AT THE START OF COMBAT, ADD A PIE TO YOUR HAND THAT RESTORES [c_lime]10 MANA[].";
+				case e_stuff.mana_restoring_pie:	returned_stuff = new create_stuff( s_stuff_pie, "ENERGY INFUSED PIE",function()  {
+														return "AT THE START OF COMBAT, ADD A PIE TO YOUR HAND THAT RESTORES [c_lime]10 ENERGY[].";
 													},
 													noone,0,
 													noone, e_rarity.rare);
@@ -402,7 +402,7 @@ function stuff_struct(stuff_enum) {
 				
 				case e_stuff.pink_bow:	returned_stuff = new create_stuff( s_passive_pink_bow , "PINK BOW",
 													function()  {
-															return "RECOVER [c_lime]+100%[] MORE MANA FROM CARD EFFECTS";
+															return "RECOVER [c_lime]+100%[] MORE ENERGY FROM CARD EFFECTS";
 													},
 													noone, 0,noone, e_rarity.epic);
 				break;

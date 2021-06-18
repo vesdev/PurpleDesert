@@ -2,8 +2,7 @@
 if o_game.game_state = e_gamestate.battle and o_game.peek_at_map = false || enable_event exit;
 
 
-
-if alarm[1] != -1 { 
+if alarm[1] != -1 { 	
 	//draw corridors
 	for(var i=0; i<ds_grid_width(corridor_grid); i++) {
 		for(var j=0; j<ds_grid_height(corridor_grid); j++) {

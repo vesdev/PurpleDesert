@@ -162,7 +162,7 @@ var len = number_of_enemies;
 												check_if_you_are_currently_holding_a_card = true;
 												draw_set_color(C_LIME);
 												enemy_.force_outline_color = C_LIME;
-													enemy_.selected_by_card.enable = true;
+												enemy_.selected_by_card.enable = true;
 											//	draw_rectangle(_left_enemy_collision,_top_enemy_collision,_right_enemy_collision,_bot_enemy_collision,1);
 												var col = C_LIME;
 											//	nine_slice_anim(s_nine_slice_caret,  current_time*0.02,   _left_enemy_collision,_top_enemy_collision,_right_enemy_collision,_bot_enemy_collision,1,col);

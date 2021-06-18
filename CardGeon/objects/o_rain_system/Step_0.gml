@@ -42,7 +42,7 @@ var y_  = o_game.camera.y-o_game.camera.height*.5;
 var width_ = o_game.camera.width;	
 boon_randomize();
 
-debug(obj_mapgen.next_game_state_queue);
+
 if o_game.game_state = e_gamestate.choose_path and obj_mapgen.next_game_state_queue = noone
 	and !obj_mapgen.browsing_card_shop and !obj_mapgen.enable_event
 { 

@@ -1,14 +1,9 @@
 if live_call() return live_result;
 
-
-
-
-
-
 battle_transition_timer--;
+
 if o_game.game_state = e_gamestate.battle and !o_game.peek_at_map exit;
 if alarm[0] != -1 exit;
-
 
 var cam = o_game.camera;
 if center_camera_on_player > 0 { 
@@ -357,6 +352,7 @@ if boon_collision(_l+xoff,_t+yoff,_r-xoff,_b-yoff,MX,MY ){
 
 	scribble("[fa_center]DISCARD").wrap(_r-_l).draw(_l+(_r-_l)*.5,_t+(_b-_t)*.5-10);
 
+
 if re_roll > 0 { 
 
 var xoffset = (cam.width*offset)*4;
@@ -376,7 +372,6 @@ if boon_collision(_l+xoff,_t+yoff+y_offset,_r-xoff,_b-yoff+y_offset,MX,MY ){
 
 	nine_slice(s_nine_slice_hp_border,_l+xoff,_t+yoff+y_offset,_r-xoff,_b-yoff+y_offset,1,C_YELLOW);
 		if o_game.m1_pressed{ 
-			
 			var s = false;
 				//reroll
 			if event_struct.type = e_event_type.golden_treasure { 
@@ -405,14 +400,12 @@ exit;
 }
 
 
-
-
-
 if go_to_battle and  o_game.game_state = e_gamestate.choose_path and battle_transition_timer <= 0{
 	
 	with o_game { 
-	game.combat = new stats();
+		game.combat = new stats();
 	}
+	
 	go_to_next_state(e_gamestate.battle)
 	var lay = layer_get_id("blue_lights_slow_0");
 	layer_set_visible(lay,false);
@@ -426,7 +419,6 @@ if go_to_battle and  o_game.game_state = e_gamestate.choose_path and battle_tran
 if o_game.game_state = e_gamestate.battle exit;
 
 draw_set_alpha(1.0);
-
 //draw lighting
 //player_light.x = mouse_x;
 //player_light.y = mouse_y;
@@ -435,4 +427,41 @@ with(o_game)
 //	lighting.Draw(camera.x-camera.width/2, camera.y-camera.height/2, lights, drawLightSolids);
 }
 
+
+if !instance_exists(o_game) exit;
+/*
+var left = (o_game.camera.x-o_game.camera.width/2) div 32;
+var top = (o_game.camera.y-o_game.camera.height/2) div 32;
+
+var width = o_game.camera.width div 32;
+var height = o_game.camera.height div 32;
+
+var offset = 2;
+var size = 32-offset/2;
+var col = C_DARK;
+var time = current_time*0.005;
+var time_add = SEC*.3;
+var intensity = 2;
+for (var xx = left; xx <= left+width; xx++){ 
+	for (var yy = top; yy <= top+height; yy++){ 
+	
+		var x_output = xx * 32;
+		var y_output = yy * 32;
+		//
+		if obj_mapgen.grid[# xx,yy] != WALL {
+			var cos_ = cos(time+yy*time_add)*intensity;
+			var sin_ = sin(time+xx*time_add)*intensity;
+			//draw_outline(s_white_square_round,0,x_output+cos_,y_output+sin_,1,1,0,c_white,1);
+		
+			draw_sprite_ext(s_wall_sprite,0,x_output,y_output+sin_,1,1,0,c_white,1);
+		}
+	}
+}
+*/
 draw_rooms();
+
+
+
+draw_synth_map();
+
+
