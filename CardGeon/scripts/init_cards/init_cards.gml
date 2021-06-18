@@ -210,7 +210,7 @@ enum e_card {
 	coco_bubble_shield,										coco_up1_bubble_shield,
 	coco_starter_kit,										coco_up1_starter_kit,
 	coco_lucky_helmet,										coco_up1_lucky_helmet,
-	
+	coco_sucker_punch,		coco_up1_sucker_punch,
 	
 	size_
 }
@@ -373,7 +373,31 @@ switch card_enum {
 		break;
 				
 
+		case e_card.coco_sucker_punch:
+				card_ = new card_condition("SUCKER PUNCH",
+							function()  {
+											return "DO "+damage_string(30)+" DAMAGE.  IF YOU DEALT A [c_pink]CRIT THIS TURN[] RESTORE [c_lime]+10[] [c_yellow][s_electricity_small] ENERGY";
+										}	,10,
+										 new card_struct_attack_single(30),
+										 [ new card_struct_attack_single(30),
+										   new card_struct_change_mana(10),
+										 ],
+										noone ,conditions.dealt_a_crit_this_turn,  e_card_type.red, e_card.coco_up1_sucker_punch);
 
+				break;
+
+		case e_card.coco_up1_sucker_punch:
+				card_ = new card_condition("SUCKER PUNCH+",
+							function()  {
+											return "DO "+damage_string(30)+" DAMAGE.  IF YOU DEALT A [c_pink]CRIT THIS TURN[] RESTORE [c_lime]+20[] [c_yellow][s_electricity_small] ENERGY";
+										}	,10,
+										 new card_struct_attack_single(30),
+										 [ new card_struct_attack_single(30),
+										   new card_struct_change_mana(20),
+										 ],
+										noone ,conditions.dealt_a_crit_this_turn,  e_card_type.red, noone);
+
+				break;
 
 
 		case e_card.coco_starter_kit :
@@ -789,14 +813,14 @@ switch card_enum {
 		
 		case e_card.coco_generate_emergency_cake: card_ = new card("MAKE EMERGENCY PIE",
 					function()  {
-					return "ADD A CARD WITH [c_yellow]RETAIN[] THAT RESTORES [c_lime]10[] MANA"}, 10,
+					return "ADD A CARD WITH [c_yellow]RETAIN[] THAT RESTORES [c_lime]10[] MANA"}, 0,
 					new card_struct_generate_specific_card(e_card.coco_emergency_cake, hand, 1), 
 					[keywords.single_use, keywords.retain_dont_print], e_card_type.strat , e_card.coco_up1_generate_emergency_cake, noone);
 		break;
 		
 		case e_card.coco_up1_generate_emergency_cake: card_ = new card("MAKE EMERGENCY PIE+",
 					function()  {
-					return "ADD 2 CARDS WITH [c_yellow]RETAIN[] THAT RESTORES [c_lime]10[] MANA"}, 10,
+					return "ADD 2 CARDS WITH [c_yellow]RETAIN[] THAT RESTORES [c_lime]10[] MANA"}, 0,
 					new card_struct_generate_specific_card(e_card.coco_emergency_cake, hand, 1), 
 					[keywords.single_use, keywords.retain_dont_print], e_card_type.strat , noone
 				);
@@ -895,11 +919,11 @@ switch card_enum {
 		
 		case e_card.coco_all_in:
 						card_ = new card("ALL IN",
-									function(){ return "DEAL "+damage_string(70)+" DAMAGE.\n[c_pink]ON CRIT:[] GET [c_yellow]+20[] MANA"; },
+									function(){ return "DEAL "+damage_string(80)+" DAMAGE.\n[c_pink]ON CRIT:[] GET [c_yellow]+30[] MANA"; },
 									30,
 									
-									[new card_struct_attack_single(70),
-									 new card_struct_condition( function(){ if player.last_attack_was_a_crit {  change_mana( 20 ) } } )
+									[new card_struct_attack_single(80),
+									 new card_struct_condition( function(){ if player.last_attack_was_a_crit {  change_mana( 30 ) } } )
 									
 									
 									]//first is the script, second value is the argument for the script
@@ -909,7 +933,7 @@ switch card_enum {
 
 		case e_card.coco_up1_all_in:
 						card_ = new card("ALL IN+",
-									function(){ return "DEAL "+damage_string(90)+" DAMAGE.\n[c_pink]ON CRIT:[] GET [c_yellow]+30[] MANA"; },
+									function(){ return "DEAL "+damage_string(100)+" DAMAGE.\n[c_pink]ON CRIT:[] GET [c_yellow]+30[] MANA"; },
 									30,
 									
 									[new card_struct_attack_single(100),

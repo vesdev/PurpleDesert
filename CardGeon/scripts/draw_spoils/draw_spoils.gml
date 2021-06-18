@@ -32,7 +32,7 @@ var bbox = scr.get_bbox(scrx,scry);
 draw_set_color(c_white);
 if no_discover_effects() and boon_collision(bbox.x0,bbox.y0-yoffset, bbox.x3,bbox.y3+yoffset,  MX,MY){
 
-	if m1_pressed  { 
+	if m1_pressed  and obj_mapgen.next_game_state_queue = noone{ 
 		audio_play(sfx_get_the_heck_outta_here);
 		m1_pressed = false;
 		//RETURN TO THE MAP

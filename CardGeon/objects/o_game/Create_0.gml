@@ -542,12 +542,10 @@ e_card.coco_replay_red,
 e_card.coco_token_summoning,
 e_card.coco_bubble_shield,
 e_card.coco_starter_kit,
-e_card.coco_lucky_helmet
+e_card.coco_lucky_helmet,
+e_card.coco_sucker_punch,
+e_card.coco_up1_sucker_punch
 );
-
-
-
-
 
 for (var i = 0; i < player.card_shop_options; i++){ 
 	var card_ = ds_list_find_value(card_spoils,i);
