@@ -10,6 +10,9 @@ const float outline = 0.05;
 const float line = 0.01;
 const float glow = 0.3;
 
+const vec4 color = vec4(0.3,0.05,0.5,1.);
+const vec4 lightColor = vec4(1, 0.957, 0.298, 1)*.3;
+
 float random (in vec2 st) {
     return fract(sin(dot(st.xy,
                          vec2(12.9898,78.233)))*
@@ -33,10 +36,7 @@ float noise (in vec2 st) {
             (d - b) * u.x * u.y;
 }
 
-const vec4 color = vec4(0.3,0.05,0.5,1.);
-const vec4 lightColor = vec4(0.5,0.1,0.7,1.);
-
-#define OCTAVES 6
+#define OCTAVES 2
 float fbm (in vec2 st) {
     // Initial values
     float value = 0.0;
@@ -52,17 +52,35 @@ float fbm (in vec2 st) {
     return value;
 }
 
+float getHeight(vec2 uv)
+{
+	return fbm(uv);
+}
+
+vec4 bumpFromDepth(float height, vec2 uv, float stp, float scale) {
+
+	vec2 dxy = height - vec2(
+		getHeight(uv + vec2(stp, 0.)),
+		getHeight(uv + vec2(0., stp))
+	);
+
+	return vec4(normalize(vec3(dxy * scale, 1.)), height);
+}
+
 
 void main()
 {
 	//magic
 	vec2 coord = vec2((v_vTexcoord.x-.5)*7., v_vTexcoord.y);
 	vec4 groundCol = color;
-	groundCol.rgb *= fbm(v_vTexcoord*10.+vec2(0,fTime*10.))*0.7+0.5;
 	float dist = smoothstep(v_vTexcoord.y, outline, .5);
 	groundCol *= dist*2.;
 	groundCol.a = 1.;
-	vec4 final = groundCol+max(v_vColour*dist,0.)*lightColor;
+	
+	vec4 light = smoothstep(0.7,1.,v_vColour);
+	vec4 shadow = -smoothstep(-0.3,-1.,v_vColour)*.1;
+	
+	vec4 final = groundCol+(light+shadow)*dist*lightColor;
 	final.a = 1.;
 	
 	//done
