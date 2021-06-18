@@ -102,6 +102,7 @@ function  create_stuff( sprite, title,  desc  ,init_script , keywords, amount, r
 	self.amount = amount;
 	self.rarity = rarity;
 	type = e_spoil_type.stuff;
+	self.obtain_sound = sfx_get_coin;
 	stuff_enum = noone;
 }
 

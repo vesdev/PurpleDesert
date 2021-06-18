@@ -140,6 +140,8 @@ function draw_status(xx , yy, struct){
 						
 					if !buff_struct.played_init_animation { 
 						buff_struct.played_init_animation = true;
+						audio_stop_sound(sfx_record_scratch);
+						audio_play(	sfx_record_scratch );
 						var image_speed_ = 2;
 						create_animation_effect(s_summon_status,xx+move_x+5,yy+8,image_speed_,1,90-10,c_yellow,1);
 						create_animation_effect(s_summon_status,xx+move_x+5,yy+8,image_speed_,1,0,c_yellow,1);

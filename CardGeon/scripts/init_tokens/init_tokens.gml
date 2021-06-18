@@ -9,12 +9,10 @@ enum e_token_type {
 	size_
 }
 
-
 /*
 	Mini Me	
 	Summon a token that plays COPIES of attack cards at half power.
 */
-
 
 function token_script(enum_, script_) constructor{ 
 	self.type = enum_;
@@ -38,7 +36,6 @@ function init_tokens( turns_to_live , cost_to_increse_life , cost_to_increase_am
 	current_sprite = sprite_idle;
 	type = noone;
 	cost = NOCOST
-	
 	
 	struct_type = e_struct_type.token;
 	self.turns_to_live = turns_to_live;	
@@ -94,7 +91,6 @@ function execute_token_script(token_enum,e_token_type_ ) {
 
 	var token_array = player.token_array;	
 	var len = array_length(player.token_array);
-
 
 	if len = 0 return 0;
 	var count = 0;
@@ -201,7 +197,6 @@ if !is_array(token_enums_args) {
 #macro COST_HIGH3 100
 
 function token_struct(token_enum){
-
 	var returned_token = noone;//EVERY TIME A [c_gum]RED[] CARD [c_lime]DOESN'T CRIT[] GET 	
 	switch token_enum { 
 		case e_token.coco_bee: 
@@ -225,7 +220,7 @@ function token_struct(token_enum){
 		case e_token.coco_beetle: 
 		
 		returned_token = new init_tokens(player.token_stats[@ e_token.coco_beetle].turns_to_live,COST_MEDIUM, COST_MEDIUM, 2,
-		[new token_script( e_token_type.aura, function(){ player.buff.attack.amount += 4+player.token_stats[@ e_token.coco_beetle].output1();   }) ] , s_token_coco_beetle, s_token_coco_beetle_rip  , "RED BEETLE",
+		[new token_script( e_token_type.aura, function(){ player.buff.attack.amount += 5+player.token_stats[@ e_token.coco_beetle].output1();   }) ] , s_token_coco_beetle, s_token_coco_beetle_rip  , "RED BEETLE",
 		function(enum_){ return "GET [c_lime]+"+string(player.token_stats[@ e_token.coco_beetle].starting_amount+player.token_stats[@ e_token.coco_beetle].output1())+"[] [s_keyword_attack] ATTACK ON CRIT"}, function() { return "CURRENT CRIT CHANCE [c_aqua]"+percent_to_string(get_crit_chance(player), false)+"%[]"});
 		break;
 		case e_token.coco_spider: 

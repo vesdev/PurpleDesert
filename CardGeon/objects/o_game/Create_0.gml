@@ -2,7 +2,7 @@
 
 create(0,0,o_rain_system);
 //show_debug_overlay(true)
-audio_play_sound(mus_lofi,1,1);
+//audio_play_sound(sketch1_b,1,1);
 
 enum e_resolution {	
 	hd_960,
@@ -543,8 +543,7 @@ e_card.coco_token_summoning,
 e_card.coco_bubble_shield,
 e_card.coco_starter_kit,
 e_card.coco_lucky_helmet,
-e_card.coco_sucker_punch,
-e_card.coco_up1_sucker_punch
+e_card.coco_sucker_punch
 );
 
 for (var i = 0; i < player.card_shop_options; i++){ 
@@ -729,6 +728,7 @@ card_array_queue = { //when we want to play a card scripts, it gets stored into 
 			}
 }
 
+played_card_hover_sound = false;
 
 
 status_info ={ 

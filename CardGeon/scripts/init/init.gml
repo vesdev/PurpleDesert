@@ -24,6 +24,8 @@ function struct_buff(amount, lose_per_turn, sprite,  title, desc_func ) construc
 	self.title = title;
 	self.desc = desc_func;
 	self.sprite = sprite;
+	
+
 	hovered_over_status = false;
 	delay_status_for_a_turn = false;
 	played_init_animation = false;

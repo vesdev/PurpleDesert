@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sketch1_b.ogg",
-  "duration": 117.530739,
+  "duration": 111.769669,
   "parent": {
     "name": "Music",
     "path": "folders/Audio/Music.yy",

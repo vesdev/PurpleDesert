@@ -357,6 +357,10 @@ function  show_intent_animation(timer, time, struct) {
 		
 		
 		if timer <= time { 
+			if timer = 1 { 
+				audio_play(sfx_enemy_windup);	
+				
+			}
 				var ease_ = e_ease.easeoutexpo;
 				angle_add =	 easings(ease_,0,360*1.5,time,timer);
 				xoffset =		 easings(ease_,0,30,time,timer);

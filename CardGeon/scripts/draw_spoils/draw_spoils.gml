@@ -74,18 +74,21 @@ for (var i = 0; i < len; ++i){
 	if m1_pressed { 
 		m1_pressed = false;
 		
-		audio_play(struct.obtain_sound);
+		
 		
 		switch struct.type {
 			case e_spoil_type.gold:	 struct.init_script(struct.amount); 
 			array_delete(hand_over_rewards_array,i,1);
+			audio_play(sfx_get_coin);
 			break;
-			case e_spoil_type.stuff:  add_stuff(struct.stuff_enum);
+			case e_spoil_type.stuff:  
+			audio_play(sfx_get_stuff);
+			add_stuff(struct.stuff_enum);
 			array_delete(hand_over_rewards_array,i,1);
 			break;
 			case e_spoil_type.choose_card: 
 			
-			
+			audio_play(sfx_card_shuffle);
 			struct.init_script();
 			break;
 			
@@ -124,7 +127,7 @@ o_game.drawing_keywords = true;
 var card_width = sprite_get_width(s_card_border)	
 keyword_easing_timex = SEC*.75;
 keyword_easing_timey = SEC*.75;
-	
+
 	
 if keyword_easing_timerx <= keyword_easing_timex { 
 keyword_easeing_x = easings(e_ease.easeoutelastic,0,1,keyword_easing_timex,keyword_easing_timerx);
