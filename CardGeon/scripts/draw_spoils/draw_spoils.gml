@@ -4,6 +4,7 @@
 function draw_spoils(){
 
 
+
 if !no_discover_effects() exit;
 
 var _x_offset = 78;
