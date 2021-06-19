@@ -41,11 +41,9 @@ gpu_set_blendmode(bm_normal);
 		draw_surface_ext(meatball_str.surf,0,0,1,1,0,col,1);
 	}
 
-
 var yoffset = 30;
 var alpha = 1;
 var color = merge_color( C_PINK , C_DARK,.85);
-
 
 draw_sprite_ext(s_fade,0,0,0+yoffset,surf_bg_width,.15,0,color,alpha);
 draw_sprite_ext(s_pixel,0,0,96+yoffset,surf_bg_width,surf_bg_height,0,color,alpha);

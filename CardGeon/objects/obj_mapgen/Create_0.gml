@@ -3,7 +3,8 @@
 
 
 synth_wave = {
-	x_position : 0,
+	y_pos_surface : -50000,
+	x_pos_surface : -50000,
 	xtarget : 0,
 	xscale_target : 0,
 	yscale_target : 0,

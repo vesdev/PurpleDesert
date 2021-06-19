@@ -358,7 +358,7 @@ function  show_intent_animation(timer, time, struct) {
 		
 		if timer <= time { 
 			if timer = 1 { 
-				audio_play(sfx_enemy_windup);	
+				//audio_play(sfx_enemy_windup);	
 				
 			}
 				var ease_ = e_ease.easeoutexpo;

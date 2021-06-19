@@ -6,6 +6,7 @@ if o_game.game_state = e_gamestate.battle and !o_game.peek_at_map exit;
 if alarm[0] != -1 exit;
 
 var cam = o_game.camera;
+
 if center_camera_on_player > 0 { 
 	o_game.camera.x = playerx;
 	o_game.camera.y = playery;
@@ -14,7 +15,6 @@ if center_camera_on_player > 0 {
 
 
 if !obj_mapgen.enable_event {
-
 	
 //loop throught the dungeons to get the best possible map size
 if o_game.move_camera_to_coco = true {
@@ -366,10 +366,10 @@ var xoff = cam.width*0.015;
 var yoff = cam.height*.02;
 
 var y_offset = -cam.height*0.42;
+
 	nine_slice(s_nine_slice_default,_l+xoff,_t+yoff+y_offset,_r-xoff,_b-yoff+y_offset,1,c_white);
 
 if boon_collision(_l+xoff,_t+yoff+y_offset,_r-xoff,_b-yoff+y_offset,MX,MY ){
-
 	nine_slice(s_nine_slice_hp_border,_l+xoff,_t+yoff+y_offset,_r-xoff,_b-yoff+y_offset,1,C_YELLOW);
 		if o_game.m1_pressed{ 
 			var s = false;

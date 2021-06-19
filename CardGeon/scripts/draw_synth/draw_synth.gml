@@ -15,15 +15,14 @@ function draw_synth_map(){
 		col = choose(C_FUCHISIA);
 
 	
-		x_position = lerp( x_position , xtarget, .2);
-		xscale_target = 2;
-		yscale_target = 2;
-		
-		xscale = lerp( xscale , xscale_target, .2);
-		yscale = lerp( yscale , yscale_target, .2);
+		//x_position = lerp( x_position , xtarget, .2);
+
+		yscale = xscale;
+		//xscale = lerp( xscale , xscale_target, .2);
+		//yscale = lerp( yscale , yscale_target, .2);
 	
-		var yy = MY//-150;
-		var xx = MX//x_position;
+		var yy = y_pos_surface;//-150;
+		var xx = x_pos_surface;//x_position;
 		//debug(MY );
 		//debug("MX " , MX, "MY ", MY);
  			
