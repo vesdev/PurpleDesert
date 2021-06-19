@@ -7,8 +7,8 @@
   "type": 0,
   "bitDepth": 1,
   "audioGroupId": {
-    "name": "audiogroup_default",
-    "path": "audiogroups/audiogroup_default",
+    "name": "audiogroup_sfx",
+    "path": "audiogroups/audiogroup_sfx",
   },
   "soundFile": "sfx_player_took_a_hard_hit.wav",
   "duration": 0.775729,

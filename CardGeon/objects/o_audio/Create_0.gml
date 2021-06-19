@@ -42,3 +42,32 @@ global.volume_music = 1;
 audio_group_set_gain(audiogroup_sfx,global.volume_sfx,0);
 audio_group_set_gain(audiogroup_music,global.volume_music,0);
 audio_group_set_gain(audiogroup_default, global.volume_sfx*.6,0);
+
+//music system
+musicPlayer = new MusicPlayer();
+
+
+//music groups
+sketch1 = new MusicGroup(
+	sketch1_sub_bass,
+	sketch1_midsection_strings_with_fx,
+	sketch1_midsection_strings_without_fx,
+	sketch1_drums_without_fx,
+	sketch1_deep_synth_ultimate_layer,
+	sketch1_drums_with_fx,
+	sketch1_minimal_overworld,
+	sketch1_pad_highlights
+)
+//group.SetTrackGain(index,volume,time);
+
+sketch1.SetTrackGain(0,0,0);
+sketch1.SetTrackGain(1,0,0);
+sketch1.SetTrackGain(2,0,0);
+sketch1.SetTrackGain(3,0,0);
+
+sketch1.SetTrackGain(5,0,0);
+
+musicPlayer.Play(sketch1);
+
+
+
