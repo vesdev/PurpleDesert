@@ -157,6 +157,7 @@
     {"id":{"name":"o_sine_text","path":"objects/o_sine_text/o_sine_text.yy",},"order":0,},
     {"id":{"name":"s_card_nine_slice","path":"sprites/s_card_nine_slice/s_card_nine_slice.yy",},"order":12,},
     {"id":{"name":"Food","path":"sprites/Food/Food.yy",},"order":8,},
+    {"id":{"name":"o_purple_lines","path":"objects/o_purple_lines/o_purple_lines.yy",},"order":3,},
     {"id":{"name":"scribble_flush_everything","path":"scripts/scribble_flush_everything/scribble_flush_everything.yy",},"order":0,},
     {"id":{"name":"s_stuff_lucky_penny","path":"sprites/s_stuff_lucky_penny/s_stuff_lucky_penny.yy",},"order":6,},
     {"id":{"name":"s_ui_deck","path":"sprites/s_ui_deck/s_ui_deck.yy",},"order":3,},

@@ -2,6 +2,7 @@ if live_call() return live_result;
 
 
 
+
 battle_transition_timer--;
 
 if o_game.game_state = e_gamestate.battle and !o_game.peek_at_map exit;
@@ -430,11 +431,10 @@ if !instance_exists(o_game) exit;
 
 
 
-
 var left = (o_game.camera.x-o_game.camera.width/2) div 32;
 var top = (o_game.camera.y-o_game.camera.height/2) div 32;
 
-var width = o_game.camera.width div 32;
+var width =  o_game.camera.width div 32;
 var height = o_game.camera.height div 32;
 
 var offset = 2;
@@ -443,30 +443,74 @@ var col = C_DARK;
 var time = current_time*0.005;
 var time_add = SEC*.3;
 var intensity = 2;
+var size = 32;
+
+var tmiddle = 6;
+var ttleft = 5;
+var ttright = 4;
+
+var tile_right = 3;
+var tile_left = 2;
+
+var tile_single = 1;
+
+
+
+//draw_rectangle(left*32,top*32,(left+width)*32,(top+height)*32,1);
 for (var xx = left; xx <= left+width; xx++){ 
 	for (var yy = top; yy <= top+height; yy++){ 
-	
-		
+var tile = tmiddle;
+		xx = clamp(xx, 0, ds_grid_width(obj_mapgen.grid)-1);
+		yy = clamp(yy, 0, ds_grid_height(obj_mapgen.grid)-1);
 		//
-		if obj_mapgen.grid[# xx,yy] = FLOOR  and  obj_mapgen.grid[# xx,yy+1] = WALL{
-			
 			var xx_div = xx;
 			var yy_div = yy+1;
-			var x_output = xx * 32;
-			var y_output = (yy+1 ) * 32;
-			var cos_ = 0;// cos(time+yy*time_add)*intensity;
-			var sin_ = 0;//sin(time+xx*time_add)*intensity;
-			//draw_outline(s_white_square_round,0,x_output+cos_,y_output+sin_,1,1,0,c_white,1);
 			
 			
+			//|_| and behind
 			
-			//scr_update_tile()
-			scr_update_tile(obj_mapgen.grid,xx_div,yy_div,bottom_tilemap,0)
+
+			
+		if obj_mapgen.grid[# xx,yy] == FLOOR and obj_mapgen.grid[# xx_div,yy_div] == WALL{
 		
-			//draw_sprite_ext(s_purple_squre,0,x_output,y_output+sin_,1,1,0,c_white,1);
+			
+			var x_output = xx_div	 * 32;
+			var y_output = (yy_div)  * 32;
+			// |_
+			if obj_mapgen.grid[# xx-1,yy] == WALL and obj_mapgen.grid[# xx+1,yy] == FLOOR {
+				tile = tile_left;
+			}
+				if obj_mapgen.grid[# xx+1,yy] == WALL and obj_mapgen.grid[# xx-1,yy] == FLOOR {
+				tile = tile_right;
+			}
 			
 			
+			
+			//single down |_|
+			if obj_mapgen.grid[# xx-1,yy] == WALL and obj_mapgen.grid[# xx+1,yy] == WALL {
+				tile = tile_single;
+			}
+			
+			
+	
+			tilemap_set_at_pixel(bottom_tilemap,tile,x_output,y_output);		
+			//draw_sprite_ext(s_white_square_round,0,x_output,y_output,1,1,0,c_white,1);
+		
 		}
+		
+			if obj_mapgen.grid[# xx,yy] == FLOOR and
+				obj_mapgen.grid[# xx,yy-1] == FLOOR and			
+												
+			   obj_mapgen.grid[# xx+1,yy] == WALL and 
+			   obj_mapgen.grid[# xx-1,yy] == WALL 
+			   
+			   {
+				
+				tilemap_set_at_pixel(bottom_tilemap,tmiddle,xx*32,yy*32);		
+			
+			}
+		
+		
 	}
 }
 

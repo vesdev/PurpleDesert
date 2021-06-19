@@ -18,7 +18,7 @@ burn_tilemap = layer_tilemap_create(burn_layer, 0, 0, til_grass_burned_32x32, ro
 
 
 bottom_layer = layer_create(-100);
-bottom_tilemap = layer_tilemap_create(bottom_layer, 0, 0, s_wall_sprite, room_width, room_height);
+bottom_tilemap = layer_tilemap_create(bottom_layer, 0, 0, til_bottom_wall, room_width, room_height);
 
 
 
@@ -37,4 +37,5 @@ for (var  yy = 1; yy < height-1; yy++) {
 	}
 }
 */
+create(0,0,o_purple_lines);
 create(0,0,obj_lighting_controller);

@@ -473,7 +473,7 @@ room_yoffset = room_hmargin-top;
 
 
 ///DEBUG AND REMOVE DEFAULT FIGH 
-/*
+
 for(var i=0; i < ds_list_size(room_list); i++) {
 
 		var this_room = ds_list_find_value(room_list, i);
@@ -490,7 +490,7 @@ for(var i=0; i < ds_list_size(room_list); i++) {
 					this_room.type = e_room_type.empty_room;
 				}
 }
-*/
+
 
 room_set_width(r_dungeon,right+room_wmargin);
 room_set_height(r_dungeon,bot+room_hmargin);
