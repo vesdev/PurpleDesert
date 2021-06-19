@@ -34,6 +34,8 @@ function MusicGroup(soundIDs) constructor
 	GainTarget = 1;
 	GainTime = 0;
 	
+	ForceGain = 1;
+	
 	var _i = 0;
 	var _childData;
 	repeat(argument_count)
@@ -90,6 +92,11 @@ function MusicGroup(soundIDs) constructor
 		return Gain;
 	}
 	
+	static SetForceGain = function(gain)
+	{
+		ForceGain = gain;
+	}
+	
 	static Update = function()
 	{
 		
@@ -101,17 +108,16 @@ function MusicGroup(soundIDs) constructor
 		var _childData;
 		repeat(array_length(GainArray))
 		{
+
 			_childData = GainArray[_i];
 			
 			_childData[_MSC_GROUP.GAIN] += _childData[_MSC_GROUP.TIME];
 			
 			if (_childData[_MSC_GROUP.GAIN] = _childData[_MSC_GROUP.TARGET_GAIN]) _childData[_MSC_GROUP.TIME] = 0;
 			
-			show_debug_message(_childData[_MSC_GROUP.GAIN]);
-			
 			GainArray[_i] = _childData;
 			
-			audio_sound_gain(SoundIdArray[_i], _childData[_MSC_GROUP.GAIN]*Gain, 0);
+			audio_sound_gain(SoundIdArray[_i], _childData[_MSC_GROUP.GAIN]*Gain*ForceGain, 1);
 			
 			_i++;
 		}
@@ -123,6 +129,9 @@ function MusicPlayer() constructor
 {
 	CurrentGroup = undefined;
 	NextGroup = undefined; // one to fade to
+	ForceGain = 1;
+	StopFlag = false;
+	
 	
 	static Play = function(musicGroup)
 	{
@@ -141,18 +150,45 @@ function MusicPlayer() constructor
 		
 	}
 	
+	static Stop = function()
+	{
+		if (CurrentGroup != undefined)
+		{
+			StopFlag = true;
+			CurrentGroup.SetGain(0,200);
+		}
+		
+	}
+	
+	static SetForceGain = function(gain)
+	{
+		ForceGain = gain;
+	}
+	
 	static Update = function()
 	{
-		CurrentGroup.Update();
-		
-		if (NextGroup != undefined && CurrentGroup.GetGain() == 0)
+		if CurrentGroup != undefined
 		{
-			CurrentGroup.Stop();
-			CurrentGroup = NextGroup;
-			NextGroup = undefined;
+			CurrentGroup.ForceGain = ForceGain;
+			CurrentGroup.Update();
 			
-			CurrentGroup.SetGain(1, 200);
-			CurrentGroup.Play();
+			if (StopFlag && CurrentGroup.GetGain() == 0)
+			{
+				CurrentGroup.Stop();
+				CurrentGroup = undefined;
+				NextGroup = undefined;
+				StopFlag = false;
+			}
+			else if (NextGroup != undefined && CurrentGroup.GetGain() == 0)
+			{
+				CurrentGroup.Stop();
+				CurrentGroup = NextGroup;
+				NextGroup = undefined;
+			
+				CurrentGroup.SetGain(1, 200);
+				CurrentGroup.Play();
+			}
+			
 		}
 	}
 }

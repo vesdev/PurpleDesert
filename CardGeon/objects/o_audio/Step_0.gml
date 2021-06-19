@@ -1,3 +1,7 @@
+
+musicPlayer.SetForceGain(global.volume_music);
+musicPlayer.Update();
+
 // Update Listener Position & Orientation
 /*
 if instance_exists(o_camera)
@@ -78,5 +82,5 @@ global.volume_music = clamp(global.volume_music,0,1);
 
 
 
-audio_group_set_gain(audiogroup_music,global.volume_music,0);
-audio_group_set_gain(audiogroup_default, global.volume_sfx*.4,0);
+//audio_group_set_gain(audiogroup_music,global.volume_music,0);
+audio_group_set_gain(audiogroup_sfx, global.volume_sfx*.4,0);
