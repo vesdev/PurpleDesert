@@ -3,11 +3,11 @@
 if debug_mode{
 x += 1;
 	if x > xstart+20{
-			room_goto(r_battle);
+			room_goto(r_menu);
 			instance_destroy();
 	}
 }else{
-		room_goto(r_battle);
+		room_goto(r_menu);
 		instance_destroy();
 	
 }

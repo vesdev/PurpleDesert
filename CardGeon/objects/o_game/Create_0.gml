@@ -41,6 +41,15 @@ cannot_upgrade_card_timer = SEC*2;
 deck_flash_timer = -1;
 deck_flash_time = SEC;
 
+card_draw_sounds = { 
+	enable : false,
+	sound_queue : 5,
+	sound_interval : SEC*.15,	
+	sound_timer : 0,
+}
+
+//aspect = 1366/768;
+//w = 1366;
 switch os_type { 
 
 case os_android:
@@ -61,17 +70,18 @@ break;
 }
 
 
+var aspect = 16/9; //widescreen 1.777778 1920 / 1080 
+var w = 960;
 
-card_draw_sounds = { 
-	enable : false,
-	sound_queue : 5,
-	sound_interval : SEC*.15,	
-	sound_timer : 0,
-}
+var h = w/aspect;
 
-//aspect = 1366/768;
-//w = 1366;
+camera = o_menu.camera;
 
+globalvar border_scale;
+
+console = new Console();
+
+draw_status_information = "";
 
 enum e_turn_phase { 
 
@@ -83,24 +93,6 @@ enum e_turn_phase {
 }
 
 turn_phase  =  e_turn_phase.draw_phase;
-var aspect = 16/9; //widescreen 1.777778 1920 / 1080 
-var w = 960;
-
-
-var h = w/aspect;
-
-
-
-
-draw_status_information = "";
-
-
-globalvar border_scale;
-
-display_set_gui_size(w,h);
-camera = new Camera(w, h, display_get_width(), display_get_height());
-
-console = new Console();
 
 
 border_scale = camera.height/1300

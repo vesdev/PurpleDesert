@@ -36,7 +36,7 @@ function Camera(width, height, displayWidth, displayHeight) constructor
 	{
 		surface_resize(application_surface, width*n, height*n);
 		window_set_size(width*n, height*n);
-		display_set_gui_maximize(n,n,0,0);
+		//display_set_gui_maximize(n,n,0,0);
 	}
 
 	static setFullscreen = function(flag, displayWidth,displayHeight)
@@ -45,7 +45,7 @@ function Camera(width, height, displayWidth, displayHeight) constructor
         {
             surface_resize(application_surface, displayWidth, displayHeight);
             window_set_size(displayWidth, displayHeight);
-            display_set_gui_maximize(displayWidth/width,displayHeight/height,0,0);
+			//display_set_gui_maximize(displayWidth/width,displayHeight/height,0,0);
             window_set_fullscreen(true);
         }
         else
