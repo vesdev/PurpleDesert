@@ -248,30 +248,23 @@ var col = c_grey;
 				//	other_struct.type = e_room_type.empty_room;
 										}		
 										break;
-									}
-					
-									
+									}	
 						}
 				}
-				
 		}		
 					draw_set_color(col);
 					draw_set_alpha(1);  
 					switch state { 
 							
-							
 							//case e_room_visibility_state.visible_but_not_on_it: 	draw_set_color(merge_color( col , C_DARK,.5));  draw_rectangle(x1, y1, x1+w, y1+h, false);
 							
 							case e_room_visibility_state.hidden:
 							case e_room_visibility_state.fogofwar_far_from_player:	draw_set_alpha(1);  
-						
 							break;
 							
 							default:
 							nine_slice_on_grid(s_nine_slice_room,x1, y1, x1+w, y1+h,1,col);
 							//draw_rectangle(x1, y1, x1+w, y1+h, false)
-							
-						
 								if !go_to_battle and boon_collision_on_grid(x1, y1, x1+w, y1+h,MX,MY ) { 
 										draw_set_color(c_white);
 										//draw_rectangle(x1, y1, x1+w, y1+h, 1);
@@ -280,11 +273,7 @@ var col = c_grey;
 							draw_set_color(col);
 							//draw_rectangle(x1, y1, x1+w, y1+h, false);
 							break;
-							
-							
 					}
-					
-					
 					
 	//if this_room.set_itself_on_grid = false { 
 	

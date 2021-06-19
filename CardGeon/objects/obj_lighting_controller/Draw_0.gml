@@ -122,7 +122,7 @@ if surface_exists(surf3) and global.draw_wavy_walls{
 
 
 
-
+/*
 x_len = .1;
 y_len = .1;
 var TMI = sprite_get_uvs(s_lazer, 0);
@@ -134,6 +134,7 @@ shader_set_uniform_f(u_ylen, y_len);
 shader_set_uniform_f_array(u_uvInfo, uvInfo);
 draw_sprite_ext(s_lazer,0,MX,MY,1,1,image_angle,image_blend,1);
 shader_reset();
+*/
 
 
 exit;

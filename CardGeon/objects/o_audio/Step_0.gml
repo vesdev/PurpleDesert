@@ -39,12 +39,12 @@ if fade_out_flag and music_current != noone {
 //	fade_out_mod = approach( fade_out_mod, 0, fade_out_amount);
 }
 
-if global.volume_music > 0 and audio_sound_get_gain(music_current) = 0  { 
-	var s = audio_parser_volume_music(music_current);
-	audio_sound_gain(music_current,s,0);
-}
+//if global.volume_music > 0 and audio_sound_get_gain(music_current) = 0  { 
+//	var s = audio_parser_volume_music(music_current);
+//	audio_sound_gain(music_current,s,0);
+//}
 
-
+/*
 // Change /Play Music
 if music_current != noone
 {
@@ -70,7 +70,7 @@ else
 		music_changeto = noone;
 	}
 }
-
+*/
 
 
 

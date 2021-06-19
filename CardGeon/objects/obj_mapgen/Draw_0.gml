@@ -90,7 +90,7 @@ for(var k=0; k<ds_map_size(player_links); k++) {
 				
 					target_zoom = 2;
 			}
-				//	debug("CAM X "+string(cam.y-cam.height*.5));
+				//debug("CAM X "+string(cam.y-cam.height*.5));
 		}	
 	}	
 }
@@ -136,9 +136,6 @@ alarm[2] = 2;
 
 
 switch event_struct.type{ 
-
-
-
 
 case e_event_type.shop_removal:
 
@@ -401,11 +398,9 @@ exit;
 
 
 if go_to_battle and  o_game.game_state = e_gamestate.choose_path and battle_transition_timer <= 0{
-	
 	with o_game { 
 		game.combat = new stats();
 	}
-	
 	go_to_next_state(e_gamestate.battle)
 	var lay = layer_get_id("blue_lights_slow_0");
 	layer_set_visible(lay,false);

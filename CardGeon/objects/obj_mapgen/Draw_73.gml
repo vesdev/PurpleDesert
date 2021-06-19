@@ -190,7 +190,6 @@ switch standing_on.type{
 								enable_event = true;
 								o_game.camera.zoom = 3;
 							}
-							
 							break;		
 				}
 			}

@@ -3,6 +3,9 @@ if live_call() return live_result;
 
 
 
+//camera_set_view_angle(view_camera[0],100);
+
+
 if o_game.game_state = 1 and !enable_event{ 
 	scribble(
 	"[fa_middle]KEY :\n[s_map_default_fight]ENEMY\n[s_map_fight_area_hard] BOSS\n[s_map_fight_area] SUPER ENEMY\n[s_map_rest_area]REST AREA"
@@ -17,6 +20,7 @@ var w = gui_width;
 var spr_w = sprite_get_width(s_palm_trees);
 
 
+
 if battle_transition_timer > 0 {
 synth_wave.xscale = 0;	
 	exit;
@@ -27,16 +31,19 @@ synth_wave.xscale = 0;
 
 if curtain_timer > curtain_time and curtain_timer_up > curtain_time_up {
 	synth_wave.xscale = 0;
+	
 	exit;
 }
 
 
-	 if curtain_timer <= curtain_time { 
-			synth_wave.xscale = easings(e_ease.easeoutback,0,2,curtain_time,curtain_timer);
-			curtain_xoffset = easings(e_ease.easeoutexpo,-gui_width,gui_width*1.3,curtain_time,curtain_timer);
-			curtain_timer++;
-			
-	 }
+var new_zoom = -old_zoom*.5;
+
+
+if curtain_timer <= curtain_time { 
+	synth_wave.xscale = easings(e_ease.easeoutback,0,2,curtain_time*.5,curtain_timer);
+	curtain_xoffset = easings(e_ease.easeoutexpo,-gui_width,gui_width*1.3,curtain_time,curtain_timer);
+	curtain_timer++;
+}
 	curtain_time_up = SEC*1;
 	
 
@@ -50,6 +57,8 @@ if curtain_timer > curtain_time and curtain_timer_up > curtain_time_up {
 			o_game.game_state	= next_game_state_queue;
 			next_game_state_queue = noone;
 			center_camera_on_player = SEC*.2;
+			o_game.camera.zoom = 1;
+
 	}
 	
 	var visible_ = false;
@@ -59,6 +68,11 @@ if curtain_timer > curtain_time and curtain_timer_up > curtain_time_up {
 	curtain_yoffset = 0;
 	var lay_id = layer_get_id("Battle_Background");
 		layer_set_visible(lay_id,visible_);
+		if curtain_timer_up <= curtain_time_up and o_game.game_state = e_gamestate.choose_path{
+		o_game.camera.zoom = easings(e_ease.easeoutback,old_zoom,new_zoom,curtain_time_up*.5,curtain_timer_up);
+		}else{
+		o_game.camera.zoom = 1;	
+		}
 		curtain_yoffset = easings(e_ease.easeinoutexpo,0,-sprite_get_height(s_palm_trees)*1.2,curtain_time_up,curtain_timer_up);
 		curtain_timer_up++;
 	}else{
@@ -75,6 +89,17 @@ if curtain_timer > curtain_time and curtain_timer_up > curtain_time_up {
 	
 	var front_col = c_black;
 	var back_col = C_PINK;
+	
+	if o_game.game_state = e_gamestate.battle { 
+		for (var i=0; i < 4 ; ++i){ 
+				var amount =  ceil(sin(current_time) *5);
+				amount = max(amount,1);
+				draw_outline(s_palm_trees,0,curtain_xoffset+i*dis,yoff,-1,1,0,front_col,1);
+				draw_outline(s_palm_trees,0,spr_w+w*.8-curtain_xoffset+i*dis,yoff,-1,1,0,front_col,1);
+		}
+	}
+	
+	
 	for (var i=0; i < 4 ; ++i){ 
 		var amount =  ceil(sin(current_time) *5);
 		amount = max(amount,1);

@@ -1,7 +1,8 @@
 // Script assets have changed for v2.3.0 see
 
 function draw_synth_map(){
-	if live_call() return live_result;
+	
+	if next_game_state_queue = noone exit;
 	
 	if !instance_exists(o_game) exit;
 	

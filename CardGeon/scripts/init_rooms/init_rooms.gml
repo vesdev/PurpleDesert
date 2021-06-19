@@ -31,16 +31,16 @@ var by = (boss_room.y1+boss_room.y2)/2;
 			}
 		
 if(other_room_index > i) {
-			var other_room = ds_list_find_value(room_list, other_room_index);	
-							if ds_map_size(other_room.links) = 1 and boss_room_reposition = false  { 
-										other_room.type = e_room_type.boss_room;
-										boss_room.type = e_room_type.default_encounter;
-										boss_room_index = other_room_index;
-										draw_sprite(s_idle_fat_tony,0,UNIT*(other_room.x1+other_room.x2)/2, UNIT*(other_room.y1+other_room.y2)/2 );
-										boss_room_reposition = true;
-							}
-				}		
-		}
+	var other_room = ds_list_find_value(room_list, other_room_index);	
+			if ds_map_size(other_room.links) = 1 and boss_room_reposition = false  { 
+						other_room.type = e_room_type.boss_room;
+						boss_room.type = e_room_type.default_encounter;
+						boss_room_index = other_room_index;
+						draw_sprite(s_idle_fat_tony,0,UNIT*(other_room.x1+other_room.x2)/2, UNIT*(other_room.y1+other_room.y2)/2 );
+						boss_room_reposition = true;
+			}
+		}		
+	}
 }
 	
 var boss_room = ds_list_find_value(room_list,boss_room_index);
@@ -57,7 +57,6 @@ for(var i=0; i<ds_list_size(room_list); i++) {
 				playery = UNIT*(this_room.y1+this_room.y2)/2+room_yoffset;
 					camera_set_view_pos(CAM, playerx, playery) ;
 		}
-		
 		
 		var link_amount = ds_map_size(this_room.links);
 		

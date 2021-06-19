@@ -233,7 +233,7 @@ keyword_easing_timery++;
 			
 				draw_set_color(c_yellow);	
 				//	draw_rectangle(bbox.x1+xmargin,bbox.y1-ymargin,bbox.x2-xmargin,bbox.y2+ymargin,1)
-				nine_slice( s_nine_slice_elegant,bbox.x0+xmargin,bbox.y0-ymargin,bbox.x3-xmargin,bbox.y3+ymargin,1,c_white );
+				nine_slice( s_card_nine_slice,bbox.x0+xmargin,bbox.y0-ymargin,bbox.x3-xmargin,bbox.y3+ymargin,1,c_white );
 				draw_set_color(C_DARK);
 				
 				
@@ -248,7 +248,7 @@ keyword_easing_timery++;
 						keyword_flash_timer--;
 						
 				gpu_set_fog(true,C_YELLOW,1,1)
-				nine_slice( s_nine_slice_elegant,bbox.x0+xmargin,bbox.y0-ymargin,bbox.x3-xmargin,bbox.y3+ymargin,1,c_white );
+				nine_slice( s_card_nine_slice,bbox.x0+xmargin,bbox.y0-ymargin,bbox.x3-xmargin,bbox.y3+ymargin,1,c_white );
 				gpu_set_fog(false,c_white,1,1)	
 				}
 				str_width += text.get_width();
@@ -286,7 +286,7 @@ keyword_easing_timery++;
 			
 				draw_set_color(c_yellow);	
 				//	draw_rectangle(bbox.x1+xmargin,bbox.y1-ymargin,bbox.x2-xmargin,bbox.y2+ymargin,1)
-				nine_slice( s_nine_slice_elegant,bbox.x0+xmargin,bbox.y0-ymargin,bbox.x3-xmargin,bbox.y3+ymargin,1,c_white );
+				nine_slice( s_card_nine_slice,bbox.x0+xmargin,bbox.y0-ymargin,bbox.x3-xmargin,bbox.y3+ymargin,1,c_white );
 				draw_set_color(C_DARK);
 				
 				
@@ -298,10 +298,9 @@ keyword_easing_timery++;
 				text.draw(x_,y_);	
 				
 				if 	keyword_flash_timer > 0 { 
-						keyword_flash_timer--;
-						
+					keyword_flash_timer--;
 				gpu_set_fog(true,C_YELLOW,1,1)
-				nine_slice( s_nine_slice_elegant,bbox.x0+xmargin,bbox.y0-ymargin,bbox.x3-xmargin,bbox.y3+ymargin,1,c_white );
+				nine_slice( s_card_nine_slice,bbox.x0+xmargin,bbox.y0-ymargin,bbox.x3-xmargin,bbox.y3+ymargin,1,c_white );
 				gpu_set_fog(false,c_white,1,1)	
 				}
 			}

@@ -281,6 +281,9 @@ draw_struct(player,player_defaultx_position +xoffgame, 135+yoffgame);
 
 /////////////////////
 
+
+
+
 draw_tokens();
 draw_health_bar(50,100+40,player,0);
 draw_discover();

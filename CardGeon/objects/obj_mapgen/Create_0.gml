@@ -43,10 +43,10 @@ next_game_state_queue = noone;
 center_camera_on_player = SEC*.2;
 
 curtain_time = SEC*1;
-curtain_timer = curtain_time;
+curtain_timer = curtain_time*2;
 
 curtain_time_up = SEC*.5;
-curtain_timer_up = curtain_time_up; 
+curtain_timer_up = curtain_time_up*5; 
 
 alarm[0] = 1;
 
@@ -128,7 +128,7 @@ standing_on = {
 	room_struct : noone,
 }
 
-
+old_zoom = 1;
 event_easing_timer = 0;
 event_easing_time = SEC;
 
