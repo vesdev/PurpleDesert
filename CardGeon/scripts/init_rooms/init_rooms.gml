@@ -1,11 +1,9 @@
 // Script assets have changed for v2.3.0 see
 
 function map_restart(){
-	
 	room_restart();
 	instance_destroy();
 	create(0,0,obj_mapgen);
-
 }
 
 
@@ -473,7 +471,7 @@ room_yoffset = room_hmargin-top;
 
 
 ///DEBUG AND REMOVE DEFAULT FIGH 
-
+/*
 for(var i=0; i < ds_list_size(room_list); i++) {
 
 		var this_room = ds_list_find_value(room_list, i);
@@ -490,6 +488,7 @@ for(var i=0; i < ds_list_size(room_list); i++) {
 					this_room.type = e_room_type.empty_room;
 				}
 }
+*/
 
 
 room_set_width(r_dungeon,right+room_wmargin);
