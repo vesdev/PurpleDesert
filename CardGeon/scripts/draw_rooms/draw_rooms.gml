@@ -66,15 +66,16 @@ for(var i=0; i<ds_list_size(room_list); i++) {
 
 function room_active_controller(this_room, spr,i ) { 
 		
-	var scale_add = 1;
+var scale_add = 1;
 	
-	var type = this_room.type;
-	var state = this_room.room_visibility_state;
+var type = this_room.type;
+var state = this_room.room_visibility_state;
 
-	var x1 = this_room.x1*UNIT+room_xoffset;
-	var y1 = this_room.y1*UNIT+room_yoffset;
-	var w = this_room.w*UNIT;
-	var h = this_room.h*UNIT;
+var x1 = this_room.x1*UNIT+room_xoffset;
+var y1 = this_room.y1*UNIT+room_yoffset;
+var w = this_room.w*UNIT;
+var h = this_room.h*UNIT;
+	
 	
 var cam = o_game.camera;
 
