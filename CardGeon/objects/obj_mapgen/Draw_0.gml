@@ -1,5 +1,7 @@
 if live_call() return live_result;
 
+
+
 battle_transition_timer--;
 
 if o_game.game_state = e_gamestate.battle and !o_game.peek_at_map exit;
@@ -424,7 +426,11 @@ with(o_game)
 
 
 if !instance_exists(o_game) exit;
-/*
+
+
+
+
+
 var left = (o_game.camera.x-o_game.camera.width/2) div 32;
 var top = (o_game.camera.y-o_game.camera.height/2) div 32;
 
@@ -440,19 +446,30 @@ var intensity = 2;
 for (var xx = left; xx <= left+width; xx++){ 
 	for (var yy = top; yy <= top+height; yy++){ 
 	
-		var x_output = xx * 32;
-		var y_output = yy * 32;
-		//
-		if obj_mapgen.grid[# xx,yy] != WALL {
-			var cos_ = cos(time+yy*time_add)*intensity;
-			var sin_ = sin(time+xx*time_add)*intensity;
-			//draw_outline(s_white_square_round,0,x_output+cos_,y_output+sin_,1,1,0,c_white,1);
 		
-			draw_sprite_ext(s_wall_sprite,0,x_output,y_output+sin_,1,1,0,c_white,1);
+		//
+		if obj_mapgen.grid[# xx,yy] = FLOOR  and  obj_mapgen.grid[# xx,yy+1] = WALL{
+			
+			var xx_div = xx;
+			var yy_div = yy+1;
+			var x_output = xx * 32;
+			var y_output = (yy+1 ) * 32;
+			var cos_ = 0;// cos(time+yy*time_add)*intensity;
+			var sin_ = 0;//sin(time+xx*time_add)*intensity;
+			//draw_outline(s_white_square_round,0,x_output+cos_,y_output+sin_,1,1,0,c_white,1);
+			
+			
+			
+			//scr_update_tile()
+			scr_update_tile(obj_mapgen.grid,xx_div,yy_div,bottom_tilemap,0)
+		
+			//draw_sprite_ext(s_purple_squre,0,x_output,y_output+sin_,1,1,0,c_white,1);
+			
+			
 		}
 	}
 }
-*/
+
 draw_rooms();
 
 

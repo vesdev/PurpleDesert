@@ -8,14 +8,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 1022,
+  "bbox_right": 0,
   "bbox_top": 0,
-  "bbox_bottom": 740,
+  "bbox_bottom": 0,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 1023,
-  "height": 741,
+  "width": 64,
+  "height": 64,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"74816a75-4195-477a-89c3-111f8493641a","path":"sprites/unknown265/unknown265.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"74816a75-4195-477a-89c3-111f8493641a","path":"sprites/unknown265/unknown265.yy",},"LayerId":{"name":"054e4335-387b-40f6-bde0-7397ec152268","path":"sprites/unknown265/unknown265.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"unknown265","path":"sprites/unknown265/unknown265.yy",},"resourceVersion":"1.0","name":"74816a75-4195-477a-89c3-111f8493641a","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"000e9fa7-44e7-4bb2-a484-61cf0dff8eff","path":"sprites/Sprite274/Sprite274.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"000e9fa7-44e7-4bb2-a484-61cf0dff8eff","path":"sprites/Sprite274/Sprite274.yy",},"LayerId":{"name":"24f1ab56-9b3b-476f-8454-a25262b71836","path":"sprites/Sprite274/Sprite274.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"Sprite274","path":"sprites/Sprite274/Sprite274.yy",},"resourceVersion":"1.0","name":"000e9fa7-44e7-4bb2-a484-61cf0dff8eff","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"unknown265","path":"sprites/unknown265/unknown265.yy",},
+    "spriteId": {"name":"Sprite274","path":"sprites/Sprite274/Sprite274.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"ce65a2fb-4c00-47e0-926c-2e175e843ad3","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"74816a75-4195-477a-89c3-111f8493641a","path":"sprites/unknown265/unknown265.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"3b7bc678-c0c5-4d5b-9b21-28857d799c9a","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"000e9fa7-44e7-4bb2-a484-61cf0dff8eff","path":"sprites/Sprite274/Sprite274.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -58,14 +58,14 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"unknown265","path":"sprites/unknown265/unknown265.yy",},
+    "parent": {"name":"Sprite274","path":"sprites/Sprite274/Sprite274.yy",},
     "resourceVersion": "1.3",
-    "name": "unknown265",
+    "name": "Sprite274",
     "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"054e4335-387b-40f6-bde0-7397ec152268","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"24f1ab56-9b3b-476f-8454-a25262b71836","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -73,7 +73,7 @@
     "path": "folders/Art/Dungeon.yy",
   },
   "resourceVersion": "1.0",
-  "name": "unknown265",
+  "name": "Sprite274",
   "tags": [],
   "resourceType": "GMSprite",
 }

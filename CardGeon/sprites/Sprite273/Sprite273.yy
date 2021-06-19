@@ -8,14 +8,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 255,
+  "bbox_right": 0,
   "bbox_top": 0,
-  "bbox_bottom": 191,
+  "bbox_bottom": 0,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 256,
-  "height": 192,
+  "width": 64,
+  "height": 64,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"9f92c583-777e-40d5-a6a5-b1b8d518da89","path":"sprites/s_dungeon_burned/s_dungeon_burned.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"9f92c583-777e-40d5-a6a5-b1b8d518da89","path":"sprites/s_dungeon_burned/s_dungeon_burned.yy",},"LayerId":{"name":"e7d82b90-34a9-482e-bdf0-08a8e9ce6a22","path":"sprites/s_dungeon_burned/s_dungeon_burned.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_dungeon_burned","path":"sprites/s_dungeon_burned/s_dungeon_burned.yy",},"resourceVersion":"1.0","name":"9f92c583-777e-40d5-a6a5-b1b8d518da89","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"e07e53ef-89cf-419c-946b-9efb5883b9ca","path":"sprites/Sprite273/Sprite273.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"e07e53ef-89cf-419c-946b-9efb5883b9ca","path":"sprites/Sprite273/Sprite273.yy",},"LayerId":{"name":"cb3cec11-4fc3-4946-9baf-f54d2ba3658e","path":"sprites/Sprite273/Sprite273.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"Sprite273","path":"sprites/Sprite273/Sprite273.yy",},"resourceVersion":"1.0","name":"e07e53ef-89cf-419c-946b-9efb5883b9ca","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"s_dungeon_burned","path":"sprites/s_dungeon_burned/s_dungeon_burned.yy",},
+    "spriteId": {"name":"Sprite273","path":"sprites/Sprite273/Sprite273.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"e91dcd63-d3c7-4f6c-b9ea-ca7eb9d20df0","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"9f92c583-777e-40d5-a6a5-b1b8d518da89","path":"sprites/s_dungeon_burned/s_dungeon_burned.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"401de6c5-47d6-479a-98a3-4421d7592c7a","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"e07e53ef-89cf-419c-946b-9efb5883b9ca","path":"sprites/Sprite273/Sprite273.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -58,14 +58,14 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"s_dungeon_burned","path":"sprites/s_dungeon_burned/s_dungeon_burned.yy",},
+    "parent": {"name":"Sprite273","path":"sprites/Sprite273/Sprite273.yy",},
     "resourceVersion": "1.3",
-    "name": "s_dungeon_burned",
+    "name": "Sprite273",
     "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"e7d82b90-34a9-482e-bdf0-08a8e9ce6a22","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"cb3cec11-4fc3-4946-9baf-f54d2ba3658e","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -73,7 +73,7 @@
     "path": "folders/Art/Dungeon.yy",
   },
   "resourceVersion": "1.0",
-  "name": "s_dungeon_burned",
+  "name": "Sprite273",
   "tags": [],
   "resourceType": "GMSprite",
 }

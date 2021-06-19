@@ -17,6 +17,11 @@ burn_layer = layer_create(-100);
 burn_tilemap = layer_tilemap_create(burn_layer, 0, 0, til_grass_burned_32x32, room_width, room_height);
 
 
+bottom_layer = layer_create(-100);
+bottom_tilemap = layer_tilemap_create(bottom_layer, 0, 0, s_wall_sprite, room_width, room_height);
+
+
+
 
 ds_grid_clear(grid,1);
 

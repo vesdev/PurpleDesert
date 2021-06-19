@@ -960,8 +960,6 @@ part_system_depth(global.sys_bubble_outline_evaporate,DEPTH_AHEAD_GAME)
 	part_type_direction(global.pt_bubble_outline_evaporate, dir, dir, dir_inc,0);
 	part_type_life(global.pt_bubble_outline_evaporate,life,life);	
 	
-	
-	
 	part_type_sprite(global.pt_bubble_evaporate, s_bubble , true, true, 0);
 	part_type_colour1(global.pt_bubble_evaporate,col);
 	part_type_gravity(global.pt_bubble_evaporate, 0,90);
