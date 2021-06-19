@@ -7,9 +7,8 @@ if live_call() return live_result;
 
 
 if o_game.game_state = 1 and !enable_event{ 
-	scribble(
-	"[fa_middle]KEY :\n[s_map_default_fight]ENEMY\n[s_map_fight_area_hard] BOSS\n[s_map_fight_area] SUPER ENEMY\n[s_map_rest_area]REST AREA"
-	 ).draw(20,o_game.camera.height*.5);
+
+		
 	 var str = "[s_card_heart_small] "+string(player.hp)+"/"+string(player.hp_max);
 	 str += "\n[s_icon_gold, 0, 0] "+string(player.gold)
 	 str += "\n[s_map_key, 0, 0] "+string(player.golden_keys);

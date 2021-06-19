@@ -1,5 +1,6 @@
 /// @description Insert description here
-if live_call() return live_result;
+
+if o_game.game_state = e_gamestate.battle exit;
 
 if timer > 0 { 
 	timer--;

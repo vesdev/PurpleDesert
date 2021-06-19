@@ -5,7 +5,7 @@ if live_call() return live_result;
 
 battle_transition_timer--;
 
-if o_game.game_state = e_gamestate.battle and !o_game.peek_at_map exit;
+if o_game.game_state = e_gamestate.battle exit;// and !o_game.peek_at_map exit;
 if alarm[0] != -1 exit;
 
 var cam = o_game.camera;

@@ -7,15 +7,15 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 0,
-  "bbox_right": 12,
-  "bbox_top": 0,
-  "bbox_bottom": 18,
+  "bbox_left": 10,
+  "bbox_right": 85,
+  "bbox_top": 1,
+  "bbox_bottom": 61,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 13,
-  "height": 19,
+  "width": 96,
+  "height": 64,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,10 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"0aaac777-c61c-4003-abbe-969a5d735b00","path":"sprites/s_map_fight_area_hard/s_map_fight_area_hard.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"0aaac777-c61c-4003-abbe-969a5d735b00","path":"sprites/s_map_fight_area_hard/s_map_fight_area_hard.yy",},"LayerId":{"name":"e2ab1253-a4e5-40bf-ae46-d9b222d21de4","path":"sprites/s_map_fight_area_hard/s_map_fight_area_hard.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-        {"FrameId":{"name":"0aaac777-c61c-4003-abbe-969a5d735b00","path":"sprites/s_map_fight_area_hard/s_map_fight_area_hard.yy",},"LayerId":{"name":"ce8a9039-432c-41e4-8969-6df5bf358ef1","path":"sprites/s_map_fight_area_hard/s_map_fight_area_hard.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_map_fight_area_hard","path":"sprites/s_map_fight_area_hard/s_map_fight_area_hard.yy",},"resourceVersion":"1.0","name":"0aaac777-c61c-4003-abbe-969a5d735b00","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"826c7e27-8450-4876-ba85-7981c7dc8fd3","path":"sprites/s_map_fight_area_hard/s_map_fight_area_hard.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"826c7e27-8450-4876-ba85-7981c7dc8fd3","path":"sprites/s_map_fight_area_hard/s_map_fight_area_hard.yy",},"LayerId":{"name":"ae267a4f-3db9-45f7-8430-8436dbe015f7","path":"sprites/s_map_fight_area_hard/s_map_fight_area_hard.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"s_map_fight_area_hard","path":"sprites/s_map_fight_area_hard/s_map_fight_area_hard.yy",},"resourceVersion":"1.0","name":"826c7e27-8450-4876-ba85-7981c7dc8fd3","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"s_map_fight_area_hard","path":"sprites/s_map_fight_area_hard/s_map_fight_area_hard.yy",},
@@ -42,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"f970009a-51d1-43b0-a97b-3cf2b1125041","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"0aaac777-c61c-4003-abbe-969a5d735b00","path":"sprites/s_map_fight_area_hard/s_map_fight_area_hard.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"5e270475-2939-4d42-84d2-40ed1deda07a","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"826c7e27-8450-4876-ba85-7981c7dc8fd3","path":"sprites/s_map_fight_area_hard/s_map_fight_area_hard.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -55,8 +54,8 @@
     "backdropHeight": 768,
     "backdropXOffset": 0.0,
     "backdropYOffset": 0.0,
-    "xorigin": 6,
-    "yorigin": 14,
+    "xorigin": 48,
+    "yorigin": 62,
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"s_map_fight_area_hard","path":"sprites/s_map_fight_area_hard/s_map_fight_area_hard.yy",},
@@ -66,8 +65,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1","resourceVersion":"1.0","name":"e2ab1253-a4e5-40bf-ae46-d9b222d21de4","tags":[],"resourceType":"GMImageLayer",},
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"ce8a9039-432c-41e4-8969-6df5bf358ef1","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"ae267a4f-3db9-45f7-8430-8436dbe015f7","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
