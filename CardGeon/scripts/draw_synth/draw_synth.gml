@@ -158,6 +158,9 @@ function draw_synth_map(){
 }
 
 function draw_synth(){
+	
+	if live_call() return live_result;
+	
 	with o_game.synth_wave{
 		
 		var currnet_enemy = 0;

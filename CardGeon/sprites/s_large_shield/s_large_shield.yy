@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Intentions",
-    "path": "folders/Art/UI/interface/Intentions.yy",
+    "path": "folders/Scripts/interface/Intentions.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_large_shield",

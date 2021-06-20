@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Boss",
-    "path": "folders/Art/UI/interface/PassiveTreasures/Boss.yy",
+    "path": "folders/Scripts/interface/PassiveTreasures/Boss.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_passive_boss_saphire",

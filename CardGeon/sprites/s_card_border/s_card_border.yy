@@ -86,7 +86,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Cards",
-    "path": "folders/Art/UI/interface/general_ui/Cards.yy",
+    "path": "folders/Scripts/interface/general_ui/Cards.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_card_border",

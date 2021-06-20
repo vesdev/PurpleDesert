@@ -13,7 +13,7 @@ self.timer = 0; //timer start
 }
 
 function can_end_the_turn() { 
-if live_call() return live_result;
+
 
 
 if current_turn = e_current_turn.enemy_ {  
@@ -380,9 +380,6 @@ function  show_intent_animation(timer, time, struct) {
 }
 
 function  show_added_card_animation(timer, time, struct)  {
-	
-		if live_call(timer, time, struct) return live_result;
-	
 	
 		//show warning to player
 		var timer1 = 0;

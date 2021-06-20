@@ -1,16 +1,6 @@
 /// @desc Audio Parser for Indexes, returns index from preset range (See script for a list of all ranges)
 /// @arg index
 function audio_parser_index(input) {
-
-	// This script takes the name of a sound file WITHOUT the numbered suffix.
-	// Example: "sfx_footstep_wood_4" becomes just aud.foot_wood
-
-	// It then returns a given audio file index from a preset list.
-	// This script is meant for randomization inside other audio play scripts, not for direct usage.
-	// ~WangleLine
-	//	live_name = "audio_parser_index";
-	//	if live_call(input) return live_result;
-	
 	
 	var output;
 	switch(input)

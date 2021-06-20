@@ -72,7 +72,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Cards",
-    "path": "folders/Art/UI/interface/Cards.yy",
+    "path": "folders/Scripts/interface/Cards.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_card_heart_large",

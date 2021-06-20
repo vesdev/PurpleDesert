@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "PassiveTreasures",
-    "path": "folders/Art/UI/interface/PassiveTreasures.yy",
+    "path": "folders/Scripts/interface/PassiveTreasures.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_stuff_jelly",

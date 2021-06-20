@@ -102,7 +102,7 @@
   },
   "parent": {
     "name": "general_ui",
-    "path": "folders/Art/UI/interface/general_ui.yy",
+    "path": "folders/Scripts/interface/general_ui.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_slider",

@@ -1,5 +1,10 @@
 /// @description 
 
+
+shader_set_live(sh_outrun_sunset,1);
+
+
+
 //create(0,0,o_rain_system);
 //show_debug_overlay(true)
 //audio_play_sound(sketch1_b,1,1);
@@ -122,7 +127,7 @@ font_boon = font_add_sprite_ext(s_font_boon, _font_string, true, 1);//characters
 font_boon_sunset = font_add_sprite_ext(s_font_boon_sunset, _font_string, true, 1);//characters I gotta add 死ぁあぃいぅうぇえぉおかがきぎくぐけこごしじすせぜそぞただだちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼェエォオカガキギクグケゲコゴサザシジスズソゾタダテデッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャュユョヨラリルレロワヌンヴカケブ
 
 
-var _font_string = "0123456789.-";
+var _font_string = "0123456789.-Xx*";
 font_damage_number = font_add_sprite_ext(s_font_crit_number_large, _font_string, true, 1);
 
 font_health_number_white = font_add_sprite_ext(s_font_health_numbers_white, _font_string, true, 1);

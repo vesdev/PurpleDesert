@@ -143,7 +143,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Battle_ui_misc",
-    "path": "folders/Art/UI/interface/Battle_ui_misc.yy",
+    "path": "folders/Scripts/interface/Battle_ui_misc.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_m2_pressed",

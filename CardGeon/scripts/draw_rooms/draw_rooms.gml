@@ -1,4 +1,92 @@
 // Script assets have changed for v2.3.0 see
+function update_down_tile(){ 
+
+
+
+
+var left = (o_game.camera.x-o_game.camera.width/2) div 32;
+var top = (o_game.camera.y-o_game.camera.height/2) div 32;
+
+var width =  o_game.camera.width div 32;
+var height = o_game.camera.height div 32;
+
+var offset = 2;
+var size = 32-offset/2;
+var col = C_DARK;
+var time = current_time*0.005;
+var time_add = SEC*.3;
+var intensity = 2;
+var size = 32;
+
+var tmiddle = 6;
+var ttleft = 5;
+var ttright = 4;
+
+var tile_right = 3;
+var tile_left = 2;
+
+var tile_single = 1;
+
+
+
+//draw_rectangle(left*32,top*32,(left+width)*32,(top+height)*32,1);
+for (var xx = left; xx <= left+width; xx++){ 
+	for (var yy = top; yy <= top+height; yy++){ 
+var tile = tmiddle;
+		xx = clamp(xx, 0, ds_grid_width(obj_mapgen.grid)-1);
+		yy = clamp(yy, 0, ds_grid_height(obj_mapgen.grid)-1);
+		//
+			var xx_div = xx;
+			var yy_div = yy+1;
+			
+			
+			//|_| and behind
+			
+
+			
+		if obj_mapgen.grid[# xx,yy] == FLOOR and obj_mapgen.grid[# xx_div,yy_div] == WALL{
+		
+			
+			var x_output = xx_div	 * 32;
+			var y_output = (yy_div)  * 32;
+			// |_
+			if obj_mapgen.grid[# xx-1,yy] == WALL and obj_mapgen.grid[# xx+1,yy] == FLOOR {
+				tile = tile_left;
+			}
+				if obj_mapgen.grid[# xx+1,yy] == WALL and obj_mapgen.grid[# xx-1,yy] == FLOOR {
+				tile = tile_right;
+			}
+			
+			
+			
+			//single down |_|
+			if obj_mapgen.grid[# xx-1,yy] == WALL and obj_mapgen.grid[# xx+1,yy] == WALL {
+				tile = tile_single;
+			}
+			tilemap_set_at_pixel(obj_mapgen.bottom_tilemap,tile,x_output,y_output);		
+			//draw_sprite_ext(s_white_square_round,0,x_output,y_output,1,1,0,c_white,1);
+		
+		}
+		
+			if obj_mapgen.grid[# xx,yy] == FLOOR and
+				obj_mapgen.grid[# xx,yy-1] == FLOOR and			
+												
+			   obj_mapgen.grid[# xx+1,yy] == WALL and 
+			   obj_mapgen.grid[# xx-1,yy] == WALL 
+			   
+			   {
+				
+				tilemap_set_at_pixel(bottom_tilemap,tmiddle,xx*32,yy*32);		
+			
+			}
+		
+	}
+}
+
+	
+	
+}
+
 
 function grid_change(value,xx,yy, burn_ground){ 
 	
@@ -46,6 +134,8 @@ function draw_corridor(struct , xx,  yy) {
 					if struct.set_to_wall_grid = false { 
 						struct.set_to_wall_grid = true;
 							grid_change(FLOOR, xx*UNIT+room_xoffset ,yy*UNIT+room_yoffset,false );
+							
+							update_down_tile();
 					}
 			}
 }

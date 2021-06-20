@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Nine Slice",
-    "path": "folders/Art/UI/interface/Nine Slice.yy",
+    "path": "folders/Scripts/interface/Nine Slice.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_nine_slice_default_mapgen",

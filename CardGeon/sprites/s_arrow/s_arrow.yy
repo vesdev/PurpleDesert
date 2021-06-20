@@ -98,7 +98,7 @@
   "nineSlice": null,
   "parent": {
     "name": "View_Deck_or_Discard",
-    "path": "folders/Art/UI/interface/View_Deck_or_Discard.yy",
+    "path": "folders/Scripts/interface/View_Deck_or_Discard.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_arrow",

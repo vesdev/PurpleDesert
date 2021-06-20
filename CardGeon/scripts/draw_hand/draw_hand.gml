@@ -235,7 +235,7 @@ if hovered_over_card and allow_player_input() and hand_size > 0 {
 
 
 function draw_discard_and_deck() {
-	if live_call() return live_result;
+	
 	
 
 deckx = o_game.camera.width*.9+xoffgame;

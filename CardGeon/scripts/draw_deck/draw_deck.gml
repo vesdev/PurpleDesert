@@ -1097,7 +1097,7 @@ if !upgrade_card_select.enable{
 
 
 function draw_deck() { 
-	if live_call() return live_result;
+	
 	//time looks amazing at SEC*.3 or .4
 	if deck_flash_timer <= deck_flash_time{ 
 	var _interval = 14;
@@ -1210,7 +1210,7 @@ function draw_cards_in_discard(){
 }
 
 function draw_discard(){ 
-	if live_call() return live_result;
+	
 	//time looks amazing at SEC*.3 or .4
 	discard_flash_time = SEC*.4;
 	
@@ -1239,7 +1239,7 @@ function draw_discard(){
 	}
 }
 function draw_cards_in_exhaust(){
-if live_call() return live_result;
+
 	
 	var offset = 22;
 	init_card_border_step(0);
@@ -1328,7 +1328,7 @@ if boon_collision( exhaustx-offset,exhausty-offset,exhaustx+offset,exhausty+offs
 }
 
 function draw_exhast(){ 
-	if live_call() return live_result;
+	
 
 	if exhaust_flash_timer <= exhaust_flash_timer{ 
 	

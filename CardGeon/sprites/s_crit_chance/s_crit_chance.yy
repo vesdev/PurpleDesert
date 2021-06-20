@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Keywords",
-    "path": "folders/Art/UI/interface/Keywords.yy",
+    "path": "folders/Scripts/interface/Keywords.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_crit_chance",

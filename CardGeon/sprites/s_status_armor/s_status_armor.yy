@@ -26,7 +26,6 @@
   "frames": [
     {"compositeImage":{"FrameId":{"name":"8ab0817b-46af-4b80-8163-7357eeb04ae6","path":"sprites/s_status_armor/s_status_armor.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
         {"FrameId":{"name":"8ab0817b-46af-4b80-8163-7357eeb04ae6","path":"sprites/s_status_armor/s_status_armor.yy",},"LayerId":{"name":"ba5ee6be-79db-4755-90db-bd6cd8a4b745","path":"sprites/s_status_armor/s_status_armor.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-        {"FrameId":{"name":"8ab0817b-46af-4b80-8163-7357eeb04ae6","path":"sprites/s_status_armor/s_status_armor.yy",},"LayerId":{"name":"7a73826b-5faf-4e51-b63d-2cc19a7beb6f","path":"sprites/s_status_armor/s_status_armor.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"s_status_armor","path":"sprites/s_status_armor/s_status_armor.yy",},"resourceVersion":"1.0","name":"8ab0817b-46af-4b80-8163-7357eeb04ae6","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
@@ -71,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "status",
-    "path": "folders/Art/UI/interface/status.yy",
+    "path": "folders/Scripts/interface/status.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_status_armor",

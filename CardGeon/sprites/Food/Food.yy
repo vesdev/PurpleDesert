@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "interface",
-    "path": "folders/Art/UI/interface.yy",
+    "path": "folders/Scripts/interface.yy",
   },
   "resourceVersion": "1.0",
   "name": "Food",

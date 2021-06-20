@@ -25,9 +25,9 @@
   "gridY": 0,
   "frames": [
     {"compositeImage":{"FrameId":{"name":"d75f1829-4417-49cf-a412-0d6ffff09b46","path":"sprites/s_exhaust/s_exhaust.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"d75f1829-4417-49cf-a412-0d6ffff09b46","path":"sprites/s_exhaust/s_exhaust.yy",},"LayerId":{"name":"8b284e1c-a535-4200-aff9-1b2ff9bb799f","path":"sprites/s_exhaust/s_exhaust.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"d75f1829-4417-49cf-a412-0d6ffff09b46","path":"sprites/s_exhaust/s_exhaust.yy",},"LayerId":{"name":"760908af-8dba-4423-81ca-988a59628649","path":"sprites/s_exhaust/s_exhaust.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"d75f1829-4417-49cf-a412-0d6ffff09b46","path":"sprites/s_exhaust/s_exhaust.yy",},"LayerId":{"name":"977d341e-aa3c-48d9-bc1b-b10b7a546589","path":"sprites/s_exhaust/s_exhaust.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-        {"FrameId":{"name":"d75f1829-4417-49cf-a412-0d6ffff09b46","path":"sprites/s_exhaust/s_exhaust.yy",},"LayerId":{"name":"8b284e1c-a535-4200-aff9-1b2ff9bb799f","path":"sprites/s_exhaust/s_exhaust.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"s_exhaust","path":"sprites/s_exhaust/s_exhaust.yy",},"resourceVersion":"1.0","name":"d75f1829-4417-49cf-a412-0d6ffff09b46","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
@@ -74,7 +74,7 @@
   "nineSlice": null,
   "parent": {
     "name": "general_ui",
-    "path": "folders/Art/UI/interface/general_ui.yy",
+    "path": "folders/Scripts/interface/general_ui.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_exhaust",

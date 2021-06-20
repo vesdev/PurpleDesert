@@ -2,7 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_tokens(){
 
-if live_call() return live_result;
+
 
 
 for (var i = player.max_token_amount-1; i >= 0; i--) {

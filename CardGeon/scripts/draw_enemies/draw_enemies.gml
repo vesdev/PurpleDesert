@@ -2,7 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_enemies(){
 
-if live_call() return live_result;
+
 
 	if !audio_is_playing(sfx_fire_grass){ 
 		audio_play_sound(sfx_fire_grass,0,1);

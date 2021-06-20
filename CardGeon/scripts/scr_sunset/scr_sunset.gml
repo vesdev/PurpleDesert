@@ -1,9 +1,5 @@
 // Script assets have changed for v2.3.0 see
 function sunset(x, y) constructor{
-	if live_call(x,y) return live_result;
-	
-	
-	
 	//initializes the sunset
 	self.x = x;
 	self.y = y;
@@ -23,7 +19,7 @@ function sunset(x, y) constructor{
 	
 	
 	static draw = function(){ 
-		if live_call() return live_result;
+		
 		//draws the function
 		
 		if !surface_exists(surf){ 

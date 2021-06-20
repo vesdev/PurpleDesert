@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "status",
-    "path": "folders/Art/UI/interface/status.yy",
+    "path": "folders/Scripts/interface/status.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_status_def",
