@@ -43,6 +43,7 @@
     {"id":{"name":"til_dungeon_wall_32x32","path":"tilesets/til_dungeon_wall_32x32/til_dungeon_wall_32x32.yy",},"order":2,},
     {"id":{"name":"scr_music","path":"scripts/scr_music/scr_music.yy",},"order":2,},
     {"id":{"name":"s_pt_rain_2","path":"sprites/s_pt_rain_2/s_pt_rain_2.yy",},"order":3,},
+    {"id":{"name":"s_logo","path":"sprites/s_logo/s_logo.yy",},"order":0,},
     {"id":{"name":"s_hit_cloak","path":"sprites/s_hit_cloak/s_hit_cloak.yy",},"order":0,},
     {"id":{"name":"sfx_palm_tree_transition","path":"sounds/sfx_palm_tree_transition/sfx_palm_tree_transition.yy",},"order":4,},
     {"id":{"name":"__scribble_class_null_element","path":"scripts/__scribble_class_null_element/__scribble_class_null_element.yy",},"order":4,},
@@ -737,6 +738,7 @@
     {"folderPath":"folders/Audio/SFX/Status Effects.yy","order":6,"resourceVersion":"1.0","name":"Status Effects","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Audio/SFX/Battle Effects/Enemies.yy","order":4,"resourceVersion":"1.0","name":"Enemies","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Audio/Music/sketch1.yy","order":6,"resourceVersion":"1.0","name":"sketch1","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Art/Menu.yy","order":12,"resourceVersion":"1.0","name":"Menu","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

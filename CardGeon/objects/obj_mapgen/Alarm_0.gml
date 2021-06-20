@@ -40,8 +40,12 @@ for (var  yy = 1; yy < height-1; yy++) {
 
 
 
+
+if !instance_exists(o_purple_lines) { 
 //group.SetTrackGain(index,volume,time);
 o_audio.sketch1.SetTrackGain(e_song_sketch.minimal_overworld,MAX_VOLUME,0);
+o_audio.sketch1.SetTrackGain(e_song_sketch.deep_synth_ultimate_layer,MAX_VOLUME,0);
 
 create(0,0,o_purple_lines);
 create(0,0,obj_lighting_controller);
+}

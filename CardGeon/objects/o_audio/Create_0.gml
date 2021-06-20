@@ -35,8 +35,8 @@ music_loops = 0;
 current_song_bg = noone;
 combo_bg_gain = 0;//BG of the combo sound effects
 coin_additional_pitch = 0;
-global.volume_sfx = .5;
-global.volume_music = .2;
+global.volume_sfx = 1;
+global.volume_music = .5;
 
 
 audio_group_set_gain(audiogroup_sfx,global.volume_sfx,0);
@@ -64,6 +64,7 @@ sketch1 = new MusicGroup(
 );
 
 
+
 enum e_song_sketch { 
 	sub_bass,
 	midsection_strings_with_fx,
@@ -75,15 +76,21 @@ enum e_song_sketch {
 	pad_highlights
 	
 }
-#macro FADE_TIME 100
-#macro MAX_VOLUME 1
-sketch1.SetTrackGain(4,0,0);
+
+
 //group.SetTrackGain(index,volume,time);
 sketch1.SetTrackGain(0,0,0);
 sketch1.SetTrackGain(1,0,0);
 sketch1.SetTrackGain(2,0,0);
 sketch1.SetTrackGain(3,0,0);
+sketch1.SetTrackGain(4,0,0);
 sketch1.SetTrackGain(5,0,0);
+
+
+#macro FADE_TIME 10
+#macro MAX_VOLUME 1
+
+
 
 
 riding_into_the_sun = new MusicGroup(
@@ -91,7 +98,11 @@ musc_riding_into_the_sun
 );
 
 alarm[0] = 1;
+
+
 o_audio.musicPlayer.Play(o_audio.sketch1);
+
+
 //musicPlayer.Play(sketch1);
 //o_audio.muscPlayer.Play( );
 

@@ -13,11 +13,15 @@ self.timer = 0; //timer start
 }
 
 function can_end_the_turn() { 
-
+	
+if live_call() return live_result;
 
 
 if current_turn = e_current_turn.enemy_ {  
 	
+
+
+
 //enemy step draw code
 var queue = o_game.end_turn_queue;
 var time = queue[| 0].time;
@@ -61,7 +65,11 @@ if queue[| 0].queue_script = show_attack_animation ||   queue[| 0].queue_script 
 
 ds_list_delete(end_turn_queue,0);
 
-	if	ds_list_empty(end_turn_queue){
+	if ds_list_empty(end_turn_queue){
+		
+		
+		
+		
 		end_enemy_turn();
 		hovered_over_card = 0;
 		current_turn = e_current_turn.player_;
@@ -69,19 +77,17 @@ ds_list_delete(end_turn_queue,0);
 
 		exit;
 	}
-	
 queue[| 0].timer = 0;
-
 }
 
 end_turn_queue[| 0].timer++;
 
-
-
-
  //allow player to end their turn
 }else if current_turn = e_current_turn.player_ {   
 	
+	
+
+
 	var scribble_end_turn = scribble("[fa_center]END TURN");
 	var end_turn_x_position = -camera.width*xoffgame*0.00095;
 	var end_turn_y_position = -camera.height*0.17; // gui_height-30  +yoffgame;
@@ -101,21 +107,7 @@ var len = array_length(discover_queue.array );
 	if len = 0 and allow_player_input() {
 	
 		if boon_collision(_left_enemy_collision,_top_enemy_collision,_right_enemy_collision,_bot_enemy_collision,MX,MY) || force_end_turn{ 
-					
-					
-					//group.SetTrackGain(index,volume,time);
-					o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,0,FADE_TIME);
-					o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,0,FADE_TIME);
-
-
-
-					o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_with_fx,MAX_VOLUME,FADE_TIME);
-					o_audio.sketch1.SetTrackGain(e_song_sketch.drums_with_fx,MAX_VOLUME,FADE_TIME);
-					o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_with_fx,MAX_VOLUME,FADE_TIME);
-					o_audio.sketch1.SetTrackGain(e_song_sketch.drums_with_fx,MAX_VOLUME,FADE_TIME);
-					o_audio.sketch1.SetTrackGain(e_song_sketch.sub_bass,MAX_VOLUME,FADE_TIME);
-					o_audio.sketch1.SetTrackGain(e_song_sketch.pad_highlights,MAX_VOLUME,FADE_TIME);
-					
+	
 					
 					var warning = "";
 					draw_status_information = "";
@@ -135,6 +127,19 @@ var len = array_length(discover_queue.array );
 					
 					scribble_end_turn.draw(end_turn_x_position,end_turn_y_position);
 					if m1_pressed || force_end_turn {
+							
+										
+				o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,0,FADE_TIME);
+				o_audio.sketch1.SetTrackGain(e_song_sketch.drums_without_fx				,0,FADE_TIME);
+
+				o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_with_fx	,MAX_VOLUME,FADE_TIME);
+				o_audio.sketch1.SetTrackGain(e_song_sketch.drums_with_fx				,MAX_VOLUME,FADE_TIME);
+				o_audio.sketch1.SetTrackGain(e_song_sketch.sub_bass						,MAX_VOLUME,FADE_TIME);
+				o_audio.sketch1.SetTrackGain(e_song_sketch.pad_highlights				,MAX_VOLUME,FADE_TIME);
+	
+
+						
+							
 							
 						audio_play(sfx_open_portal);	
 						audio_play(sfx_end_turn);

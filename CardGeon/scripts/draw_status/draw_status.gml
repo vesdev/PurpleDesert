@@ -1,6 +1,8 @@
 // Script assets have changed for v2.3.0 see
 function draw_status(xx , yy, struct){ 
-	if live_call() return live_result;
+	
+	
+	if live_call(xx , yy, struct) return live_result;
 
 	//active_enemies = [];
 	//active_enemies  = [new_enemy(e_enemies.babydragon) , new_enemy(e_enemies.babydragon) , new_enemy(e_enemies.babydragon)];
@@ -99,14 +101,7 @@ function draw_status(xx , yy, struct){
 					
 					var col = C_GUM;
 				
-					if buff_struct.good_or_bad = GOOD and get_amount > 0 and struct = player  { 
-						col = C_LIME;	
-					}
-					
-					draw_outline(s_ui_deck_circle	,0,	text_x+1+1,text_y-text_offset+7+1,1,1,0,C_DARK,1)	
-					draw_outline(s_ui_deck_circle	,0,	text_x+1,text_y-text_offset+7,1,1,0,C_DARK,1)
-					draw_sprite_ext(s_ui_deck_circle,0,	text_x+1,text_y-text_offset+7,1,1,0,col,1);
-					
+				
 					draw_set_color(c_white);
 					
 					draw_text(text_x+2-2,text_y-text_offset,string(get_amount));
@@ -138,16 +133,7 @@ function draw_status(xx , yy, struct){
 							}
 					}else{
 						
-						var col = C_GUM;
-				
-						if buff_struct.good_or_bad = GOOD and get_amount > 0 and struct = player  { 
-							col = C_LIME;	
-						}
-						
-						draw_outline(s_ui_deck_circle	,0,	text_x+1+1,text_y-text_offset+7+1,1,1,0,C_DARK,1)	
-						draw_outline(s_ui_deck_circle	,0,	text_x+1,text_y-text_offset+7,1,1,0,C_DARK,1)
-						draw_sprite_ext(s_ui_deck_circle,0,	text_x+1,text_y-text_offset+7,1,1,0,col,1);
-					
+
 	
 						draw_outline( buff_struct.sprite,0,xx+move_x,yy,1,1,0,c_black,1);
 						draw_sprite(buff_struct.sprite,0,xx+move_x,yy);
@@ -187,7 +173,16 @@ function draw_status(xx , yy, struct){
 					}
 					
 			
-	
+					var col = C_GUM;
+				
+				if buff_struct.good_or_bad = GOOD and get_amount > 0 and struct = player  { 
+					col = C_LIME;	
+				}
+						
+				draw_outline(s_ui_deck_circle	,0,	text_x+1+1,text_y-text_offset+7+1,1,1,0,C_DARK,1)	
+				draw_outline(s_ui_deck_circle	,0,	text_x+1,text_y-text_offset+7,1,1,0,C_DARK,1)
+				draw_sprite_ext(s_ui_deck_circle,0,	text_x+1,text_y-text_offset+7,1,1,0,col,1);
+					
 				
 				draw_text_outline(text_x+2,text_y-text_offset,string(get_amount), text_outline)
 				draw_set_color(text_color);

@@ -42,16 +42,23 @@ function UiButton(width, height, sprite, text, onPress) constructor
 	
 	static Draw = function()
 	{
-		draw_sprite_stretched(sprite, subimg, x-width*.5, y-height*.5, width, height);
+		
+		
+		if live_call() return live_result;
+		//draw_sprite_stretched(sprite, subimg, x-width*.5, y-height*.5, width, height);
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		
-			draw_set_color(c_black);
-			
-			draw_text(x,y, text);
-			
-			draw_set_color(c_white);
+		draw_text_outline(x+1,y+1,text,c_black);
+		draw_text_outline(x,y,text,c_black);
+		draw_set_color(C_BLUE);
+		
+		if subimg = 1{ 
+			draw_set_color(C_YELLOW);
+		}
+		draw_text(x,y, text);
+		draw_set_color(c_white);
 			
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);

@@ -1,23 +1,16 @@
 function end_enemy_turn(){
 	
-	
-	
-		
-		//group.SetTrackGain(index,volume,time);
-		o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,MAX_VOLUME,FADE_TIME);
-		o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,MAX_VOLUME,FADE_TIME);
+	if live_call() return live_result;
 
+	//group.SetTrackGain(index,volume,time);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,MAX_VOLUME,FADE_TIME);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.drums_without_fx				,MAX_VOLUME,FADE_TIME);
 
+	o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_with_fx		,0,FADE_TIME);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.drums_with_fx					,0,FADE_TIME);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.sub_bass							,0,FADE_TIME);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.pad_highlights					,0,FADE_TIME);
 
-		o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_with_fx,0,FADE_TIME);
-		o_audio.sketch1.SetTrackGain(e_song_sketch.drums_with_fx,0,FADE_TIME);
-		o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_with_fx,0,FADE_TIME);
-		o_audio.sketch1.SetTrackGain(e_song_sketch.drums_with_fx,0,FADE_TIME);
-		o_audio.sketch1.SetTrackGain(e_song_sketch.sub_bass,0,FADE_TIME);
-		o_audio.sketch1.SetTrackGain(e_song_sketch.pad_highlights,0,FADE_TIME);
-
-	
-	
 	audio_play(sfx_armor_break);
 	
 	with o_game.synth_wave { 
@@ -107,6 +100,14 @@ function end_enemy_turn(){
 		}
 	}
 	 remove_token_duration(1);
+	 
+	 	
+		
+
+
+	
+	
+	 
 }
 function remove_struct_stacks(struct){
 	

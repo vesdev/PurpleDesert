@@ -290,19 +290,6 @@ draw_health_bar(50,100+40,player,0);
 draw_discover();
 if number_of_enemies != 0 { 
 
-	//group.SetTrackGain(index,volume,time);
-	o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,0,FADE_TIME);
-	o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,0,FADE_TIME);
-
-
-
-	o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_with_fx,0,FADE_TIME);
-	o_audio.sketch1.SetTrackGain(e_song_sketch.drums_with_fx,0,FADE_TIME);
-	o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_with_fx,0,FADE_TIME);
-	o_audio.sketch1.SetTrackGain(e_song_sketch.drums_with_fx,0,FADE_TIME);
-	o_audio.sketch1.SetTrackGain(e_song_sketch.sub_bass,0,FADE_TIME);
-	o_audio.sketch1.SetTrackGain(e_song_sketch.pad_highlights,0,FADE_TIME);
-	
 	draw_mana();
 	can_end_the_turn();
 	draw_status(-camera.width*.45,camera.height*0.165,player);
@@ -310,9 +297,26 @@ if number_of_enemies != 0 {
 	////DRAW HAND
 	draw_hand();
 }else{
+	
+	
+	
+	
 	if defeated_enemies_flag = false { 
 		defeated_enemies_flag = true;
 		audio_play(sfx_defeated_all_enemies);
+		
+		//group.SetTrackGain(index,volume,time);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,0,FADE_TIME);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,0,FADE_TIME);
+
+
+	o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_with_fx,0,FADE_TIME);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.drums_with_fx,0,FADE_TIME);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.sub_bass,0,FADE_TIME);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.pad_highlights,0,FADE_TIME);
+	
+	
+		
 	}
 	remove_generated_cards();
 	reset_combat();
