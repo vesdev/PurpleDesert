@@ -5,7 +5,7 @@ function draw_enemies(){
 
 
 	if !audio_is_playing(sfx_fire_grass){ 
-		audio_play_sound(sfx_fire_grass,0,1);
+		//audio_play_sound(sfx_fire_grass,0,1);
 		
 		audio_sound_gain(sfx_fire_grass,0,0);
 	}

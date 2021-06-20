@@ -47,7 +47,11 @@ function UiButton(width, height, sprite, text, onPress) constructor
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		
+			draw_set_color(c_black);
+			
 			draw_text(x,y, text);
+			
+			draw_set_color(c_white);
 			
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
@@ -177,8 +181,10 @@ function UiCheck(height, sprite, text, def, onPress) constructor
 		
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);
-		
+			
+			
 			draw_text(x,y, text);
+			
 			
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
@@ -200,12 +206,25 @@ function UiPage(spacing, list) constructor
 		var _i = 0;
 		var _h = 0;
 		var _g = 0;
+		
+		var _totalH = 0;
+		repeat(array_length(list))
+		{
+			with (list[_i])
+			{
+				_totalH += height;
+			}
+			_i++;
+		}
+		
+		_i = 0;
+		
 		repeat(array_length(list))
 		{
 			with (list[_i])
 			{
 				_h += height/2;
-				y = other.y + _h + _g;
+				y = other.y - _totalH/2 + _h + _g;
 				x = other.x;
 				Update();
 				_h += height/2;

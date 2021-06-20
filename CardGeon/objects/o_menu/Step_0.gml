@@ -1,5 +1,16 @@
-if (room != r_menu) exit;
-camera.update();
+if (room = r_menu || room = r_end) camera.update();
+
+if (room = r_menu)
+{
 if page != undefined{
-	page.Update(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0));
+	page.Update(mouse_x, mouse_y);
+}
+
+}
+
+if (room = r_end)
+{
+	global.__uiMX = mouse_x;
+	global.__uiMY = mouse_y;
+	skip.Update();
 }

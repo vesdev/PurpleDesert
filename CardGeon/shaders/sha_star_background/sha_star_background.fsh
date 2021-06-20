@@ -77,5 +77,5 @@ void main()
 		float scale = mix(20., .5,depth);
 		col.rgb += starLayer(uv*scale+i*466., depth)*(depth*smoothstep(1., .9, depth));
 	}
-    gl_FragColor = vec4(col,1.);
+    gl_FragColor = v_vColour*vec4(col,1.);
 }
