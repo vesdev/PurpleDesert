@@ -115,7 +115,7 @@ if instance_exists(o_game) and o_game.game_state != e_gamestate.choose_path {
 
 if enable_event { 
 	
-
+update_card_text();
 
 var cam = o_game.camera;
 
@@ -191,7 +191,7 @@ if !selecting_card_upgrade{
 		text_to_add = "HP IS [c_yellow]FULL[]";	
 	}
 	
-	var scr_eat = scribble("[fa_center]EAT [s_map_rest_area]\nRESTORE [c_lime]+"+string(round(player.rest_area_restore_mod*100))+"%[] MAX HP\n"+text_to_add).wrap(cam.width*offset)
+	var scr_eat = scribble("[fa_center]EAT [s_pizza]\nRESTORE [c_lime]+"+string(round(player.rest_area_restore_mod*100))+"%[] MAX HP\n"+text_to_add).wrap(cam.width*offset)
 	var scr_or = scribble("[fa_center][c_yellow]OR[]")
 	var scr_later = scribble("[fa_center][c_gum]MAP[]")
 	var scr_upgrade = scribble("[fa_center][c_lime]UPGRADE[] [s_map_card]\nA CARD IN YOUR DECK").wrap(cam.width*offset)

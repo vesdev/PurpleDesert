@@ -2,7 +2,6 @@
 function audio_parser_pitch(input,input_id) {
 	
 //	live_name = "audio_parser_pitch";
-//	if live_call(input,input_id) return live_result;
 
 	// @arg index
 	// This script takes the name of a sound file WITHOUT the numbered suffix.

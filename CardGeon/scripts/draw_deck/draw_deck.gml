@@ -76,9 +76,7 @@ function draw_cards_in_deck(){
 function draw_cards_in_shop(){
 
 	var can_upgrade_card = false;
-	
 	if o_game.game_state = e_gamestate.choose_path { 
-
 		draw_sprite_ext(s_pixel,0,-camera.width*10,-camera.height*10,room_width*10,room_height*10,0,C_DARK,1);
 		
 		can_upgrade_card = true;
@@ -306,17 +304,15 @@ if !shop_card_select.enable{
 }
 
 function draw_tokens_in_shop(){
+
+	
 	//player.gold = 250;
 	var can_upgrade_card = false;
 	
 	if o_game.game_state = e_gamestate.choose_path { 
 
 		draw_sprite_ext(s_pixel,0,-camera.width*10,-camera.height*10,room_width*10,room_height*10,0,C_DARK,1);
-	
-	
-
 		can_upgrade_card = true;
-		
 		var scr = scribble("[scale, 2][c_yellow]MAP");
 		var x_ = -camera.width*.45;
 		var y_ = -camera.height*.45;

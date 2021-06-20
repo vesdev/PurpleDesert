@@ -266,11 +266,8 @@ var hgoldwide = 30;
 
 
 
-if boon_collision(xoffgame,80+yoffgame,10+xoffgame+wgoldwide,80+yoffgame+hgoldwide,MX,MY){
 
-		draw_outline_thick(s_icon_gold,1,17+xoffgame,87+yoffgame,1,1,0,c_white,1)
-		draw_status_information = "GOLD [s_icon_gold, 1,0]\nMAKES A GREAT BIRTHDAY GIFT IN A JIFFY"
-}
+
 //draw_outline(s_icon_gold,1,17+xoffgame,87+yoffgame,1,1,0,c_black,1)
 //draw_sprite(s_icon_gold,1,17+xoffgame,87+yoffgame);
 //scr_gold.draw(10+xoffgame,80+yoffgame);

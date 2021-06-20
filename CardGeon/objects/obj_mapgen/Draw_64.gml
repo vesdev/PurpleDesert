@@ -1,17 +1,9 @@
 /// @description Insert description here
-if live_call() return live_result;
-
-sprite_set_live(s_nine_slice_map_border,1);
-
-
-
 
 //camera_set_view_angle(view_camera[0],100);
 
-
 if o_game.game_state = 1 and !enable_event{ 
 
-		
 	 var str = "[s_card_heart_small] "+string(player.hp)+"/"+string(player.hp_max);
 	 str += "\n[s_icon_gold, 0, 0] "+string(player.gold)
 	 str += "\n[s_map_key, 0, 0] "+string(player.golden_keys);
@@ -79,7 +71,7 @@ if curtain_timer <= curtain_time {
 		
 
 		
-			//group.SetTrackGain(index,volume,time);
+		//group.SetTrackGain(index,volume,time);
 		o_audio.sketch1.SetTrackGain(e_song_sketch.drums_without_fx,0,FADE_TIME);
 		o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,0,FADE_TIME);
 		//group.SetTrackGain(index,volume,time);

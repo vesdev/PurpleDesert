@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 0.02,
+  "volume": 1.0,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -10,7 +10,7 @@
     "name": "audiogroup_sfx",
     "path": "audiogroups/audiogroup_sfx",
   },
-  "soundFile": "sfx_close_portal.wav",
+  "soundFile": "sfx_close_portal.ogg",
   "duration": 1.005,
   "parent": {
     "name": "Battle Effects",

@@ -17,6 +17,7 @@ p_main = new UiPage(10,
 		new UiButton(128, 32, s_nine_slice_default_menu, "Play", function(){
 			room_goto(r_battle);
 		}),
+		
 		new UiButton(128, 32, s_nine_slice_default_menu, "Settings", function(){
 			o_menu.page = o_menu.p_settings;
 		}),

@@ -2,7 +2,6 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_struct(struct, x , y ){
 
-
 //	draw_ellipse_color(x-xoff,y-yoff,x+xoff,y+yoff,c_white,c_black,false);
 
 	
@@ -49,8 +48,8 @@ function draw_struct(struct, x , y ){
 		}
 	if 	 timer > time + time_ and struct.current_sprite = struct.sprite_hit struct.current_sprite = struct.sprite_idle;
 	}
-	if  timer <= time{ 
-	draw_outline(struct.current_sprite,struct.sprite_image_index, x+xoffset,y+z+yoffset,struct.xscale*struct.xscale_facing,struct.yscale,struct.angle,c_white,1);
+	if timer <= time{ 
+		draw_outline(struct.current_sprite,struct.sprite_image_index, x+xoffset,y+z+yoffset,struct.xscale*struct.xscale_facing,struct.yscale,struct.angle,c_white,1);
 	}
 	
 	if struct = player { 
@@ -167,13 +166,13 @@ var scale = 1/(abs(ylen-10)/15+1);
 //	draw_sprite_ext(s_light,0,w/2+xlen,h/2+ylen-50+y_offset,1,1,0,c_white,alpha);
 
 var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y+z+yoffset+yoff_);
-	draw_sprite_ext(s_caret,0,xlen+x+xoffset+xoff_,ylen+y+z+yoffset+yoff_,1,1,dir_,struct.selected_by_card.color,1);
+			draw_sprite_ext(s_caret,0,xlen+x+xoffset+xoff_,ylen+y+z+yoffset+yoff_,1,1,dir_,struct.selected_by_card.color,1);
 		if struct.selected_by_card.timer < struct.selected_by_card.time*.2 {
 			particle_evaporate(xlen+x+xoffset+xoff_,ylen+y+z+yoffset+yoff_,10, struct.selected_by_card.color,0,noone,SEC*.1,0,-.001);
 		}
 } 
 }else{
- struct.selected_by_card.timer = 0;	
+	 struct.selected_by_card.timer = 0;	
 }
 		
 
@@ -227,18 +226,15 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 				
 				if struct = player { 
 					snd_ = sfx_player_took_damage;	
-				
-					
 				}
 				
 				
 				
-				if struct.armor > 0 { 
+				if struct.armor > 0 || number_struct.amount = 0{ 
 					snd_ = 	sfx_block_damage;
 				}
 				
 				if is_a_crit{ 
-					
 					o_game.meatball_str.timer = 0;	
 					snd_ = sfx_deal_damage_crit;
 				}
@@ -318,10 +314,10 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 		var xlen = lengthdir_x(dis,dir);
 		var ylen = lengthdir_y(dis,dir);
  
-		draw_sprite(s_crit,0,critx-10+xlen, crity-30+ylen);
-		front_color = C_YELLOW;
-		if number_struct.intro_timer < SEC*.04{
-		draw_outline(s_crit,0,critx-10+xlen, crity-30+ylen,1,1,0,C_YELLOW,1);
+			draw_sprite(s_crit,0,critx-10+xlen, crity-30+ylen);
+			front_color = C_YELLOW;
+			if number_struct.intro_timer < SEC*.04{
+			draw_outline(s_crit,0,critx-10+xlen, crity-30+ylen,1,1,0,C_YELLOW,1);
 		}
 	}
 		y_ += y_offset;
@@ -338,17 +334,13 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 	y_ += 20;
 	
 	if struct.blocking_sprite != s_white_square { 
-	//shield
-	
-	var square_yoffset = 8;
-	draw_outline_thick(struct.blocking_sprite,0,x_,y_+square_yoffset,rotate_square_size,rotate_square_size,-square_angle,front_square_col,1);
-	draw_outline(struct.blocking_sprite,0,x_,y_+square_yoffset,rotate_square_size,rotate_square_size,-square_angle,outline_color,1);
-	draw_sprite_ext(struct.blocking_sprite,0,x_,y_+square_yoffset,rotate_square_size,rotate_square_size,-square_angle,front_square_col,1);
+		//shield
+		var square_yoffset = 8;
+		draw_outline_thick(struct.blocking_sprite,0,x_,y_+square_yoffset,rotate_square_size,rotate_square_size,-square_angle,front_square_col,1);
+		draw_outline(struct.blocking_sprite,0,x_,y_+square_yoffset,rotate_square_size,rotate_square_size,-square_angle,outline_color,1);
+		draw_sprite_ext(struct.blocking_sprite,0,x_,y_+square_yoffset,rotate_square_size,rotate_square_size,-square_angle,front_square_col,1);
 
-	
 	}else{
-	
-
 		var square_yoffset = 8;
 		draw_outline_thick(struct.blocking_sprite,0,x_,y_+square_yoffset,rotate_square_size,rotate_square_size,-square_angle,front_square_col,1);
 		draw_outline_thick(struct.blocking_sprite,0,x_,y_+square_yoffset,rotate_square_size,-rotate_square_size,square_front_angle+45,front_square_col,1);
@@ -358,10 +350,7 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 
 		draw_sprite_ext(struct.blocking_sprite,0,x_,y_+square_yoffset,rotate_square_size,rotate_square_size,-square_angle,front_square_col,1);
 		draw_sprite_ext(struct.blocking_sprite,0,x_,y_+square_yoffset,rotate_square_size,-rotate_square_size,square_front_angle+45,front_square_col,1);
-
 	}
-
-
 
 
 	if number_struct.intro_timer < 3{
@@ -373,9 +362,6 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 		draw_sprite_ext(struct.blocking_sprite,0,x_,y_+square_yoffset,2,2,45,c_white,1);
 			draw_sprite_ext(struct.blocking_sprite,0,x_,y_+square_yoffset,2,2,0,c_white,1);
 	}
-	
-
-	
 
 
 		if outline_thick != noone { 

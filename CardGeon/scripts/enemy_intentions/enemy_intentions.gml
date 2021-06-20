@@ -1,8 +1,6 @@
 // Script assets have changed for v2.3.0 
 
 function draw_enemy_intention(xx,yy, construct, sprite_only){
-
-	
 		//don't show the attacking sprite
 		if current_turn = e_current_turn.enemy_ and construct.finished_attacking exit;
 
@@ -45,19 +43,29 @@ function draw_enemy_intention(xx,yy, construct, sprite_only){
 			}
 			
 			
-		if !override{ 
+		if override{ 
+			sprite = override_sprite;	
+		}
+			draw_outline_thick(sprite,0,xx+2,yy+2,1,1,0,c_black,1);
+			draw_outline_thick(sprite,0,xx+1,yy+1,1,1,0,c_black,1);
+			draw_outline_thick(sprite,0,xx-1,yy,1,1,0,c_black,1);
+			draw_outline_thick(sprite,0,xx+1,yy,1,1,0,c_black,1);
+			draw_outline_thick(sprite,0,xx,yy+1,1,1,0,c_black,1);
+			draw_outline_thick(sprite,0,xx,yy-1,1,1,0,c_black,1);
+			draw_outline_thick(sprite,0,xx,yy,1,1,0,c_white,1);
+			draw_outline(sprite,0,xx,yy,1,1,0,C_DARK,1);
+			draw_sprite_ext(sprite,0,xx,yy,1,1,0,c_white,1);
+			
+			if !override{ 
 			if type = e_intentions.attack || type = e_intentions.attack_armor
 			|| type = e_intentions.attack_debuff
-			
-			{  
-			//check to see if we attack 
-			
-				var spr_width = sprite_get_width(sprite);
-				var spr_height = sprite_get_height(sprite);
+				{  
+					var spr_width = sprite_get_width(sprite);
+					var spr_height = sprite_get_height(sprite);
 				
-				var scr = scribble("[fa_left][fa_middle][c_gum][s_font_health_numbers]"+get_damage_string(construct,queue_pos))
+					var scr = scribble("[fa_left][fa_middle][c_gum][s_font_health_numbers_white]"+get_damage_string(construct,queue_pos));
 			
-					var x_ = xx+spr_width*.51;
+					var x_ = xx+spr_width*.251;
 					var y_ = yy+spr_height*.5;
 					//.draw(xx+spr_width*.51,yy+spr_height*.5);
 					scr.blend(c_black,1).draw(x_-1,y_);
@@ -68,27 +76,13 @@ function draw_enemy_intention(xx,yy, construct, sprite_only){
 					scr.draw(x_+2,y_+2);
 					scr.draw(x_+2,y_+1);
 					scr.blend(c_white,1).draw(x_,y_);
+				}
 			}
-		}else{
-			sprite = override_sprite;	
-		}
-			draw_outline_thick(sprite,0,xx+2,yy+2,1,1,0,c_black,1);
-			draw_outline_thick(sprite,0,xx+1,yy+1,1,1,0,c_black,1);
-			draw_outline_thick(sprite,0,xx-1,yy,1,1,0,c_black,1);
-			draw_outline_thick(sprite,0,xx+1,yy,1,1,0,c_black,1);
-			draw_outline_thick(sprite,0,xx,yy+1,1,1,0,c_black,1);
-			draw_outline_thick(sprite,0,xx,yy-1,1,1,0,c_black,1);
-			
-			draw_outline_thick(sprite,0,xx,yy,1,1,0,C_PINK,1);
-			draw_outline(sprite,0,xx,yy,1,1,0,C_DARK,1);
-			draw_sprite_ext(sprite,0,xx,yy,1,1,0,c_white,1);
 			construct.intent_timer = 0;
 		}else{		
 		yy -= 80;
 		construct.showing_intentions = true;
-
 		if  type = e_intentions.attack || type = e_intentions.attack_armor ||
-		
 			type = e_intentions.attack_debuff
 		{  
 				var damage =  construct.attack_array[@ queue_pos].amount; //don't touch this
@@ -100,8 +94,8 @@ function draw_enemy_intention(xx,yy, construct, sprite_only){
 	if override { 
 		desc = override_text;	
 	}
-			//+construct.title+" "+
-	 var scrib = 	scribble("[fa_center]"+string(desc)).wrap(160);
+		//+construct.title+" "+
+		var scrib = 	scribble("[fa_center]"+string(desc)).wrap(160);
 		
 		var time = SEC*.3;
 		var timer = construct.intent_timer;

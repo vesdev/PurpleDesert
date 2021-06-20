@@ -141,11 +141,9 @@ var len = array_length(discover_queue.array );
 						
 						with o_game.synth_wave {
 							
-							
 						var enemy_ = active_enemies[@ 0];
 						xtarget = enemy_.x;
 						x_position = enemy_.x;
-						
 						xscale_target = 2;
 						yscale_target = 2;
 						

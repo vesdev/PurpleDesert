@@ -510,7 +510,6 @@ function new_enemy(enemy_enum) {
 										new intent_debuff(all_buffs.armor_reduction,1),
 										new intent_attack_debuff(all_buffs.weak_poison, 20, 10),
 										new intent_debuff(all_buffs.weak,1)
-										
 										/*new intent_buff_armor(all_buffs.attack, 3, 15),
 										,*/
 										]
@@ -521,19 +520,19 @@ function new_enemy(enemy_enum) {
 		
 				case e_enemies.boss_1_antlion: 
 				
-						var intent_struct_ = new intent_buff(all_buffs.find_weakness, 1);
+				var intent_struct_ = new intent_buff(all_buffs.find_weakness, 2);
 				intent_struct_.remove_on_use = true;
 				
 				returned_enemy = new enemy(1000, 
 										[
 										new intent_buff(all_buffs.find_weakness, 1),
-										new intent_attack(15),
+										new intent_attack(20),
 										new intent_debuff(all_buffs.weak, 3),
 										new intent_attack(20),
 										new intent_add_card(deck,e_card.status_self_doubt,3),
-										new intent_attack([5,5]), //8 DAMAGE , 2 TIMES
+										new intent_attack(40),
 										new intent_debuff(all_buffs.armor_reduction, 4),
-										new intent_attack(20)
+										new intent_attack([5,5]) //8 DAMAGE , 2 TIMES
 										]
 										,false , s_idle_antlion,s_hit_antlion,"FOX-LION") //, [intentions.attack , 10] 
 				break;	
@@ -1885,10 +1884,12 @@ function draw_card_matrix(struct, xx, yy, xscale, yscale, angle, xrot, yrot, car
 
 function draw_card_matrix_contents(struct, card_border_struct ) {
 
+
 		if card_border_struct == noone || !card_border_struct  {
 			exit;
 		}
-			
+		var sprite = struct.func_card_sprite_index();	
+
 			
 		var return_value = noone
 			var	image_index_ = 0;
@@ -1923,42 +1924,42 @@ function draw_card_matrix_contents(struct, card_border_struct ) {
 		
 		var is_or_condition = struct.or_condition;
 		
-		
 		if is_or_condition != noone { 
 			
 			var or_condition = struct.or_condition.result();
 		
 				
-			if or_condition { 
+		if or_condition { 
 				col = C_RAINBOW;
 				title_color = col;
 			}		
 		}
 		
+		
 			if !o_game.pause_combat_to_show_deck and !check_card_keywords(  struct , keywords.unplayable)	{
-				draw_outline_thick(s_white_card_fill,image_index_,0,0,border_scale,border_scale,0,col,1);
-				draw_outline_thick(s_white_card_fill,image_index_,0,0,border_scale,border_scale,0,col,1);
+				draw_outline_thick(sprite,image_index_,0,0,border_scale,border_scale,0,col,1);
+				draw_outline_thick(sprite,image_index_,0,0,border_scale,border_scale,0,col,1);
 				}
 			
 		}
-		draw_sprite_ext(struct.func_card_sprite_index(),image_index_,0,0,border_scale,border_scale,0,c_white,1);
+	draw_sprite_ext(sprite,image_index_,0,0,border_scale,border_scale,0,c_white,1);
 		
-		var scale = (1/border_scale)*border_scale;
-		var scaletitle = scale;
+	var scale = (1/border_scale)*border_scale;
+	var scaletitle = scale;
 
-		var keywords_ = "";		
-		if struct.keywords != noone {
-			if !is_array(struct.keywords) and struct.keywords.print_keyword {
-				keywords_ = "["+sprite_get_name(struct.keywords.sprite)+"] [c_yellow]"+struct.keywords.title+"[]\n";
-			}else{
-				var len = array_length(struct.keywords);
-				for ( var ii = 0; ii< len; ii++){ 
-					if struct.keywords[@ ii].print_keyword {
-					keywords_ += "["+sprite_get_name(struct.keywords[@ ii].sprite)+"] [c_yellow]"+struct.keywords[@ ii].title+"[]\n";
-					}
-				}	
-			}
+	var keywords_ = "";		
+	if struct.keywords != noone {
+		if !is_array(struct.keywords) and struct.keywords.print_keyword {
+			keywords_ = "["+sprite_get_name(struct.keywords.sprite)+"] [c_yellow]"+struct.keywords.title+"[]\n";
+		}else{
+			var len = array_length(struct.keywords);
+			for ( var ii = 0; ii< len; ii++){ 
+				if struct.keywords[@ ii].print_keyword {
+				keywords_ += "["+sprite_get_name(struct.keywords[@ ii].sprite)+"] [c_yellow]"+struct.keywords[@ ii].title+"[]\n";
+				}
+			}	
 		}
+	}
 		
 
 	if card_border_struct.title = noone || card_border_struct.reference_enum  != struct.enum_ || card_border_struct.force_update = true{ 		
@@ -1994,9 +1995,9 @@ function draw_card_matrix_contents(struct, card_border_struct ) {
 		
 	//	draw_rectangle(desc_left,desc_top,desc_right,desc_bot	,false);
 	
-		var descx = 0;
-		var descy = desc_box_height-30;
-		draw_set_color(c_white);
+	var descx = 0;
+	var descy = desc_box_height-30;
+	draw_set_color(c_white);
 
 	desc.blend(c_black,1).draw(descx-1*scale,descy);
 	desc.draw(descx-1*scale,descy);

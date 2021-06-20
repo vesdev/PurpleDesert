@@ -379,15 +379,19 @@ var col = c_grey;
 										case e_room_type.chest_small_room:
 										
 										
-											
-												
 										break;
+										
+										case e_room_type.boss_room:
+											o_audio.musicPlayer.Play( o_audio.riding_into_the_sun);
 										case e_room_type.default_encounter:
 										case e_room_type.hard_encounter:
 											
-										case e_room_type.boss_room:
+										
 									
 											if go_to_battle = false { 
+												
+												
+												
 											//see if we are targeting the right rectangle here
 											//draw_rectangle(x1, y1, x1+w, y1+h,false);
 											//go_to_battle = true;

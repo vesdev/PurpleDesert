@@ -1,12 +1,17 @@
 // Script assets have changed for v2.3.0 see
 function draw_status(xx , yy, struct){ 
+	if live_call() return live_result;
+
 	//active_enemies = [];
 	//active_enemies  = [new_enemy(e_enemies.babydragon) , new_enemy(e_enemies.babydragon) , new_enemy(e_enemies.babydragon)];
-	yy +=  camera.height*0.2 +yoffgame;	
+		yy +=  camera.height*0.2+yoffgame;	
 	
 	if struct = player { 
-	yy += 	camera.height*0.05;
+		yy += 	camera.height*0.05;
 	}
+	
+	draw_set_halign(fa_center);
+			
 	var buff_list = struct.buff;
 	var str = "";
 	var struct_variable_names = variable_struct_get_names(buff_list);
@@ -17,13 +22,15 @@ function draw_status(xx , yy, struct){
 	rows = 4;
 	var amount = 10;
 	var amount_of_active_buffs = 0;
+	
+	
+	
+			
+	
 	for (var i = 0; i < array_length(struct_variable_names); i++;){
-		
 		var variable_name = struct_variable_names[@ i];
-
 //		var buff_struct =  buff_list[$ variable_name];
-		var buff_struct = variable_struct_get(buff_list, variable_name);		
-		
+		var buff_struct = variable_struct_get(buff_list, variable_name);	
 		var amount = buff_struct.amount;
 				
 //	offset_y = 0;
@@ -37,7 +44,7 @@ function draw_status(xx , yy, struct){
 //	created_time = SEC*.2; //transition period when it gets created
 		
 		if  amount != 0{
-			
+		
 		if amount > 0 and (i mod rows) = 0 and amount_of_active_buffs >= rows{ 
 
 			yy += 30;	
@@ -70,7 +77,7 @@ function draw_status(xx , yy, struct){
 					
 					
 					var text_offset = 8;	
-					draw_set_halign(fa_right)
+				
 					var text_x = x1 + 25;
 				//	draw_rectangle(x1,y1,x2,y2,1);
 						var text_outline = c_black;
@@ -88,9 +95,20 @@ function draw_status(xx , yy, struct){
 					bubble_color = C_LIME;
 					buff_struct.hovered_over_status = true;
 					
-					text_color = C_DARK;
-							
+					text_color = c_white;
+					
+					var col = C_GUM;
+				
+					if buff_struct.good_or_bad = GOOD and get_amount > 0 and struct = player  { 
+						col = C_LIME;	
+					}
+					
+					draw_outline(s_ui_deck_circle	,0,	text_x+1+1,text_y-text_offset+7+1,1,1,0,C_DARK,1)	
+					draw_outline(s_ui_deck_circle	,0,	text_x+1,text_y-text_offset+7,1,1,0,C_DARK,1)
+					draw_sprite_ext(s_ui_deck_circle,0,	text_x+1,text_y-text_offset+7,1,1,0,col,1);
+					
 					draw_set_color(c_white);
+					
 					draw_text(text_x+2-2,text_y-text_offset,string(get_amount));
 					draw_text(text_x+2+2,text_y-text_offset,string(get_amount));
 					draw_text(text_x+2,text_y-text_offset+2,string(get_amount));
@@ -106,7 +124,7 @@ function draw_status(xx , yy, struct){
 					draw_outline( buff_struct.sprite,0,xx+move_x+1,yy+1,1,1,0,c_white,1);
 					draw_outline( buff_struct.sprite,0,xx+move_x-1,yy+1,1,1,0,c_white,1);
 					draw_outline( buff_struct.sprite,0,xx+move_x,yy+1,1,1,0,c_black,1);
-					draw_sprite(buff_struct.sprite,0,xx+move_x,yy+1);
+					draw_sprite(  buff_struct.sprite,0,xx+move_x,yy+1);
 					
 							var amount =	get_status_arg(struct, buff_struct);
 							
@@ -120,6 +138,17 @@ function draw_status(xx , yy, struct){
 							}
 					}else{
 						
+						var col = C_GUM;
+				
+						if buff_struct.good_or_bad = GOOD and get_amount > 0 and struct = player  { 
+							col = C_LIME;	
+						}
+						
+						draw_outline(s_ui_deck_circle	,0,	text_x+1+1,text_y-text_offset+7+1,1,1,0,C_DARK,1)	
+						draw_outline(s_ui_deck_circle	,0,	text_x+1,text_y-text_offset+7,1,1,0,C_DARK,1)
+						draw_sprite_ext(s_ui_deck_circle,0,	text_x+1,text_y-text_offset+7,1,1,0,col,1);
+					
+	
 						draw_outline( buff_struct.sprite,0,xx+move_x,yy,1,1,0,c_black,1);
 						draw_sprite(buff_struct.sprite,0,xx+move_x,yy);
 													
@@ -130,7 +159,7 @@ function draw_status(xx , yy, struct){
 									draw_sprite_ext( buff_struct.sprite,0,xx+move_x,yy,1,1,0,c_white,1);
 									shader_reset();
 										var text_outline = c_white;
-										var text_color = C_DARK;		
+										var text_color = c_white;		
 							}
 
 					}		
@@ -138,9 +167,9 @@ function draw_status(xx , yy, struct){
 					if !buff_struct.played_init_animation { 
 						buff_struct.played_init_animation = true;
 						audio_stop_sound(sfx_record_scratch);
-						audio_stop_sound(sfx_add_new_status_enemy);
+						//audio_stop_sound(sfx_add_new_status_enemy);
 						
-						audio_play(	sfx_add_new_status_enemy );
+						//audio_play(sfx_add_new_status_enemy );
 						audio_play(	sfx_record_scratch );
 						var image_speed_ = 2;
 						create_animation_effect(s_summon_status,xx+move_x+5,yy+8,image_speed_,1,90-10,c_yellow,1);
@@ -157,20 +186,8 @@ function draw_status(xx , yy, struct){
 							particle_explode(xx+move_x+sprite_get_width(buff_struct.sprite)*.5,text_y-text_offset,15,c_yellow,false, SEC*.7, false);
 					}
 					
-				draw_set_halign(fa_center);
-				
 			
-				draw_outline(s_ui_deck_circle,0,	text_x+2+1,text_y-text_offset+7+1,1,1,0,C_DARK,1)	
-				draw_outline(s_ui_deck_circle,0,	text_x+2,text_y-text_offset+7,1,1,0,C_DARK,1)
-				
-				
-				var col = C_GUM;
-				
-				if buff_struct.good_or_bad = GOOD and get_amount > 0 { 
-					col = C_LIME;	
-				}
-				
-				draw_sprite_ext(s_ui_deck_circle,0,	text_x+2,text_y-text_offset+7,1,1,0,col,1);
+	
 				
 				draw_text_outline(text_x+2,text_y-text_offset,string(get_amount), text_outline)
 				draw_set_color(text_color);
@@ -178,9 +195,8 @@ function draw_status(xx , yy, struct){
 				draw_set_color(c_white);
 				draw_set_halign(fa_left)
 				move_x += 32;
-			}
-
-	}
+				}
+		}
 		if amount_of_active_buffs = 0 { 
 			struct.check_for_buff = amount_of_active_buffs;
 		}

@@ -47,6 +47,10 @@ audio_group_set_gain(audiogroup_default, global.volume_sfx*.6,0);
 musicPlayer = new MusicPlayer();
 
 
+riding_into_the_sun = new MusicGroup(
+	musc_riding_into_the_sun
+);
+
 //music groups
 sketch1 = new MusicGroup(
 	sketch1_sub_bass,
@@ -80,8 +84,14 @@ sketch1.SetTrackGain(1,0,0);
 sketch1.SetTrackGain(2,0,0);
 sketch1.SetTrackGain(3,0,0);
 sketch1.SetTrackGain(5,0,0);
+
+
+riding_into_the_sun = new MusicGroup(
+musc_riding_into_the_sun
+);
+
 alarm[0] = 1;
+o_audio.musicPlayer.Play(o_audio.sketch1);
 //musicPlayer.Play(sketch1);
-
-
+//o_audio.muscPlayer.Play( );
 
