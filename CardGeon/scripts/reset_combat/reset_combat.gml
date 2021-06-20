@@ -3,6 +3,8 @@
 function reset_combat(){
 	with o_game{ 
 	
+
+	
 		turn_phase  =  e_turn_phase.draw_phase;
 		player.armor = 0;
 		if player.char_enum = char.coco  {

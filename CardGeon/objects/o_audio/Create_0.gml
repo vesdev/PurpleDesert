@@ -36,7 +36,7 @@ current_song_bg = noone;
 combo_bg_gain = 0;//BG of the combo sound effects
 coin_additional_pitch = 0;
 global.volume_sfx = .5;
-global.volume_music = 1;
+global.volume_music = .2;
 
 
 audio_group_set_gain(audiogroup_sfx,global.volume_sfx,0);
@@ -57,17 +57,31 @@ sketch1 = new MusicGroup(
 	sketch1_drums_with_fx,
 	sketch1_minimal_overworld,
 	sketch1_pad_highlights
-)
-//group.SetTrackGain(index,volume,time);
+);
 
+
+enum e_song_sketch { 
+	sub_bass,
+	midsection_strings_with_fx,
+	midsection_strings_without_fx,
+	drums_without_fx,
+	deep_synth_ultimate_layer,
+	drums_with_fx,
+	minimal_overworld,
+	pad_highlights
+	
+}
+#macro FADE_TIME 100
+#macro MAX_VOLUME 1
+sketch1.SetTrackGain(4,0,0);
+//group.SetTrackGain(index,volume,time);
 sketch1.SetTrackGain(0,0,0);
 sketch1.SetTrackGain(1,0,0);
 sketch1.SetTrackGain(2,0,0);
 sketch1.SetTrackGain(3,0,0);
-
 sketch1.SetTrackGain(5,0,0);
-
-musicPlayer.Play(sketch1);
+alarm[0] = 1;
+//musicPlayer.Play(sketch1);
 
 
 

@@ -1,4 +1,7 @@
 /// @description Insert description here
+if live_call() return live_result;
+
+sprite_set_live(s_nine_slice_map_border,1);
 
 
 
@@ -63,6 +66,25 @@ if curtain_timer <= curtain_time {
 	var visible_ = false;
 	if o_game.game_state = e_gamestate.battle { 
 		visible_ = true;
+		
+		
+		
+		
+		//group.SetTrackGain(index,volume,time);
+		o_audio.sketch1.SetTrackGain(e_song_sketch.drums_without_fx,MAX_VOLUME,FADE_TIME);
+		o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,MAX_VOLUME,FADE_TIME);
+			
+		
+	}else{
+		
+
+		
+			//group.SetTrackGain(index,volume,time);
+		o_audio.sketch1.SetTrackGain(e_song_sketch.drums_without_fx,0,FADE_TIME);
+		o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,0,FADE_TIME);
+		//group.SetTrackGain(index,volume,time);
+		o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_with_fx,0,FADE_TIME);
+		o_audio.sketch1.SetTrackGain(e_song_sketch.drums_with_fx,0,FADE_TIME);
 	}
 	curtain_yoffset = 0;
 	var lay_id = layer_get_id("Battle_Background");

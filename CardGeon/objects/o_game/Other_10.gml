@@ -264,6 +264,8 @@ var hgoldwide = 30;
 
 //draw_rectangle(xoffgame,80+yoffgame,10+xoffgame+wgoldwide,80+yoffgame+hgoldwide,1);
 
+
+
 if boon_collision(xoffgame,80+yoffgame,10+xoffgame+wgoldwide,80+yoffgame+hgoldwide,MX,MY){
 
 		draw_outline_thick(s_icon_gold,1,17+xoffgame,87+yoffgame,1,1,0,c_white,1)
@@ -290,6 +292,20 @@ draw_tokens();
 draw_health_bar(50,100+40,player,0);
 draw_discover();
 if number_of_enemies != 0 { 
+
+	//group.SetTrackGain(index,volume,time);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,0,FADE_TIME);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,0,FADE_TIME);
+
+
+
+	o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_with_fx,0,FADE_TIME);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.drums_with_fx,0,FADE_TIME);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_with_fx,0,FADE_TIME);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.drums_with_fx,0,FADE_TIME);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.sub_bass,0,FADE_TIME);
+	o_audio.sketch1.SetTrackGain(e_song_sketch.pad_highlights,0,FADE_TIME);
+	
 	draw_mana();
 	can_end_the_turn();
 	draw_status(-camera.width*.45,camera.height*0.165,player);
@@ -297,6 +313,10 @@ if number_of_enemies != 0 {
 	////DRAW HAND
 	draw_hand();
 }else{
+	if defeated_enemies_flag = false { 
+		defeated_enemies_flag = true;
+		audio_play(sfx_defeated_all_enemies);
+	}
 	remove_generated_cards();
 	reset_combat();
 	draw_spoils();

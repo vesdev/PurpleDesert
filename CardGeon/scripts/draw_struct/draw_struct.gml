@@ -2,10 +2,6 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_struct(struct, x , y ){
 
-if live_call(struct, x , y ) return live_result;
-
-
-
 
 //	draw_ellipse_color(x-xoff,y-yoff,x+xoff,y+yoff,c_white,c_black,false);
 

@@ -2,8 +2,6 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_enemies(){
 
-
-
 	if !audio_is_playing(sfx_fire_grass){ 
 		//audio_play_sound(sfx_fire_grass,0,1);
 		
@@ -22,6 +20,8 @@ if !m1_check {
 //var leny = lengthdir_y(1000,held.dir);
 
 total_intent_enemy_damage = 0;
+var targeting_specific_enemy = false;
+var is_single_target = false;
 //active_enemies = [];
 //active_enemies = [new_enemy(e_enemies.fat_tony),new_enemy(e_enemies.fat_tony),new_enemy(e_enemies.fat_tony)];
 hovering_over_a_target = false;
@@ -112,7 +112,7 @@ var len = number_of_enemies;
 						
 						case e_target.single:		//this card is a single target card																					
 											//check if our mouse is holding M1 and hovering over an enemy
-											
+											is_single_target = true;
 											
 											var return_ = false;
 									
@@ -153,8 +153,14 @@ var len = number_of_enemies;
 												potential_damage = check_damage(player,active_enemies[@ i], potential_damage);
 												//
 												//	get_card_damage(hand[| hand_hover_array]);
+												
+												
+												if array_length(active_enemies) > 1 {
+													targeting_specific_enemy = true;
+												}
+												
 												attack_target = [i];	
-												if !played_card_hover_sound { 
+												if !played_card_hover_sound and array_length(active_enemies) = 1{ 
 													played_card_hover_sound = true;
 													audio_play(sfx_light_card);
 												}
@@ -169,8 +175,10 @@ var len = number_of_enemies;
 												draw_set_color(c_white);
 											}else{		
 												
-											
-												audio_sound_gain(sfx_fire_grass,0,default_fade);
+												if array_length(active_enemies) = 1{ 
+													played_card_hover_sound = false;
+												}
+												//audio_sound_gain(sfx_fire_grass,0,default_fade);
 												//we are currently NOT selecting an enemy with a card
 												var col = C_YELLOW;
 											//	nine_slice_anim(s_nine_slice_caret,  current_time*0.02,   _left_enemy_collision,_top_enemy_collision,_right_enemy_collision,_bot_enemy_collision,1,col);
@@ -306,6 +314,23 @@ var len = number_of_enemies;
 		}
 		
 	}
+
+
+	if array_length(active_enemies) > 1 and is_single_target{
+
+
+	 if  targeting_specific_enemy { 
+		if !played_card_hover_sound { 
+			played_card_hover_sound = true;
+			audio_play(sfx_light_card);
+		}
+	 }else{
+		 played_card_hover_sound = false;
+	 }
+		
+	}
+							
+
 
 	if 	hovering_over_enemy_intent > 0 	hovering_over_enemy_intent--;
 	

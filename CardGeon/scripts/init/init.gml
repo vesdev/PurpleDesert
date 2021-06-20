@@ -18,13 +18,13 @@ function boon_randomize() {
 //https://slay-the-spire.fandom.com/wiki/Buffs  great base until we get something original
 //https://slay-the-spire.fandom.com/wiki/Debuff
 	
-function struct_buff(amount, lose_per_turn, sprite,  title, desc_func ) constructor  { 
+function struct_buff(amount,good_or_bad , lose_per_turn, sprite,  title, desc_func ) constructor  { 
 	self.amount = amount;
 	self.lose_per_turn = lose_per_turn;
 	self.title = title;
 	self.desc = desc_func;
 	self.sprite = sprite;
-	
+	self.good_or_bad = good_or_bad;
 
 	hovered_over_status = false;
 	delay_status_for_a_turn = false;
@@ -115,10 +115,10 @@ function entity_parent() constructor {
 	
 	
 	selected_by_card  = { 
-	enable : false,
-	timer : 0,
-	time : SEC,
-	color : C_YELLOW,
+		enable : false,
+		timer : 0,
+		time : SEC,
+		color : C_YELLOW,
 	}
 	
 	///SPRITE
@@ -194,31 +194,34 @@ damage_number = {
 					return SEC*.5*mod_;
 				}
 }
+
 	
 #macro ALL noone
+#macro GOOD 1
+#macro BAD 0
 buff = { 
 	//if we choose to it reduce 1 stack per turn then it will then say:  REMOVE [c_gum]1[] STACK PER TURN.
-		attack:				 new struct_buff(0,0,s_status_pow, "ATTACK",  function(amount) { if amount > 0 {  return "INCREASE DAMAGE BY [c_lime]"+string(amount)+"[]"}else{return "DECREASE DAMAGE BY [c_lime]"+string(amount)+"[]"}}) ,
-		fragile:			 new struct_buff(0,1, s_status_def_down ,"FRAGILE" , function(amount) { return "TAKES [c_gum]"+string(amount)+"%[] DAMAGE FROM ATTACKS."}),
-		attack_lost_on_crit: new struct_buff(0,0, s_status_pow_remove_on_crit, "TEMPOARY ATTACK", function(amount) {  return "INCREASE DAMAGE BY [c_lime]"+string(amount)+"[]\n[c_gum]BUFF IS REMOVED AFTER CRIT[]"}) ,
-		attack_lost_on_crit_lose_at_turns_end : new struct_buff(0,0, s_status_pow_remove_on_crit_lose, "LOSE TEMP ATTACK", function(amount) {  return "LOSE [c_gum]"+string(amount)+"[] TEMP ATTACK AT THE END OF YOUR TURN"}) ,
-		enrage:				 new struct_buff(0,0, s_status_enrage, "ENRAGE", function(amount) {  return "[c_yellow]+"+string(amount)+"[] ATTACK AT THE END OF ITS TURN"}) ,
-		cornered_rat:		 new struct_buff(0,0, s_status_fight_or_flight, "CORNERED RAT", function(amount) {  return "GET [c_yellow]+"+string(amount)+"[] [s_status_pow] ATTACK AND [c_yellow]+"+string(amount*2)+"[] [s_status_armor] ARMOR  WHEN IT'S THE [c_gum]LAST ENEMY[]"}) ,
-		asleep:				 new struct_buff(0,1, s_status_sleep, "SLEEP", function(amount) {  return "TARGET WAKES UP WHEN HIT"}) ,
-		slow_start :		 new struct_buff(0,1, s_status_slow, "SLOW START", function(amount) { return "TARGET DEALS [c_gum]-50%[] DAMAGE."}),
-		find_weakness :		 new struct_buff(0,0, s_status_find_weakness, "ATTACK ONLY", function(amount) { return "GAINS [c_gum]+"+string(amount)+"[] ATTACK WHEN "+player.title+" PLAYS A [c_blue]BLUE[] CARD"}),
-		weak:				 new struct_buff(0,1, s_status_atk_down ,"WEAK" , function(amount) { return "[c_gum]-"+string(amount)+"%[] DAMAGE FROM ATTACKS."}),
-		armor_reduction:	 new struct_buff(0,1, s_status_armor_reduction ,"ARMOR REDUCTION" , function(amount) { return "GET [c_gum]-"+string(amount)+"%[] LESS ARMOR FROM [c_yellow]ALL[] SOURCES."}),
-		pollen:				 new struct_buff(0,0, s_status_pollen,"STICKY POLLEN", function(amount) { return "WHEN HIT, REDUCE "+player.title+"'S DAMAGE BY [c_gum]25%[] FOR 1 TURN. (DOESN'T STACK)"}),
-		weak_poison:		 new struct_buff(0,-1, s_status_weak_poison,"WEAK POISON", function(amount) { return "AT THE END OF THE TURN TAKE [c_yellow]"+string(amount)+"[] DAMAGE. DAMAGE CAN BE BLOCKED BY [s_status_armor] [c_yellow]ARMOR. REMOVE [c_status_weak_poison] WEAK POISON AT THE START OF YOUR TURN."}),
-		poison:				 new struct_buff(0,1, s_status_poison,"POISON", function(amount) { return "AT THE END OF THE TURN TAKE [c_yellow]"+string(amount)+"[] [c_gum]UNBLOCKABLE[] DAMAGE."}),
-		endurance:			 new struct_buff(0,0, s_keyword_endurance,"RESILIENCE", function(amount) { return"GET [c_yellow]"+string(amount)+"[] ARMOR FROM [c_blue]BLUE[] CARDS."}),
-		armor_keep:			 new struct_buff(0,0, s_keyword_armor_keep,"ARMOR KEEP", function(amount) { return"ARMOR [c_lime]ISN'T[] DESTROYED AT THE START OF YOUR TURN."}),
-		lucky:				 new struct_buff(0,0, s_status_lucky,"LUCKY", function() { return"THIS TURN YOUR NEXT CARD [c_lime]ALWAYS[] CRITS."}),
-		replay_red:	 new struct_buff(0,0, s_status_replay_red,"REPLAY RED", function(amount) { return"YOUR NEXT [c_yellow]"+string(amount)+" RED CARD(S)[] IS PLAYED [c_lime]AGAIN."}),
-		token_summoning_restores_mana :	 new struct_buff(0,0, s_status_cheer_squad,"CHEER SQUAD", function(amount) { return"RESTORE [c_lime]"+string(amount)+"[] ENERGY WHEN YOU SUMMON A TOKEN."}),
-		crit_chance_up :  new struct_buff(0,0, s_status_crit_chance_up,"HONEYCOMB", function(amount) { return"[c_lime]+"+string(round( 100*amount*(player.token_stats[@ e_token.coco_bee].starting_amount+player.token_stats[@ e_token.coco_bee].output1()  )))+"%[] [s_keyword_lucky] CRIT CHANCE [c_gum]BUFF IS LOST ON CRIT.[]\n[c_aqua]TOTAL CRIT CHANCE: "+string( round( get_crit_chance(player)*100))+"%"     }),
-		crit_damage_up :  new struct_buff(0,0, s_status_crit_damage_up,"BATWING", function(amount) { return"[c_lime]+"+string(round( 100*amount*(player.token_stats[@ e_token.coco_bat].starting_amount+player.token_stats[@ e_token.coco_bat].output1())  ))+"%[] [s_keyword_attack] CRIT DAMAGE [c_gum]BUFF IS LOST ON CRIT.[]\n[c_aqua]TOTAL CRIT DAMAGE:  "+string( round( get_crit_damage(player)*100))+"%"		}),
+		attack:				 new struct_buff(0,GOOD,0, s_status_pow, "ATTACK",  function(amount) { if amount > 0 {  return "INCREASE DAMAGE BY [c_lime]"+string(amount)+"[]"}else{return "DECREASE DAMAGE BY [c_lime]"+string(amount)+"[]"}}) ,
+		fragile:			 new struct_buff(0,BAD, 1, s_status_def_down ,"FRAGILE" , function(amount) { return "TAKES [c_gum]"+string(amount)+"%[] DAMAGE FROM ATTACKS."}),
+		attack_lost_on_crit: new struct_buff(0,GOOD,0, s_status_pow_remove_on_crit, "TEMPOARY ATTACK", function(amount) {  return "INCREASE DAMAGE BY [c_lime]"+string(amount)+"[]\n[c_gum]BUFF IS REMOVED AFTER CRIT[]"}) ,
+		attack_lost_on_crit_lose_at_turns_end : new struct_buff(0,BAD,0, s_status_pow_remove_on_crit_lose, "LOSE TEMP ATTACK", function(amount) {  return "LOSE [c_gum]"+string(amount)+"[] TEMP ATTACK AT THE END OF YOUR TURN"}) ,
+		enrage:				 new struct_buff(0,BAD,0, s_status_enrage, "ENRAGE", function(amount) {  return "[c_yellow]+"+string(amount)+"[] ATTACK AT THE END OF ITS TURN"}) ,
+		cornered_rat:		 new struct_buff(0,BAD, 0, s_status_fight_or_flight, "CORNERED RAT", function(amount) {  return "GET [c_yellow]+"+string(amount)+"[] [s_status_pow] ATTACK AND [c_yellow]+"+string(amount*2)+"[] [s_status_armor] ARMOR  WHEN IT'S THE [c_gum]LAST ENEMY[]"}) ,
+		asleep:				 new struct_buff(0,BAD, 1, s_status_sleep, "SLEEP", function(amount) {  return "TARGET WAKES UP WHEN HIT"}) ,
+		slow_start :		 new struct_buff(0,BAD, 1, s_status_slow, "SLOW START", function(amount) { return "TARGET DEALS [c_gum]-50%[] DAMAGE."}),
+		find_weakness :		 new struct_buff(0,BAD, 0, s_status_find_weakness, "ATTACK ONLY", function(amount) { return "GAINS [c_gum]+"+string(amount)+"[] ATTACK WHEN "+player.title+" PLAYS A [c_blue]BLUE[] CARD"}),
+		weak:				 new struct_buff(0,BAD,1, s_status_atk_down ,"WEAK" , function(amount) { return "[c_gum]-"+string(amount)+"%[] DAMAGE FROM ATTACKS."}),
+		armor_reduction:	 new struct_buff(0,BAD,1, s_status_armor_reduction ,"ARMOR REDUCTION" , function(amount) { return "GET [c_gum]-"+string(amount)+"%[] LESS ARMOR FROM [c_yellow]ALL[] SOURCES."}),
+		pollen:				 new struct_buff(0,BAD,0, s_status_pollen,"STICKY POLLEN", function(amount) { return "WHEN HIT, REDUCE "+player.title+"'S DAMAGE BY [c_gum]25%[] FOR 1 TURN. (DOESN'T STACK)"}),
+		weak_poison:		 new struct_buff(0,BAD,-1, s_status_weak_poison,"WEAK POISON", function(amount) { return "AT THE END OF THE TURN TAKE [c_yellow]"+string(amount)+"[] DAMAGE. DAMAGE CAN BE BLOCKED BY [s_status_armor] [c_yellow]ARMOR. REMOVE [c_status_weak_poison] WEAK POISON AT THE START OF YOUR TURN."}),
+		poison:				 new struct_buff(0,BAD,1, s_status_poison,"POISON", function(amount) { return "AT THE END OF THE TURN TAKE [c_yellow]"+string(amount)+"[] [c_gum]UNBLOCKABLE[] DAMAGE."}),
+		endurance:			 new struct_buff(0,GOOD,0, s_keyword_endurance,"RESILIENCE", function(amount) { return"GET [c_yellow]"+string(amount)+"[] ARMOR FROM [c_blue]BLUE[] CARDS."}),
+		armor_keep:			 new struct_buff(0,BAD,0, s_keyword_armor_keep,"ARMOR KEEP", function(amount) { return"ARMOR [c_lime]ISN'T[] DESTROYED AT THE START OF YOUR TURN."}),
+		lucky:				 new struct_buff(0,GOOD,0, s_status_lucky,"LUCKY", function() { return"THIS TURN YOUR NEXT CARD [c_lime]ALWAYS[] CRITS."}),
+		replay_red:	 new struct_buff(0,GOOD,0, s_status_replay_red,"REPLAY RED", function(amount) { return"YOUR NEXT [c_yellow]"+string(amount)+" RED CARD(S)[] IS PLAYED [c_lime]AGAIN."}),
+		token_summoning_restores_mana :	 new struct_buff(0,GOOD,0, s_status_cheer_squad,"CHEER SQUAD", function(amount) { return"RESTORE [c_lime]"+string(amount)+"[] ENERGY WHEN YOU SUMMON A TOKEN."}),
+		crit_chance_up :  new struct_buff(0,GOOD,0, s_status_crit_chance_up,"HONEYCOMB", function(amount) { return"[c_lime]+"+string(round( 100*amount*(player.token_stats[@ e_token.coco_bee].starting_amount+player.token_stats[@ e_token.coco_bee].output1()  )))+"%[] [s_keyword_lucky] CRIT CHANCE [c_gum]BUFF IS LOST ON CRIT.[]\n[c_aqua]TOTAL CRIT CHANCE: "+string( round( get_crit_chance(player)*100))+"%"     }),
+		crit_damage_up :  new struct_buff(0,GOOD,0, s_status_crit_damage_up,"BATWING", function(amount) { return"[c_lime]+"+string(round( 100*amount*(player.token_stats[@ e_token.coco_bat].starting_amount+player.token_stats[@ e_token.coco_bat].output1())  ))+"%[] [s_keyword_attack] CRIT DAMAGE [c_gum]BUFF IS LOST ON CRIT.[]\n[c_aqua]TOTAL CRIT DAMAGE:  "+string( round( get_crit_damage(player)*100))+"%"		}),
 
 
 
@@ -2458,10 +2461,18 @@ var target_i = noone;
 		}
 		
 		if target_i != noone { 
+		
+		
+		
 			held.targeting_enemy_i = target_i;
+			
 		}
 	}
-
+	if held.last_targeted_enemy != held.targeting_enemy_i { 
+			held.last_targeted_enemy = held.targeting_enemy_i;
+			played_card_hover_sound = false;
+			//	debug(held.last_targeted_enemy);
+	}
 
 	#macro ANGLE_THRESH_FOR_TARGETING_ENEMIES 25
 

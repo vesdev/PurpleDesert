@@ -1,8 +1,6 @@
 /// @description 
 
 
-shader_set_live(sh_outrun_sunset,1);
-
 
 
 //create(0,0,o_rain_system);
@@ -223,6 +221,7 @@ held ={
 	lastdir : 0,
 	dis : 0,
 	targeting_enemy_i : 0,
+	last_targeted_enemy : noone,
 	max_dis : 20,
 	timer : 0,
 	time : 0,
@@ -280,7 +279,7 @@ function keyword_card_struct(card_enum) : keyword_struct() constructor{
 	self.title = "";
 	self.desc = function() { return ""};
 }
-
+defeated_enemies_flag = false;
 keywords ={ 
 	fragile :			new keyword_struct(0, s_status_def_down, "FRAGILE", function(){ return "TARGET TAKES [c_gum]"+string(buff_multipliers.fragile*100)+"%[] DAMAGE FROM ATTACKS. REMOVE [c_gum]1[] STACK PER TURN."}),
 	weak    :			new keyword_struct(0, s_status_atk_down, "WEAK",function() { return "[c_yellow]WEAK[] [s_status_atk_down]\nTARGET DEALS [c_gum]"+string(buff_multipliers.weak*100-100)+"%[] LESS DAMAGE FROM ATTACKS. REMOVE [c_gum]1[] STACK PER TURN."}),

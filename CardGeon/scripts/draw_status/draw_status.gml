@@ -1,8 +1,5 @@
 // Script assets have changed for v2.3.0 see
 function draw_status(xx , yy, struct){ 
-	
-	if live_call(xx , yy, struct) return live_result;
-	
 	//active_enemies = [];
 	//active_enemies  = [new_enemy(e_enemies.babydragon) , new_enemy(e_enemies.babydragon) , new_enemy(e_enemies.babydragon)];
 	yy +=  camera.height*0.2 +yoffgame;	
@@ -91,7 +88,7 @@ function draw_status(xx , yy, struct){
 					bubble_color = C_LIME;
 					buff_struct.hovered_over_status = true;
 					
-					text_color = C_GUM;
+					text_color = C_DARK;
 							
 					draw_set_color(c_white);
 					draw_text(text_x+2-2,text_y-text_offset,string(get_amount));
@@ -141,6 +138,9 @@ function draw_status(xx , yy, struct){
 					if !buff_struct.played_init_animation { 
 						buff_struct.played_init_animation = true;
 						audio_stop_sound(sfx_record_scratch);
+						audio_stop_sound(sfx_add_new_status_enemy);
+						
+						audio_play(	sfx_add_new_status_enemy );
 						audio_play(	sfx_record_scratch );
 						var image_speed_ = 2;
 						create_animation_effect(s_summon_status,xx+move_x+5,yy+8,image_speed_,1,90-10,c_yellow,1);
@@ -156,11 +156,27 @@ function draw_status(xx , yy, struct){
 							struct.check_for_buff = amount_of_active_buffs
 							particle_explode(xx+move_x+sprite_get_width(buff_struct.sprite)*.5,text_y-text_offset,15,c_yellow,false, SEC*.7, false);
 					}
+					
+				draw_set_halign(fa_center);
+				
+			
+				draw_outline(s_ui_deck_circle,0,	text_x+2+1,text_y-text_offset+7+1,1,1,0,C_DARK,1)	
+				draw_outline(s_ui_deck_circle,0,	text_x+2,text_y-text_offset+7,1,1,0,C_DARK,1)
+				
+				
+				var col = C_GUM;
+				
+				if buff_struct.good_or_bad = GOOD and get_amount > 0 { 
+					col = C_LIME;	
+				}
+				
+				draw_sprite_ext(s_ui_deck_circle,0,	text_x+2,text_y-text_offset+7,1,1,0,col,1);
 				
 				draw_text_outline(text_x+2,text_y-text_offset,string(get_amount), text_outline)
 				draw_set_color(text_color);
 				draw_text(text_x+2,text_y-text_offset,string(get_amount));
 				draw_set_color(c_white);
+				draw_set_halign(fa_left)
 				move_x += 32;
 			}
 

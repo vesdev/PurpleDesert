@@ -1,5 +1,8 @@
 // Script assets have changed for v2.3.0 see
-function update_down_tile(){ 
+
+
+
+function update_down_tile_full_map(){ 
 
 
 
@@ -88,12 +91,64 @@ var tile = tmiddle;
 }
 
 
+function update_down_tile(xx ,yy){ 
+var tmiddle = 6;
+var ttleft = 5;
+var ttright = 4;
+
+var tile_right = 3;
+var tile_left = 2;
+
+var tile_single = 1;
+
+var tile = tmiddle;
+
+		xx = clamp(xx, 0, ds_grid_width(obj_mapgen.grid)-1);
+		yy = clamp(yy, 0, ds_grid_height(obj_mapgen.grid)-1);
+		//
+			var xx_div = xx;
+			var yy_div = yy+1;
+			
+			//|_| and behind
+
+		
+		if obj_mapgen.grid[# xx,yy] == FLOOR and obj_mapgen.grid[# xx_div,yy_div] == WALL{
+		
+			debug("F");
+			var x_output = xx_div	 * 32;
+			var y_output = (yy_div)  * 32;
+			// |_
+			if obj_mapgen.grid[# xx-1,yy] == WALL and obj_mapgen.grid[# xx+1,yy] == FLOOR {
+				tile = tile_left;
+				debug("1");
+			}
+			if obj_mapgen.grid[# xx+1,yy] == WALL and obj_mapgen.grid[# xx-1,yy] == FLOOR {
+				tile = tile_right;
+				debug("2");
+			}
+			//single down |_|
+			if obj_mapgen.grid[# xx-1,yy] == WALL and obj_mapgen.grid[# xx+1,yy] == WALL {
+				tile = tile_single;
+				debug("3");
+			}
+			tilemap_set_at_pixel(obj_mapgen.bottom_tilemap,tile,x_output,y_output);		
+			//draw_sprite_ext(s_white_square_round,0,x_output,y_output,1,1,0,c_white,1);
+		
+		}
+		
+			if obj_mapgen.grid[# xx,yy] == FLOOR and
+				obj_mapgen.grid[# xx,yy-1] == FLOOR and			
+												
+			   obj_mapgen.grid[# xx+1,yy] == WALL and 
+			   obj_mapgen.grid[# xx-1,yy] == WALL 
+			   {
+				tilemap_set_at_pixel(bottom_tilemap,tmiddle,xx*32,yy*32);	
+			}
+		
+}
+
 function grid_change(value,xx,yy, burn_ground){ 
-	
-	if !instance_exists(obj_mapgen) { 
-		show_debug_message("ERROR NO OBJMAPGEN IN GRID CHANGE");
-		exit;
-	}
+
 	var grid = obj_mapgen.grid;
 	xx = xx div 32;
 	yy = yy div 32;
@@ -101,23 +156,35 @@ function grid_change(value,xx,yy, burn_ground){
 	xx = clamp(xx,0, ds_grid_width(grid)-1);
 	yy = clamp(yy,0, ds_grid_height(grid)-1);
 	
-	
+		
 	if grid[# xx,yy] != value { 
 		
 		if value = FLOOR { 
 			//create destructible effect
 				create_animation_effect(s_wall_explosion,xx*32,yy*32,.5,1,0,c_white,1);
+				
+				bottom_struct.timer = 2;
+				bottom_struct.enable = true;
+				ds_list_add(bottom_struct.list, [xx, yy]);
 		}
+		
 		grid[# xx, yy] = value;
+		
 	
+	
+
+		
+		
+		
 		//scr_update_tile(grid, xx, yy, obj_mapgen.wall_tilemap, 1);
-			obj_mapgen.grid_burn[# xx, yy] = 1;
-			scr_update_tile(obj_mapgen.grid_burn, xx, yy, obj_mapgen.burn_tilemap, 1);	
+		obj_mapgen.grid_burn[# xx, yy] = 1;
+		scr_update_tile(obj_mapgen.grid_burn, xx, yy, obj_mapgen.burn_tilemap, 1);	
 	
-		if burn_ground { 
+		update_down_tile( xx,yy );
+	//	if burn_ground { 
 	//		obj_mapgen.grid_burn[# xx, yy] = 1;
 	//		scr_update_tile(obj_mapgen.grid_burn, xx, yy, obj_mapgen.burn_tilemap, 1);	
-		}
+	//	}
 	}
 	//xx *= 32;
 	//yy *= 32;
@@ -127,15 +194,16 @@ function draw_corridor(struct , xx,  yy) {
 		var grid = mask_grid;
 		var room1 = struct.room1.room_visibility_state;
 		var room2 = struct.room2.room_visibility_state;
-	if room1 !=  e_room_visibility_state.hidden || room2 != e_room_visibility_state.hidden
+	if  room1 !=  e_room_visibility_state.hidden || room2 != e_room_visibility_state.hidden
 	//	 and		room1 != e_room_visibility_state.fogofwar_adjacent_to_player //and   room2 != e_room_visibility_state.fogofwar_adjacent_to_player
 			{
 				//	nine_slice_on_grid(s_nine_slice_hp,xx*UNIT+room_xoffset, yy*UNIT+room_yoffset, xx*UNIT+room_xoffset+CELL_SIZE, yy*UNIT+room_yoffset+CELL_SIZE, 1,C_BROWN)
+					
 					if struct.set_to_wall_grid = false { 
 						struct.set_to_wall_grid = true;
 							grid_change(FLOOR, xx*UNIT+room_xoffset ,yy*UNIT+room_yoffset,false );
+						
 							
-							update_down_tile();
 					}
 			}
 }
@@ -325,7 +393,7 @@ var col = c_grey;
 											//go_to_battle = true;
 											
 											
-											nine_slice_on_grid(s_nine_slice_default_mapgen,x1, y1, x1+w, y1+h,1,c_lime);
+											nine_slice_on_grid(s_nine_slice_map_border,x1, y1, x1+w, y1+h,1,c_lime);
 											other_struct.set_enemies_and_spoils();
 											battle_transition_timer = SEC;
 											go_to_next_state(e_gamestate.battle);			
@@ -353,12 +421,12 @@ var col = c_grey;
 							break;
 							
 							default:
-							nine_slice_on_grid(s_nine_slice_room,x1, y1, x1+w, y1+h,1,col);
+							nine_slice_on_grid(s_nine_slice_map_border,x1, y1, x1+w, y1+h,1,col);
 							//draw_rectangle(x1, y1, x1+w, y1+h, false)
 								if !go_to_battle and boon_collision_on_grid(x1, y1, x1+w, y1+h,MX,MY ) { 
 										draw_set_color(c_white);
 										//draw_rectangle(x1, y1, x1+w, y1+h, 1);
-										nine_slice_on_grid(s_nine_slice_hp_border,x1, y1, x1+w, y1+h,1,c_white);
+										nine_slice_on_grid(s_nine_slice_map_border,x1, y1, x1+w, y1+h,1,c_white);
 								}
 							draw_set_color(col);
 							//draw_rectangle(x1, y1, x1+w, y1+h, false);
@@ -370,7 +438,7 @@ var col = c_grey;
 		
 	//}
 	
-	if !this_room.set_itself_on_grid and this_room.room_visibility_state != e_room_visibility_state.hidden and 
+	if  !this_room.set_itself_on_grid and this_room.room_visibility_state != e_room_visibility_state.hidden and 
 			this_room.room_visibility_state != e_room_visibility_state.secret_undiscovered_room {
 	
 			
@@ -380,6 +448,7 @@ var col = c_grey;
 		for (var xx = x1 div CELL_SIZE; xx < (x1+w) div CELL_SIZE; xx++){ 
 			for (var yy = y1 div CELL_SIZE; yy < (y1+h) div CELL_SIZE; yy++){ 
 						grid_change(FLOOR,xx*CELL_SIZE,yy*CELL_SIZE,true);
+					
 						//nine_slice(s_nine_slice_default,x_,y_,x_+CELL_SIZE,y_+CELL_SIZE,1,c_white)
 				}
 		}	

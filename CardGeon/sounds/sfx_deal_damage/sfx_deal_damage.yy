@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 1.0,
+  "volume": 0.04,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -10,8 +10,8 @@
     "name": "audiogroup_sfx",
     "path": "audiogroups/audiogroup_sfx",
   },
-  "soundFile": "sfx_deal_damage.ogg",
-  "duration": 0.998673,
+  "soundFile": "sfx_deal_damage.wav",
+  "duration": 1.005,
   "parent": {
     "name": "Damage",
     "path": "folders/Audio/SFX/Damage.yy",

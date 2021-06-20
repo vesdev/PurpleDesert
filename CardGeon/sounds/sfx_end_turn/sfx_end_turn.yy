@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 0.09,
+  "volume": 0.14,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_sfx",
   },
   "soundFile": "sfx_end_turn.wav",
-  "duration": 2.07126,
+  "duration": 0.24339,
   "parent": {
     "name": "Selection",
     "path": "folders/Audio/Selection.yy",

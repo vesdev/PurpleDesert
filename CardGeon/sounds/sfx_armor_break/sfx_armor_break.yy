@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 0.19,
+  "volume": 0.06,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_sfx",
   },
   "soundFile": "sfx_armor_break.wav",
-  "duration": 0.583021,
+  "duration": 1.005,
   "parent": {
     "name": "Battle Effects",
     "path": "folders/Audio/SFX/Battle Effects.yy",

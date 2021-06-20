@@ -29,8 +29,8 @@ function destroy_tile_single(xarg, yarg) {
 
 		if Tile_Grid[# xx,yy] == WALL{
 		dont_execute = false;
-		create_animation_effect(s_wall_explosion,CELL_SIZE*(xx),CELL_SIZE*(yy),spd,false);
-
+		//create_animation_effect(s_wall_explosion,CELL_SIZE*(xx),CELL_SIZE*(yy),spd,false);
+	
 	//	var amount = random_range(35,45);
 		//	create_debri(CELL_SIZE*(xx),CELL_SIZE*(yy),amount);
 		}

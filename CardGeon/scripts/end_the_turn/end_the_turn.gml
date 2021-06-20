@@ -102,6 +102,21 @@ var len = array_length(discover_queue.array );
 	
 		if boon_collision(_left_enemy_collision,_top_enemy_collision,_right_enemy_collision,_bot_enemy_collision,MX,MY) || force_end_turn{ 
 					
+					
+					//group.SetTrackGain(index,volume,time);
+					o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,0,FADE_TIME);
+					o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,0,FADE_TIME);
+
+
+
+					o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_with_fx,MAX_VOLUME,FADE_TIME);
+					o_audio.sketch1.SetTrackGain(e_song_sketch.drums_with_fx,MAX_VOLUME,FADE_TIME);
+					o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_with_fx,MAX_VOLUME,FADE_TIME);
+					o_audio.sketch1.SetTrackGain(e_song_sketch.drums_with_fx,MAX_VOLUME,FADE_TIME);
+					o_audio.sketch1.SetTrackGain(e_song_sketch.sub_bass,MAX_VOLUME,FADE_TIME);
+					o_audio.sketch1.SetTrackGain(e_song_sketch.pad_highlights,MAX_VOLUME,FADE_TIME);
+					
+					
 					var warning = "";
 					draw_status_information = "";
 					
@@ -121,6 +136,7 @@ var len = array_length(discover_queue.array );
 					scribble_end_turn.draw(end_turn_x_position,end_turn_y_position);
 					if m1_pressed || force_end_turn {
 							
+						audio_play(sfx_open_portal);	
 						audio_play(sfx_end_turn);
 						
 						with o_game.synth_wave {

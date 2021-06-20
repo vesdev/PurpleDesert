@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 0.27,
+  "volume": 0.1,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_sfx",
   },
   "soundFile": "sfx_add_new_status.wav",
-  "duration": 1.2485,
+  "duration": 0.296451,
   "parent": {
     "name": "Damage",
     "path": "folders/Audio/SFX/Damage.yy",

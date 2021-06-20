@@ -2,6 +2,8 @@
 
 function draw_synth_map(){
 	
+	
+	
 	if next_game_state_queue = noone exit;
 	
 	if !instance_exists(o_game) exit;
@@ -159,14 +161,12 @@ function draw_synth_map(){
 
 function draw_synth(){
 	
-	if live_call() return live_result;
-	
 	with o_game.synth_wave{
 		
 		var currnet_enemy = 0;
 	
 		var current_x = 0; //enmy position
-		var current_y = 50;
+		var current_y = 230;
 	
 		if o_game.current_turn = e_current_turn.player_ and array_length(active_enemies) > 0  { 
 			
@@ -176,15 +176,16 @@ function draw_synth(){
 		
 			if xscale <= .01 { 
 			col = choose(C_FUCHISIA, C_PEACH, C_ORANGE, C_BLUE , C_PINK, C_YELLOW);
+			
 			xtarget = enemy_.x;
 			}
+			col = C_PURPLE;
 		}
 	
 		x_position = lerp( x_position , xtarget, .2);
 		
-		
-		xscale = lerp( xscale , xscale_target, .2);
-		yscale = lerp( yscale , yscale_target, .2);
+		xscale = lerp( xscale , xscale_target, .1);
+		yscale = lerp( yscale , yscale_target, .1);
 		
 		var yy = -150;
 		var xx = x_position;
@@ -289,7 +290,7 @@ function draw_synth(){
 			var ang = round((360*((spd+ 1/360) % 2)));
 			//draw the white sprite we are using for our clipping mask - note this has to be a sprite, you can't draw a shape here
 			//draw_sprite_ext(s_impending_damage_icon, 1, ww/2 +80 , hh/2   +80, xscale, yscale, -ang, c_white, 1);
-			draw_sprite_ext(s_impending_damage_icon, 1, ww/2 , hh/2 , xscale, yscale, ang, c_white, 1);
+			draw_sprite_ext(s_portal_shape, 1, ww/2 , hh/2 , xscale, yscale, ang, c_white, 1);
 		
 			//this blend mode allows the clipping mask to work
 			gpu_set_blendmode_ext(9, 1);
@@ -302,12 +303,12 @@ function draw_synth(){
 		draw_surface_ext(clipping_mask, xx - ww/2, yy - hh/2, 1, 1, 0, c_white, 1);
 		
 		gpu_set_blendmode(bm_normal);
-		draw_outline_thick(s_impending_damage_icon, 1, xx,yy  , xscale, yscale, ang, col, 1);
+		draw_outline_thick(s_portal_shape, 1, xx,yy  , xscale, yscale, ang, col, 1);
 		
-		draw_outline_thick(s_impending_damage_icon, 1, xx+5,yy+5  , xscale, yscale, ang, col, 1);
+		draw_outline_thick(s_portal_shape, 1, xx+5,yy+5  , xscale, yscale, ang, col, 1);
 		
-		draw_outline(s_impending_damage_icon, 1, xx,yy  , xscale, yscale, ang, c_black, 1);
-		draw_outline(s_impending_damage_icon, 1, xx+5,yy+5 , xscale, yscale, ang, c_black, 1);
+		draw_outline(s_portal_shape, 1, xx,yy  , xscale, yscale, ang, c_black, 1);
+		draw_outline(s_portal_shape, 1, xx+5,yy+5 , xscale, yscale, ang, c_black, 1);
 		
 		gpu_set_blendmode(bm_add);
 		

@@ -39,6 +39,16 @@ curtain_yoffset = 0;
 
 next_game_state_queue = noone;
 
+bottom_struct ={ 
+	
+	enable : false,
+	timer : -1,
+	list : ds_list_create(),
+	
+	
+}
+
+
 
 center_camera_on_player = SEC*.2;
 
