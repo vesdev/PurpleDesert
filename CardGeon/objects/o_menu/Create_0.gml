@@ -4645,8 +4645,6 @@ endText +=
 	"Nothing here..."+
 	"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"+
 +@'
-	@XorDev - Emotional support
-	
 	@ViktorKraus2 - Sound effects
 	@vincentizghra - Music
 	@soVesDev - Technical Art / programming
