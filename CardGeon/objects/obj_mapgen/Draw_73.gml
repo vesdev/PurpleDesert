@@ -92,12 +92,15 @@ switch standing_on.type{
 						//execute the code	
 							switch standing_on.type{ 
 							case e_room_type.key_room:
+							
+							
 								player.golden_keys += 1;
 								standing_on.type = e_room_type.empty_room;
 								var this_room = ds_list_find_value(room_list, standing_on.i)				
 								this_room.type = e_room_type.empty_room;
 							break;
 							case e_room_type.chest_golden_room:
+							
 									//open the chest
 									if player.golden_keys > 0 { 
 										enable_event = true;
@@ -139,7 +142,7 @@ switch standing_on.type{
 							break;
 							
 							case e_room_type.shop_room_cards:
-							
+								audio_play(	sfx_enter_shop);
 								audio_play(sfx_whoosh_2);
 							
 								//open the chest
@@ -152,6 +155,7 @@ switch standing_on.type{
 								o_game.camera.zoom = 3;					
 							break;	
 							case e_room_type.shop_room_tokens:
+								audio_play(	sfx_enter_shop);
 								audio_play(sfx_whoosh_2);
 								//open the chest
 								enable_event = true;
@@ -164,15 +168,17 @@ switch standing_on.type{
 								o_game.camera.zoom = 3;
 							break;	
 							case e_room_type.shop_room_stuff:
+								audio_play(	sfx_enter_shop);
 								//open the chest
 								var scr = scribble("[fa_center]STUFF SHOP");
 							break;			
 							case e_room_type.shop_room_potions:
+								audio_play(	sfx_enter_shop);
 								//open the chest
 								var scr = scribble("[fa_center]POTION SHOP");
 							break;			
 							case e_room_type.shop_room_removal:
-							
+								audio_play(	sfx_enter_shop);
 							
 							if player.gold < player.card_removal_price {
 								

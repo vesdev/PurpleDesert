@@ -4649,17 +4649,13 @@ endText +=
 +@'
 	@ViktorKraus2 - Sound effects
 	@vincentizghra - Music
+	@JstFredrik - Art
 	@soVesDev - Technical Art / programming
 	@BOONdev - Game Design / programming
-	
-	Credits:
-	
-	
-	
-	Thank you for playing!
+	TWITTER HANDLES:
 ';
 
-scroll = -camera.height/2;
+scroll = camera.height/2;
 
 
 //skip button

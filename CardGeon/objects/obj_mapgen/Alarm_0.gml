@@ -1,5 +1,5 @@
 /// @description init grid
-
+debug("SEED "+string(random_get_seed()));
 width = (room_width+320) div CELL_SIZE;
 height = (room_height+320) div CELL_SIZE;
 

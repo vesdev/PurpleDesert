@@ -1,8 +1,8 @@
 // Script assets have changed for v2.3.0 see
 function draw_status(xx , yy, struct){ 
 	
+
 	
-	if live_call(xx , yy, struct) return live_result;
 
 	//active_enemies = [];
 	//active_enemies  = [new_enemy(e_enemies.babydragon) , new_enemy(e_enemies.babydragon) , new_enemy(e_enemies.babydragon)];
@@ -15,6 +15,12 @@ function draw_status(xx , yy, struct){
 	draw_set_halign(fa_center);
 			
 	var buff_list = struct.buff;
+	
+	buff_list.attack.amount = 10;
+	buff_list.fragile.amount = 10;
+	buff_list.weak.amount = 10;
+	buff_list.attack_lost_on_crit.amount = 10;
+
 	var str = "";
 	var struct_variable_names = variable_struct_get_names(buff_list);
 	var move_x = 0;
@@ -24,7 +30,7 @@ function draw_status(xx , yy, struct){
 	rows = 4;
 	var amount = 10;
 	var amount_of_active_buffs = 0;
-	
+			
 	
 	
 			
@@ -182,17 +188,17 @@ function draw_status(xx , yy, struct){
 				draw_outline(s_ui_deck_circle	,0,	text_x+1+1,text_y-text_offset+7+1,1,1,0,C_DARK,1)	
 				draw_outline(s_ui_deck_circle	,0,	text_x+1,text_y-text_offset+7,1,1,0,C_DARK,1)
 				draw_sprite_ext(s_ui_deck_circle,0,	text_x+1,text_y-text_offset+7,1,1,0,col,1);
-					
-				
+			
 				draw_text_outline(text_x+2,text_y-text_offset,string(get_amount), text_outline)
 				draw_set_color(text_color);
 				draw_text(text_x+2,text_y-text_offset,string(get_amount));
 				draw_set_color(c_white);
-				draw_set_halign(fa_left)
+				
 				move_x += 32;
 				}
 		}
 		if amount_of_active_buffs = 0 { 
 			struct.check_for_buff = amount_of_active_buffs;
 		}
+		draw_set_halign(fa_left)
 }

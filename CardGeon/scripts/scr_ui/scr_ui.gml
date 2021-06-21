@@ -17,12 +17,17 @@ function UiButton(width, height, sprite, text, onPress) constructor
 	{
 		if pressed && mouse_check_button_released(mb_left)
 		{
+			
+			audio_play(sfx_ui_click);
 			pressed = false;
 			onPress();
 		}
 		
 		if (point_in_rectangle(global.__uiMX,global.__uiMY, x-width*.5,y-height*.5, x+width*.5, y+height*.5))
 		{
+			if subimg = 0 { 
+				audio_play(sfx_hover_over_ui);	
+			}
 			subimg = 1;
 			
 			if mouse_check_button_pressed(mb_left)

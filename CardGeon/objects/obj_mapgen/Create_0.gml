@@ -61,7 +61,8 @@ curtain_timer_up = curtain_time_up*5;
 
 alarm[0] = 1;
 
-randomize();
+//randomize();
+random_set_seed(3609319181);
 
 alarm[1] = 2;
 

@@ -43,10 +43,11 @@ if (room = r_end)
 	lights[0].y = mouse_y;
 
 	scroll+=.5;
+	draw_set_font(f_vhs)
 	draw_set_alpha(.8);
 	stars.Draw(camera.x-camera.width/2,camera.y-camera.height/2, camera.width, camera.height);
 	draw_set_alpha(1);
 	lighting.Draw(camera.x-camera.width/2,camera.y-camera.height/2,lights,drawCredits);
-	
 	drawCredits();
+	draw_set_font(font_boon)
 }

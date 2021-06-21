@@ -114,22 +114,19 @@ var tile = tmiddle;
 		
 		if obj_mapgen.grid[# xx,yy] == FLOOR and obj_mapgen.grid[# xx_div,yy_div] == WALL{
 		
-			debug("F");
+		
 			var x_output = xx_div	 * 32;
 			var y_output = (yy_div)  * 32;
 			// |_
 			if obj_mapgen.grid[# xx-1,yy] == WALL and obj_mapgen.grid[# xx+1,yy] == FLOOR {
 				tile = tile_left;
-				debug("1");
 			}
 			if obj_mapgen.grid[# xx+1,yy] == WALL and obj_mapgen.grid[# xx-1,yy] == FLOOR {
 				tile = tile_right;
-				debug("2");
 			}
 			//single down |_|
 			if obj_mapgen.grid[# xx-1,yy] == WALL and obj_mapgen.grid[# xx+1,yy] == WALL {
 				tile = tile_single;
-				debug("3");
 			}
 			tilemap_set_at_pixel(obj_mapgen.bottom_tilemap,tile,x_output,y_output);		
 			//draw_sprite_ext(s_white_square_round,0,x_output,y_output,1,1,0,c_white,1);

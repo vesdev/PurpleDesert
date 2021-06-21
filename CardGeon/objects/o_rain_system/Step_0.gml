@@ -40,7 +40,6 @@ var x_  = o_game.camera.x-o_game.camera.width*.25;
 var y_  = o_game.camera.y-o_game.camera.height*.5;
 
 var width_ = o_game.camera.width;	
-boon_randomize();
 
 
 if o_game.game_state = e_gamestate.choose_path and obj_mapgen.next_game_state_queue = noone

@@ -6,7 +6,7 @@
 
 function boon_randomize() {
 	//CUSTOM RANDOMIZE FUNCTION
-	randomize();
+	//randomize();
 	//eventually add daily runs and shit and use the same seed
 }
 //high ground advantage, all attacks deal +1 dama:ge

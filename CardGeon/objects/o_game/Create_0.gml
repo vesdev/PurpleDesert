@@ -2,7 +2,7 @@
 
 
 
-audio_sync_group_debug(o_audio.sketch1.Group);
+//audio_sync_group_debug(o_audio.sketch1.Group);
 //show_debug_overlay(true);				
 //create(0,0,o_rain_system);
 //show_debug_overlay(true)
