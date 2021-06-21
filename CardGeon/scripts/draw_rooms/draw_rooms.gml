@@ -3,7 +3,7 @@
 
 
 function update_down_tile_full_map(){ 
-
+if live_call() return live_result;
 
 
 
@@ -14,7 +14,6 @@ var width =  o_game.camera.width div 32;
 var height = o_game.camera.height div 32;
 
 var offset = 2;
-var size = 32-offset/2;
 var col = C_DARK;
 var time = current_time*0.005;
 var time_add = SEC*.3;
@@ -31,13 +30,24 @@ var tile_left = 2;
 var tile_single = 1;
 
 
+var total_width =  left+width;
+var total_height = top+height;
+
+	total_width = clamp(total_width, 0, ds_grid_width(obj_mapgen.grid)-1);
+	total_height = clamp(total_height, 0, ds_grid_height(obj_mapgen.grid)-1);
+	
+
 
 //draw_rectangle(left*32,top*32,(left+width)*32,(top+height)*32,1);
-for (var xx = left; xx <= left+width; xx++){ 
-	for (var yy = top; yy <= top+height; yy++){ 
+for (var xx = left; xx <= total_width; xx++){ 
+	for (var yy = top; yy <=total_height; yy++){ 
 var tile = tmiddle;
+
+
 		xx = clamp(xx, 0, ds_grid_width(obj_mapgen.grid)-1);
 		yy = clamp(yy, 0, ds_grid_height(obj_mapgen.grid)-1);
+		
+	
 		//
 			var xx_div = xx;
 			var yy_div = yy+1;
@@ -48,10 +58,13 @@ var tile = tmiddle;
 
 			
 		if obj_mapgen.grid[# xx,yy] == FLOOR and obj_mapgen.grid[# xx_div,yy_div] == WALL{
-		
-			
+	
 			var x_output = xx_div	 * 32;
 			var y_output = (yy_div)  * 32;
+	
+		
+		
+
 			// |_
 			if obj_mapgen.grid[# xx-1,yy] == WALL and obj_mapgen.grid[# xx+1,yy] == FLOOR {
 				tile = tile_left;
@@ -167,17 +180,12 @@ function grid_change(value,xx,yy, burn_ground){
 		
 		grid[# xx, yy] = value;
 		
-	
-	
-
-		
-		
-		
 		//scr_update_tile(grid, xx, yy, obj_mapgen.wall_tilemap, 1);
 		obj_mapgen.grid_burn[# xx, yy] = 1;
 		scr_update_tile(obj_mapgen.grid_burn, xx, yy, obj_mapgen.burn_tilemap, 1);	
-	
-		update_down_tile( xx,yy );
+		
+			update_down_tile( xx,yy );
+		
 	//	if burn_ground { 
 	//		obj_mapgen.grid_burn[# xx, yy] = 1;
 	//		scr_update_tile(obj_mapgen.grid_burn, xx, yy, obj_mapgen.burn_tilemap, 1);	

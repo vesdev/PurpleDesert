@@ -16,10 +16,6 @@ function draw_status(xx , yy, struct){
 			
 	var buff_list = struct.buff;
 	
-	buff_list.attack.amount = 10;
-	buff_list.fragile.amount = 10;
-	buff_list.weak.amount = 10;
-	buff_list.attack_lost_on_crit.amount = 10;
 
 	var str = "";
 	var struct_variable_names = variable_struct_get_names(buff_list);

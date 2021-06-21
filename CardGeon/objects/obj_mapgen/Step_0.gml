@@ -1,5 +1,5 @@
 
-
+start_dungeon_timer--;
 
 if bottom_struct.enable = true { 
 	if bottom_struct.timer <= 0 { 
@@ -18,7 +18,8 @@ if bottom_struct.enable = true {
 			}
 			
 		}
-		update_down_tile_full_map();
+	
+			update_down_tile_full_map();
 
 		bottom_struct.enable = false;
 		ds_list_clear(bottom_struct.list);

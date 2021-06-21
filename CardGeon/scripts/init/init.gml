@@ -5,6 +5,8 @@
 #macro DEPTH_MAP -400
 
 function boon_randomize() {
+	
+
 	//CUSTOM RANDOMIZE FUNCTION
 	//randomize();
 	//eventually add daily runs and shit and use the same seed
