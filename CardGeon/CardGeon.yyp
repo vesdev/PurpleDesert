@@ -317,7 +317,6 @@
     {"id":{"name":"arm_set_length","path":"scripts/arm_set_length/arm_set_length.yy",},"order":15,},
     {"id":{"name":"s_font_health_numbers","path":"sprites/s_font_health_numbers/s_font_health_numbers.yy",},"order":11,},
     {"id":{"name":"s_portal_shape","path":"sprites/s_portal_shape/s_portal_shape.yy",},"order":9,},
-    {"id":{"name":"f_credits","path":"fonts/f_credits/f_credits.yy",},"order":14,},
     {"id":{"name":"mus_city_nights","path":"sounds/mus_city_nights/mus_city_nights.yy",},"order":3,},
     {"id":{"name":"s_summon_particle","path":"sprites/s_summon_particle/s_summon_particle.yy",},"order":2,},
     {"id":{"name":"sfx_spawn_a_new_token","path":"sounds/sfx_spawn_a_new_token/sfx_spawn_a_new_token.yy",},"order":1,},
