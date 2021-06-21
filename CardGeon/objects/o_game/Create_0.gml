@@ -7,6 +7,8 @@
 //show_debug_overlay(true)
 //audio_play_sound(sketch1_b,1,1);
 
+boss_room = false;
+
 enum e_resolution {	
 	hd_960,
 	android_1480,
@@ -767,6 +769,7 @@ function stats() constructor{
 }
 
 
+
 function square_hit_effect(x, y,init_time,static_time,end_time) constructor{ 
 	self.x = x;
 	self.y = y;
@@ -814,8 +817,8 @@ for (var i =0; i <e_token.size_;i++){
 
 max_number_of_enemies = 20;
 
-
-
+init_fight = false;
+init_fight_timer = SEC*.5;
 synth_wave = {
 	x_position : 0,
 	xtarget : 0,
@@ -860,6 +863,8 @@ meatball_str ={
 }
 
 
+
+
 //new sunset
 str_sunset = new sunset(-350,-250);
 
@@ -878,5 +883,4 @@ is_hovering_over_card = noone;
 event_user(14);	 
 
 add_stuff(e_stuff.goggles);
-
 room_goto(r_dungeon_init);

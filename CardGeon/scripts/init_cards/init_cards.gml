@@ -508,7 +508,7 @@ switch card_enum {
 		
 		case e_card.coco_replay_red:  card_ = new card("SECOND WIND",
 		function()  {
-			return "THIS TURN. YOUR NEXT [c_yellow]RED CARD[] IS PLAYED [c_lime]TWICE."
+			return "THIS TURN. YOUR NEXT [c_gum]RED[] CARD IS PLAYED [c_lime]TWICE."
 		}	, 10,
 		[ new card_struct_buff(all_buffs.replay_red, 1) ] ,
 		noone ,  e_card_type.strat,e_card.coco_up1_replay_red);
@@ -516,7 +516,7 @@ switch card_enum {
 		
 			case e_card.coco_up1_replay_red : card_ = new card("SECOND WIND+",
 				function()  {
-					return "THIS TURN. YOUR NEXT [c_lime]2[] RED CARD IS PLAYED [c_lime]TWICE."
+					return "THIS TURN. YOUR NEXT [c_lime]2[] [c_gum]RED[] CARDS ARE PLAYED [c_lime]TWICE."
 				}	, 10,
 				[ new card_struct_buff(all_buffs.replay_red,2)  ] ,
 				noone,  e_card_type.strat,noone);
@@ -780,8 +780,8 @@ switch card_enum {
 		
 		case e_card.coco_reduce_hand_cost_and_armor: card_ = new card("WAX SCALES",
 			function()  {
-			return armor_string(20)+" ARMOR\nREDUCE THE COST OF YOUR HAND BY [c_lime]25%[]"}, 10,
-			[new card_struct_reduce_cost_of(hand,.75, true) , new card_struct_armor_player(20)] , 
+			return armor_string(20)+" ARMOR\nREDUCE THE COST OF YOUR HAND BY [c_lime]50%[]"}, 10,
+			[new card_struct_reduce_cost_of(hand,.5, true) , new card_struct_armor_player(20)] ,  //.75 to reduce by 25%
 			[keywords.single_use], e_card_type.strat , e_card.coco_up1_reduce_hand_cost_and_armor
 		);
 	
@@ -789,7 +789,7 @@ switch card_enum {
 		
 		case e_card.coco_up1_reduce_hand_cost_and_armor: card_ = new card("WAX SCALES+",
 			function()  {
-			return armor_string(20)+" ARMOR\nREDUCE THE COST OF YOUR HAND BY [c_lime]50%[]"}, 10,
+			return armor_string(20)+" ARMOR\nREDUCE THE COST OF YOUR HAND BY [c_lime]50%[]"}, 0,
 			[new card_struct_reduce_cost_of(hand,.5, true) , new card_struct_armor_player(20)] , 
 			[keywords.single_use], e_card_type.strat, noone
 		);

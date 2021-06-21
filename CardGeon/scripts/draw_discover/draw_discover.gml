@@ -1,7 +1,6 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_discover(){	
-	
 	var selected_card_struct = noone;
 	if no_discover_effects() exit;
 	
@@ -62,7 +61,6 @@ function draw_discover(){
 						//add it
 						switch discover_queue.type { 
 							case e_discover.add_for_combat: 
-										
 										//discover_queue.type = e_discover.add_for_run;
 										audio_play(sfx_draw_card_1);
 										add_card_to(discover_queue.place_to_add, enum_, false);
@@ -101,6 +99,7 @@ function draw_discover(){
 						}
 						array_delete(discover_queue.array,0,1);
 						m1_release = false;
+						update_card_text()
 						exit;
 					}
 				}
@@ -112,7 +111,7 @@ function draw_discover(){
 				}
 				//Hide Button
 				
-					
+			if number_of_enemies != 0{ 		
 				var hx = camera.width*.125 +xoffgame;
 				var hy = camera.height*.35-camera.height*.05*.5+4;
 				var hw = 55;
@@ -129,7 +128,7 @@ function draw_discover(){
 								 }
 						 }
 				}
-		
+	
 				draw_set_color(merge_color(C_PURPLE,C_DARK,.5));
 				//draw_rectangle(hx-hw,hy-hh*.5,hx+hw,hy+hh ,1 );
 				nine_slice( s_nine_slice_hp, hx-hw,hy-hh*.5,hx+hw,hy+hh,1,C_DARK);
@@ -158,33 +157,35 @@ function draw_discover(){
 
 
 
-	if !discover_queue.hide and discover_queue.type = e_discover.add_for_run{ 	
-				var w_ = camera.width*.1;
+		if !discover_queue.hide and discover_queue.type = e_discover.add_for_run{ 	
+					var w_ = camera.width*.1;
 				
-				var h_ = camera.height*.05;
-				var y_ =camera.height*.35; 
-				var border_col = c_white;
+					var h_ = camera.height*.05;
+					var y_ =camera.height*.35; 
+					var border_sprite = s_card_nine_slice;
+					
+					
 				
-				if boon_collision( -w_,y_-h_,w_,y_+h_,MX,MY) {
-					 border_col = C_LIME;
-					 if m1_pressed { 
-						audio_play(sfx_grab_a_card);
-						discover_queue.array = [];
+					if boon_collision( -w_,y_-h_,w_,y_+h_,MX,MY) {
+						 border_sprite = s_card_nine_slice_selected;
+						 if m1_pressed { 
+							audio_play(sfx_grab_a_card);
+							discover_queue.array = [];
 						
-					 }
-				}
+						 }
+					}
 				
-				nine_slice( s_nine_slice_hp, -w_,y_-h_,w_,y_+h_,1,C_DARK);
-				nine_slice( s_nine_slice_hp_border, -w_,y_-h_,w_,y_+h_,1,border_col);
+					nine_slice( s_nine_slice_hp, -w_,y_-h_,w_,y_+h_,1,C_DARK);
+					nine_slice( border_sprite, -w_,y_-h_,w_,y_+h_,1,c_white);
 				
-				draw_set_halign(fa_center)
-				draw_set_color(c_white);
+					draw_set_halign(fa_center)
+					draw_set_color(c_white);
 				
-				draw_text(0,y_-h_*.5+4,"SKIP");
-				draw_set_halign(fa_left)
-				draw_set_color(c_white);
+					draw_text(0,y_-h_*.5+4,"SKIP");
+					draw_set_halign(fa_left)
+					draw_set_color(c_white);
+		}
 	}
-
 
 }
 

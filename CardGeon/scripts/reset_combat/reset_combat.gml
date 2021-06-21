@@ -52,9 +52,7 @@ function reset_combat(){
 		}
 	
 	
-		repeat( check_stuff(e_stuff.molding_clay)){ 
-				add_buff(player, all_buffs.endurance, 2);
-		}	
+	
 	
 		var list_ = deck;
 		var len = ds_list_size(list_);

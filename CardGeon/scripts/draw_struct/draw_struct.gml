@@ -2,6 +2,11 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function draw_struct(struct, x , y ){
 
+
+
+if !no_discover_effects() and !discover_queue.hide {
+	exit;
+}
 //	draw_ellipse_color(x-xoff,y-yoff,x+xoff,y+yoff,c_white,c_black,false);
 
 	
@@ -238,6 +243,10 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 					o_game.meatball_str.timer = 0;	
 					snd_ = sfx_deal_damage_crit;
 				}
+				audio_stop_sound(sfx_deal_damage );
+				audio_stop_sound(sfx_player_took_damage );
+				audio_stop_sound(sfx_block_damage );
+				audio_stop_sound(sfx_deal_damage_crit );
 				
 				audio_play( snd_ );	
 			}

@@ -1,8 +1,5 @@
 // Script assets have changed for v2.3.0 see
-
-
 function draw_spoils(){
-
 
 
 if !no_discover_effects() exit;
@@ -28,7 +25,7 @@ var scrx = camera.width*.5-150;
 var scry = 0;
 var yoffset = 15;
 var bbox = scr.get_bbox(scrx,scry);
-
+var spr_ = s_card_nine_slice;
 draw_set_color(c_white);
 if no_discover_effects() and boon_collision(bbox.x0,bbox.y0-yoffset, bbox.x3,bbox.y3+yoffset,  MX,MY){
 
@@ -45,19 +42,28 @@ if no_discover_effects() and boon_collision(bbox.x0,bbox.y0-yoffset, bbox.x3,bbo
 		exit;
 	}
 	
+
+	
 	if len != 0 { 
 		draw_set_color(c_yellow);
+		var spr_ = s_card_nine_slice_selected;
 	}else{
 		draw_set_color(c_lime);
+		var spr_ = s_card_nine_slice_selected;
 	}
 }
 
-draw_rectangle(bbox.x0 ,bbox.y0-yoffset , bbox.x3,bbox.y3+yoffset ,1)
+	
+//draw_rectangle(bbox.x0 ,bbox.y0-yoffset , bbox.x3,bbox.y3+yoffset ,1)
+
+//nine_slice(s_card_nine_slice,bbox.x0 ,bbox.y0-yoffset , bbox.x3,bbox.y3+yoffset  ,1,c_white);
+var width_side = 10;
+nine_slice(spr_,bbox.x0 -width_side,bbox.y0-yoffset , bbox.x3+width_side,bbox.y3+yoffset  ,1,c_white);
 draw_set_color(c_white);
 scr.draw(scrx,scry);
 
-draw_rectangle(_l,_t,_r,_b ,1);
-
+//draw_rectangle(_l,_t,_r,_b ,1);
+nine_slice(s_card_nine_slice,_l,_t,_r,_b ,1,c_white);
 scribble("[rainbow][wave][fa_center]NICE JOB").draw(0 ,_t+10);
 																
 for (var i = 0; i < len; ++i){ 
@@ -66,7 +72,13 @@ for (var i = 0; i < len; ++i){
 	var yy = _t + 50 ;
 	var width  =45;
 	var height  = 45;
-	draw_rectangle(xx, yy, xx+width, yy+width,1)
+	//draw_rectangle(xx, yy, xx+width, yy+width,1)
+	
+	
+	//nine_slice(s_nine_slice_hp,xx, yy, xx+width, yy+width,1,C_PURPLE);
+
+	nine_slice(s_nine_slice_hp_border,xx, yy, xx+width, yy+width,1,c_white);
+
 	var struct = hand_over_rewards_array[@ i];
 	
 	if boon_collision( xx, yy, xx+width, yy+width, MX,MY) and no_discover_effects(){ 

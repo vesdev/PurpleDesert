@@ -49,7 +49,7 @@ function UiButton(width, height, sprite, text, onPress) constructor
 	{
 		
 		
-		if live_call() return live_result;
+		
 		//draw_sprite_stretched(sprite, subimg, x-width*.5, y-height*.5, width, height);
 		
 		draw_set_halign(fa_center);

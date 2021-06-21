@@ -62,8 +62,8 @@ curtain_timer_up = curtain_time_up*5;
 alarm[0] = 1;
 
 start_dungeon_timer = SEC*.2;
-//boon_randomize();
-random_set_seed(1682793500);
+boon_randomize();
+//random_set_seed(1682793500);
 //randomize();
 debug("SEED "+string(random_get_seed()));
 

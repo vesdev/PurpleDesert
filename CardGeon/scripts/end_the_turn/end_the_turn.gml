@@ -14,7 +14,7 @@ self.timer = 0; //timer start
 
 function can_end_the_turn() { 
 	
-if live_call() return live_result;
+
 
 
 if current_turn = e_current_turn.enemy_ {  

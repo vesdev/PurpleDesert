@@ -2,7 +2,9 @@
 function draw_status(xx , yy, struct){ 
 	
 
-	
+if !no_discover_effects() and !discover_queue.hide {
+	exit;
+}
 
 	//active_enemies = [];
 	//active_enemies  = [new_enemy(e_enemies.babydragon) , new_enemy(e_enemies.babydragon) , new_enemy(e_enemies.babydragon)];

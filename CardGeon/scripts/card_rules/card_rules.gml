@@ -141,7 +141,7 @@ function damage_string(damage) {
 	var target = noone; 
 
 	//add target
-	if array_length(attack_target) = 1 { 
+	if is_array(attack_target) and array_length(active_enemies) > 0 and array_length(attack_target) = 1 { 
 			target = active_enemies[@ attack_target[0]];
 	}	
 	damage =  check_damage(creator, target, damage);

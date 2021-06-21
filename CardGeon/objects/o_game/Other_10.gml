@@ -1,7 +1,6 @@
 
 
 
-
 //surface
 /*
 if surface_exists(meatball_str.surf) {
@@ -96,6 +95,7 @@ else
 {
 	road3d.Draw();
 }
+
 
 if turn_phase  =  e_turn_phase.standby_phase {  //idk do standby phase stuff here
 	turn_phase  =  e_turn_phase.main_phase;	
@@ -288,8 +288,20 @@ draw_struct(player,player_defaultx_position +xoffgame, 135+yoffgame);
 draw_tokens();
 draw_health_bar(50,100+40,player,0);
 draw_discover();
+
 if number_of_enemies != 0 { 
 
+
+if init_fight_timer > 0 { 
+	if init_fight = false{
+		debug("HI");
+	    init_fight = true;
+		repeat( check_stuff(e_stuff.molding_clay)){ 
+				add_buff(player, all_buffs.endurance, 2);
+		}
+	}
+	init_fight_timer--;
+}
 	draw_mana();
 	can_end_the_turn();
 	draw_status(-camera.width*.45,camera.height*0.165,player);
@@ -297,8 +309,8 @@ if number_of_enemies != 0 {
 	////DRAW HAND
 	draw_hand();
 }else{
-	
-	
+	init_fight_timer = SEC*.1;
+	 init_fight = false;
 	
 	
 	if defeated_enemies_flag = false { 
@@ -378,4 +390,10 @@ if draw_status_information != false  {
 
 if m1_release { 
 		hovered_over_card = false;	
+}
+
+
+if player.hp <= 0 { 
+	var scr = scribble("[scale, 1]BOON: [c_gum]YOU DIED HERE[], BUT I'LL ALLOW YOU TO KEEP GOING AS LONG AS YOU LIKE. [c_lime]RESTART APPLICATION[] IF YOU WANT TO KEEP THE TRUE ROGUELIKE [c_lime]EXPERIENCE[]");
+	scr.draw(-camera.width*.48,camera.height*.45);
 }

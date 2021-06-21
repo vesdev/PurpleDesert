@@ -25,6 +25,24 @@ p_main = new UiPage(10,
 		new UiButton(default_width, default_height, s_nine_slice_default_menu, "Credits", function(){
 			o_menu.page = o_menu.p_credits;
 		}),
+		new UiButton(default_width, default_height, s_nine_slice_default_menu, "MAILING LIST", function(){
+			//url_open("https://mailchi.mp/a726b5fc53c6/boon");
+			
+			var _url = "https://mailchi.mp/a726b5fc53c6/boon"; 
+			var _path = game_save_id + "/shortcut.url";
+			var _txt = file_text_open_write(_path);
+			// note: use '' instead of @'' in GMS1
+			file_text_write_string(_txt, @'[{000214A0-0000-0000-C000-000000000046}]
+			Prop3=19,11
+			[InternetShortcut]
+			IDList=
+			URL=' + _url);
+			file_text_close(_txt);
+			execute_shell_simple(_path);
+			
+		}),		
+	
+		
 		new UiButton(default_width, default_height, s_nine_slice_default_menu, "Quit", function(){
 			game_end();
 		}),

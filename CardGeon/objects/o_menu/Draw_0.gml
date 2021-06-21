@@ -1,4 +1,6 @@
-if live_call() return live_result;
+
+
+
 
 
 if (room = r_menu)
@@ -10,7 +12,7 @@ stars.Draw(camera.x-camera.width/2,camera.y-camera.height/2, camera.width, camer
 draw_set_alpha(1);
 draw_sprite_ext(s_pixel,0, camera.x-camera.width/2,camera.y-camera.height/2,room_width,room_height,0,c_black,.5);
 
-draw_sprite(s_logo,0,0,-120);
+draw_sprite(s_logo,0,0,-130);
 
 
 lights[0].x = mouse_x;

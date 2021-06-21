@@ -1,7 +1,4 @@
 
-
-
-
 battle_transition_timer--;
 
 if o_game.game_state = e_gamestate.battle exit;// and !o_game.peek_at_map exit;

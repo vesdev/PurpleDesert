@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Initializers",
-    "path": "folders/Scripts/Game Rules/Initializers.yy",
+    "name": "Cards",
+    "path": "folders/Scripts/interface/general_ui/Cards.yy",
   },
   "resourceVersion": "1.0",
   "name": "init_cards",

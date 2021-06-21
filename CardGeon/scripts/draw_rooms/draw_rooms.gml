@@ -3,7 +3,7 @@
 
 
 function update_down_tile_full_map(){ 
-if live_call() return live_result;
+
 
 
 

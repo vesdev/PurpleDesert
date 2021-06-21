@@ -1,7 +1,11 @@
 // Script assets have changed for v2.3.0 see
 function draw_health_bar(xx,yy,struct, potential_damage){
-	if live_call(xx,yy,struct, potential_damage) return live_result;
-	
+
+
+
+if !no_discover_effects() and !discover_queue.hide {
+	exit;
+}
 
 var heart_name = images;
 draw_set_font(font_health_number);

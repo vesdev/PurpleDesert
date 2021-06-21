@@ -1,8 +1,13 @@
 /// @description Insert description here
 
+
+
+
+
 //camera_set_view_angle(view_camera[0],100);
 
 if o_game.game_state = 1 and !enable_event{ 
+nine_slice(s_card_nine_slice, 0, 0, 110,90,1,c_white);
 
 	 var str = "[s_card_heart_small] "+string(player.hp)+"/"+string(player.hp_max);
 	 str += "\n[s_icon_gold, 0, 0] "+string(player.gold)

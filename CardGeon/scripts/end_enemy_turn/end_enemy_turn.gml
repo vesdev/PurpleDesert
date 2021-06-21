@@ -1,6 +1,6 @@
 function end_enemy_turn(){
 	
-	if live_call() return live_result;
+	
 
 	//group.SetTrackGain(index,volume,time);
 	o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,MAX_VOLUME,FADE_TIME);

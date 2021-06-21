@@ -258,7 +258,7 @@ function stuff_struct(stuff_enum) {
 
 
 		
-				case e_stuff.goggles:	returned_stuff = new create_stuff( s_passive_tight_goggles, "TIGHT GOGGLES",function()  {
+				case e_stuff.goggles:	returned_stuff = new create_stuff( s_passive_tight_goggles, "CRIT GOGGLES",function()  {
 														return "[c_gum]RED[] CARDS HAVE A [c_lime]+10%[] CHANCE TO DEAL [c_lime]200%[] DAMAGE";
 													},
 													function()  { with o_game{ 
