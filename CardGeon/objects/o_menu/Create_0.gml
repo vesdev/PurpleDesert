@@ -23,11 +23,34 @@ p_main = new UiPage(10,
 			o_menu.page = o_menu.p_settings;
 		}),
 		new UiButton(default_width, default_height, s_nine_slice_default_menu, "Credits", function(){
-			room_goto(r_end);
+			o_menu.page = o_menu.p_credits;
 		}),
 		new UiButton(default_width, default_height, s_nine_slice_default_menu, "Quit", function(){
 			game_end();
 		}),
+	]
+)
+
+p_credits = new UiPage(10, 
+	[
+		new UiButton(128, 64, s_nine_slice_default_menu, "Return", function(){
+			o_menu.page = o_menu.p_main;
+		}),
+		new UiButton(128, 32, s_nine_slice_default_menu, "BOONdev", function(){
+			url_open("https://twitter.com/BOONdev");
+		}),
+		new UiButton(128, 32, s_nine_slice_default_menu, "soVesDev", function(){
+			url_open("https://twitter.com/soVesDev");
+		}),
+		new UiButton(128, 32, s_nine_slice_default_menu, "JstFredrik", function(){
+			url_open("https://twitter.com/JstFredrik");
+		}),
+		new UiButton(128, 32, s_nine_slice_default_menu, "vincentizghra", function(){
+			url_open("https://twitter.com/vincentizghra");
+		}),
+		new UiButton(128, 32, s_nine_slice_default_menu, "ViktorKraus2", function(){
+			url_open("https://twitter.com/ViktorKraus2");
+		})
 	]
 )
 
