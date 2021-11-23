@@ -86,7 +86,7 @@ if !no_discover_effects() and !discover_queue.hide {
 				
 					var text_x = x1 + 25;
 				//	draw_rectangle(x1,y1,x2,y2,1);
-						var text_outline = c_black;
+				var text_outline = c_black;
 				var text_color = c_white;
 			
 					var bubble_color = C_YELLOW;

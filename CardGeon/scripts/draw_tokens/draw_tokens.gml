@@ -3,8 +3,6 @@
 function draw_tokens(){
 
 
-
-
 for (var i = player.max_token_amount-1; i >= 0; i--) {
 	var x_ = player_defaultx_position-56 + i * 25 +xoffgame;
 	var y_ = player_defaulty_position+camera.height*0.19 +yoffgame;
@@ -55,9 +53,7 @@ if len = 0 exit;
 				check_for_token = len;
 				 particle_explode( x_+6,y_+5,15,c_white,true, SEC*.7, false);
 				 
-				 if player.buff.token_summoning_restores_mana.amount > 0 { 
-						change_mana(player.buff.token_summoning_restores_mana.amount,false);
-				 }
+			
 				 
 			}
 			x_ -= 5;

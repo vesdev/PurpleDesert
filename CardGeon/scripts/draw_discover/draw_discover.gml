@@ -6,11 +6,14 @@ function draw_discover(){
 	
 	if array_length(discover_queue.array) > 0 { 
 	var len = array_length(discover_queue.array[@ 0]);
-	
 	init_card_border_step(len);
 	hovered_over_card = false
 			for (var i = 0; i < len; ++i){ 
 		
+		
+			if array_length( discover_queue.array) < 1 {
+				exit;	
+			}
 			var struct_ = discover_queue.array[@ 0][@ i];	
 			var desc = struct_.desc();	
 		
@@ -75,16 +78,15 @@ function draw_discover(){
 										ds_list_shuffle(card_spoils);
 											
 									if discover_queue.type = e_discover.add_for_run  {
-										var len = array_length(hand_over_rewards_array);
-										for (var i= 0; i< len ;i ++){ 
-												var struct_ = hand_over_rewards_array[@ i];
+										var len_FUCK = array_length(hand_over_rewards_array);
+										for (var i_FUCK= 0; i_FUCK< len_FUCK ;i_FUCK ++){ 
+												var struct_ = hand_over_rewards_array[@ i_FUCK];
 														if struct_.type = e_spoil_type.choose_card { 
-														array_delete(hand_over_rewards_array,i,1);
-														i--;
-														len--;
+														array_delete(hand_over_rewards_array,i_FUCK,1);
+														i_FUCK--;
+														len_FUCK--;
 													}
 														//type = e_spoil_type.gold;	
-			
 											}
 										}
 							break;				
@@ -97,7 +99,9 @@ function draw_discover(){
 							card_script_or_array_add_to_queue(struct_.script_);
 							break;
 						}
+						//discover_queue.array = [];
 						array_delete(discover_queue.array,0,1);
+						//discover_queue.array = [];
 						m1_release = false;
 						update_card_text()
 						exit;

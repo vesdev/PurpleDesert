@@ -1,6 +1,22 @@
 /// @description 
 
 
+u_energy_sine = {
+	shader : sh_sine_wave_collision,
+	
+	us_speed	 : 0.001,
+	us_amplitude : 0.001,
+	us_frequency : 359,
+
+	u_speed		 : shader_get_uniform(sh_sine_wave_collision,"speed"),
+	u_amplitude  : shader_get_uniform(sh_sine_wave_collision,"amplitude"),
+	u_frequency  : shader_get_uniform(sh_sine_wave_collision,"frequency"),
+	time		 : shader_get_uniform(sh_sine_wave_collision,"time"),
+	texel_size	 : shader_get_uniform(sh_sine_wave_collision,"texel"),
+	_tex		 : sprite_get_texture(s_dungeon_wall_export,0),
+}
+
+
 //audio_sync_group_debug(o_audio.sketch1.Group);
 //show_debug_overlay(true);				
 //create(0,0,o_rain_system);
@@ -14,6 +30,8 @@ enum e_resolution {
 	android_1480,
 	size_
 }
+
+mana_target_lerp = 0;
 
 global.shop_yoffset = 20;
 

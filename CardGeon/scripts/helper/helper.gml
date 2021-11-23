@@ -97,6 +97,11 @@ function sleep(Milliseconds) {
 
 function draw_outline(sprite, index, xx, yy, xscale, yscale, angle, outline_color, alpha) {
 	
+	if !is_real(sprite){ 
+		exit;
+	}
+	
+	  
 	shader_set(sh_fill_with_image_blend);
 	draw_sprite_ext(sprite, index, xx+1,yy,xscale, yscale, angle, outline_color, alpha);
 	draw_sprite_ext(sprite, index, xx-1,yy,xscale, yscale, angle, outline_color, alpha);

@@ -6,17 +6,14 @@ varying vec4 v_vColour;
 
 uniform float time;
 uniform vec2 texel;
-//const float speed = 0.001;
-//const float amplitude = 0.001;
-//const float frequency = 359.;
+
 uniform float speed;
 uniform float amplitude;
 uniform float frequency;
-uniform int left;
 
-
-
-
+//const float speed = 0.001;
+//const float amplitude = 0.001;
+//const float frequency = 359.;
 
 void main()
 {

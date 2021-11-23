@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 0.07,
+  "volume": 1.0,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -10,8 +10,8 @@
     "name": "audiogroup_sfx",
     "path": "audiogroups/audiogroup_sfx",
   },
-  "soundFile": "sfx_coco_overworld_move_2.wav",
-  "duration": 1.81534,
+  "soundFile": "sfx_coco_overworld_move_2.ogg",
+  "duration": 1.810333,
   "parent": {
     "name": "Coco Move",
     "path": "folders/Audio/SFX/Overworld/Coco Move.yy",

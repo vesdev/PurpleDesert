@@ -228,7 +228,7 @@ buff = {
 
 
 		//special enemy buffs
-		horror_timepiece:  new struct_buff(0,0, s_status_horror_timepiece,"HORROR TIMEPIECE", function(amount) { return"AFTER PLAYING [c_gum]"+string(amount)+"[] CARDS, [c_gum]NEGATE[] THAT CARD AND [c_gum]END[] YOUR TURN."}),
+		horror_timepiece:  new struct_buff(0,BAD, 0, s_status_horror_timepiece,"HORROR TIMEPIECE", function(amount) { return"AFTER PLAYING [c_gum]"+string(amount)+"[] CARDS, [c_gum]NEGATE[] THAT CARD AND [c_gum]END[] YOUR TURN."}),
 //		defense :						[ 0, "RESILIENCE", function(amount) { return "INCREASE ARMOR BY [c_lime]"+string(amount)+"[]"}],
 //		magic_armor  :			[ 0, "MAGIC ARMOR", function(amount) { return "NEGATE  [c_lime]"+string(amount)+"[] DEBUFFS"}],
 //		roll_dodge :					[ 0, "ROLL DODGE" ,function(amount) { return "PREVENT THE NEXT "+string(amount)+"[] TIME YOU LOSE HEALTH"}],
@@ -1885,7 +1885,7 @@ function draw_card_matrix(struct, xx, yy, xscale, yscale, angle, xrot, yrot, car
 
 
 function draw_card_matrix_contents(struct, card_border_struct ) {
-
+	if live_call(struct, card_border_struct) return live_result;
 
 		if card_border_struct == noone || !card_border_struct  {
 			exit;
@@ -2001,24 +2001,30 @@ function draw_card_matrix_contents(struct, card_border_struct ) {
 	var descy = desc_box_height-30;
 	draw_set_color(c_white);
 
+	/*
 	desc.blend(c_black,1).draw(descx-1*scale,descy);
 	desc.draw(descx-1*scale,descy);
 	desc.draw(descx+1*scale,descy);
 	desc.draw(descx,descy-1*scale);
 	desc.draw(descx,descy+1*scale);
 	desc.draw(descx+2*scale,descy+2*scale);
-	desc.draw(descx+2*scale,descy+1*scale);
+	*/
+	//desc.draw(descx+2*scale,descy+1*scale);
 		
-		
+	/*	
 	title.blend(c_black, 1).draw(titlex-1*scaletitle,titley);
 	title.draw(titlex+1*scaletitle,titley);
 	title.draw(titlex,titley-1*scaletitle);
 	title.draw(titlex,titley+1*scaletitle);
 	title.draw(titlex+2*scaletitle,titley+2*scaletitle);
+	
 	title.draw(titlex+2*scaletitle,titley+1*scaletitle);
 
-	title.blend(c_black, 1).blend(title_color, 1).draw(titlex,titley);
-	desc.wrap(300*border_scale).blend(c_white, 1).draw(descx,descy);
+	title.blend(c_black, 1).
+	
+	*/
+	title.blend(title_color, 1).draw(titlex,titley);
+	desc.wrap(300*border_scale).draw(descx,descy);
 	title.draw(titlex,titley);
 	desc.draw(descx,descy);
 		

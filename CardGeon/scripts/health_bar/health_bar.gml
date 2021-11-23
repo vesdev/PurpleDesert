@@ -1,6 +1,9 @@
 // Script assets have changed for v2.3.0 see
 function draw_health_bar(xx,yy,struct, potential_damage){
 
+	if live_call(xx,yy,struct, potential_damage) return live_result;
+
+
 
 
 if !no_discover_effects() and !discover_queue.hide {
@@ -8,7 +11,7 @@ if !no_discover_effects() and !discover_queue.hide {
 }
 
 var heart_name = images;
-draw_set_font(font_health_number);
+draw_set_font(font_health_number_white);
 xx += xoffgame;
 yy += yoffgame;
 
@@ -211,12 +214,12 @@ if current_turn != e_current_turn.player_ {
 		
 	if original_potential_damage != 0 { 
 		
-		draw_set_halign(fa_right);
-		draw_outline_thick(sprite_,0,armor_x,armor_y,size,size,angle*360,c_yellow,1);
-		draw_outline(sprite_,0,armor_x,armor_y,size,size,angle*360,C_DARK,1);
+	//	draw_set_halign(fa_right);
+	//	draw_outline_thick(sprite_,0,armor_x,armor_y,size,size,angle*360,c_yellow,1);
+	//	draw_outline(sprite_,0,armor_x,armor_y,size,size,angle*360,C_DARK,1);
 			back_text_color = C_YELLOW;
-			text_color = C_DARK;
-		text_outline_thick(armor_x,armor_y+shield_y_offset,armor_string_,C_DARK	);
+			text_color = C_GUM;
+	//	text_outline_thick(armor_x,armor_y+shield_y_offset,armor_string_,C_DARK	);
 
 	}
 		draw_sprite_ext(sprite_,0,armor_x,armor_y,size,size,angle*360,color,1);
@@ -224,20 +227,35 @@ if current_turn != e_current_turn.player_ {
 
 
 
-	draw_set_font(font_damage_number);
 
 	draw_set_halign(fa_center);
 		if struct.armor_ui_timer <= time*.1 {
-	draw_outline(s_status_armor,0,armor_x,armor_y,size,size,angle*360,color,1);
+			draw_outline(s_status_armor,0,armor_x,armor_y,size,size,angle*360,color,1);
 	}
 	
 	//text_outline_thick(xx-1-6,yy-2+shield_y_offset,string(struct.armor),back_text_color)
 	//draw_text(armor_x,yy-2+shield_y_offset,armor_string_);
 ///////////////////
-	draw_text_outline(armor_x,armor_y+shield_y_offset,armor_string_,back_text_color)
+
+	draw_text_outline(armor_x-1,armor_y+shield_y_offset,armor_string_,back_text_color)
+	draw_text_outline(armor_x+1,armor_y+shield_y_offset,armor_string_,back_text_color)
+	draw_text_outline(armor_x,  armor_y-1+shield_y_offset,armor_string_,back_text_color)
+	draw_text_outline(armor_x,  armor_y+1+shield_y_offset,armor_string_,back_text_color)
+
+	draw_text_outline(armor_x+1-1,armor_y+1+shield_y_offset,armor_string_,back_text_color)
+	draw_text_outline(armor_x+1+1,armor_y+1+shield_y_offset,armor_string_,back_text_color)
+	draw_text_outline(armor_x+1,  armor_y+1-1+shield_y_offset,armor_string_,back_text_color)
+	draw_text_outline(armor_x+1,  armor_y+1+1+shield_y_offset,armor_string_,back_text_color)
+
+
+
+
+	draw_text_outline(armor_x+1,armor_y+shield_y_offset+1,armor_string_,c_black)
+
+	draw_text_outline(armor_x,armor_y+shield_y_offset,armor_string_,c_black)
 	draw_set_color(text_color);
 	draw_text(armor_x,armor_y+shield_y_offset,armor_string_);
-	draw_set_font(f_vhs);
+	
 	}
 	
 	
@@ -393,7 +411,6 @@ if current_turn != e_current_turn.player_ {
 		y_ -= 10;
 		//draw_outline(s_larger_shield,0,x_-10,_t_sprite,1,1,0,c_black,1);
 		//draw_sprite_ext(s_larger_shield,0,x_-12,_t_sprite,1,1,0,C_BLUE,1);
-		draw_set_font(font_health_number_white);
 		
 		//draw_text(x_-12,y_,string(player.armor))
 	
@@ -404,7 +421,7 @@ if current_turn != e_current_turn.player_ {
 			draw_text_outline(x_,y_,string(total_intent_enemy_damage), c_black)
 			draw_text(x_,y_,string(total_intent_enemy_damage))
 		}
-		draw_set_font(f_vhs);
+	
 		draw_set_color(c_white);
 		draw_set_halign(fa_left)
 		//draw_rectangle(_l-10,_t-20,_r,_b+10,1)
@@ -434,7 +451,7 @@ if current_turn != e_current_turn.player_ {
 	draw_set_color(c_white);	
 }	
 var hp_y = yy - camera.height*.02;
-	var output_string_scribble = string(max(0,round(struct.hp*struct.potential_health_lerp)))+"[][c_white]/"+string(struct.hp_max);
+	var output_string_scribble = string(max(0,round(struct.hp*struct.potential_health_lerp)))+"[s_font_boon][c_white]/"+string(struct.hp_max);
 
 
 
@@ -469,6 +486,6 @@ var hp_y = yy - camera.height*.02;
 
 	
 	
-draw_set_font(font_boon);		
+	draw_set_font(font_boon);	
 }
 

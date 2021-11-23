@@ -400,7 +400,7 @@ var col = c_grey;
 											//see if we are targeting the right rectangle here
 											//draw_rectangle(x1, y1, x1+w, y1+h,false);
 											//go_to_battle = true;
-											
+										
 											
 											nine_slice_on_grid(s_nine_slice_map_border,x1, y1, x1+w, y1+h,1,c_lime);
 											other_struct.set_enemies_and_spoils();

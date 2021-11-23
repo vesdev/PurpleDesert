@@ -227,7 +227,7 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 			
 			
 			if number_struct.intro_timer = 1 {
-				var snd_ = sfx_deal_damage;
+				var snd_ = sfx_percussive_hit;
 				
 				if struct = player { 
 					snd_ = sfx_player_took_damage;	
@@ -241,9 +241,14 @@ var dir_ = point_direction(  xlen+x+xoffset+xoff_,ylen+y+z+yoffset  ,x+xoffset,y
 				
 				if is_a_crit{ 
 					o_game.meatball_str.timer = 0;	
-					snd_ = sfx_deal_damage_crit;
+					audio_stop_sound(sfx_power_chord );
+					audio_stop_sound(sfx_orchestral_impact );
+					audio_play( sfx_power_chord );	
+					audio_play( sfx_orchestral_impact );	
+					
+					//snd_ = sfx_deal_damage_crit;
 				}
-				audio_stop_sound(sfx_deal_damage );
+				audio_stop_sound(sfx_percussive_hit );
 				audio_stop_sound(sfx_player_took_damage );
 				audio_stop_sound(sfx_block_damage );
 				audio_stop_sound(sfx_deal_damage_crit );

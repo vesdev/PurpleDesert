@@ -1,4 +1,7 @@
 /// @description 
+
+
+/*I
 o_audio.sketch1.SetTrackGain(e_song_sketch.midsection_strings_without_fx,0,FADE_TIME);
 o_audio.sketch1.SetTrackGain(e_song_sketch.drums_without_fx				,0,FADE_TIME);
 

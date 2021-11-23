@@ -5,6 +5,12 @@
 function scribble_add_colors(){
 
 	//Duplicate GM's native colour constants in string form for access in scribble_draw()
+var bright_yellow = make_color_rgb(253,210,97);
+var dark_yellow = make_color_rgb(139,71,92);
+	global.__scribble_colours[? "energy_yellow_bright"   ] = bright_yellow;
+	global.__scribble_colours[? "energy_yellow_dark"  ]    = dark_yellow;
+
+
 	global.__scribble_colours[? "c_aqua"   ] = C_AQUA;
 	global.__scribble_colours[? "c_black"  ] = c_black;
 	global.__scribble_colours[? "c_blue"   ] = C_BLUE;

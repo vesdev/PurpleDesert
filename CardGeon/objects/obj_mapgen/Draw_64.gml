@@ -39,6 +39,11 @@ var new_zoom = -old_zoom*.5;
 
 
 if curtain_timer <= curtain_time { 
+	
+	if curtain_timer = SEC*.1{ 
+			audio_play(sfx_portal_open);
+	}
+	
 	synth_wave.xscale = easings(e_ease.easeoutback,0,2,curtain_time*.5,curtain_timer);
 	curtain_xoffset = easings(e_ease.easeoutexpo,-gui_width,gui_width*1.3,curtain_time,curtain_timer);
 	curtain_timer++;

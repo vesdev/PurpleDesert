@@ -1,6 +1,8 @@
 
 //camera stuff
 
+zoom = 1;
+
 var aspect = 16/9; //widescreen 1.777778 1920 / 1080 
 w = 960;
 h = w/aspect;

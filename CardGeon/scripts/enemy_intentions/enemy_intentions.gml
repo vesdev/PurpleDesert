@@ -1,6 +1,10 @@
 // Script assets have changed for v2.3.0 
 
 function draw_enemy_intention(xx,yy, construct, sprite_only){
+	
+		if live_call(xx,yy, construct, sprite_only) return live_result;
+
+	
 		//don't show the attacking sprite
 		if current_turn = e_current_turn.enemy_ and construct.finished_attacking exit;
 

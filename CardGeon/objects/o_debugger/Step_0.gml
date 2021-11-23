@@ -9,5 +9,4 @@ x += 1;
 }else{
 		room_goto(r_menu);
 		instance_destroy();
-	
 }

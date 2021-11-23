@@ -7,10 +7,12 @@ ds_list_clear(hand);
 ds_list_clear(discard);
 ds_list_clear(exhaust);
 //1add_card_for_run(deck, e_card.coco_coupe_de_grace);
-	
+
 repeat(5) {
+//	add_card_for_run(deck , e_card.coco_token_summoning);
+//	add_card_for_run(deck , e_card.coco_token_salmon);
 	add_card_for_run(deck , e_card.coco_default_attack);
-	add_card_for_run(deck , e_card.coco_default_armor);	
+	add_card_for_run(deck , e_card.coco_default_armor);
 }
 
 

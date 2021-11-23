@@ -123,6 +123,11 @@ function add_token(token_enum) {
 	
 	audio_stop_sound(sfx_spawn_a_new_token);
 	audio_play(sfx_spawn_a_new_token);
+	
+	if player.buff.token_summoning_restores_mana.amount > 0 { 
+		change_mana(player.buff.token_summoning_restores_mana.amount,false);
+	}
+	
 	var returned_token = token_struct(token_enum);
 	
 		if returned_token != noone {
