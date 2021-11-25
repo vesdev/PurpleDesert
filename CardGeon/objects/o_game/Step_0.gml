@@ -1,4 +1,9 @@
 /// @description Insert description here
+if live_call() return live_result;
+
+
+
+
 
 
 if card_draw_sounds.enable {

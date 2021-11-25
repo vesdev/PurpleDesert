@@ -7,7 +7,7 @@ scribble_font_bake_outline("f_round", "outline_default", 1,  4, c_black, false);
 
 var _font_string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.abcdefghijklmnopqrstuvwxyz1234567890<>,!¡':-+%*?¿()/@=_АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюяÑÜ{};\"ÁÂÃÀÇÉÊÍÓÔÕÚáâãàçéêíóôõúúåÅäÄöÖΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩΆΈΎΌΉΏαβγδεζηθικλμνξοπρστυφχψωάέύίόήώ\\È$ÄÖÜäöüß`";
 scribble_font_add_from_sprite("s_font_boon", _font_string, 1, 4);
-scribble_font_add_from_sprite("s_font_boon_outline", _font_string, -2, 6);
+scribble_font_add_from_sprite("s_font_boon_outline", _font_string, -1, 5);
 
 
 scribble_font_add_from_sprite("s_font_boon_sunset", _font_string, 1, 4);

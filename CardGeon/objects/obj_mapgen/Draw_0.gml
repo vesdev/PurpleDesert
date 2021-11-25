@@ -1,3 +1,18 @@
+if live_call() return live_result;
+
+
+if mouse_check_button_pressed(mb_right){
+	
+
+	
+	for(var i=0; i<ds_list_size(room_list); i++) {
+		var this_room = ds_list_find_value(room_list, i);
+				
+			this_room.type = e_room_type.rest_site;
+		}
+}
+
+
 
 battle_transition_timer--;
 
@@ -223,7 +238,8 @@ if !selecting_card_upgrade{
 	nine_slice(s_nine_slice_hp_border,bbox_eat.x0-xmargin,bbox_eat.y0-ymargin,bbox_eat.x3+xmargin,bbox_eat.y3+ymargin,1,eat_color);
 	nine_slice(s_nine_slice_default,bbox_or.x0-xmargin,bbox_or.y0-ymargin,bbox_or.x3+xmargin,bbox_or.y3+ymargin,1,c_white);
 	nine_slice(s_nine_slice_default,bbox_later.x0-xmargin,bbox_later.y0-ymargin,bbox_later.x3+xmargin,bbox_later.y3+ymargin,1,c_white);
-	
+
+	//back button
 	if boon_collision(bbox_later.x0-xmargin,bbox_later.y0-ymargin,bbox_later.x3+xmargin,bbox_later.y3+ymargin, MX,MY) {
 		nine_slice(s_nine_slice_hp_border,bbox_later.x0-xmargin,bbox_later.y0-ymargin,bbox_later.x3+xmargin,bbox_later.y3+ymargin,1,c_yellow);
 	
@@ -243,9 +259,15 @@ var upgrade_color = C_GRAY;
 		col = merge_color(C_DARK,c_white,.01);
 		upgrade_color = C_LIME;
 		if o_game.m1_pressed { 
+			
+
+			
 			selecting_card_upgrade = true;	
 			o_game.upgrade_card_select.enable = false;
 			cam.zoom = 2;
+			
+			update_upgraded_card_colors();
+			
 				//event_struct = noone;
 				//enable_event = false;
 				//standing_on.type = e_room_type.empty_room;

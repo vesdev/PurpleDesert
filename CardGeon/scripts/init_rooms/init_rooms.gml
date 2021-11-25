@@ -31,8 +31,8 @@ var by = (boss_room.y1+boss_room.y2)/2;
 if(other_room_index > i) {
 	var other_room = ds_list_find_value(room_list, other_room_index);	
 			if ds_map_size(other_room.links) = 1 and boss_room_reposition = false  { 
-						other_room.type = e_room_type.boss_room;
-						boss_room.type = e_room_type.default_encounter;
+					//	other_room.type = e_room_type.boss_room;
+						//boss_room.type = e_room_type.default_encounter;
 						boss_room_index = other_room_index;
 						draw_sprite(s_idle_fat_tony,0,UNIT*(other_room.x1+other_room.x2)/2, UNIT*(other_room.y1+other_room.y2)/2 );
 						boss_room_reposition = true;
@@ -416,6 +416,9 @@ for(var i=0; i<ds_list_size(room_list); i++) {
 		var links = (start_room.links);
 		var other_room_index = -1;
 		for(var j=0; j<ds_map_size(links); j++) {
+			
+			this_room.type = e_room_type.rest_site;
+			
 			if(other_room_index == -1) {
 				other_room_index = ds_map_find_first(links);
 			}else {

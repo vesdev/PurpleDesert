@@ -101,6 +101,35 @@ function armor_string(armor) {
 	var color = "[c_yellow]";
 	var original_armor = armor;
 	
+	if player.buff.armor_reduction.amount > 0 { 
+		armor *= o_game.buff_multipliers.armor_reduction;
+	}
+	armor += player.buff.endurance.amount;
+	
+	
+	armor = round(armor);
+	//check player attack 
+	
+	//check enemy debuffs
+	
+	if armor > original_armor{ 
+		
+		color = "[c_lime]";
+		
+	}else if armor < original_armor{
+		
+		color = "[c_gum]";
+		
+	}
+	return color+string(armor)+"[][s_text_armor]";	
+	
+}
+
+
+function armor_string_upgrade(armor) { 
+	//armor string upgrade changes the color of the shop to GREEN when comparing upgrades
+	var color = "[c_yellow]";
+	var original_armor = armor;
 	
 	if player.buff.armor_reduction.amount > 0 { 
 		armor *= o_game.buff_multipliers.armor_reduction;
@@ -122,7 +151,12 @@ function armor_string(armor) {
 		color = "[c_gum]";
 		
 	}
-	return color+string(armor)+"[]";	
+	
+	if (obj_mapgen.selecting_card_upgrade && o_game.upgrade_card_select.enable)  { 
+		color = "[c_lime]";	
+	}
+	
+	return color+string(armor)+"[][s_text_armor]";	
 	
 }
 
@@ -151,7 +185,34 @@ if damage > original_damage{
 	}else if damage < original_damage{
 		color = "[c_gum]";
 	}
-	return color+string(damage)+"[]";	
+	return color+string(damage)+"[][s_text_damage]";	
+}
+
+function damage_string_upgrade(damage) { 
+	var color = "[c_yellow]";
+	var original_damage = damage;
+	//check player attack
+	//check enemy buffs
+	var creator = player;
+	var target = noone; 
+
+	//add target
+	if is_array(attack_target) and array_length(active_enemies) > 0 and array_length(attack_target) = 1 { 
+			target = active_enemies[@ attack_target[0]];
+	}	
+	damage =  check_damage(creator, target, damage);
+
+if damage > original_damage{ 
+		color = "[c_lime]";
+	}else if damage < original_damage{
+		color = "[c_gum]";
+	}
+	
+	if (obj_mapgen.selecting_card_upgrade && o_game.upgrade_card_select.enable)  { 
+		color = "[c_lime]";	
+	}
+	
+	return color+string(damage)+"[][s_text_damage]";	
 }
 
 

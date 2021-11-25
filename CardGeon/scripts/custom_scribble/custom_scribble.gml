@@ -11,6 +11,8 @@ var dark_yellow = make_color_rgb(139,71,92);
 	global.__scribble_colours[? "energy_yellow_dark"  ]    = dark_yellow;
 
 
+	global.__scribble_colours[? "c_change"   ] = make_color_rgb(255,255,255);
+
 	global.__scribble_colours[? "c_aqua"   ] = C_AQUA;
 	global.__scribble_colours[? "c_black"  ] = c_black;
 	global.__scribble_colours[? "c_blue"   ] = C_BLUE;

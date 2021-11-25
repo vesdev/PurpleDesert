@@ -267,7 +267,7 @@ switch card_enum {
 		
 		case e_card.coco_default_attack: 
 								card_ = new card("STRIKE",
-											function(){ return "DO "+damage_string(20)+" DAMAGE"; },
+											function(){ return damage_string(20); },
 											10,
 											new card_struct_attack_single(20), //first is the script, second value is the argument for the script
 											noone, e_card_type.red, e_card.coco_up1_default_attack);					
@@ -275,7 +275,7 @@ switch card_enum {
 	
 		case e_card.coco_up1_default_attack: 
 						card_ = new card("STRIKE+",
-									function(){ return "DO "+damage_string(30)+" DAMAGE"; },
+									function(){ return damage_string_upgrade(30); },
 									10,
 									new card_struct_attack_single(30), //first is the script, second value is the argument for the script
 									noone, e_card_type.red, noone);					
@@ -283,7 +283,7 @@ switch card_enum {
 
 		case e_card.coco_default_armor: card_ = new card("ARMOR UP",
 								function()  {
-									return armor_string(20)+" ARMOR"
+									return armor_string(20)
 								}	, 10,
 								 new card_struct_armor_player(20) ,
 								noone, e_card_type.strat,e_card.coco_up1_default_armor);				
@@ -291,25 +291,26 @@ switch card_enum {
 		
 		case e_card.coco_up1_default_armor: card_ = new card("ARMOR UP+",
 								function(){
-									return armor_string(30)+" ARMOR"
+									return armor_string_upgrade(30)
 								}	, 10,
 								 new card_struct_armor_player(30),
 								noone, e_card_type.strat,noone);
 		break;
 			/////////////////
-		case e_card.coco_curl_up: card_ = new card_condition("DEFENSE CURL",
+		case e_card.coco_curl_up: card_ = new card_condition("MOM! PICK ME UP IM SCARED!",
 			function()  {
-				return armor_string(30)+" ARMOR. IF YOU HAVE [c_pink]40 ARMOR:[] CHOOSE [c_lime]1[] TOKEN."
+				return armor_string(30)+" IF YOU HAVE [c_pink]40 [s_text_armor]:[] CHOOSE 1 TOKEN."
 			}	, 10,
 			new card_struct_armor_player(30),
 			[new card_struct_armor_player(30),
 			new card_struct_discover_token(false)] //false or noone will allow you to find random tokens from the list 
 			,[keywords.token, keywords.choose_], conditions.have_40_armor , e_card_type.strat, e_card.coco_up1_curl_up);				
 			break;
-			
-		case e_card.coco_up1_curl_up: card_ = new card_condition("DEFENSE CURL+",
+	
+	
+		case e_card.coco_up1_curl_up: card_ = new card_condition("MOM! PICK ME UP IM SCARED+",
 			function()  {
-				return armor_string(30)+" ARMOR. IF YOU HAVE [c_pink]40 ARMOR:[] CHOOSE [c_lime]2[] TOKENS."
+				return armor_string(30)+". IF YOU HAVE [c_pink]40 [s_text_armor]:[] CHOOSE [c_change]2[] TOKENS."
 			}	, 10,
 			new card_struct_armor_player(30),
 			[new card_struct_armor_player(30),
@@ -321,7 +322,7 @@ switch card_enum {
 		case e_card.coco_bubble_shield :
 		card_ = new card("BUBBLE SHIELD",
 					function()  {
-									return armor_string(30)+" ARMOR. "+get_string_card_amount(1);
+									return armor_string(30)+" "+get_string_card_amount(1);
 								}	, 10,
 								 [
 								 new card_struct_armor_player(30),
@@ -338,7 +339,7 @@ switch card_enum {
 		
 		card_ = new card("BUBBLE SHIELD+",
 					function()  {
-									return armor_string(40)+" ARMOR. "+get_string_card_amount(2);
+									return armor_string_upgrade(40)+" "+get_string_card_amount(2,upgrade);
 								}	, 10,
 								 [
 								 new card_struct_armor_player(40),
@@ -350,7 +351,7 @@ switch card_enum {
 		case e_card.coco_lucky_helmet :
 				card_ = new card_condition("LUCKY HELMET",
 							function()  {
-											return armor_string(40)+" ARMOR. IF YOU DEALT A [c_pink]CRIT THIS TURN[] GET [c_lime]+2[] [s_keyword_endurance] "+keywords.endurance.title;
+											return armor_string(40)+". IF YOU DEALT A [c_pink]CRIT THIS TURN[] GET [c_lime]+2[] [s_keyword_endurance] "+keywords.endurance.title;
 										}	,20,
 										 new card_struct_armor_player(50),
 										 [ new card_struct_armor_player(50),
@@ -363,7 +364,7 @@ switch card_enum {
 		case e_card.coco_up1_lucky_helmet :
 				card_ = new card_condition("LUCKY HELMET+",
 							function()  {
-											return armor_string(40)+" ARMOR. IF YOU DEALT A [c_pink]CRIT THIS TURN[] GET [c_lime]+5[] [s_keyword_endurance] +"+keywords.endurance.title;
+											return armor_string(40)+". IF YOU DEALT A [c_pink]CRIT THIS TURN[] GET [c_lime]+5[] [s_keyword_endurance] +"+keywords.endurance.title;
 										}	, 20,
 										 new card_struct_armor_player(50),								 
 										 [ new card_struct_armor_player(50),
@@ -376,7 +377,7 @@ switch card_enum {
 		case e_card.coco_sucker_punch:
 				card_ = new card_condition("SUCKER PUNCH",
 							function()  {
-											return "DO "+damage_string(30)+" DAMAGE.  IF YOU DEALT A [c_pink]CRIT THIS TURN[] RESTORE [c_lime]+10[] [c_yellow][s_electricity_small] ENERGY";
+											return damage_string(30)+"  IF YOU DEALT A [c_pink]CRIT THIS TURN[] RESTORE [c_lime]+10[] [c_yellow][s_electricity_small] ENERGY";
 										}	,10,
 										 new card_struct_attack_single(30),
 										 [ new card_struct_attack_single(30),
@@ -389,7 +390,7 @@ switch card_enum {
 		case e_card.coco_up1_sucker_punch:
 				card_ = new card_condition("SUCKER PUNCH+",
 							function()  {
-											return "DO "+damage_string(30)+" DAMAGE.  IF YOU DEALT A [c_pink]CRIT THIS TURN[] RESTORE [c_lime]+20[] [c_yellow][s_electricity_small] ENERGY";
+											return damage_string(30)+"  IF YOU DEALT A [c_pink]CRIT THIS TURN[] RESTORE [c_lime]+20[] [c_yellow][s_electricity_small] ENERGY";
 										}	,10,
 										 new card_struct_attack_single(30),
 										 [ new card_struct_attack_single(30),
@@ -403,7 +404,7 @@ switch card_enum {
 		case e_card.coco_starter_kit :
 		card_ = new card("STARTER KIT",
 					function()  {
-									return armor_string(40)+" ARMOR. ADD [c_lime]2[] [s_keyword_wimpy] [c_yellow]WIMPY PUNCHES[]";
+									return armor_string(40)+" ADD [c_lime]2[] [s_keyword_wimpy] [c_yellow]WIMPY PUNCHES[]";
 								}	, 15,
 								 [
 									new card_struct_armor_player(40),
@@ -416,7 +417,7 @@ switch card_enum {
 		case e_card.coco_up1_starter_kit :
 		card_ = new card("STARTER KIT+",
 					function()  {
-									return armor_string(50)+" ARMOR. ADD [c_lime]3[] [s_keyword_wimpy] [c_yellow]WIMPY PUNCHES[]";
+									return armor_string(50)+" ADD [c_lime]3[] [s_keyword_wimpy] [c_yellow]WIMPY PUNCHES[]";
 								}	, 15,
 								 [
 									new card_struct_armor_player(50),
@@ -430,7 +431,7 @@ switch card_enum {
 		case e_card.coco_rocket_punch:
 		card_ = new card("ROCKET PUNCH",
 					function()  {
-									return "DO "+damage_string(20)+" DAMAGE. "+get_string_card_amount(1);
+									return damage_string(20)+" "+get_string_card_amount(1);
 								}	, 10,
 								 [
 								 new card_struct_attack_single(20),
@@ -447,7 +448,7 @@ switch card_enum {
 		
 		card_ = new card("ROCKET PUNCH+",
 								function()  {
-									return "DO "+damage_string(25)+" DAMAGE. "+get_string_card_amount(2);
+									return damage_string(25)+" "+get_string_card_amount(2);
 								}	, 10,
 								 [
 								 new card_struct_attack_single(25),
@@ -458,7 +459,7 @@ switch card_enum {
 
 		case e_card.coco_spin: card_ = new card("SPIN",
 			function()  {
-				return "DO "+damage_string(20)+" DAMAGE. TO [c_lime]ALL[] ENEMIES";
+				return damage_string(20)+" TO [c_lime]ALL[] ENEMIES";
 			}	, 10,		
 			new card_struct_attack_all(20),
 			noone , e_card_type.red, e_card.coco_up1_spin);
@@ -467,7 +468,7 @@ switch card_enum {
 		
 		case e_card.coco_up1_spin: card_ = new card("SPIN+",
 			function()  {
-				return "DO "+damage_string(30)+" DAMAGE. TO [c_lime]ALL[] ENEMIES";
+				return damage_string(30)+" TO [c_lime]ALL[] ENEMIES";
 			}	, 10,		
 			new card_struct_attack_all(30),
 			noone , e_card_type.red, noone);
@@ -476,7 +477,7 @@ switch card_enum {
 
 		case e_card.coco_iron_punch: card_ = new card("IRON PUNCH",
 			function()  {
-				return "DO "+damage_string(20)+" DAMAGE. "+armor_string(20)+" ARMOR.";
+				return damage_string(20)+" "+armor_string(20);
 			}	, 10,
 			[new card_struct_attack_single(20)  ,  new card_struct_armor_player(20)],
 			noone, e_card_type.red, e_card.coco_up1_iron_punch);
@@ -484,7 +485,7 @@ switch card_enum {
 		
 		case e_card.coco_up1_iron_punch: card_ = new card("IRON PUNCH+",
 				function()  {
-					return "DO "+damage_string(25)+" DAMAGE. "+armor_string(25)+" ARMOR.";
+					return damage_string(25)+" "+armor_string(25);
 				}	, 10,
 				[new card_struct_attack_single(25)  ,  new card_struct_armor_player(25)],
 				noone, e_card_type.red, noone);
@@ -525,14 +526,14 @@ switch card_enum {
 		
 		case e_card.coco_nut_kick: card_ = new card("GROIN KICK",
 				function()  {
-					return "DO "+damage_string(30)+" DAMAGE.\nAPPLY "+get_debuff_turns(all_buffs.fragile, 2)+" [s_status_def_down] "+string(keywords.fragile.title)+".";}, 20,
+					return damage_string(30)+" APPLY "+get_debuff_turns(all_buffs.fragile, 2)+" [s_status_def_down] "+string(keywords.fragile.title)+".";}, 20,
 				[new card_struct_attack_single(30) , new card_struct_buff_enemy(all_buffs.fragile, 2)], 
 				[keywords.fragile] , e_card_type.red, e_card.coco_up1_nut_kick
 				);
 		break;
 				case e_card.coco_up1_nut_kick: card_ = new card("GROIN KICK+",
 					function()  {
-							return "DO "+damage_string(30)+" DAMAGE.\nAPPLY "+get_debuff_turns(all_buffs.fragile, 3)+" [s_status_def_down] "+string(keywords.fragile.title)+".";}, 20,
+							return damage_string(30)+" APPLY "+get_debuff_turns(all_buffs.fragile, 3)+" [s_status_def_down] "+string(keywords.fragile.title)+".";}, 20,
 					[new card_struct_attack_single(30) , new card_struct_buff_enemy(all_buffs.fragile, 3)], 
 					[keywords.fragile] , e_card_type.red, noone
 					);
@@ -540,7 +541,7 @@ switch card_enum {
 
 		case e_card.coco_boomerang: card_ = new card("BOOMERANG",
 				function()  {
-					return "DO "+damage_string(20)+" DAMAGE [c_lime]"+get_x_times_string(2)+"[] TIMES TO [c_lime]ALL[] FOES.";
+					return damage_string(20)+" [c_lime]"+get_x_times_string(2)+"[] TIMES TO [c_lime]ALL[] FOES.";
 				}	, 30,
 				[new card_struct_attack_all(20), new card_struct_attack_all(20)],
 				noone , e_card_type.red, e_card.coco_up1_boomerang );
@@ -548,7 +549,7 @@ switch card_enum {
 		
 				case e_card.coco_up1_boomerang: card_ = new card("BOOMERANG+",
 						function()  {
-							return "DO "+damage_string(20)+" DAMAGE [c_lime]"+get_x_times_string(2)+"[] TIMES TO [c_lime]ALL[] FOES.";
+							return damage_string(20)+" [c_lime]"+get_x_times_string(2)+"[] TIMES TO [c_lime]ALL[] FOES.";
 						}	, 20,
 						[new card_struct_attack_all(20), new card_struct_attack_all(20)],
 						noone , e_card_type.red, noone);
@@ -556,7 +557,7 @@ switch card_enum {
 		
 		case e_card.coco_pebble_throw: card_ = new card("PEBBLE THROW",
 				function()  {
-					return "DO "+damage_string(2)+" DAMAGE [c_lime] X"+get_x_times_string(5)+"[] TIMES.";
+					return damage_string(2)+" [c_lime] X"+get_x_times_string(5)+"[] TIMES.";
 				}	, 10,[
 				new card_struct_attack_single(2), 
 				new card_struct_attack_single(2), 
@@ -569,7 +570,7 @@ switch card_enum {
 		
 		case e_card.coco_up1_pebble_throw: card_ = new card("PEBBLE THROW+",
 				function()  {
-					return "DO "+damage_string(2)+" DAMAGE [c_lime] X"+get_x_times_string(8)+"[] TIMES.";
+					return damage_string(2)+" [c_lime] X"+get_x_times_string(8)+"[] TIMES.";
 				}	, 10,[
 				new card_struct_attack_single(2), 
 				new card_struct_attack_single(2), 
@@ -586,7 +587,7 @@ switch card_enum {
 		
 				case e_card.coco_wimpy_pebble_throw: card_ = new card("WIMPY PEBBLE THROW",
 				function()  {
-					return "DO "+damage_string(2)+" DAMAGE [c_lime] X"+get_x_times_string(5)+"[] TIMES.";
+					return damage_string(2)+" [c_lime] X"+get_x_times_string(5)+"[] TIMES.";
 				}	, 10,[
 				new card_struct_attack_single(2), 
 				new card_struct_attack_single(2), 
@@ -599,7 +600,7 @@ switch card_enum {
 		
 		case e_card.coco_up1_wimpy_pebble_throw: card_ = new card("WIMPY PEBBLE THROW+",
 				function()  {
-					return "DO "+damage_string(2)+" DAMAGE [c_lime] X"+get_x_times_string(8)+"[] TIMES.";
+					return damage_string(2)+" [c_lime] X"+get_x_times_string(8)+"[] TIMES.";
 				}	, 10,[
 				new card_struct_attack_single(2), 
 				new card_struct_attack_single(2), 
@@ -770,7 +771,7 @@ switch card_enum {
 
 				case e_card.coco_wimpy_punch: card_ = new card("WIMPY PUNCH",
 					function()  {
-								return "DEAL "+damage_string(player.wimpy_punch_damage+player.wimpy_punch_add_damage)+" DAMAGE"}, 0,
+								return damage_string(player.wimpy_punch_damage+player.wimpy_punch_add_damage)}, 0,
 								new card_struct_attack_single(player.wimpy_punch_damage+player.wimpy_punch_add_damage) , 
 					[keywords.single_use , keywords.cant_crit] , e_card_type.red, noone
 				);
@@ -780,7 +781,7 @@ switch card_enum {
 		
 		case e_card.coco_reduce_hand_cost_and_armor: card_ = new card("WAX SCALES",
 			function()  {
-			return armor_string(20)+" ARMOR\nREDUCE THE COST OF YOUR HAND BY [c_lime]50%[]"}, 10,
+			return armor_string(20)+" REDUCE THE COST OF YOUR HAND BY [c_lime]50%[]"}, 10,
 			[new card_struct_reduce_cost_of(hand,.5, true) , new card_struct_armor_player(20)] ,  //.75 to reduce by 25%
 			[keywords.single_use], e_card_type.strat , e_card.coco_up1_reduce_hand_cost_and_armor
 		);
@@ -789,7 +790,7 @@ switch card_enum {
 		
 		case e_card.coco_up1_reduce_hand_cost_and_armor: card_ = new card("WAX SCALES+",
 			function()  {
-			return armor_string(20)+" ARMOR\nREDUCE THE COST OF YOUR HAND BY [c_lime]50%[]"}, 0,
+			return armor_string(20)+" REDUCE THE COST OF YOUR HAND BY [c_lime]50%[]"}, 0,
 			[new card_struct_reduce_cost_of(hand,.5, true) , new card_struct_armor_player(20)] , 
 			[keywords.single_use], e_card_type.strat, noone
 		);
@@ -797,7 +798,7 @@ switch card_enum {
 		
 		case e_card.coco_lucky_punch: card_ = new card("LUCKY PUNCH",
 			function()  {
-			 return "DO "+damage_string(15)+" DAMAGE"}, 10, 
+			 return damage_string(15)}, 10, 
 			 new card_struct_attack_single(15), 
 			 [keywords.lucky], e_card_type.red, e_card.coco_up1_lucky_punch
 		);
@@ -806,7 +807,7 @@ switch card_enum {
 
 		case e_card.coco_up1_lucky_punch: card_ = new card("LUCKY PUNCH+",
 			function()  {
-			 return "DO "+damage_string(25)+" DAMAGE"}, 10, 
+			 return damage_string(25)}, 10, 
 			 new card_struct_attack_single(25), 
 			 [keywords.lucky], e_card_type.red, noone);
 		break;	
@@ -883,7 +884,7 @@ switch card_enum {
 		case e_card.coco_genereate_broken_bottle: 
 			card_ = new card("BOTTLE",
 				function()  {
-				return "DEAL "+damage_string(10)+" DAMAGE. ADD A BROKEN BOTTLE TO YOUR [c_lime]DECK["},
+				return damage_string(10)+" ADD A BROKEN BOTTLE TO YOUR [c_lime]DECK["},
 				10,
 				[new card_struct_attack_single(10),
 				 new card_struct_generate_specific_card(e_card.coco_generated_broken_bottle,deck,1)				
@@ -895,7 +896,7 @@ switch card_enum {
 		case e_card.coco_up1_genereate_broken_bottle: 
 			card_ = new card("BOTTLE",
 				function()  {
-				return "DEAL "+damage_string(15)+" DAMAGE. ADD A BROKEN BOTTLE TO YOUR [c_lime]DECK["},
+				return damage_string(15)+" ADD A BROKEN BOTTLE TO YOUR [c_lime]DECK["},
 				10,
 				[new card_struct_attack_single(15),
 				 new card_struct_generate_specific_card(e_card.coco_up1_generated_broken_bottle,deck,1)				
@@ -905,21 +906,21 @@ switch card_enum {
 
 		case e_card.coco_generated_broken_bottle: card_ = new card("BROKEN BOTTLE",
 			function()  {
-			 return "DEAL "+damage_string(20)+" DAMAGE"}, 10, 
+			 return damage_string(20)}, 10, 
 			 new card_struct_attack_single(20), 
 			 [keywords.lucky], e_card_type.red, noone);
 		break;
 		
 		case e_card.coco_up1_generated_broken_bottle: card_ = new card("BROKEN BOTTLE",
 			function()  {
-			 return "DEAL "+damage_string(30)+" DAMAGE"}, 10, 
+			 return damage_string(30)}, 10, 
 			 new card_struct_attack_single(30), 
 			 [keywords.lucky], e_card_type.red, noone);
 		break;
 		
 		case e_card.coco_all_in:
 						card_ = new card("ALL IN",
-									function(){ return "DEAL "+damage_string(80)+" DAMAGE.\n[c_pink]ON CRIT:[] GET [c_yellow]+30[] ENERGY"; },
+									function(){ return damage_string(80)+" [c_pink]ON CRIT:[] GET [c_yellow]+30[] ENERGY"; },
 									30,
 									
 									[new card_struct_attack_single(80),
@@ -933,7 +934,7 @@ switch card_enum {
 
 		case e_card.coco_up1_all_in:
 						card_ = new card("ALL IN+",
-									function(){ return "DEAL "+damage_string(100)+" DAMAGE.\n[c_pink]ON CRIT:[] GET [c_yellow]+30[] ENERGY"; },
+									function(){ return damage_string(100)+" [c_pink]ON CRIT:[] GET [c_yellow]+30[] ENERGY"; },
 									30,
 									
 									[new card_struct_attack_single(100),
@@ -948,7 +949,7 @@ switch card_enum {
 		
 		card_ = new card_condition("WASABI", 
 					function()  {
-						return "[c_lime]+4[] [s_status_pow_remove_on_crit]. IF YOU HAVE AT LEAST [c_yellow]20[] [s_status_pow_remove_on_crit], GET [c_lime]+10[] INSTEAD";
+						return "+4 [s_status_pow_remove_on_crit]. IF YOU HAVE AT LEAST [c_yellow]20[] [s_status_pow_remove_on_crit], GET +10 INSTEAD";
 					}	, 10,
 					new  card_struct_buff(all_buffs.temp_attack, 4) ,//get this if we don't meet the condition
 					new card_struct_buff(all_buffs.temp_attack, 10)  ,//get this if we meet the condition
@@ -959,7 +960,7 @@ switch card_enum {
 		
 		card_ = new card_condition("WASABI+", 
 					function()  {
-						return "[c_lime]+6[] [s_status_pow_remove_on_crit]. IF YOU HAVE AT LEAST [c_yellow]20[] [s_status_pow_remove_on_crit], GET [c_lime]+15[] INSTEAD";
+						return "[c_change]+6[] [s_status_pow_remove_on_crit]. IF YOU HAVE AT LEAST [c_yellow]20[] [s_status_pow_remove_on_crit], GET [c_change]+15[] INSTEAD";
 					}	, 10,
 					new  card_struct_buff(all_buffs.temp_attack, 6) ,//get this if we don't meet the condition
 					new card_struct_buff( all_buffs.temp_attack, 15) ,//get this if we meet the condition
@@ -970,7 +971,7 @@ switch card_enum {
 	case e_card.coco_double_damage_on_crit: 
 				card_ = new card("BEAR PUNCH", 
 							function()  {
-								return "DEAL "+damage_string(30)+" DAMAGE. [c_pink]ON CRIT:[] DOUBLE ALL DAMAGE";
+								return damage_string(30)+" [c_pink]ON CRIT:[] DOUBLE ALL DAMAGE";
 							}	, 20,
 							new card_struct_attack_single_multiply_on_crit(30, 2),
 						noone, e_card_type.red , e_card.coco_up1_double_damage_on_crit);
@@ -980,7 +981,7 @@ switch card_enum {
 		
 		card_ = new card("BEAR PUNCH+", 
 					function()  {
-						return "DEAL "+damage_string(30)+" DAMAGE. [c_pink]ON CRIT:[] TRIPLE ALL DAMAGE";
+						return damage_string(30)+" [c_pink]ON CRIT:[] TRIPLE ALL DAMAGE";
 					}	, 20,
 					new card_struct_attack_single_multiply_on_crit(30, 3),
 				noone, e_card_type.red , noone);
@@ -989,7 +990,7 @@ switch card_enum {
 	case e_card.coco_ultra_armor: 
 			card_ = new card("ULTRA ARMOR", 
 							function()  {
-								return "GAIN "+armor_string(100)+" ARMOR.";
+								return armor_string(100);
 							}	, 20,
 							new card_struct_armor_player(100),
 						[keywords.single_use], e_card_type.strat , e_card.coco_up1_ultra_armor);
@@ -998,7 +999,7 @@ switch card_enum {
 	case e_card.coco_up1_ultra_armor: 
 			card_ = new card("ULTRA ARMOR", 
 							function()  {
-								return "GAIN "+armor_string(150)+" ARMOR.";
+								return armor_string(150);
 							}	, 20,
 							new card_struct_armor_player(150),
 						[keywords.single_use], e_card_type.strat , noone);
@@ -1007,7 +1008,7 @@ switch card_enum {
 	case e_card.coco_clingy_shield: 
 			card_ = new card("CLINGY ARMOR", 
 							function()  {
-								return "GAIN "+armor_string(40)+" ARMOR.";
+								return armor_string(40);
 							}	, 10,
 							new card_struct_armor_player(40),
 						[keywords.evaporate], e_card_type.strat , e_card.coco_up1_clingy_shield);
@@ -1017,7 +1018,7 @@ switch card_enum {
 	case e_card.coco_up1_clingy_shield: 
 			card_ = new card("CLINGY ARMOR+", 
 						function()  {
-							return "GAIN "+armor_string(50)+" ARMOR.";
+							return armor_string(50);
 						}	, 10,
 						new card_struct_armor_player(50),
 						[keywords.evaporate], e_card_type.strat ,noone);
@@ -1027,7 +1028,7 @@ switch card_enum {
 	case e_card.coco_powerup_punch: 
 			card_ = new card("POWER-UP PUNCH", 
 							function()  {
-								return "DEAL "+damage_string(10)+" DAMAGE. GET [c_lime]+4[] [s_status_pow_remove_on_crit]";
+								return damage_string(10)+" [c_lime]+4[] [s_status_pow_remove_on_crit]";
 							}	, 10,
 							[new card_struct_attack_single(10),
 							new card_struct_buff(all_buffs.temp_attack, 4)],
@@ -1037,7 +1038,7 @@ switch card_enum {
 	case e_card.coco_up1_powerup_punch: 
 			card_ = new card("POWER-UP PUNCH+", 
 							function()  {
-								return "DEAL "+damage_string(15)+" DAMAGE. GET [c_lime]+8[] [s_status_pow_remove_on_crit]";
+								return damage_string(15)+" [c_lime]+8[] [s_status_pow_remove_on_crit]";
 							}	, 10,
 							[new card_struct_attack_single(15),
 							new card_struct_buff(all_buffs.temp_attack, 8)],
@@ -1074,7 +1075,7 @@ switch card_enum {
 	case e_card.coco_coupe_de_grace: 
 				card_ = new card("COUP DE GRACE", 
 							function()  {
-								return damage_string(30)+" DAMAGE. [c_yellow]"+keywords.execute.title+":[] [c_lime]+5[] [s_heart_no_border] MAX HP. "+keywords.execute.title+" WITH [c_pink]CRIT:[] ALSO ADD [c_lime]+10%[] CRIT DAMAGE";
+								return damage_string(30)+" [c_yellow]"+keywords.execute.title+":[] [c_lime]+5[] [s_heart_no_border] MAX HP. "+keywords.execute.title+" WITH [c_pink]CRIT:[] ALSO ADD [c_lime]+10%[] CRIT DAMAGE";
 							}	, 10,
 							new card_struct_attack_single_killed_with_crit(30, function(){ player.hp_max += 5;  restore_health(player,5) },    function(){  add_crit_damage(.1, true )  }),
 						[keywords.permanent_effect, keywords.single_use, keywords.execute], e_card_type.red , e_card.coco_up1_coupe_de_grace);
@@ -1084,7 +1085,7 @@ switch card_enum {
 	case e_card.coco_up1_coupe_de_grace: 
 				card_ = new card("COUP DE GRACE+", 
 							function()  {
-								return damage_string(30)+" DAMAGE. [c_yellow]"+keywords.execute.title+":[] [c_lime]+10[] [s_heart_no_border] MAX HP. "+keywords.execute.title+" WITH [c_pink]CRIT:[] ALSO ADD [c_lime]+15%[] CRIT DAMAGE";
+								return damage_string(30)+" [c_yellow]"+keywords.execute.title+":[] [c_lime]+10[] [s_heart_no_border] MAX HP. "+keywords.execute.title+" WITH [c_pink]CRIT:[] ALSO ADD [c_lime]+15%[] CRIT DAMAGE";
 							}	, 10,
 							new card_struct_attack_single_killed_with_crit(30, function(){ player.hp_max += 10; restore_health(player,5) },    function(){  add_crit_damage(.15, true )  }),
 						[keywords.permanent_effect , keywords.single_use, keywords.execute], e_card_type.red , noone);

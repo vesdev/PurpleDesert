@@ -1,6 +1,9 @@
 /// @description 
 
 
+show_upgraded_card_color = false;
+
+
 u_energy_sine = {
 	shader : sh_sine_wave_collision,
 	

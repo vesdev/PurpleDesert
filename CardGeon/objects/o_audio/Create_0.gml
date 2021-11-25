@@ -36,7 +36,7 @@ current_song_bg = noone;
 combo_bg_gain = 0;//BG of the combo sound effects
 coin_additional_pitch = 0;
 global.volume_sfx = 1;
-global.volume_music = .5;
+global.volume_music = 0;
 
 
 audio_group_set_gain(audiogroup_sfx,global.volume_sfx,0);

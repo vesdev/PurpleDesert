@@ -16,11 +16,9 @@ if bottom_struct.enable = true {
 				//var yy = index[@ 1];
 				update_down_tile(xx,yy);
 			}
-			
 		}
-	
-			update_down_tile_full_map();
-
+		
+		update_down_tile_full_map();
 		bottom_struct.enable = false;
 		ds_list_clear(bottom_struct.list);
 	}

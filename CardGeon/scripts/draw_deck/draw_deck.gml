@@ -1083,6 +1083,8 @@ if !upgrade_card_select.enable{
 						upgrade_card_select.i = save_hovered_i;
 						upgrade_card_select.struct = is_hovering_over_card;
 						upgrade_card_select.enable = true;
+						
+						update_upgraded_card_colors();
 					}else{
 						cannot_upgrade_card_timer = 0;
 					}
@@ -1094,7 +1096,7 @@ if !upgrade_card_select.enable{
 
 function draw_deck() { 
 	
-	//time looks amazing at SEC*.3 or .4
+	//time looks amazing at SEC*.3 or .4 
 	if deck_flash_timer <= deck_flash_time{ 
 	var _interval = 14;
 	var size = 0;

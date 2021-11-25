@@ -1195,15 +1195,20 @@ function get_string_card_amount(amount) {
 	
 	
 	//make this green if we have a card buff effect that lets us draw more cards
+		return "+"+string(amount)+" [s_keyword_card_draw]";
 	
-	if amount = 1 { 
-		return "DRAW [c_yellow]"+string(amount)+"[] CARD.";
-	
-	}else{
-		return "DRAW [c_yellow]"+string(amount)+"[] CARDS.";
-	}
 }
 
+function get_string_card_amount_upgrade(amount) { 
+	
+	
+	//make this green if we have a card buff effect that lets us draw more cards
+	
+	if 
+	
+		return "+"+string(amount)+" [s_keyword_card_draw]";
+	
+}
 
 
 
@@ -2491,6 +2496,15 @@ var target_i = noone;
 	}
 }
 
+function update_upgraded_card_colors(){ 
+	scribble_flush_everything();
+	
+	if (obj_mapgen.selecting_card_upgrade && o_game.upgrade_card_select.enable) { 
+			global.__scribble_colours[? "c_change"] = c_lime;
+	}else{
+			global.__scribble_colours[? "c_change"] = make_color_rgb(255,255,255);
+	}
+}
 
 #region ///card structs
 

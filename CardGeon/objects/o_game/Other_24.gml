@@ -15,6 +15,12 @@ repeat(5) {
 	add_card_for_run(deck , e_card.coco_default_armor);
 }
 
+	add_card_for_run(deck , e_card.coco_curl_up);
+
+	add_card_for_run(deck , e_card.coco_add_temp_attack);
+
+
+
 
 ds_list_shuffle(deck);
 
